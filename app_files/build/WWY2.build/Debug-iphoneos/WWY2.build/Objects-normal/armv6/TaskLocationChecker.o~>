@@ -1,0 +1,2 @@
+/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/../Classes/TaskLocationChecker.m: In function '-[TaskLocationChecker taskIDInNowLocation]':
+/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/../Classes/TaskLocationChecker.m:16: warning: unused variable 'tasks_dict_'

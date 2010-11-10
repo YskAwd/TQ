@@ -1,0 +1,29 @@
+In file included from /Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/WWYMapViewController.h:19,
+                 from /Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.h:11,
+                 from /Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:9:
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/WWYAnnotation.h:27: warning: declaration does not declare anything
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/WWYAnnotation.h:40: warning: property 'coordinate' and its super class 'CLLocation' don't have matching 'atomic' attribute
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/WWYAnnotation.h:40: warning: property 'coordinate' and its protocol 'MKAnnotation' don't have matching 'atomic' attribute
+In file included from /Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.h:13,
+                 from /Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:9:
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/LiveView.h:59: warning: declaration does not declare anything
+In file included from /Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:9:
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.h:24: warning: declaration does not declare anything
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m: In function '-[TaskViewController initWithViewFrame:wWYViewController:]':
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:49: warning: class 'TaskViewController' does not implement the 'LiveViewDelegate' protocol
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m: In function '-[TaskViewController initWhenEditTask:viewFrame:wWYViewController:]':
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:71: warning: 'TaskViewController' may not respond to '-initInterface'
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:71: warning: (Messages without a matching method signature
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:71: warning: will be assumed to return 'id' and accept
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:71: warning: '...' as arguments.)
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:84: warning: 'TaskViewController' may not respond to '-stringFromDate:'
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:89: warning: 'TaskViewController' may not respond to '-createFixCommandViewForTaskEdit'
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m: In function '-[TaskViewController startTaskNameInput]':
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:274: warning: 'TaskViewController' may not respond to '-createFixCommandViewForTaskAdd'
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m: In function '-[TaskViewController dateTimeTextTapped]':
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:289: warning: type-cast of @selector expression won't be supported in future
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:290: warning: type-cast of @selector expression won't be supported in future
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m: In function '-[TaskViewController fixDateTimeEdit]':
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:298: warning: 'TaskViewController' may not respond to '-stringFromDate:'
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m: In function '-[TaskViewController deleteTask]':
+/Volumes/daaaata/develop files/_works/TaskQuest/_project/WWY2/Classes/TaskViewController.m:538: warning: 'WWYViewController' may not respond to '-deleteTask:'

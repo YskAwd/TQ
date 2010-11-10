@@ -1,0 +1,2222 @@
+TWWY2
+v7
+r0
+t302908289.751924
+cCheck dependencies
+cProcessInfoPlistFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Info.plist" WWY-Info.plist
+cCompileXIB "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/MainWindow.xib"
+cCompileXIB "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/DebugViewController.xib"
+cCpResource build/Release-iphonesimulator/WWY.app/db.sqlite db/db.sqlite
+cCpResource build/Release-iphonesimulator/WWY.app/castle_a.png image/castle/castle_a.png
+cCpResource build/Release-iphonesimulator/WWY.app/e_back_01.png image/type_e/e_back_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/e_back_02.png image/type_e/e_back_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/e_front_01.png image/type_e/e_front_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/e_front_02.png image/type_e/e_front_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/e_left_01.png image/type_e/e_left_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/e_left_02.png image/type_e/e_left_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/e_right_01.png image/type_e/e_right_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/e_right_02.png image/type_e/e_right_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/d_back_01.png image/type_d/d_back_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/d_back_02.png image/type_d/d_back_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/d_front_01.png image/type_d/d_front_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/d_front_02.png image/type_d/d_front_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/d_left_01.png image/type_d/d_left_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/d_left_02.png image/type_d/d_left_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/d_right_01.png image/type_d/d_right_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/d_right_02.png image/type_d/d_right_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/a_back_01.png image/type_a/a_back_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/a_back_02.png image/type_a/a_back_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/a_front_01.png image/type_a/a_front_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/a_front_02.png image/type_a/a_front_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/a_left_01.png image/type_a/a_left_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/a_left_02.png image/type_a/a_left_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/a_right_01.png image/type_a/a_right_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/a_right_02.png image/type_a/a_right_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/c_back_01.png image/type_c/c_back_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/c_back_02.png image/type_c/c_back_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/c_front_01.png image/type_c/c_front_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/c_front_02.png image/type_c/c_front_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/c_left_01.png image/type_c/c_left_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/c_left_02.png image/type_c/c_left_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/c_right_01.png image/type_c/c_right_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/c_right_02.png image/type_c/c_right_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/b_back_01.png image/type_b/b_back_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/b_back_02.png image/type_b/b_back_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/b_front_01.png image/type_b/b_front_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/b_front_02.png image/type_b/b_front_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/b_left_01.png image/type_b/b_left_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/b_left_02.png image/type_b/b_left_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/b_right_01.png image/type_b/b_right_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/b_right_02.png image/type_b/b_right_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/btn_location.png image/btn_location.png
+cCpResource build/Release-iphonesimulator/WWY.app/CommandView仕様.txt memo/CommandView仕様.txt
+cCpResource build/Release-iphonesimulator/WWY.app/clickA.aif sound/clickA.aif
+cCpResource build/Release-iphonesimulator/WWY.app/clickB.aif sound/clickB.aif
+cCpResource build/Release-iphonesimulator/WWY.app/clickC.aif sound/clickC.aif
+cCpResource build/Release-iphonesimulator/WWY.app/Default.png image/Default.png
+cCopyStringsFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
+cCopyStringsFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj/Localizable.strings" English.lproj/Localizable.strings
+cCopyStringsFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj/InfoPlist.strings" Japanese.lproj/InfoPlist.strings
+cCopyStringsFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj/Localizable.strings" Japanese.lproj/Localizable.strings
+cCpResource build/Release-iphonesimulator/WWY.app/ramia_right_01.png image/ramia/ramia_right_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/ramia_right_02.png image/ramia/ramia_right_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/ramia_left_02.png image/ramia/ramia_left_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/ramia_back_01.png image/ramia/ramia_back_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/ramia_front_02.png image/ramia/ramia_front_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/ramia_back_02.png image/ramia/ramia_back_02.png
+cCpResource build/Release-iphonesimulator/WWY.app/ramia_left_01.png image/ramia/ramia_left_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/ramia_front_01.png image/ramia/ramia_front_01.png
+cCpResource build/Release-iphonesimulator/WWY.app/dock_icon.png image/dock_icon.png
+cCopyPlistFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/WWY2-Info.plist" WWY2-Info.plist
+cCpResource build/Release-iphonesimulator/WWY.app/nowLocating.png image/nowLocating.png
+cCpResource build/Release-iphonesimulator/WWY.app/menu_waku.png image/menu_waku.png
+cProcessPCH /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WWY_Prefix-abrobifzugjrysfdfpwqolhucoqo/WWY_Prefix.pch.gch WWY_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk
+c000000004BD236930000000000000110
+t1272067731
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
+c000000004BD1CFF4000000000003DB40
+t1272041460
+s252736
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000004BD2001C0000000000193D80
+t1272053788
+s1654144
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.h
+c000000004BD1FFCD0000000000000A22
+t1272053709
+s2594
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004BD1CD90000000000026F020
+t1272040848
+s2551840
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004BD1D4D20000000000061790
+t1272042706
+s399248
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004BD1D4C800000000000001AF
+t1272042696
+s431
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004BD1FFC200000000002A96A0
+t1272053698
+s2791072
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004BD1FF9E0000000000001355
+t1272053662
+s4949
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
+c000000004BD1D83E000000000000017D
+t1272043582
+s381
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/MapKit.framework/MapKit
+c000000004BD1D85F0000000000185260
+t1272043615
+s1593952
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000004BD2095E00000000001515F0
+t1272056158
+s1381872
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/MessageUI.framework/MessageUI
+c000000004BD1D89E000000000009D490
+t1272043678
+s644240
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004BD1D06900000000001294B0
+t1272041577
+s1217712
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004BD20412000000000000098F
+t1272054802
+s2447
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004BD20471000000000222E640
+t1272054897
+s35841600
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/sqlite3.h
+c000000004BD1FD83000000000004187F
+t1272053123
+s268415
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/lib/libsqlite3.0.dylib
+c000000004BD1FDBD00000000000E1D70
+t1272053181
+s925040
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/AdMob/AdMobDelegateProtocol.h
+c000000004C5196D40000000000002166
+t1280415444
+s8550
+i<UIKit/UIKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/AdMob/AdMobView.h
+c000000004C5196D40000000000000A76
+t1280415444
+s2678
+i<UIKit/UIKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/AdMob/libAdMob.a
+c000000004C5196D40000000000238FBC
+t1280415444
+s2330556
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/../Classes/MyLocationGetter.m
+c000000004BDBED420000000000000ACC
+t1272704322
+s2764
+i"MyLocationGetter.h"
+i"WWYViewController.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/../Classes/MyNSURLConnectionGetter.m
+c000000004BDBEEF80000000000000A57
+t1272704760
+s2647
+i"MyNSURLConnectionGetter.h"
+i"WWYViewController.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/../Classes/WWYHelper_DB.m
+c000000004BDBEF4000000000000013A1
+t1272704832
+s5025
+i"WWYHelper_DB.h"
+i"WWYMapViewController.h"
+i"CharacterView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/AddQuestViewController.h
+c000000004C5DA43100000000000002DE
+t1281205297
+s734
+i<UIKit/UIKit.h>
+i"WWYCommandView.h"
+i"LiveView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/AddQuestViewController.m
+c000000004C5DCBF60000000000002747
+t1281215478
+s10055
+i"AddQuestViewController.h"
+i"WWYViewController.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CatchTapOnMapView.h
+c000000004C5D91FA0000000000000155
+t1281200634
+s341
+i<UIKit/UIKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CatchTapOnMapView.m
+c000000004C5D9203000000000000031E
+t1281200643
+s798
+i"CatchTapOnMapView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CharacterAnnotation.h
+c000000004C5D7B480000000000000BC9
+t1281194824
+s3017
+i<Foundation/Foundation.h>
+i<MapKit/MapKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CharacterAnnotation.m
+c000000004BDA1D7F0000000000002098
+t1272585599
+s8344
+i"CharacterAnnotation.h"
+i"WWYMapViewController.h"
+i"CharacterView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CharacterView.h
+c000000004B2F820A0000000000000684
+t1261404682
+s1668
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i"FMRMQDBSelect.h"
+i"FMRMQDBUpdate.h"
+i"FMResultSet.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CharacterView.m
+c000000004B3F73BE00000000000022C2
+t1262449598
+s8898
+i"CharacterView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandArrowView.h
+c000000004B41DF6200000000000001FA
+t1262608226
+s506
+i<UIKit/UIKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandArrowView.m
+c000000004B4203AF00000000000007CD
+t1262617519
+s1997
+i"WWYCommandArrowView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandColumnView.h
+c000000004BEAC45900000000000007FD
+t1273676889
+s2045
+i<UIKit/UIKit.h>
+i"WWYCommandViewDelegate.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandColumnView.m
+c000000004BEAD0D40000000000000A9D
+t1273680084
+s2717
+i"WWYCommandColumnView.h"
+i"WWYCommandView.h"
+i"WWYCommandArrowView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandView.h
+c000000004C5DB0BE0000000000000F68
+t1281208510
+s3944
+i<UIKit/UIKit.h>
+i<AudioToolbox/AudioToolbox.h>
+i"WWYCommandViewDelegate.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandView.m
+c000000004C5DB0AD00000000000036C1
+t1281208493
+s14017
+i"WWYCommandView.h"
+i"WWYCommandColumnView.h"
+i"WWYCommandArrowView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandViewDelegate.h
+c000000004AEED2440000000000000312
+t1257165380
+s786
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/ConfigViewController.h
+c000000004C52B1400000000000000AEC
+t1280487744
+s2796
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i"WWYCommandViewDelegate.h"
+i"LiveViewDelegate.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/ConfigViewController.m
+c000000004C5D6C500000000000008CE6
+t1281190992
+s36070
+i"ConfigViewController.h"
+i"WWYViewController.h"
+i"WWYCommandView.h"
+i"WWYCommandColumnView.h"
+i"WWYHelper_DB.h"
+i"MyNSURLConnectionGetter.h"
+i"LiveView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/DebugViewController.h
+c000000004AD302E900000000000002EA
+t1255342825
+s746
+i<UIKit/UIKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/DebugViewController.m
+c000000004AD302F7000000000000081E
+t1255342839
+s2078
+i"DebugViewController.h"
+i"WWYViewController.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/FMRMQDBSelect.h
+c00000000499FB93000000000000001E0
+t1235204400
+s480
+i<Foundation/Foundation.h>
+i"FMDatabase.h"
+i"FMDatabaseAdditions.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/FMRMQDBSelect.m
+c000000004B1564220000000000000EA8
+t1259693090
+s3752
+i"FMRMQDBSelect.h"
+i"FMResultSet.h"
+i"FMDatabase.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/FMRMQDBUpdate.h
+c00000000499FB93F0000000000000191
+t1235204415
+s401
+i<Foundation/Foundation.h>
+i"FMDatabase.h"
+i"FMDatabaseAdditions.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/FMRMQDBUpdate.m
+c000000004B155F3600000000000007E7
+t1259691830
+s2023
+i"FMRMQDBUpdate.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/LiveView.h
+c000000004C5D75840000000000001042
+t1281193348
+s4162
+i<UIKit/UIKit.h>
+i<AudioToolbox/AudioToolbox.h>
+i"LiveViewDelegate.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/LiveView.m
+c000000004C5D761400000000000031F1
+t1281193492
+s12785
+i"LiveView.h"
+i"CursorButtonView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/LiveView/CursorButtonView.h
+c000000004B41DC53000000000000016E
+t1262607443
+s366
+i<UIKit/UIKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/LiveView/CursorButtonView.m
+c000000004B38F37000000000000006D5
+t1262023536
+s1749
+i"CursorButtonView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/LiveViewDelegate.h
+c000000004B404DE1000000000000029B
+t1262505441
+s667
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/MainController.h
+c000000004BEBD88700000000000000DB
+t1273747591
+s219
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/MainController.m
+c000000004BEBD88700000000000000C9
+t1273747591
+s201
+i"MainController.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/MyLocationGetter.h
+c000000004BDBEB0400000000000002B6
+t1272703748
+s694
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/MyNSURLConnectionGetter.h
+c000000004BDBEE3B00000000000002F9
+t1272704571
+s761
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAdController.h
+c000000004C519D9A0000000000000424
+t1280417178
+s1060
+i<Foundation/Foundation.h>
+i<CoreLocation/CoreLocation.h>
+i"AdMobDelegateProtocol.h"
+i"AdMobView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAdController.m
+c000000004BE7DCED00000000000009B9
+t1273486573
+s2489
+i"WWYAdController.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAnnotation.h
+c000000004C5DB37B0000000000000463
+t1281209211
+s1123
+i<Foundation/Foundation.h>
+i<MapKit/MapKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAnnotation.m
+c000000004C5DB381000000000000066A
+t1281209217
+s1642
+i"WWYAnnotation.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAppDelegate.h
+c000000004C5191550000000000000237
+t1280414037
+s567
+i<UIKit/UIKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAppDelegate.m
+c000000004BEBD8EC00000000000003CD
+t1273747692
+s973
+i"WWYAppDelegate.h"
+i"MainController.h"
+i"WWYViewController.h"
+i"LiveView.h"
+i"LiveViewDelegate.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYHelper_DB.h
+c000000004BDBEF340000000000000524
+t1272704820
+s1316
+i<Foundation/Foundation.h>
+i<MapKit/MapKit.h>
+i"FMRMQDBSelect.h"
+i"FMRMQDBUpdate.h"
+i"FMResultSet.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYMapViewController.h
+c000000004C5DC73E00000000000014F6
+t1281214270
+s5366
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i"FMRMQDBSelect.h"
+i"FMRMQDBUpdate.h"
+i"FMResultSet.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYMapViewController.m
+c000000004C5DC8E4000000000000C9FD
+t1281214692
+s51709
+i"WWYMapViewController.h"
+i"WWYViewController.h"
+i"DebugViewController.h"
+i"CharacterView.h"
+i"MyLocationGetter.h"
+i"WWYAnnotation.h"
+i"CharacterAnnotation.h"
+i"WWYHelper_DB.h"
+i"CatchTapOnMapView.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYViewController.h
+c000000004C5D7B1B0000000000000940
+t1281194779
+s2368
+i<UIKit/UIKit.h>
+i<MapKit/MapKit.h>
+i"FMRMQDBSelect.h"
+i"FMRMQDBUpdate.h"
+i"FMResultSet.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYViewController.m
+c000000004C5DCBD2000000000000445A
+t1281215442
+s17498
+i"WWYViewController.h"
+i"DebugViewController.h"
+i"MyNSURLConnectionGetter.h"
+i"ConfigViewController.h"
+i"WWYMapViewController.h"
+i"WWYAdController.h"
+i"AddQuestViewController.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/DebugViewController.xib
+c000000004AD305550000000000004CDB
+t1255343445
+s19675
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/English.lproj/InfoPlist.strings
+c000000004C5472B40000000000000182
+t1280602804
+s386
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/English.lproj/Localizable.strings
+c000000004C5DBA77000000000000097C
+t1281210999
+s2428
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Japanese.lproj/InfoPlist.strings
+c000000004C5472A70000000000000178
+t1280602791
+s376
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Japanese.lproj/Localizable.strings
+c000000004C5DCB10000000000000087C
+t1281215248
+s2172
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/MainWindow.xib
+c000000004BD5857400000000000033DE
+t1272284532
+s13278
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/CDataScanner.h
+c000000004C5196D4000000000000095B
+t1280415444
+s2395
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/CDataScanner.m
+c000000004C5196D40000000000001674
+t1280415444
+s5748
+i"CDataScanner.h"
+i"CDataScanner_Extensions.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/CDataScanner_Extensions.h
+c000000004C5196D400000000000005AD
+t1280415444
+s1453
+i"CDataScanner.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/CDataScanner_Extensions.m
+c000000004C5196D400000000000009EC
+t1280415444
+s2540
+i"CDataScanner_Extensions.h"
+i"NSCharacterSet_Extensions.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSCharacterSet_Extensions.h
+c000000004C5196D4000000000000057A
+t1280415444
+s1402
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSCharacterSet_Extensions.m
+c000000004C5196D40000000000000731
+t1280415444
+s1841
+i"NSCharacterSet_Extensions.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSDictionary_JSONExtensions.h
+c000000004C5196D40000000000000598
+t1280415444
+s1432
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSDictionary_JSONExtensions.m
+c000000004C5196D40000000000000613
+t1280415444
+s1555
+i"NSDictionary_JSONExtensions.h"
+i"CJSONDeserializer.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSScanner_Extensions.h
+c000000004C5196D40000000000000656
+t1280415444
+s1622
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSScanner_Extensions.m
+c000000004C5196D40000000000000D65
+t1280415444
+s3429
+i"NSScanner_Extensions.h"
+i"NSCharacterSet_Extensions.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONDataSerializer.h
+c000000004C5196D40000000000000716
+t1280415444
+s1814
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONDataSerializer.m
+c000000004C5196D40000000000001AB2
+t1280415444
+s6834
+i"CJSONDataSerializer.h"
+i"CSerializedJSONData.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONDeserializer.h
+c000000004C5196D40000000000000681
+t1280415444
+s1665
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONDeserializer.m
+c000000004C5196D40000000000000B3A
+t1280415444
+s2874
+i"CJSONDeserializer.h"
+i"CJSONScanner.h"
+i"CDataScanner.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONScanner.h
+c000000004C5196D4000000000000081C
+t1280415444
+s2076
+i"CDataScanner.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONScanner.m
+c000000004C5196D400000000000039AA
+t1280415444
+s14762
+i"CJSONScanner.h"
+i"NSCharacterSet_Extensions.h"
+i"CDataScanner_Extensions.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONSerializer.h
+c000000004C5196D40000000000000787
+t1280415444
+s1927
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONSerializer.m
+c000000004C5196D400000000000008C6
+t1280415444
+s2246
+i"CJSONSerializer.h"
+i"CJSONDataSerializer.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CSerializedJSONData.h
+c000000004C5196D400000000000005A9
+t1280415444
+s1449
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CSerializedJSONData.m
+c000000004C5196D400000000000005FB
+t1280415444
+s1531
+i"CSerializedJSONData.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/WWY2-Info.plist
+c000000004C54728500000000000003C9
+t1280602757
+s969
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/WWY_Prefix.pch
+c00000000000000000000000000000000
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app
+t1281215489
+s2244
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app.dSYM
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/CommandView仕様.txt
+t1281215489
+s2356
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/DebugViewController.nib
+t1281215489
+s2646
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Default.png
+t1281215489
+s5345
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj/InfoPlist.strings
+t1281215489
+s93
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj/Localizable.strings
+t1281215489
+s1115
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Info.plist
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj/InfoPlist.strings
+t1281215489
+s97
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj/Localizable.strings
+t1281215489
+s1237
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/MainWindow.nib
+t1281215488
+s956
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/PkgInfo
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/WWY
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/WWY2-Info.plist
+t1281215489
+s534
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/a_back_01.png
+t1281215489
+s444
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/a_back_02.png
+t1281215489
+s445
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/a_front_01.png
+t1281215489
+s504
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/a_front_02.png
+t1281215489
+s501
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/a_left_01.png
+t1281215489
+s483
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/a_left_02.png
+t1281215489
+s500
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/a_right_01.png
+t1281215489
+s470
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/a_right_02.png
+t1281215489
+s479
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/b_back_01.png
+t1281215489
+s436
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/b_back_02.png
+t1281215489
+s442
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/b_front_01.png
+t1281215489
+s482
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/b_front_02.png
+t1281215489
+s478
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/b_left_01.png
+t1281215489
+s471
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/b_left_02.png
+t1281215489
+s477
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/b_right_01.png
+t1281215489
+s476
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/b_right_02.png
+t1281215489
+s484
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/btn_location.png
+t1281215489
+s45035
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/c_back_01.png
+t1281215489
+s475
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/c_back_02.png
+t1281215489
+s488
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/c_front_01.png
+t1281215489
+s499
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/c_front_02.png
+t1281215489
+s500
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/c_left_01.png
+t1281215489
+s469
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/c_left_02.png
+t1281215489
+s475
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/c_right_01.png
+t1281215489
+s469
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/c_right_02.png
+t1281215489
+s481
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/castle_a.png
+t1281215489
+s466
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/clickA.aif
+t1281215489
+s1138
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/clickB.aif
+t1281215489
+s1070
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/clickC.aif
+t1281215489
+s1104
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/d_back_01.png
+t1281215489
+s437
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/d_back_02.png
+t1281215489
+s433
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/d_front_01.png
+t1281215489
+s446
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/d_front_02.png
+t1281215489
+s436
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/d_left_01.png
+t1281215489
+s424
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/d_left_02.png
+t1281215489
+s425
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/d_right_01.png
+t1281215489
+s415
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/d_right_02.png
+t1281215489
+s422
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/db.sqlite
+t1281215489
+s163840
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/dock_icon.png
+t1281215489
+s522
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/e_back_01.png
+t1281215489
+s370
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/e_back_02.png
+t1281215489
+s350
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/e_front_01.png
+t1281215489
+s439
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/e_front_02.png
+t1281215489
+s434
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/e_left_01.png
+t1281215489
+s662
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/e_left_02.png
+t1281215489
+s662
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/e_right_01.png
+t1281215489
+s386
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/e_right_02.png
+t1281215489
+s416
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/menu_waku.png
+t1281215489
+s147
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/nowLocating.png
+t1281215489
+s6444
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/ramia_back_01.png
+t1281215489
+s439
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/ramia_back_02.png
+t1281215489
+s450
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/ramia_front_01.png
+t1281215489
+s482
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/ramia_front_02.png
+t1281215489
+s489
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/ramia_left_01.png
+t1281215489
+s475
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/ramia_left_02.png
+t1281215489
+s458
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/ramia_right_01.png
+t1281215489
+s468
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/ramia_right_02.png
+t1281215489
+s443
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/AddQuestViewController.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CDataScanner.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CDataScanner_Extensions.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CJSONDataSerializer.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CJSONDeserializer.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CJSONScanner.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CJSONSerializer.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CSerializedJSONData.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CatchTapOnMapView.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CharacterAnnotation.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CharacterView.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/ConfigViewController.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CursorButtonView.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/DebugViewController.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMDatabase.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMDatabaseAdditions.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMRMQDBSelect.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMRMQDBUpdate.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMResultSet.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/LiveView.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/MainController.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/MyLocationGetter.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/MyNSURLConnectionGetter.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/NSCharacterSet_Extensions.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/NSDictionary_JSONExtensions.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/NSScanner_Extensions.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWY.LinkFileList
+c000000004C5DCBFF000000000000156E
+t1281215487
+s5486
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYAdController.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYAnnotation.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYAppDelegate.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYCommandArrowView.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYCommandColumnView.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYCommandView.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYHelper_DB.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYMapViewController.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYViewController.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/db.sqlite
+c000000004B76E5B70000000000028000
+t1266083255
+s163840
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMDatabase.h
+c00000000498C466D00000000000008C6
+t1233929837
+s2246
+i<Foundation/Foundation.h>
+i"sqlite3.h"
+i"FMResultSet.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMDatabase.m
+c00000000498C466D000000000000415D
+t1233929837
+s16733
+i"FMDatabase.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMDatabaseAdditions.h
+c00000000498C466D00000000000002C3
+t1233929837
+s707
+i<Foundation/Foundation.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMDatabaseAdditions.m
+c000000004A4CF637000000000000066E
+t1246557751
+s1646
+i"FMDatabase.h"
+i"FMDatabaseAdditions.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMResultSet.h
+c000000004B3D89870000000000000712
+t1262324103
+s1810
+i<Foundation/Foundation.h>
+i"sqlite3.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMResultSet.m
+c00000000498C466D00000000000022C1
+t1233929837
+s8897
+i"FMResultSet.h"
+i"FMDatabase.h"
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/Default.png
+c000000004BDC513F00000000000014E1
+t1272729919
+s5345
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/btn_location.png
+c000000004AE590BE000000000000AFEB
+t1256558782
+s45035
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/castle/castle_a.png
+c000000004ACCAA3800000000000001D2
+t1254926904
+s466
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/dock_icon.png
+c000000004B7AA014000000000000020A
+t1266327572
+s522
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/menu_waku.png
+c000000004C5449680000000000000093
+t1280592232
+s147
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/nowLocating.png
+c000000004BDC57DC000000000000192C
+t1272731612
+s6444
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_back_01.png
+c000000004B3F801200000000000001B7
+t1262452754
+s439
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_back_02.png
+c000000004B3F7FE800000000000001C2
+t1262452712
+s450
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_front_01.png
+c000000004B3F7FF700000000000001E2
+t1262452727
+s482
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_front_02.png
+c000000004B3F800400000000000001E9
+t1262452740
+s489
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_left_01.png
+c000000004B3F841600000000000001DB
+t1262453782
+s475
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_left_02.png
+c000000004B3F844B00000000000001CA
+t1262453835
+s458
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_right_01.png
+c000000004B3F7FA600000000000001D4
+t1262452646
+s468
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_right_02.png
+c000000004B3F7FD500000000000001BB
+t1262452693
+s443
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_back_01.png
+c000000004ACCA63800000000000001BC
+t1254925880
+s444
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_back_02.png
+c000000004ACCA64400000000000001BD
+t1254925892
+s445
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_front_01.png
+c000000004ACCA55A00000000000001F8
+t1254925658
+s504
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_front_02.png
+c000000004ACCA56800000000000001F5
+t1254925672
+s501
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_left_01.png
+c000000004ACCA65200000000000001E3
+t1254925906
+s483
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_left_02.png
+c000000004ACCA65C00000000000001F4
+t1254925916
+s500
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_right_01.png
+c000000004ACCA67400000000000001D6
+t1254925940
+s470
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_right_02.png
+c000000004ACCA67E00000000000001DF
+t1254925950
+s479
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_back_01.png
+c000000004ACCA70E00000000000001B4
+t1254926094
+s436
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_back_02.png
+c000000004ACCA71C00000000000001BA
+t1254926108
+s442
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_front_01.png
+c000000004ACCA6DA00000000000001E2
+t1254926042
+s482
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_front_02.png
+c000000004ACCA70000000000000001DE
+t1254926080
+s478
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_left_01.png
+c000000004ACCA73200000000000001D7
+t1254926130
+s471
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_left_02.png
+c000000004ACCA73C00000000000001DD
+t1254926140
+s477
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_right_01.png
+c000000004ACCA74E00000000000001DC
+t1254926158
+s476
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_right_02.png
+c000000004ACCA75C00000000000001E4
+t1254926172
+s484
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_back_01.png
+c000000004ACCA7B200000000000001DB
+t1254926258
+s475
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_back_02.png
+c000000004ACCA7BA00000000000001E8
+t1254926266
+s488
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_front_01.png
+c000000004ACCA79A00000000000001F3
+t1254926234
+s499
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_front_02.png
+c000000004ACCA7A600000000000001F4
+t1254926246
+s500
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_left_01.png
+c000000004ACCA7D400000000000001D5
+t1254926292
+s469
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_left_02.png
+c000000004ACCA7E000000000000001DB
+t1254926304
+s475
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_right_01.png
+c000000004ACCA7F200000000000001D5
+t1254926322
+s469
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_right_02.png
+c000000004ACCA81600000000000001E1
+t1254926358
+s481
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_back_01.png
+c000000004ACCA8B000000000000001B5
+t1254926512
+s437
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_back_02.png
+c000000004ACCA8C000000000000001B1
+t1254926528
+s433
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_front_01.png
+c000000004ACCA89200000000000001BE
+t1254926482
+s446
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_front_02.png
+c000000004ACCA8A000000000000001B4
+t1254926496
+s436
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_left_01.png
+c000000004ACCA8D200000000000001A8
+t1254926546
+s424
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_left_02.png
+c000000004ACCA8F400000000000001A9
+t1254926580
+s425
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_right_01.png
+c000000004ACCA918000000000000019F
+t1254926616
+s415
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_right_02.png
+c000000004ACCA93400000000000001A6
+t1254926644
+s422
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_back_01.png
+c000000004B60D27A0000000000000172
+t1264636538
+s370
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_back_02.png
+c000000004B60D273000000000000015E
+t1264636531
+s350
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_front_01.png
+c000000004B60CE3000000000000001B7
+t1264635440
+s439
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_front_02.png
+c000000004B60CE2300000000000001B2
+t1264635427
+s434
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_left_01.png
+c000000004B60D40D0000000000000296
+t1264636941
+s662
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_left_02.png
+c000000004B60D4040000000000000296
+t1264636932
+s662
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_right_01.png
+c000000004B60D38E0000000000000182
+t1264636814
+s386
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_right_02.png
+c000000004B60D39A00000000000001A0
+t1264636826
+s416
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/main.m
+c000000004BE7E56D0000000000000161
+t1273488749
+s353
+i<UIKit/UIKit.h>
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/memo/CommandView仕様.txt
+c000000004BEAC6DA0000000000000934
+t1273677530
+s2356
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickA.aif
+c0000000049AC475F0000000000000472
+t1236027231
+s1138
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickB.aif
+c0000000049AC4C4F000000000000042E
+t1236028495
+s1070
+
+N/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickC.aif
+c000000004B38FD280000000000000450
+t1262026024
+s1104
+
+N/var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WWY_Prefix-abrobifzugjrysfdfpwqolhucoqo/WWY_Prefix.pch.gch
+t2
+s0
+
+NWWY-Info.plist
+c00000000000000000000000000000000
+t2
+s0
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies302908287#302908287#0(0"0(0#1#0"2570190784#0"0#
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/AddQuestViewController.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/AddQuestViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CDataScanner.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/CDataScanner.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CDataScanner_Extensions.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/CDataScanner_Extensions.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CJSONDataSerializer.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONDataSerializer.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CJSONDeserializer.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONDeserializer.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CJSONScanner.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONScanner.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CJSONSerializer.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CJSONSerializer.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CSerializedJSONData.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/JSON/CSerializedJSONData.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CatchTapOnMapView.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CatchTapOnMapView.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CharacterAnnotation.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CharacterAnnotation.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CharacterView.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CharacterView.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/ConfigViewController.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/ConfigViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/CursorButtonView.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/LiveView/CursorButtonView.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/DebugViewController.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/DebugViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMDatabase.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMDatabase.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMDatabaseAdditions.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMDatabaseAdditions.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMRMQDBSelect.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/FMRMQDBSelect.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMRMQDBUpdate.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/FMRMQDBUpdate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/FMResultSet.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/fmdb/src/FMResultSet.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/LiveView.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/LiveView.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/MainController.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/MainController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/MyLocationGetter.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/../Classes/MyLocationGetter.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/MyNSURLConnectionGetter.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/../Classes/MyNSURLConnectionGetter.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/NSCharacterSet_Extensions.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSCharacterSet_Extensions.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/NSDictionary_JSONExtensions.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSDictionary_JSONExtensions.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/NSScanner_Extensions.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/TouchJSON/Extensions/NSScanner_Extensions.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYAdController.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAdController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYAnnotation.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAnnotation.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYAppDelegate.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYAppDelegate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYCommandArrowView.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandArrowView.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYCommandColumnView.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandColumnView.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYCommandView.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/CommandView/WWYCommandView.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYHelper_DB.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/../Classes/WWYHelper_DB.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYMapViewController.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYMapViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/WWYViewController.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Classes/WWYViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/WWY2.build/Release-iphonesimulator/WWY2.build/Objects-normal/i386/main.o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/main.m" normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileXIB "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/DebugViewController.xib"
+s302908287.914833
+e302908289.567187
+r1
+xCompileXIB
+x/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/DebugViewController.xib
+lSLF07#2@34"CompileXIB DebugViewController.xib302908287#302908289#0(0"0(0#0#84"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/DebugViewController.xib2570190784#658"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/DebugViewController.nib" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/DebugViewController.xib" --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk0#
+
+CCompileXIB "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/MainWindow.xib"
+s302908287.869362
+e302908288.996243
+r1
+xCompileXIB
+x/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib302908287#302908288#0(0"0(0#0#75"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/MainWindow.xib2570190784#640"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/MainWindow.nib" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/MainWindow.xib" --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk0#
+
+CCopyPlistFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/WWY2-Info.plist" WWY2-Info.plist
+s302908289.685266
+e302908289.743263
+r1
+xCopyPlistFile
+x/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/WWY2-Info.plist
+xWWY2-Info.plist
+lSLF07#2@20"Copy WWY2-Info.plist302908289#302908289#0(0"0(0#0#76"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/WWY2-Info.plist2570190784#436"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copyplist --convert binary1 WWY2-Info.plist --outdir "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCopyStringsFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
+s302908289.431951
+e302908289.498085
+r1
+xCopyStringsFile
+x/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings302908289#302908289#0(0"0(0#0#92"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/English.lproj/InfoPlist.strings2570190784#540"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv ICONV /usr/bin/iconv    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding binary English.lproj/InfoPlist.strings --outdir "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj"0#
+
+CCopyStringsFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj/Localizable.strings" English.lproj/Localizable.strings
+s302908289.498234
+e302908289.575618
+r1
+xCopyStringsFile
+x/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj/Localizable.strings
+xEnglish.lproj/Localizable.strings
+lSLF07#2@38"Copy English.lproj/Localizable.strings302908289#302908289#0(0"0(0#0#94"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/English.lproj/Localizable.strings2570190784#542"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv ICONV /usr/bin/iconv    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding binary English.lproj/Localizable.strings --outdir "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/English.lproj"0#
+
+CCopyStringsFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj/InfoPlist.strings" Japanese.lproj/InfoPlist.strings
+s302908289.567322
+e302908289.622464
+r1
+xCopyStringsFile
+x/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj/InfoPlist.strings
+xJapanese.lproj/InfoPlist.strings
+lSLF07#2@37"Copy Japanese.lproj/InfoPlist.strings302908289#302908289#0(0"0(0#0#93"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Japanese.lproj/InfoPlist.strings2570190784#542"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv ICONV /usr/bin/iconv    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding binary Japanese.lproj/InfoPlist.strings --outdir "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj"0#
+
+CCopyStringsFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj/Localizable.strings" Japanese.lproj/Localizable.strings
+s302908289.575755
+e302908289.683758
+r1
+xCopyStringsFile
+x/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj/Localizable.strings
+xJapanese.lproj/Localizable.strings
+lSLF07#2@39"Copy Japanese.lproj/Localizable.strings302908289#302908289#0(0"0(0#0#95"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/Japanese.lproj/Localizable.strings2570190784#544"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv ICONV /usr/bin/iconv    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding binary Japanese.lproj/Localizable.strings --outdir "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Japanese.lproj"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/CommandView仕様.txt memo/CommandView仕様.txt
+s302908289.386194
+e302908289.417030
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/CommandView仕様.txt
+xmemo/CommandView仕様.txt
+lSLF07#2@31"Copy memo/CommandView仕様.txt302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/memo/CommandView仕様.txt2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/memo/CommandView仕様.txt" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/Default.png image/Default.png
+s302908289.430404
+e302908289.443157
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/Default.png
+ximage/Default.png
+lSLF07#2@22"Copy image/Default.png302908289#302908289#0(0"0(0#0#78"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/Default.png2570190784#552"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/Default.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/a_back_01.png image/type_a/a_back_01.png
+s302908289.078268
+e302908289.096074
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/a_back_01.png
+ximage/type_a/a_back_01.png
+lSLF07#2@31"Copy image/type_a/a_back_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_back_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_back_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/a_back_02.png image/type_a/a_back_02.png
+s302908289.085813
+e302908289.136055
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/a_back_02.png
+ximage/type_a/a_back_02.png
+lSLF07#2@31"Copy image/type_a/a_back_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_back_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_back_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/a_front_01.png image/type_a/a_front_01.png
+s302908289.088108
+e302908289.136227
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/a_front_01.png
+ximage/type_a/a_front_01.png
+lSLF07#2@32"Copy image/type_a/a_front_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_front_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_front_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/a_front_02.png image/type_a/a_front_02.png
+s302908289.096192
+e302908289.135033
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/a_front_02.png
+ximage/type_a/a_front_02.png
+lSLF07#2@32"Copy image/type_a/a_front_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_front_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_front_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/a_left_01.png image/type_a/a_left_01.png
+s302908289.100635
+e302908289.135218
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/a_left_01.png
+ximage/type_a/a_left_01.png
+lSLF07#2@31"Copy image/type_a/a_left_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_left_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_left_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/a_left_02.png image/type_a/a_left_02.png
+s302908289.103233
+e302908289.135384
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/a_left_02.png
+ximage/type_a/a_left_02.png
+lSLF07#2@31"Copy image/type_a/a_left_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_left_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_left_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/a_right_01.png image/type_a/a_right_01.png
+s302908289.115859
+e302908289.135551
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/a_right_01.png
+ximage/type_a/a_right_01.png
+lSLF07#2@32"Copy image/type_a/a_right_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_right_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_right_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/a_right_02.png image/type_a/a_right_02.png
+s302908289.118460
+e302908289.135729
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/a_right_02.png
+ximage/type_a/a_right_02.png
+lSLF07#2@32"Copy image/type_a/a_right_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_right_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_a/a_right_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/b_back_01.png image/type_b/b_back_01.png
+s302908289.211417
+e302908289.230570
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/b_back_01.png
+ximage/type_b/b_back_01.png
+lSLF07#2@31"Copy image/type_b/b_back_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_back_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_back_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/b_back_02.png image/type_b/b_back_02.png
+s302908289.220952
+e302908289.230755
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/b_back_02.png
+ximage/type_b/b_back_02.png
+lSLF07#2@31"Copy image/type_b/b_back_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_back_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_back_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/b_front_01.png image/type_b/b_front_01.png
+s302908289.230873
+e302908289.408140
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/b_front_01.png
+ximage/type_b/b_front_01.png
+lSLF07#2@32"Copy image/type_b/b_front_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_front_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_front_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/b_front_02.png image/type_b/b_front_02.png
+s302908289.283207
+e302908289.408544
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/b_front_02.png
+ximage/type_b/b_front_02.png
+lSLF07#2@32"Copy image/type_b/b_front_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_front_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_front_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/b_left_01.png image/type_b/b_left_01.png
+s302908289.285107
+e302908289.408768
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/b_left_01.png
+ximage/type_b/b_left_01.png
+lSLF07#2@31"Copy image/type_b/b_left_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_left_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_left_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/b_left_02.png image/type_b/b_left_02.png
+s302908289.327697
+e302908289.408967
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/b_left_02.png
+ximage/type_b/b_left_02.png
+lSLF07#2@31"Copy image/type_b/b_left_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_left_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_left_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/b_right_01.png image/type_b/b_right_01.png
+s302908289.361614
+e302908289.416446
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/b_right_01.png
+ximage/type_b/b_right_01.png
+lSLF07#2@32"Copy image/type_b/b_right_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_right_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_right_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/b_right_02.png image/type_b/b_right_02.png
+s302908289.369983
+e302908289.416642
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/b_right_02.png
+ximage/type_b/b_right_02.png
+lSLF07#2@32"Copy image/type_b/b_right_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_right_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_b/b_right_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/btn_location.png image/btn_location.png
+s302908289.383204
+e302908289.416829
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/btn_location.png
+ximage/btn_location.png
+lSLF07#2@27"Copy image/btn_location.png302908289#302908289#0(0"0(0#0#83"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/btn_location.png2570190784#557"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/btn_location.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/c_back_01.png image/type_c/c_back_01.png
+s302908289.124897
+e302908289.135892
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/c_back_01.png
+ximage/type_c/c_back_01.png
+lSLF07#2@31"Copy image/type_c/c_back_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_back_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_back_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/c_back_02.png image/type_c/c_back_02.png
+s302908289.127226
+e302908289.230377
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/c_back_02.png
+ximage/type_c/c_back_02.png
+lSLF07#2@31"Copy image/type_c/c_back_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_back_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_back_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/c_front_01.png image/type_c/c_front_01.png
+s302908289.136333
+e302908289.229214
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/c_front_01.png
+ximage/type_c/c_front_01.png
+lSLF07#2@32"Copy image/type_c/c_front_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_front_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_front_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/c_front_02.png image/type_c/c_front_02.png
+s302908289.152191
+e302908289.229442
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/c_front_02.png
+ximage/type_c/c_front_02.png
+lSLF07#2@32"Copy image/type_c/c_front_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_front_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_front_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/c_left_01.png image/type_c/c_left_01.png
+s302908289.165943
+e302908289.229628
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/c_left_01.png
+ximage/type_c/c_left_01.png
+lSLF07#2@31"Copy image/type_c/c_left_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_left_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_left_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/c_left_02.png image/type_c/c_left_02.png
+s302908289.176240
+e302908289.229819
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/c_left_02.png
+ximage/type_c/c_left_02.png
+lSLF07#2@31"Copy image/type_c/c_left_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_left_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_left_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/c_right_01.png image/type_c/c_right_01.png
+s302908289.190914
+e302908289.229998
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/c_right_01.png
+ximage/type_c/c_right_01.png
+lSLF07#2@32"Copy image/type_c/c_right_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_right_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_right_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/c_right_02.png image/type_c/c_right_02.png
+s302908289.204646
+e302908289.230187
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/c_right_02.png
+ximage/type_c/c_right_02.png
+lSLF07#2@32"Copy image/type_c/c_right_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_right_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_c/c_right_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/castle_a.png image/castle/castle_a.png
+s302908288.998010
+e302908289.028162
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/castle_a.png
+ximage/castle/castle_a.png
+lSLF07#2@30"Copy image/castle/castle_a.png302908288#302908289#0(0"0(0#0#86"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/castle/castle_a.png2570190784#560"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/castle/castle_a.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/clickA.aif sound/clickA.aif
+s302908289.397549
+e302908289.417362
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/clickA.aif
+xsound/clickA.aif
+lSLF07#2@21"Copy sound/clickA.aif302908289#302908289#0(0"0(0#0#77"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickA.aif2570190784#551"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickA.aif" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/clickB.aif sound/clickB.aif
+s302908289.417468
+e302908289.442807
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/clickB.aif
+xsound/clickB.aif
+lSLF07#2@21"Copy sound/clickB.aif302908289#302908289#0(0"0(0#0#77"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickB.aif2570190784#551"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickB.aif" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/clickC.aif sound/clickC.aif
+s302908289.421597
+e302908289.442990
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/clickC.aif
+xsound/clickC.aif
+lSLF07#2@21"Copy sound/clickC.aif302908289#302908289#0(0"0(0#0#77"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickC.aif2570190784#551"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/sound/clickC.aif" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/d_back_01.png image/type_d/d_back_01.png
+s302908289.037408
+e302908289.057812
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/d_back_01.png
+ximage/type_d/d_back_01.png
+lSLF07#2@31"Copy image/type_d/d_back_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_back_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_back_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/d_back_02.png image/type_d/d_back_02.png
+s302908289.045391
+e302908289.057976
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/d_back_02.png
+ximage/type_d/d_back_02.png
+lSLF07#2@31"Copy image/type_d/d_back_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_back_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_back_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/d_front_01.png image/type_d/d_front_01.png
+s302908289.047701
+e302908289.095563
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/d_front_01.png
+ximage/type_d/d_front_01.png
+lSLF07#2@32"Copy image/type_d/d_front_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_front_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_front_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/d_front_02.png image/type_d/d_front_02.png
+s302908289.055112
+e302908289.095906
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/d_front_02.png
+ximage/type_d/d_front_02.png
+lSLF07#2@32"Copy image/type_d/d_front_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_front_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_front_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/d_left_01.png image/type_d/d_left_01.png
+s302908289.058892
+e302908289.094589
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/d_left_01.png
+ximage/type_d/d_left_01.png
+lSLF07#2@31"Copy image/type_d/d_left_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_left_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_left_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/d_left_02.png image/type_d/d_left_02.png
+s302908289.066356
+e302908289.094822
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/d_left_02.png
+ximage/type_d/d_left_02.png
+lSLF07#2@31"Copy image/type_d/d_left_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_left_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_left_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/d_right_01.png image/type_d/d_right_01.png
+s302908289.068605
+e302908289.095350
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/d_right_01.png
+ximage/type_d/d_right_01.png
+lSLF07#2@32"Copy image/type_d/d_right_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_right_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_right_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/d_right_02.png image/type_d/d_right_02.png
+s302908289.076013
+e302908289.095738
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/d_right_02.png
+ximage/type_d/d_right_02.png
+lSLF07#2@32"Copy image/type_d/d_right_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_right_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_d/d_right_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/db.sqlite db/db.sqlite
+s302908288.996373
+e302908289.027980
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/db.sqlite
+xdb/db.sqlite
+lSLF07#2@17"Copy db/db.sqlite302908288#302908289#0(0"0(0#0#73"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/db.sqlite2570190784#547"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/db/db.sqlite" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/dock_icon.png image/dock_icon.png
+s302908289.680971
+e302908289.690189
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/dock_icon.png
+ximage/dock_icon.png
+lSLF07#2@24"Copy image/dock_icon.png302908289#302908289#0(0"0(0#0#80"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/dock_icon.png2570190784#554"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/dock_icon.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/e_back_01.png image/type_e/e_back_01.png
+s302908288.999348
+e302908289.028328
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/e_back_01.png
+ximage/type_e/e_back_01.png
+lSLF07#2@31"Copy image/type_e/e_back_01.png302908288#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_back_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_back_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/e_back_02.png image/type_e/e_back_02.png
+s302908289.006537
+e302908289.028492
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/e_back_02.png
+ximage/type_e/e_back_02.png
+lSLF07#2@31"Copy image/type_e/e_back_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_back_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_back_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/e_front_01.png image/type_e/e_front_01.png
+s302908289.007993
+e302908289.058142
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/e_front_01.png
+ximage/type_e/e_front_01.png
+lSLF07#2@32"Copy image/type_e/e_front_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_front_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_front_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/e_front_02.png image/type_e/e_front_02.png
+s302908289.015319
+e302908289.028659
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/e_front_02.png
+ximage/type_e/e_front_02.png
+lSLF07#2@32"Copy image/type_e/e_front_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_front_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_front_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/e_left_01.png image/type_e/e_left_01.png
+s302908289.017671
+e302908289.058304
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/e_left_01.png
+ximage/type_e/e_left_01.png
+lSLF07#2@31"Copy image/type_e/e_left_01.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_left_01.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_left_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/e_left_02.png image/type_e/e_left_02.png
+s302908289.019893
+e302908289.058465
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/e_left_02.png
+ximage/type_e/e_left_02.png
+lSLF07#2@31"Copy image/type_e/e_left_02.png302908289#302908289#0(0"0(0#0#87"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_left_02.png2570190784#561"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_left_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/e_right_01.png image/type_e/e_right_01.png
+s302908289.025485
+e302908289.058625
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/e_right_01.png
+ximage/type_e/e_right_01.png
+lSLF07#2@32"Copy image/type_e/e_right_01.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_right_01.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_right_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/e_right_02.png image/type_e/e_right_02.png
+s302908289.028769
+e302908289.057621
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/e_right_02.png
+ximage/type_e/e_right_02.png
+lSLF07#2@32"Copy image/type_e/e_right_02.png302908289#302908289#0(0"0(0#0#88"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_right_02.png2570190784#562"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/type_e/e_right_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/menu_waku.png image/menu_waku.png
+s302908289.707631
+e302908289.720194
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/menu_waku.png
+ximage/menu_waku.png
+lSLF07#2@24"Copy image/menu_waku.png302908289#302908289#0(0"0(0#0#80"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/menu_waku.png2570190784#554"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/menu_waku.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/nowLocating.png image/nowLocating.png
+s302908289.702238
+e302908289.719963
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/nowLocating.png
+ximage/nowLocating.png
+lSLF07#2@26"Copy image/nowLocating.png302908289#302908289#0(0"0(0#0#82"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/nowLocating.png2570190784#556"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/nowLocating.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/ramia_back_01.png image/ramia/ramia_back_01.png
+s302908289.648909
+e302908289.684457
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/ramia_back_01.png
+ximage/ramia/ramia_back_01.png
+lSLF07#2@34"Copy image/ramia/ramia_back_01.png302908289#302908289#0(0"0(0#0#90"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_back_01.png2570190784#564"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_back_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/ramia_back_02.png image/ramia/ramia_back_02.png
+s302908289.657855
+e302908289.684791
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/ramia_back_02.png
+ximage/ramia/ramia_back_02.png
+lSLF07#2@34"Copy image/ramia/ramia_back_02.png302908289#302908289#0(0"0(0#0#90"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_back_02.png2570190784#564"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_back_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/ramia_front_01.png image/ramia/ramia_front_01.png
+s302908289.674341
+e302908289.685142
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/ramia_front_01.png
+ximage/ramia/ramia_front_01.png
+lSLF07#2@35"Copy image/ramia/ramia_front_01.png302908289#302908289#0(0"0(0#0#91"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_front_01.png2570190784#565"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_front_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/ramia_front_02.png image/ramia/ramia_front_02.png
+s302908289.656369
+e302908289.684625
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/ramia_front_02.png
+ximage/ramia/ramia_front_02.png
+lSLF07#2@35"Copy image/ramia/ramia_front_02.png302908289#302908289#0(0"0(0#0#91"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_front_02.png2570190784#565"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_front_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/ramia_left_01.png image/ramia/ramia_left_01.png
+s302908289.667260
+e302908289.684967
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/ramia_left_01.png
+ximage/ramia/ramia_left_01.png
+lSLF07#2@34"Copy image/ramia/ramia_left_01.png302908289#302908289#0(0"0(0#0#90"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_left_01.png2570190784#564"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_left_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/ramia_left_02.png image/ramia/ramia_left_02.png
+s302908289.637432
+e302908289.684291
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/ramia_left_02.png
+ximage/ramia/ramia_left_02.png
+lSLF07#2@34"Copy image/ramia/ramia_left_02.png302908289#302908289#0(0"0(0#0#90"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_left_02.png2570190784#564"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_left_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/ramia_right_01.png image/ramia/ramia_right_01.png
+s302908289.622588
+e302908289.683953
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/ramia_right_01.png
+ximage/ramia/ramia_right_01.png
+lSLF07#2@35"Copy image/ramia/ramia_right_01.png302908289#302908289#0(0"0(0#0#91"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_right_01.png2570190784#565"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_right_01.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CCpResource build/Release-iphonesimulator/WWY.app/ramia_right_02.png image/ramia/ramia_right_02.png
+s302908289.624888
+e302908289.684123
+r1
+xCpResource
+xbuild/Release-iphonesimulator/WWY.app/ramia_right_02.png
+ximage/ramia/ramia_right_02.png
+lSLF07#2@35"Copy image/ramia/ramia_right_02.png302908289#302908289#0(0"0(0#0#91"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_right_02.png2570190784#565"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -strip-debug-symbols -resolve-src-symlinks "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/image/ramia/ramia_right_02.png" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"0#
+
+CGenerateDSYMFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app.dSYM" "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/WWY"
+r0
+
+CLd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/WWY" normal i386
+r0
+
+CProcessInfoPlistFile "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Info.plist" WWY-Info.plist
+s302908287.826176
+e302908287.869220
+r0
+xProcessInfoPlistFile
+x/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Info.plist
+xWWY-Info.plist
+lSLF07#2@22"Process WWY-Info.plist302908287#302908287#0(97"error: ファイル“WWY-Info.plist”は存在しないため、開けませんでした。1(4@89"ファイル“WWY-Info.plist”は存在しないため、開けませんでした。302908287#4294967295#0#0(6@0"302908287#0#0#0#0#0"0(0#0#75"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/WWY-Info.plist2570190784#543"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility WWY-Info.plist -genpkginfo "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/PkgInfo" -expandbuildsettings -format binary -platform iphonesimulator -o "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app/Info.plist"1#
+
+CProcessPCH /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WWY_Prefix-abrobifzugjrysfdfpwqolhucoqo/WWY_Prefix.pch.gch WWY_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s302908289.743437
+e302908289.751783
+r0
+xProcessPCH
+x/var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WWY_Prefix-abrobifzugjrysfdfpwqolhucoqo/WWY_Prefix.pch.gch
+xWWY_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+oi686-apple-darwin10-gcc-4.2.1: /Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/WWY_Prefix.pch: No such file or directory
+oi686-apple-darwin10-gcc-4.2.1: warning: '-x objective-c-header' after last input file has no effect
+oi686-apple-darwin10-gcc-4.2.1: no input files
+lSLF07#2@25"Precompile WWY_Prefix.pch302908289#302908289#0(384"i686-apple-darwin10-gcc-4.2.1: /Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/WWY_Prefix.pch: No such file or directoryi686-apple-darwin10-gcc-4.2.1: warning: '-x objective-c-header' after last input file has no effecti686-apple-darwin10-gcc-4.2.1: no input filesCommand /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 failed with exit code 11(4@103"Command /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 failed with exit code 1302908289#4294967295#0#0(1@0"0(0#0#75"/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/WWY_Prefix.pch2570190784#2002"    cd "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/WWY-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/WWY-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/WWY-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/WWY-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/include" "-I/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/WWY2.build/Release-iphonesimulator/WWY2.build/DerivedSources" -c "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/WWY_Prefix.pch" -o /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/WWY_Prefix-abrobifzugjrysfdfpwqolhucoqo/WWY_Prefix.pch.gch1#
+
+CTouch "/Volumes/daaaata/develop files/_works/TasQuest/_project/WWY2/build/Release-iphonesimulator/WWY.app"
+r0
+
