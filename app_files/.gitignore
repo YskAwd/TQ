@@ -1,2 +1,3 @@
-*.dcu
+*.svn
+*.svn/*
 *.DS_Store
