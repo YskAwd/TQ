@@ -444,8 +444,8 @@
 	UIBarButtonItem *spacer2 = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
 																			target:nil action:nil]autorelease];
 
-//	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer1,configButton_,spacer2,searchButton_,nil]];
-	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,configButton_,searchButton_,nil]];
+	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer1,configButton_,spacer2,searchButton_,nil]];
+//	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,configButton_,searchButton_,nil]];
 	
 	//activityIndicatorViewを生成
 	activityIndicatorView_ = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
