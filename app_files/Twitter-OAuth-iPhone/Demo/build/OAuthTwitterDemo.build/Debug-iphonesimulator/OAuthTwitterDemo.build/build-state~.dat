@@ -1,952 +1,0 @@
-TOAuthTwitterDemo
-v7
-r0
-t303325864.357239
-cCheck dependencies
-cProcessInfoPlistFile "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/Info.plist" Rsc/OAuthTwitterDemo-Info.plist
-cCompileXIB "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/MainWindow.xib"
-cCompileXIB "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/OAuthTwitterDemoViewController.xib"
-cProcessPCH /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch.gch Src/OAuthTwitterDemo_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/main.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/main.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoAppDelegate.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoAppDelegate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoViewController.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterEngine.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterController.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterEngine.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterHTTPURLConnection.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSData+Base64.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSData+Base64.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSString+UUID.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSString+UUID.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-cLd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo" normal i386
-cGenerateDSYMFile "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app.dSYM" "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo"
-cTouch "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app"
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk
-c000000004BD236930000000000000110
-t1272067731
-s272
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004BD1CD90000000000026F020
-t1272040848
-s2551840
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004BD1FFC200000000002A96A0
-t1272053698
-s2791072
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004BD1FF9E0000000000001355
-t1272053662
-s4949
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
-c000000004BD1D01E000000000000007D
-t1272041502
-s125
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004BD20412000000000000098F
-t1272054802
-s2447
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004BD20471000000000222E640
-t1272054897
-s35841600
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml/xmlreader.h
-c000000004BD1CD8E0000000000003107
-t1272040846
-s12551
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/lib/libxml2.dylib
-c000000004BD1CD8F0000000000122A80
-t1272040847
-s1190528
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/Libraries & Headers/OAuthConsumer/OAConsumer.h
-c000000004C64253A00000000000005CF
-t1281631546
-s1487
-i<Foundation/Foundation.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/Libraries & Headers/OAuthConsumer/OADataFetcher.h
-c000000004C64253A00000000000006D6
-t1281631546
-s1750
-i<Foundation/Foundation.h>
-i"OAMutableURLRequest.h"
-i"OAServiceTicket.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/Libraries & Headers/OAuthConsumer/OAMutableURLRequest.h
-c000000004C64253A00000000000008EF
-t1281631546
-s2287
-i<Foundation/Foundation.h>
-i"OAConsumer.h"
-i"OAToken.h"
-i"OAHMAC_SHA1SignatureProvider.h"
-i"OASignatureProviding.h"
-i"NSMutableURLRequest+Parameters.h"
-i"NSURL+Base.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.h
-c000000004C64253A000000000000213C
-t1281631546
-s8508
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterEngineDelegate.h"
-i"MGTwitterParserDelegate.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.m
-c000000004C64253A000000000000D21D
-t1281631546
-s53789
-i"MGTwitterEngine.h"
-i"MGTwitterHTTPURLConnection.h"
-i"NSData+Base64.h"
-i"MGTwitterStatusesYAJLParser.h"
-i"MGTwitterMessagesYAJLParser.h"
-i"MGTwitterUsersYAJLParser.h"
-i"MGTwitterMiscYAJLParser.h"
-i"MGTwitterSearchYAJLParser.h"
-i"MGTwitterStatusesLibXMLParser.h"
-i"MGTwitterMessagesLibXMLParser.h"
-i"MGTwitterUsersLibXMLParser.h"
-i"MGTwitterMiscLibXMLParser.h"
-i"MGTwitterStatusesParser.h"
-i"MGTwitterUsersParser.h"
-i"MGTwitterMessagesParser.h"
-i"MGTwitterMiscParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.h
-c000000004C64253A0000000000000485
-t1281631546
-s1157
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterRequestTypes.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.m
-c000000004C64253A000000000000065A
-t1281631546
-s1626
-i"MGTwitterHTTPURLConnection.h"
-i"NSString+UUID.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterLibXMLParser.m
-c000000004C64253A0000000000002684
-t1281631546
-s9860
-i"MGTwitterLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesLibXMLParser.m
-c000000004C64253A0000000000000CD2
-t1281631546
-s3282
-i"MGTwitterMessagesLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesParser.m
-c000000004C64253A000000000000076B
-t1281631546
-s1899
-i"MGTwitterMessagesParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscLibXMLParser.m
-c000000004C64253A0000000000000527
-t1281631546
-s1319
-i"MGTwitterMiscLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscParser.m
-c000000004C64253A000000000000056A
-t1281631546
-s1386
-i"MGTwitterMiscParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesLibXMLParser.m
-c000000004C64253A00000000000003A3
-t1281631546
-s931
-i"MGTwitterStatusesLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesParser.m
-c000000004C64253A000000000000084B
-t1281631546
-s2123
-i"MGTwitterStatusesParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersLibXMLParser.m
-c000000004C64253A0000000000000392
-t1281631546
-s914
-i"MGTwitterUsersLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersParser.m
-c000000004C64253A00000000000006F2
-t1281631546
-s1778
-i"MGTwitterUsersParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterXMLParser.m
-c000000004C64253A000000000000131F
-t1281631546
-s4895
-i"MGTwitterXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSData+Base64.m
-c000000004C64253A0000000000000F65
-t1281631546
-s3941
-i"NSData+Base64.h"
-i<Foundation/Foundation.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSString+UUID.m
-c000000004C64253A00000000000001E3
-t1281631546
-s483
-i"NSString+UUID.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/../Libraries & Headers/libOAuth.a
-c000000004C64253A000000000008DF6C
-t1281631546
-s581484
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.h
-c000000004C64253A000000000000077A
-t1281631546
-s1914
-i<UIKit/UIKit.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.m
-c000000004C64253A000000000000397A
-t1281631546
-s14714
-i<UIKit/UIKit.h>
-i<QuartzCore/QuartzCore.h>
-i"SA_OAuthTwitterEngine.h"
-i"SA_OAuthTwitterController.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.h
-c000000004C64253A000000000000073C
-t1281631546
-s1852
-i"MGTwitterEngine.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m
-c000000004C64253A00000000000039BA
-t1281631546
-s14778
-i"MGTwitterHTTPURLConnection.h"
-i"OAConsumer.h"
-i"OAMutableURLRequest.h"
-i"OADataFetcher.h"
-i"SA_OAuthTwitterEngine.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/MainWindow.xib
-c000000004C64253A0000000000002478
-t1281631546
-s9336
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/OAuthTwitterDemoViewController.xib
-c000000004C64253A00000000000038D2
-t1281631546
-s14546
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoAppDelegate.h
-c000000004C64253A0000000000000215
-t1281631546
-s533
-i<UIKit/UIKit.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoAppDelegate.m
-c000000004C64253A0000000000000297
-t1281631546
-s663
-i"OAuthTwitterDemoAppDelegate.h"
-i"OAuthTwitterDemoViewController.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoViewController.h
-c000000004C64253A0000000000000197
-t1281631546
-s407
-i<UIKit/UIKit.h>
-i"SA_OAuthTwitterController.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoViewController.m
-c000000004C642AA10000000000000B0B
-t1281632929
-s2827
-i"OAuthTwitterDemoViewController.h"
-i"SA_OAuthTwitterEngine.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemo_Prefix.pch
-c000000004C64253A00000000000000C9
-t1281631546
-s201
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/main.m
-c000000004C64253A0000000000000172
-t1281631546
-s370
-i<UIKit/UIKit.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app
-t1281633064
-s238
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app.dSYM
-t1281633064
-s102
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/Info.plist
-t1281633059
-s632
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/MainWindow.nib
-t1281633060
-s1117
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo
-t1281633064
-s197480
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemoViewController.nib
-t1281633060
-s795
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/PkgInfo
-t1281633059
-s8
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterEngine.o
-t1281633062
-s99556
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterHTTPURLConnection.o
-t1281633062
-s17096
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterLibXMLParser.o
-t1281633062
-s33024
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesLibXMLParser.o
-t1281633062
-s15628
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesParser.o
-t1281633062
-s13308
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscLibXMLParser.o
-t1281633062
-s12080
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscParser.o
-t1281633062
-s12816
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesLibXMLParser.o
-t1281633063
-s10844
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesParser.o
-t1281633063
-s13968
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersLibXMLParser.o
-t1281633063
-s10792
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersParser.o
-t1281633063
-s13044
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterXMLParser.o
-t1281633063
-s23356
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSData+Base64.o
-t1281633063
-s11880
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSString+UUID.o
-t1281633063
-s6792
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemo.LinkFileList
-c000000004C642B230000000000000E35
-t1281633059
-s3637
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoAppDelegate.o
-t1281633061
-s43876
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoViewController.o
-t1281633062
-s45784
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterController.o
-t1281633062
-s81976
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterEngine.o
-t1281633062
-s46904
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/main.o
-t1281633061
-s6380
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/NSMutableURLRequest+Parameters.h
-c000000004C64253A00000000000005AB
-t1281631546
-s1451
-i<Foundation/Foundation.h>
-i"OARequestParameter.h"
-i"NSURL+Base.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/NSString+URLEncoding.h
-c000000004C64253A000000000000055D
-t1281631546
-s1373
-i<Foundation/Foundation.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/NSURL+Base.h
-c000000004C64253A0000000000000540
-t1281631546
-s1344
-i<Foundation/Foundation.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/OAConsumer.h
-c000000004C64253A00000000000005CF
-t1281631546
-s1487
-i<Foundation/Foundation.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/OAHMAC_SHA1SignatureProvider.h
-c000000004C64253A0000000000000573
-t1281631546
-s1395
-i<Foundation/Foundation.h>
-i"OASignatureProviding.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/OAMutableURLRequest.h
-c000000004C64253A00000000000008EF
-t1281631546
-s2287
-i<Foundation/Foundation.h>
-i"OAConsumer.h"
-i"OAToken.h"
-i"OAHMAC_SHA1SignatureProvider.h"
-i"OASignatureProviding.h"
-i"NSMutableURLRequest+Parameters.h"
-i"NSURL+Base.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/OARequestParameter.h
-c000000004C64253A00000000000006B5
-t1281631546
-s1717
-i<Foundation/Foundation.h>
-i"NSString+URLEncoding.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/OAServiceTicket.h
-c000000004C64253A0000000000000695
-t1281631546
-s1685
-i<Foundation/Foundation.h>
-i"OAMutableURLRequest.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/OASignatureProviding.h
-c000000004C64253A000000000000057A
-t1281631546
-s1402
-i<Foundation/Foundation.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers/OAuthConsumer/OAToken.h
-c000000004C64253A0000000000000753
-t1281631546
-s1875
-i<Foundation/Foundation.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.h
-c000000004C64253A000000000000213C
-t1281631546
-s8508
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterEngineDelegate.h"
-i"MGTwitterParserDelegate.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterEngineDelegate.h
-c000000004C64253A00000000000008CF
-t1281631546
-s2255
-i"MGTwitterEngineGlobalHeader.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterEngineGlobalHeader.h
-c000000004C64253A00000000000007EC
-t1281631546
-s2028
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-i<Cocoa/Cocoa.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.h
-c000000004C64253A0000000000000485
-t1281631546
-s1157
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterRequestTypes.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterLibXMLParser.h
-c000000004C64253A0000000000000600
-t1281631546
-s1536
-i"MGTwitterEngineGlobalHeader.h"
-i<libxml/xmlreader.h>
-i"MGTwitterParserDelegate.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesLibXMLParser.h
-c000000004C64253A000000000000012A
-t1281631546
-s298
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesParser.h
-c000000004C64253A0000000000000122
-t1281631546
-s290
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterStatusesParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterMiscLibXMLParser.h
-c000000004C64253A0000000000000122
-t1281631546
-s290
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterMiscParser.h
-c000000004C64253A0000000000000130
-t1281631546
-s304
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterStatusesParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterParserDelegate.h
-c000000004C64253A0000000000000330
-t1281631546
-s816
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterRequestTypes.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterRequestTypes.h
-c000000004C64253A000000000000105F
-t1281631546
-s4191
-i"MGTwitterEngineGlobalHeader.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesLibXMLParser.h
-c000000004C64253A000000000000012A
-t1281631546
-s298
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesParser.h
-c000000004C64253A0000000000000118
-t1281631546
-s280
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterUsersLibXMLParser.h
-c000000004C64253A0000000000000124
-t1281631546
-s292
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterLibXMLParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterUsersParser.h
-c000000004C64253A000000000000011C
-t1281631546
-s284
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterStatusesParser.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/MGTwitterXMLParser.h
-c000000004C64253A0000000000000459
-t1281631546
-s1113
-i"MGTwitterEngineGlobalHeader.h"
-i"MGTwitterParserDelegate.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/NSData+Base64.h
-c000000004C64253A0000000000000602
-t1281631546
-s1538
-i"MGTwitterEngineGlobalHeader.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/MGTwitterEngine/NSString+UUID.h
-c000000004C64253A00000000000000ED
-t1281631546
-s237
-i"MGTwitterEngineGlobalHeader.h"
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.h
-c000000004C64253A000000000000077A
-t1281631546
-s1914
-i<UIKit/UIKit.h>
-
-N/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.h
-c000000004C64253A000000000000073C
-t1281631546
-s1852
-i"MGTwitterEngine.h"
-
-N/var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch.gch
-t1281633061
-s9273920
-
-NRsc/OAuthTwitterDemo-Info.plist
-c000000004C64253A000000000000037B
-t1281631546
-s891
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies303325859#303325859#0(0"0(0#1#0"2570190784#0"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterEngine.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.234529
-e303325862.621781
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterEngine.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@131"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.m303325862#303325862#0(0"0(0#0#123"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.m2570190784#2751"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterEngine.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterEngine.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterHTTPURLConnection.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.472648
-e303325862.580057
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterHTTPURLConnection.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@142"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.m303325862#303325862#0(0"0(0#0#134"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.m2570190784#2773"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterHTTPURLConnection.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterHTTPURLConnection.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.580216
-e303325862.837090
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterLibXMLParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterLibXMLParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@137"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterLibXMLParser.m303325862#303325862#0(0"0(0#0#129"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterLibXMLParser.m2570190784#2763"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterLibXMLParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterLibXMLParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.621946
-e303325862.765648
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesLibXMLParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesLibXMLParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@145"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesLibXMLParser.m303325862#303325862#0(0"0(0#0#137"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesLibXMLParser.m2570190784#2779"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesLibXMLParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesLibXMLParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.765821
-e303325862.896912
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@139"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesParser.m303325862#303325862#0(0"0(0#0#131"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesParser.m2570190784#2767"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMessagesParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMessagesParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.837249
-e303325863.002631
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscLibXMLParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscLibXMLParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@141"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscLibXMLParser.m303325862#303325863#0(0"0(0#0#133"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscLibXMLParser.m2570190784#2771"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscLibXMLParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscLibXMLParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.897074
-e303325862.999711
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@135"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscParser.m303325862#303325863#0(0"0(0#0#127"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscParser.m2570190784#2759"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterMiscParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterMiscParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.999900
-e303325863.156422
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesLibXMLParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesLibXMLParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@145"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesLibXMLParser.m303325863#303325863#0(0"0(0#0#137"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesLibXMLParser.m2570190784#2779"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesLibXMLParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesLibXMLParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325863.002799
-e303325863.101022
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@139"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesParser.m303325863#303325863#0(0"0(0#0#131"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesParser.m2570190784#2767"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterStatusesParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterStatusesParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersLibXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersLibXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325863.101450
-e303325863.248949
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersLibXMLParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersLibXMLParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@142"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersLibXMLParser.m303325863#303325863#0(0"0(0#0#134"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersLibXMLParser.m2570190784#2773"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersLibXMLParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersLibXMLParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325863.156580
-e303325863.300642
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@136"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersParser.m303325863#303325863#0(0"0(0#0#128"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersParser.m2570190784#2761"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterUsersParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterUsersParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterXMLParser.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterXMLParser.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325863.249107
-e303325863.380598
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterXMLParser.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterXMLParser.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@134"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterXMLParser.m303325863#303325863#0(0"0(0#0#126"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterXMLParser.m2570190784#2757"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/MGTwitterXMLParser.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/MGTwitterXMLParser.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSData+Base64.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSData+Base64.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325863.300862
-e303325863.416129
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSData+Base64.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSData+Base64.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@129"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSData+Base64.m303325863#303325863#0(0"0(0#0#121"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSData+Base64.m2570190784#2747"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSData+Base64.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSData+Base64.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSString+UUID.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSString+UUID.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325863.380755
-e303325863.462149
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSString+UUID.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSString+UUID.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@129"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSString+UUID.m303325863#303325863#0(0"0(0#0#121"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSString+UUID.m2570190784#2747"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/MGTwitterEngine/NSString+UUID.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/NSString+UUID.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoAppDelegate.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoAppDelegate.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325861.801280
-e303325861.992281
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoAppDelegate.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@114"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoAppDelegate.m303325861#303325861#0(0"0(0#0#106"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoAppDelegate.m2570190784#2746"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoAppDelegate.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoAppDelegate.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoViewController.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoViewController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325861.974777
-e303325862.123945
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoViewController.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@117"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoViewController.m303325861#303325862#0(0"0(0#0#109"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoViewController.m2570190784#2752"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemoViewController.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemoViewController.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterController.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325862.124107
-e303325862.472189
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterController.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@146"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.m303325862#303325862#0(0"0(0#0#138"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.m2570190784#2776"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterController.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterController.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterEngine.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325861.992435
-e303325862.234378
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterEngine.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@142"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m303325861#303325862#0(0"0(0#0#134"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m2570190784#2768"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/SAOAuthTwitterEngine/SA_OAuthTwitterEngine.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/SA_OAuthTwitterEngine.o"0#
-
-CCompileC build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/main.o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/main.m" normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325861.799144
-e303325861.974613
-r1
-xCompileC
-xbuild/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/main.o
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@91"Compile /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/main.m303325861#303325861#0(0"0(0#0#83"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/main.m2570190784#2700"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -include /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/main.m" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/main.o"0#
-
-CCompileXIB "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/MainWindow.xib"
-s303325859.126281
-e303325860.157564
-r1
-xCompileXIB
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/MainWindow.xib
-lSLF07#2@29"CompileXIB Rsc/MainWindow.xib303325859#303325860#0(0"0(0#0#91"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/MainWindow.xib2570190784#691"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/MainWindow.nib" "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/MainWindow.xib" --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk0#
-
-CCompileXIB "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/OAuthTwitterDemoViewController.xib"
-s303325859.127692
-e303325860.155919
-r1
-xCompileXIB
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/OAuthTwitterDemoViewController.xib
-lSLF07#2@49"CompileXIB Rsc/OAuthTwitterDemoViewController.xib303325859#303325860#0(0"0(0#0#111"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/OAuthTwitterDemoViewController.xib2570190784#731"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemoViewController.nib" "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/OAuthTwitterDemoViewController.xib" --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk0#
-
-CGenerateDSYMFile "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app.dSYM" "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo"
-s303325864.118270
-e303325864.297997
-r1
-xGenerateDSYMFile
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app.dSYM
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo
-lSLF07#2@136"GenerateDSYMFile build/Debug-iphonesimulator/OAuthTwitterDemo.app.dSYM build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo303325864#303325864#0(0"0(0#0#138"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo2570190784#518"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo" -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app.dSYM"0#
-
-CLd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo" normal i386
-s303325863.462293
-e303325864.118113
-r1
-xLd
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo
-xnormal
-xi386
-old: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumer-iPhone/build/Debug-iphoneos' following -L not found
-old: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumer-iPhone/build/Debug-iphonesimulator' following -L not found
-old: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug-iphoneos' following -L not found
-old: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug-iphonesimulator' following -L not found
-old: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug' following -L not found
-lSLF07#2@143"Link /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo303325863#303325864#0(841"ld: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumer-iPhone/build/Debug-iphoneos' following -L not foundld: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumer-iPhone/build/Debug-iphonesimulator' following -L not foundld: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug-iphoneos' following -L not foundld: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug-iphonesimulator' following -L not foundld: warning: directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug' following -L not found5(22@152"Directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumer-iPhone/build/Debug-iphoneos' following -L not found303325864#0#166#0(6@0"303325864#0#0#0#0#0"0(22@159"Directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumer-iPhone/build/Debug-iphonesimulator' following -L not found303325864#166#173#0(6@0"303325864#0#0#0#0#0"0(22@154"Directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug-iphoneos' following -L not found303325864#339#168#0(6@0"303325864#0#0#0#0#0"0(22@161"Directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug-iphonesimulator' following -L not found303325864#507#175#0(6@0"303325864#0#0#0#0#0"0(22@145"Directory '/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug' following -L not found303325864#682#159#0(6@0"303325864#0#0#0#0#0"0(0#0#0"2570190784#1978"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk "-L/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-L/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumer-iPhone/build/Debug-iphoneos" "-L/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumer-iPhone/build/Debug-iphonesimulator" "-L/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug-iphoneos" "-L/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug-iphonesimulator" "-L/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib" "-L/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../OAuthConsumeriPhoneLib/build/Debug" "-L/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/../Twitter+OAuth/Libraries & Headers" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" -filelist "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/Objects-normal/i386/OAuthTwitterDemo.LinkFileList" -mmacosx-version-min=10.5 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -lxml2 -lOAuth -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/OAuthTwitterDemo"0#
-
-CProcessInfoPlistFile "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/Info.plist" Rsc/OAuthTwitterDemo-Info.plist
-s303325859.120970
-e303325859.126113
-r1
-xProcessInfoPlistFile
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/Info.plist
-xRsc/OAuthTwitterDemo-Info.plist
-lSLF07#2@39"Process Rsc/OAuthTwitterDemo-Info.plist303325859#303325859#0(0"0(0#0#104"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Rsc/OAuthTwitterDemo-Info.plist2570190784#618"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Rsc/OAuthTwitterDemo-Info.plist -genpkginfo "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/PkgInfo" -expandbuildsettings -format binary -platform iphonesimulator -o "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app/Info.plist"0#
-
-CProcessPCH /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch.gch Src/OAuthTwitterDemo_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s303325860.157768
-e303325861.798827
-r1
-xProcessPCH
-x/var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch.gch
-xSrc/OAuthTwitterDemo_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@42"Precompile Src/OAuthTwitterDemo_Prefix.pch303325860#303325861#0(0"0(0#0#104"/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemo_Prefix.pch2570190784#2547"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-generated-files.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-own-target-headers.hmap" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-all-target-headers.hmap" -iquote "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/OAuthTwitterDemo-project-headers.hmap" "-F/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/include" -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2 -I/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/libxml2/libxml "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources/i386" "-I/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/OAuthTwitterDemo.build/Debug-iphonesimulator/OAuthTwitterDemo.build/DerivedSources" -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/Src/OAuthTwitterDemo_Prefix.pch" -o /var/folders/P5/P53wHJCgHauAKtGeVl+4qk+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/OAuthTwitterDemo_Prefix-fnjviegnearqereaixlojpebmspi/OAuthTwitterDemo_Prefix.pch.gch0#
-
-CTouch "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app"
-s303325864.298127
-e303325864.357165
-r1
-xTouch
-x/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app
-lSLF07#2@127"Touch /Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app303325864#303325864#0(0"0(0#0#0"2570190784#359"    cd "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo"    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c "/Volumes/daaaata/develop files/_works/TasQuest/Twitter-OAuth-iPhone/Demo/build/Debug-iphonesimulator/OAuthTwitterDemo.app"0#
-
