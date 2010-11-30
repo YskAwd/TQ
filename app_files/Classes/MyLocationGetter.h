@@ -14,12 +14,16 @@
 	CLLocationManager* locationManager_;
 	WWYViewController* delegate_;
 	BOOL locationAvailable_;
+	BOOL headingAvailable_;//コンパス情報が取得できるかどうか
 }
 - (void)startUpdates ;
 - (void)locationManager:(CLLocationManager*)manager 
 	didUpdateToLocation:(CLLocation*)newLocation 
 		   fromLocation:(CLLocation*)oldLocation ;
--(void)stopUpdatingLocation;//更新をストップする
+-(void)stopUpdatingLocation;//位置情報の更新をストップする
+-(void)startUpdatingHeading;//コンパスの更新を開始する
+-(void)stopUpdatingHeading;//コンパスの更新をストップする
 
 @property (assign) WWYViewController* delegate_;
+@property BOOL headingAvailable_;
 @end

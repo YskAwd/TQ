@@ -60,7 +60,7 @@
 - (CLLocation *)location{
 	//NSLog(@"AdMobNeedsLocation!!!!!!!!!!!!!!!");
 	CLLocation *nowlocation;
-	if([delegate_ respondsToSelector:@selector(getNowLocationForAdMob)]){
+	if([delegate_ respondsToSelector:@selector(getNowLocationForAd)]){
 		nowlocation = [delegate_ getNowLocationForAdMob];
 	}
 	return nowlocation;	

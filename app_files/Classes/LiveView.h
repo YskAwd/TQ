@@ -11,6 +11,11 @@
 #import "LiveViewDelegate.h"//プロトコル定義ファイル
 @class CursorButtonView;
 
+//テキストが枠いっぱいになったとき次のテキストに進む方法の定数宣言。
+enum {WWYLiveViewOverflowMode_cursorButton,	//カーソルボタンで次のテキストに送る方法
+	WWYLiveViewOverflowMode_delegateAction,	//delegateからのアクションで次のテキストに送る方法
+	WWYLiveViewOverflowMode_noAction} WWYLiveViewOverflowMode;	//ユーザからのアクションなしで自動的に次のテキストに送る方法
+
 @interface LiveView : UIView {
 	
 	id <LiveViewDelegate> delegate;
@@ -53,10 +58,7 @@
 	//テキストが枠いっぱいになったとき、どの方法で次のテキストに進むか。プロパティにして外部から設定する。デフォルトは三角ボタンでの方法。
 	int overflowMode;
 	
-	//テキストが枠いっぱいになったとき次のテキストに進む方法の型宣言。
-	enum {WWYLiveViewOverflowMode_cursorButton,	//カーソルボタンで次のテキストに送る方法
-		WWYLiveViewOverflowMode_delegateAction,	//delegateからのアクションで次のテキストに送る方法
-		WWYLiveViewOverflowMode_noAction};	//ユーザからのアクションなしで自動的に次のテキストに送る方法
+
 	
 	//スクロール促すしるし。▼。ボタンにもなる。
 	CursorButtonView* moreTextButt;

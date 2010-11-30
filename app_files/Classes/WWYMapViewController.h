@@ -37,6 +37,8 @@
 	NSMutableArray* characterAnnotationArray_;
 	Boolean doesCharacterFollowCurrentLocation_;//キャラクタが現在地に追随するかどうか
 	
+	Boolean isJustFollowingLocation_;//現在地追随モードで追随している最中のフラグ（このフラグで、追随後Locationモードが外れないようにする）
+	
 	Boolean nowOnRamia_;//ルーラでラーミアに乗ってるときかどうか
 	Boolean nowReturningFromRamia_;//ルーラでのラーミアから現在地に帰ってくるときにture
 	CharacterAnnotation *ramiaAnnotation_;//ラーミアを表現するCharacterAnnotaion。
@@ -62,7 +64,7 @@
 	WWYAnnotation *nowEditingAnnotation_;
 
 }
-- (id)initWithMapFrame:(CGRect)frame parentViewController:(WWYViewController*)pViewController;
+- (id)initWithViewFrame:(CGRect)frame parentViewController:(WWYViewController*)pViewController;
 -(void)setCenterAtCurrentLocation;
 -(void)changeMapType:(int)type;
 -(void)goAnnotation:(id<MKAnnotation>)annotation;
@@ -71,11 +73,12 @@
 -(void)logCurrentRegion;
 -(void)makeRootDataTo:(CLLocationCoordinate2D)_newCoordinate on:(CharacterAnnotation*)_characterAnnotation;
 -(void)upDatesCLLocation:(CLLocation*)newLocation;//MyLocaitonGetterから新しいCLLocationが来たときに呼ばれる。
+-(void)upDatesCLHeading:(CLHeading*)newHeading;//MyLocaitonGetterから新しいCLHeadingが来たときに呼ばれる。
 -(CGPoint)convertToPointFromLocation:(CLLocation*)location;//characterViewから、自分の位置を計算するために呼ばれる
 -(CLLocationCoordinate2D)convertToCoordinateFromPoint:(CGPoint)point;//他クラスから位置を計算するために呼ばれる
--(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle moveYes:(BOOL)moveYes;//annotationをプラスするために呼ばれる。（WWYViewControllerから等。旧互換のためのメソッド。）
--(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType userInfo:(id)userInfo moveYes:(BOOL)moveYes;//annotationを追加するために呼ばれる（WWYViewControllerから等。userInfoつき。）
--(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType moveYes:(BOOL)moveYes;//annotationをプラスするために呼ばれる。（WWYViewControllerから等）
+-(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle moved:(BOOL)moved;//annotationをプラスするために呼ばれる。（WWYViewControllerから等。旧互換のためのメソッド。）
+-(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType userInfo:(id)userInfo selected:(BOOL)selected moved:(BOOL)moved;//annotationを追加するために呼ばれる（WWYViewControllerから等。userInfoつき。）
+-(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType selected:(BOOL)selected moved:(BOOL)moved;//annotationをプラスするために呼ばれる。（WWYViewControllerから等）
 -(void)locationUnavailable;//30秒待ってロケーションが取得できない場合に、MyLocationGetterから呼ばれる
 -(NSArray*)getPureAnnotations;//現在地とキャラクター以外のannotations配列を取得する。
 - (CLLocation *)getNowLocationForAdMob;//AdMob用に現在地を返すメソッド。WWYAdControllerから呼ばれる

@@ -13,7 +13,7 @@
 @class WWYCommandColumnView;
 @class WWYMapViewController;
 @class WWYHelper_DB;
-@class MyNSURLConnectionGetter;
+@class URLConnectionGetter;
 @class LiveView;
 #import "WWYCommandViewDelegate.h"
 #import "LiveViewDelegate.h"
@@ -35,7 +35,7 @@
 	NSMutableArray* partyOrderArray_;//キャラの並び順を格納する。先頭から順にキャラidから作ったNSNumberをいれる。
 	
 	//URLConnection用変数
-	MyNSURLConnectionGetter* urlConnectionGetter_;
+	URLConnectionGetter* urlConnectionGetter_;
 	//locolo code広告のための変数
 	NSMutableString *locoloAd_name_;
 	NSMutableString *locoloAd_description_;

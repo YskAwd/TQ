@@ -68,7 +68,7 @@
 		yesOrNoCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-70, self.view.frame.size.height/2-50, 140, 1) 
 															target:self maxColumnAtOnce:2];
 		[yesOrNoCommandView_ addCommand:NSLocalizedString(@"yes",@"") action:@selector(startTwitterAnotherAccountOAuth) userInfo:nil];
-		[yesOrNoCommandView_ addCommand:NSLocalizedString(@"no",@"") action:@selector(twitterOAuthCanceled) userInfo:nil];
+		[yesOrNoCommandView_ addCommand:NSLocalizedString(@"cancel",@"") action:@selector(twitterOAuthCanceled) userInfo:nil];
 		[self.view addSubview:yesOrNoCommandView_];
 	}
 }

@@ -31,7 +31,7 @@
 	while ([rs next]) {
 		//NSLog(@"[rs stringForColumn:@"latitude"] rCount: %d",[[rs stringForColumn:@"latitude"]retainCount]);//->
 		[mapViewController_ addAnnotationWithLat:[[rs stringForColumn:@"latitude"]floatValue] Lng:[[rs stringForColumn:@"longitude"]floatValue]
-										   title:[rs stringForColumn:@"title"] subtitle:[rs stringForColumn:@"subtitle"] annotationType:WWYAnnotationType_castle moveYes:NO];
+										   title:[rs stringForColumn:@"title"] subtitle:[rs stringForColumn:@"subtitle"] annotationType:WWYAnnotationType_castle selected:NO moved:NO];
 	}
 	//NSLog(@"DBSelect_ rCount1: %d",[DBSelect_ retainCount]);//->1
 }
@@ -122,7 +122,8 @@
 										   title:task.title subtitle:task.description 
 								  annotationType:WWYAnnotationType_taskBattleArea 
 										 userInfo:[NSNumber numberWithInt:task.ID]
-										 moveYes:NO];
+										 selected:NO
+										   moved:NO];
 	}
 }
 //mapView内のタスクのAnnotationを、DBから最新のものに入れ替える。(WWYMapViewControllerのメソッドを使用)

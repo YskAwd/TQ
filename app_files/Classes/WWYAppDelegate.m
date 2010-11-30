@@ -25,7 +25,6 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     // Override point for customization after app launch
 	viewController_ = [[WWYViewController alloc]init];
-	viewController_.view.frame = CGRectMake(0, 0, 320, 480);
 	[window addSubview:viewController_.view];
     [window makeKeyAndVisible];
 }

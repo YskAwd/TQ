@@ -8,7 +8,7 @@
 
 #import "WWYViewController.h"
 #import "DebugViewController.h"
-#import "MyNSURLConnectionGetter.h"
+#import "URLConnectionGetter.h"
 #import "MyLocationGetter.h"
 #import "ConfigViewController.h"
 #import "WWYMapViewController.h"
@@ -16,13 +16,32 @@
 #import "WWYAdController.h"
 #import "TaskViewController.h"
 #import "TaskBattleViewController.h"
+#import "WWYAdViewController2.h"
+#import "WebViewController.h"
 
 @implementation WWYViewController
 @synthesize mapViewController_;
 @synthesize locationButton_;
 @synthesize configButton_;
 @synthesize searchButton_;
+@synthesize networkConnectionManager = networkConnectionManager_;
+@synthesize locationButtonMode = locationButtonMode_;
 
+- (void)dealloc {	
+	if(adController_) [adController_ stopTimer];[adController_ autorelease];
+	if(mapViewController_) [mapViewController_.view removeFromSuperview];[mapViewController_ release];
+	if(configViewController_) [configViewController_.view removeFromSuperview];[configViewController_ release];
+	if(toolBar_) [toolBar_ removeFromSuperview];[toolBar_ release];
+	if(locationButton_) [locationButton_ release];[configButton_ release];[searchButton_ release];
+	if(activityIndicatorView_) [activityIndicatorView_ removeFromSuperview];[activityIndicatorView_ release];
+	if(searchBar_) [searchBar_ removeFromSuperview];[searchBar_ release];
+	if(myLocationGetter_) [myLocationGetter_ stopUpdatingLocation];[myLocationGetter_ release];
+	if(taskBattleManager_) [taskBattleManager_ release];
+	if(taskViewController_) [taskViewController_.view removeFromSuperview];[taskViewController_ release];
+	if(taskBattleViewController_) [taskBattleViewController_.view removeFromSuperview];[taskBattleViewController_ release];
+	if(networkConnectionManager_) [networkConnectionManager_ release];
+    [super dealloc];
+}
 
 - (id)init {
     if (self = [super init]) {
@@ -31,16 +50,129 @@
 		//ロケーションの検知を始める
 		[myLocationGetter_ startUpdates];
 		
+		networkConnectionManager_ = [[NetworkConnectionManager alloc]init];
+		
 		taskBattleManager_ = [[TaskBattleManager alloc]init];
 	}
     return self;
 }
+
+//ViewControlerメソッド************************************************************************
+
+/*
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView {
+ }
+ */
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	// Custom initialization
+	
+	//ツールバーとボタンを生成
+	toolBar_ =  [[UIToolbar alloc]initWithFrame:CGRectMake(0, 416, 320, 44)];
+	toolBar_.barStyle = UIBarStyleBlackOpaque;
+	locationButtonMode_ = 0;
+	locationButtonImg_location_ = [UIImage imageNamed:@"btn_location.png"];
+	locationButtonImg_heading_ = [UIImage imageNamed:@"btn_heading.png"];
+	locationButton_ = [[UIBarButtonItem alloc]initWithImage:locationButtonImg_location_ 
+													  style:UIBarButtonItemStyleBordered target:self 
+													 action:@selector(doLocationButtonAction)];
+	locationButton_.width = 40;
+	locationButton_.enabled = false;
+	
+	configButton_ = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"command",@"") 
+													style:UIBarButtonItemStyleBordered target:self 
+												   action:@selector(configModeOnOff)];
+	
+	/*configButton_ = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_config.png"] 
+	 style:UIBarButtonItemStyleBordered target:self 
+	 action:@selector(configModeOnOff)];
+	 configButton_.width = 45;*/
+	
+	configButton_.enabled = false;
+	
+	searchButton_ = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
+																 target:self 
+																 action:@selector(searchBarShowOnOff)];
+	searchButton_.style = UIBarButtonItemStyleBordered;
+	searchButton_.width = 40;
+	searchButton_.enabled = false;
+	
+	UIBarButtonItem *spacer = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
+																			target:nil action:nil]autorelease];
+	
+	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer,configButton_,spacer,searchButton_,nil]];
+	
+	/*UIBarButtonItem *spacer = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
+	 target:nil action:nil]autorelease];
+	 spacer.width = 8;
+	 [toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer,configButton_,spacer,searchButton_,nil]];*/
+	
+	//activityIndicatorViewを生成
+	activityIndicatorView_ = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+	activityIndicatorView_.frame = CGRectMake(16, 429, 20, 20);
+	[activityIndicatorView_ startAnimating];
+	
+	//searcBarを生成
+	searchBar_ = [[UISearchBar alloc]initWithFrame:CGRectMake(0, -44, 320, 44)];
+	searchBar_.showsCancelButton = YES;
+	searchBar_.delegate = self;
+	
+	//mapViewを生成
+	mapViewController_ = [[WWYMapViewController alloc]initWithViewFrame:CGRectMake(0, 0, 320, 420) parentViewController:self];
+	
+	//configViewを生成
+	configViewController_ = [[ConfigViewController alloc]initWithViewFrame:CGRectMake(0, 460, 320, 440) parentViewController:self];
+	//locolo codeの宣伝をサーバにとりにいく。
+	[configViewController_ getLocoloAd];
+	
+	//リクルート広告
+	//[self showRecruitAd];
+	
+	//viewに追加
+	[self.view addSubview:toolBar_];
+	[self.view addSubview:activityIndicatorView_];
+	[self.view addSubview:searchBar_];
+	[self.view insertSubview:mapViewController_.view atIndex:0];
+	[self.view insertSubview:configViewController_.view atIndex:1];
+}
+
+/*
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
 //Location関係*******************************************************************
 //MyLocaitonGetterから新しいCLLocationが来たときに呼ばれる。
 -(void)upDatesCLLocation:(CLLocation*)newLocation{
 	[mapViewController_ upDatesCLLocation:newLocation];
 	[self checkTaskAroundLocation:newLocation];
 }
+//MyLocaitonGetterから新しいCLHeadingが来たときに呼ばれる。
+-(void)upDatesCLHeading:(CLHeading*)newHeading{
+	[mapViewController_ upDatesCLHeading:newHeading];
+}
+-(void)stopCLHeading{
+	[mapViewController_ stopCLHeading];
+}
+
 //mapViewController_.mapViewでの座標を変換するメソッド。（mapViewController_.mapView直接だと取得できないので）*******************************************************************
 -(CGPoint)convertToPointFromLocation:(CLLocation*)location{
 	//CGPoint newPoint = [mapView_ convertCoordinate:location.coordinate toPointToView:mapView_];
@@ -55,12 +187,11 @@
 }
 
 //ボタンに対応するAction*******************************************************************
-//locationボタンを押したとき
--(void)setCenterAtCurrentLocation{
-	[mapViewController_ setCenterAtCurrentLocation];
-}
 //configボタンを押したとき
 -(void)configModeOnOff{
+	//もしコンパス追随モードなら、それをオフにする。
+	if(locationButtonMode_==WWYLocationButtonMode_HEADING) [self doLocationButtonActionAtMode:WWYLocationButtonMode_LOCATION];
+	
 	if(configButton_.style == UIBarButtonItemStyleBordered){//ボタンのデフォルトのスタイル変えた場合はここも変わるので注意。
 		configButton_.style = UIBarButtonItemStyleDone;
 		[UIView beginAnimations:@"configViewShow" context:NULL];
@@ -74,7 +205,7 @@
 		[UIView beginAnimations:@"configViewHide" context:NULL];
 		[UIView setAnimationDuration:0.5f];
 		//[UIView setAnimationDidStopSelector:@selector(whenconfigViewClosed)];//->なぜかうまくいかん
-		configViewController_.view.frame=CGRectMake(configViewController_.view.frame.origin.x, 480, configViewController_.view.frame.size.width, configViewController_.view.frame.size.height);
+		configViewController_.view.frame=CGRectMake(configViewController_.view.frame.origin.x, 460, configViewController_.view.frame.size.width, configViewController_.view.frame.size.height);
 		[UIView commitAnimations];
 		[configViewController_ resetToDefault];
 		
@@ -85,11 +216,14 @@
 
 //searchボタンを押したとき
 -(void)searchBarShowOnOff{
+	//もしコンパス追随モードなら、それをオフにする。
+	if(locationButtonMode_==WWYLocationButtonMode_HEADING) [self doLocationButtonActionAtMode:WWYLocationButtonMode_LOCATION];
+	
 	if(searchButton_.style == UIBarButtonItemStyleBordered){
 		searchButton_.style = UIBarButtonItemStyleDone;
 		[UIView beginAnimations:@"searchBarShow" context:NULL];
 		[UIView setAnimationDuration:0.2];
-		searchBar_.frame = CGRectMake(0, 20, searchBar_.frame.size.width, searchBar_.frame.size.height);
+		searchBar_.frame = CGRectMake(0, 0, searchBar_.frame.size.width, searchBar_.frame.size.height);
 		[UIView commitAnimations];
 		[searchBar_ becomeFirstResponder];
 	}else if(searchButton_.style == UIBarButtonItemStyleDone){
@@ -101,15 +235,66 @@
 	searchButton_.style = UIBarButtonItemStyleBordered;
 	[UIView beginAnimations:@"searchBarHide" context:NULL];
 	[UIView setAnimationDuration:0.5];
-	searchBar_.frame = CGRectMake(0, -24, searchBar_.frame.size.width, searchBar_.frame.size.height);
+	searchBar_.frame = CGRectMake(0, -44, searchBar_.frame.size.width, searchBar_.frame.size.height);
 	[UIView commitAnimations];
+}
+
+//locationボタンを押したとき
+-(void)doLocationButtonAction{
+	[self doLocationButtonActionAtMode:locationButtonMode_+1];
+}
+//外部からlocationボタンを押したときのアクションを実行させるために呼ばれる
+-(void)doLocationButtonActionAtMode:(int)actionMode{
+	switch (actionMode) {
+		case WWYLocationButtonMode_LOCATION:
+			[mapViewController_ setCenterAtCurrentLocation];
+			[myLocationGetter_ stopUpdatingHeading];
+			[self setLocationButtonMode:WWYLocationButtonMode_LOCATION];
+			break;
+		case WWYLocationButtonMode_HEADING:
+			if(myLocationGetter_.headingAvailable_){//コンパス情報が取得できるなら
+				[mapViewController_ setCenterAtCurrentLocation];
+				[myLocationGetter_ startUpdatingHeading];
+				[self setLocationButtonMode:WWYLocationButtonMode_HEADING];
+			}else{
+				[myLocationGetter_ stopUpdatingHeading];
+				[self setLocationButtonMode:WWYLocationButtonMode_OFF];
+			}
+			break;
+		default:
+			[myLocationGetter_ stopUpdatingHeading];
+			[self setLocationButtonMode:WWYLocationButtonMode_OFF];
+			break;
+	}
+}
+//外部からlocationButtonModeを設定するために呼ばれる。
+-(void)setLocationButtonMode:(int)locationButtonMode{
+	switch (locationButtonMode) {
+		case WWYLocationButtonMode_OFF:
+			locationButton_.style = UIBarButtonItemStyleBordered;
+			locationButton_.image = locationButtonImg_location_;
+			locationButtonMode_ = WWYLocationButtonMode_OFF;
+			break;
+		case WWYLocationButtonMode_LOCATION:
+			locationButton_.style = UIBarButtonItemStyleDone;
+			locationButton_.image = locationButtonImg_location_;
+			locationButtonMode_ = WWYLocationButtonMode_LOCATION;
+			break;
+		case WWYLocationButtonMode_HEADING:
+			locationButton_.style = UIBarButtonItemStyleDone;
+			locationButton_.image = locationButtonImg_heading_;
+			locationButtonMode_ = WWYLocationButtonMode_HEADING;
+			break;
+		default:
+			break;
+	}
 }
 
 //タスク追加等。ConfigViewControllerから呼ばれる*********************************
 -(void)addTask{
 	//taskViewController_を起動。
 	configButton_.enabled = false;
-	if(!taskViewController_) taskViewController_ = [[TaskViewController alloc]initWhenAddTaskWithViewFrame:CGRectMake(0, 20, 320, 460) wWYViewController:self];
+	if(!taskViewController_) taskViewController_ = [[TaskViewController alloc]initWhenAddTaskWithViewFrame:CGRectMake(0, 0, 320, 460) wWYViewController:self];
 	[mapViewController_ startAddAnotationWithTap];
 }
 -(void)taskBattleAreaDidEndFixing{
@@ -179,7 +364,7 @@
 	if(!taskViewController_){
 		WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
 		WWYTask* task = [helperDB getTaskFromDB:taskID];
-		taskViewController_ = [[TaskViewController alloc]initWhenEditTask:task viewFrame:CGRectMake(0, 20, 320, 460) wWYViewController:self];
+		taskViewController_ = [[TaskViewController alloc]initWhenEditTask:task viewFrame:CGRectMake(0, 0, 320, 460) wWYViewController:self];
 		[self.view addSubview:taskViewController_.view];
 		[helperDB release];
 	}
@@ -191,7 +376,7 @@
 	   && configButton_.style == UIBarButtonItemStyleBordered && searchButton_.style == UIBarButtonItemStyleBordered){
 		WWYTask *task = [taskBattleManager_ taskAroundLocation:location withInMeter:TASK_HIT_AREA_METER];
 		if(task){
-			if(!taskBattleViewController_) taskBattleViewController_ = [[TaskBattleViewController alloc]initWithFrame:CGRectMake(0, 20, 320, 460) withWWYViewController:self];
+			if(!taskBattleViewController_) taskBattleViewController_ = [[TaskBattleViewController alloc]initWithFrame:CGRectMake(0, 0, 320, 460) withWWYViewController:self];
 			configButton_.enabled = false; searchButton_.enabled = false;
 			[taskBattleViewController_ startBattleOrNotAtTask:task];
 			[task release];
@@ -251,7 +436,7 @@
 }
 */
 
-//XML関係のメソッド*******************************************************************
+//目的地検索のメソッッド。XMLパースなど*******************************************************************
 //webに接続しXMLをとりにいくメソッド
 -(void)getLatLngXML:(NSString*)searchString{
 	word_flg_ = FALSE, lat_flg_ = FALSE, lng_flg_ = FALSE,address_flg_ = FALSE, choice_flg_ = FALSE;
@@ -270,11 +455,11 @@
 	[urlString appendString:encode];
 	NSLog(@"%@",urlString);
 	
-	//非同期ネットワーク接続処理。（MyNSURLConnectionGetterを使用）
+	//非同期ネットワーク接続処理。（URLConnectionGetterを使用）
 	if(urlConnectionGetter_) {//もしまだネットからジオコード情報取得できてなかったらキャンセルして初期化
 		[urlConnectionGetter_ cancel]; [urlConnectionGetter_ release]; urlConnectionGetter_ = nil;
 	}
-	urlConnectionGetter_ = [[MyNSURLConnectionGetter alloc]initWithDelegate:self];
+	urlConnectionGetter_ = [[URLConnectionGetter alloc]initWithDelegate:self];
 	//このメソッドで実際にURLアクセスし、レスポンスを得る処理が始まる。
 	[urlConnectionGetter_ requestURL:urlString];
 	
@@ -287,8 +472,8 @@
 	[xmlParser_ parse];*/
 	
 }
-//MyNSURLConnectionGetterから呼ばれるメソッド（レスポンスを取得する）**********************************************
-- (void)recieveDataFromNetwork:(NSData*)data{
+//URLConnectionGetterから呼ばれるメソッド（レスポンスを取得する）**********************************************
+- (void)receivedDataFromNetwork:(NSData*)data URLConnectionGetter:(id)uRLConnectionGetter{
 	xmlParser_ = [[NSXMLParser alloc]initWithData:data];
 	[xmlParser_ setDelegate:self];
 	[xmlParser_ parse];
@@ -339,6 +524,9 @@
 		[annotation_subtitle_ retain];
 		//annotationを生成して、mapViewに反映。
 		if(lat_!=0 && fabs(lat_)<90.0 && lng_!=0 && fabs(lng_)<180.0){//latとlngがとりうる値ならば
+			//現在地を追随しないモードに変更。
+			[self doLocationButtonActionAtMode:WWYLocationButtonMode_OFF];
+			
 			//「地図上をタップして、Anotationを追加するモード」なら、検索結果もタップしたときと同じ動作に
 			if(mapViewController_.isAddAnotationWithTapMode_){
 				CLLocationCoordinate2D coordinate = {lat_, lng_};
@@ -348,10 +536,15 @@
 				
 			}else{//それ以外なら　地図上にannotationとして追加。お城。
 				[mapViewController_ addAnnotationWithLat:lat_ Lng:lng_ title:annotation_title_ 
-												subtitle:annotation_subtitle_ annotationType:WWYAnnotationType_castle moveYes:YES];
+												subtitle:annotation_subtitle_ annotationType:WWYAnnotationType_castle selected:YES moved:YES];
 				[mapViewController_ manageAnnotationsAmount];
 			}
-		}else{//アラート表示
+			//リクルート広告を表示
+			[self performSelector:@selector(showRecruitAd) withObject:nil afterDelay:2.0f];
+
+			
+		}else{//検索結果がないか、不正なlatlngの場合
+			//アラート表示
 			UIAlertView *parserErrorAlert = [[UIAlertView alloc] initWithTitle:@"Search Result"
 																	   message:@"Not Found"
 																	  delegate:self
@@ -410,90 +603,6 @@
 }
 
 
-//ViewControlerメソッド************************************************************************
-
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView {
- }
- */
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	// Custom initialization
-	
-	//ツールバーとボタンを生成
-	toolBar_ =  [[UIToolbar alloc]initWithFrame:CGRectMake(0, 436, 320, 44)];
-	toolBar_.barStyle = UIBarStyleBlackOpaque;
-	locationButton_ = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_location.png"] 
-														   style:UIBarButtonItemStyleBordered target:self 
-														  action:@selector(setCenterAtCurrentLocation)];
-	locationButton_.enabled = false;
-	configButton_ = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"command",@"") 
-													   style:UIBarButtonItemStyleBordered target:self 
-													  action:@selector(configModeOnOff)];
-	configButton_.enabled = false;
-	searchButton_ = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
-																  target:self 
-																  action:@selector(searchBarShowOnOff)];
-	searchButton_.style = UIBarButtonItemStyleBordered;
-	searchButton_.enabled = false;
-	UIBarButtonItem *spacer1 = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
-																		   target:nil action:nil]autorelease];
-	UIBarButtonItem *spacer2 = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
-																			target:nil action:nil]autorelease];
-
-	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer1,configButton_,spacer2,searchButton_,nil]];
-//	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,configButton_,searchButton_,nil]];
-	
-	//activityIndicatorViewを生成
-	activityIndicatorView_ = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	activityIndicatorView_.frame = CGRectMake(16, 449, 20, 20);
-	[activityIndicatorView_ startAnimating];
-	
-	//searcBarを生成
-	searchBar_ = [[UISearchBar alloc]initWithFrame:CGRectMake(0, -24, 320, 44)];
-	searchBar_.showsCancelButton = YES;
-	searchBar_.delegate = self;
-	
-	//mapViewを生成
-	mapViewController_ = [[WWYMapViewController alloc]initWithMapFrame:CGRectMake(0, 0, 320, 420) parentViewController:self];
-	
-	//configViewを生成
-	configViewController_ = [[ConfigViewController alloc]initWithViewFrame:CGRectMake(0, 480, 320, 440) parentViewController:self];
-	//locolo codeの宣伝をサーバにとりにいく。できればアプリの立ち上げ処理があまり重ならないようずらしたいんだが、ここでいいのかな。。
-	[configViewController_ getLocoloAd];
-	
-	//viewに追加
-	[self.view addSubview:toolBar_];
-	[self.view addSubview:activityIndicatorView_];
-	[self.view addSubview:searchBar_];
-	[self.view insertSubview:mapViewController_.view atIndex:0];
-	[self.view insertSubview:configViewController_.view atIndex:1];
-	
-}
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
 //その他のメソッド************************************************************************
 
 //ネットに繋がってるかどうかを確かめるメソッド
@@ -514,8 +623,14 @@
 	[configViewController_.view addSubview:adController_.adMobView_];
 }
 
+//UIWebViewを立ち上げる
+-(void)startUpWebView:(NSString*)urlString{
+	WebViewController* webViewController = [[[WebViewController alloc]initWithUrlString:urlString]autorelease];
+	[self presentModalViewController:webViewController animated:YES];
+}
+
 //AdMob用に現在地を返すメソッド。WWYAdControllerから呼ばれる
-- (CLLocation *)getNowLocationForAdMob{
+- (CLLocation *)getNowLocationForAd{
 	CLLocation *nowLocation;
 	if(mapViewController_.mapView_.userLocation){
 		//nowLocation = mapViewController_.mapView_.userLocation.location;
@@ -528,19 +643,42 @@
 	if(ON) [activityIndicatorView_ startAnimating];
 	else [activityIndicatorView_ stopAnimating];
 }
-- (void)dealloc {	
-	if(adController_) [adController_ stopTimer];[adController_ autorelease];
-	if(mapViewController_) [mapViewController_.view removeFromSuperview];[mapViewController_ release];
-	if(configViewController_) [configViewController_.view removeFromSuperview];[configViewController_ release];
-	if(toolBar_) [toolBar_ removeFromSuperview];[toolBar_ release];
-	if(locationButton_) [locationButton_ release];[configButton_ release];[searchButton_ release];
-	if(activityIndicatorView_) [activityIndicatorView_ removeFromSuperview];[activityIndicatorView_ release];
-	if(searchBar_) [searchBar_ removeFromSuperview];[searchBar_ release];
-	if(myLocationGetter_) [myLocationGetter_ stopUpdatingLocation];[myLocationGetter_ release];
-	if(taskBattleManager_) [taskBattleManager_ release];
-	if(taskViewController_) [taskViewController_.view removeFromSuperview];[taskViewController_ release];
-	if(taskBattleViewController_) [taskBattleViewController_.view removeFromSuperview];[taskBattleViewController_ release];
-    [super dealloc];
+
+//リクルート広告を表示
+-(void)showRecruitAd{
+	if(!adViewController_){
+		adViewController_ = [[WWYAdViewController2 alloc]initWithViewFrame:CGRectMake(0, 380, 320, 36) wWYViewController:self];
+		//adViewController_ = [[WWYAdViewController2 alloc]initWithViewFrame:CGRectMake(180, 420, 140, 40) wWYViewController:self];
+		
+		adViewController_.view.frame = CGRectMake(-adViewController_.view.frame.size.width, adViewController_.view.frame.origin.y, adViewController_.view.frame.size.width, adViewController_.view.frame.size.height);
+		[self.view insertSubview:adViewController_.view atIndex:1];
+		
+		[UIView beginAnimations:nil context:NULL];  
+		[UIView setAnimationDuration:0.2];
+		adViewController_.view.frame = CGRectMake(0, adViewController_.view.frame.origin.y, adViewController_.view.frame.size.width, adViewController_.view.frame.size.height);
+		[UIView commitAnimations];
+	}else {
+		[adViewController_ refreshAd];
+	}
+
+}
+//リクルート広告を非表示
+-(void)closeRecruiteAdView{
+	if(adViewController_){
+		[self.view addSubview:adViewController_.view];
+		[UIView beginAnimations:nil context:NULL];  
+		[UIView setAnimationDuration:0.2];
+		adViewController_.view.frame = CGRectMake(-adViewController_.view.frame.size.width, adViewController_.view.frame.origin.y, adViewController_.view.frame.size.width, adViewController_.view.frame.size.height);
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(removeRecruiteAdView)];
+		[UIView commitAnimations];
+	}
+}
+//リクルート広告を解放//上のメソッドのアニメーション後に呼び出される
+-(void)removeRecruiteAdView{
+	[adViewController_ preCloseAction];
+	[adViewController_.view removeFromSuperview];
+	[adViewController_ release]; adViewController_ = nil;
 }
 
 @end

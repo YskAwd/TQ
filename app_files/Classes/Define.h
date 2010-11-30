@@ -11,7 +11,7 @@
 //#define TWEET_ENABLE true
 #define TWEET_ENABLE false
 
-//twitterへのポストのハッシュタグを設定
+//twitterへのポストの最後につける文字列（ハッシュタグを設定）
 #define TWITTER_HASH_TAG @"#taskquest"
 
 //タスクの実行日時の何秒前に知らせるか。

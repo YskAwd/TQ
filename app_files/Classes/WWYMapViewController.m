@@ -24,10 +24,11 @@
 @synthesize nowAddingAnnotation_;
 @synthesize nowEditingAnnotation_;
 
-- (id)initWithMapFrame:(CGRect)frame parentViewController:(WWYViewController*)pViewController {
+- (id)initWithViewFrame:(CGRect)frame parentViewController:(WWYViewController*)pViewController {
     if (self = [super init]) {
 		wWYViewController_ = pViewController;
-		mapFrame_ = frame;
+		self.view.frame = frame;
+		mapFrame_ = CGRectMake((320-564)/4, (420-564)/4, 564, 564);
 		
 		nowOnRamia_ = false;
 		nowReturningFromRamia_ = false;
@@ -69,13 +70,20 @@
 }
 
 
-//mapViewでの座標を変換するメソッド。（外部からmapViewに直接アクセスしても取得できないので）************
+//mapViewでの座標を変換するメソッド。mapVewとself.viewのサイズの違いは考慮せず変換。外部からも呼ばれる。（外部からmapViewに直接アクセスしても取得できないので）************
 -(CGPoint)convertToPointFromLocation:(CLLocation*)location{
 	CGPoint newPoint = [mapView_ convertCoordinate:location.coordinate toPointToView:mapView_];
-	//NSLog(@"%f",newPoint.x);
+	//newPoint.x += mapView_.frame.origin.x*2, newPoint.y += mapView_.frame.origin.y*2;
+	return newPoint;
+}
+//mapViewでの座標を変換するメソッド。mapVewとself.viewのサイズの違いを考慮して変換。外部からも呼ばれる。（外部からmapViewに直接アクセスしても取得できないので）************
+-(CGPoint)convertToPointFromCoordinate:(CLLocationCoordinate2D)coordinate{
+	CGPoint newPoint = [mapView_ convertCoordinate:coordinate toPointToView:mapView_];
+	newPoint.x += mapView_.frame.origin.x*2, newPoint.y += mapView_.frame.origin.y*2;
 	return newPoint;
 }
 - (CLLocationCoordinate2D)convertToCoordinateFromPoint:(CGPoint)point{
+	point.x -= mapView_.frame.origin.x*2, point.y -= mapView_.frame.origin.y*2;
 	CLLocationCoordinate2D newCoodinate = [mapView_ convertPoint:point toCoordinateFromView:mapView_];
 	return newCoodinate;
 }
@@ -150,7 +158,8 @@
 			[wWYViewController_ activityIndicatorViewOnOff:NO];
 			
 			//location追随モードをOnに。
-			wWYViewController_.locationButton_.style = UIBarButtonItemStyleDone;
+			[wWYViewController_ setLocationButtonMode:WWYLocationButtonMode_LOCATION];
+			//[self setCenterAtCurrentLocation];
 			[wWYViewController_ makeAdController];
 		
 		}else if(userlocationUpdate_ > 1){//2回目以降。 //3回目で正確な位置情報が分かるっぽい。決まってるのかどうかはわからんが・・位置情報の取得を無線LAN→基地局→GPS等と行ってるのか？だとしたら3回目とは限らん。
@@ -180,16 +189,31 @@
 		currentCLLocation_ = [[CLLocation alloc]initWithLatitude:_newLocation.coordinate.latitude longitude:_newLocation.coordinate.longitude];
 		[self logCurrentLocation];
 		
-		//locationボタンがオンの状態なら、現在地を中心に持ってくる
-		if(wWYViewController_.locationButton_.style == UIBarButtonItemStyleDone){
+		//locationボタンが現在地追随モードなら、現在地を中心に持ってくる
+		if(wWYViewController_.locationButtonMode == WWYLocationButtonMode_LOCATION || wWYViewController_.locationButtonMode == WWYLocationButtonMode_HEADING){
 			//[mapView_ setCenterCoordinate:mapView_.userLocation.coordinate animated:YES];
 			//独自のCLlocationは取得できていても、タイミング的に、mapviewのuserlocationはまだ取得できていない場合があり、上のように書くとエラーになることがある。
 			//取得できてない場合は、-180,-180の座標となり、"invalid Coordinate"とログに出てフリーズ。//取得できててもnewlocationと同じ値とは限らない。
+			isJustFollowingLocation_ = YES;
 			[mapView_ setCenterCoordinate:_newLocation.coordinate animated:YES];
 		}
 		//_newLocationをautoreleaseしておく
 		[_newLocation autorelease];
 	}
+}
+//MyLocaitonGetterから新しいCLHeadingが来たときに呼ばれる。
+-(void)upDatesCLHeading:(CLHeading*)newHeading{
+	[UIView beginAnimations:nil context:NULL];  
+    [UIView setAnimationDuration:0.3];  
+    mapView_.transform = CGAffineTransformMakeRotation(M_PI * (360 - newHeading.trueHeading) / 180.0f);  
+    [UIView commitAnimations]; 
+}
+//コンパス追随をストップする
+-(void)stopCLHeading{
+	[UIView beginAnimations:nil context:NULL];  
+    [UIView setAnimationDuration:0.3];  
+    mapView_.transform = CGAffineTransformMakeRotation(0);
+    [UIView commitAnimations]; 
 }
 
 //対象キャラクターの現在地から、目的地まで道筋のDataを作って、キャラクターに渡す。
@@ -379,12 +403,8 @@
 	//if(currentCLLocation_ && mapView_.userLocation){
 	if(currentCLLocation_){
 		[self logCurrentRegion];
-		if(wWYViewController_.locationButton_.style != UIBarButtonItemStyleDone){
-			wWYViewController_.locationButton_.style = UIBarButtonItemStyleDone;
-			[mapView_ setCenterCoordinate:currentCLLocation_.coordinate animated:YES];
-		}else{
-			wWYViewController_.locationButton_.style = UIBarButtonItemStyleBordered;
-		}
+		isJustFollowingLocation_ = YES;
+		[mapView_ setCenterCoordinate:currentCLLocation_.coordinate animated:YES];
 	}else{//currentCLLocation_ないときはボタン押せなくなってるはずなので、このケースはないとは思うが一応、現在地が見つからないとダイアログを出す処理を実装。
 		UIAlertView *alertView = [[UIAlertView alloc]
 								  initWithTitle:nil
@@ -421,12 +441,14 @@
 //annotationを選択してmapView_のセンターにする。外部から呼ばれる。（ConfigViewControllerなど）
 -(void)goAnnotation:(id<MKAnnotation>)annotation{
 	
+	//locationアップデート時のsetCenter処理とかぶらないように、現在地を追随しないモードに変更。
+	[wWYViewController_ doLocationButtonActionAtMode:WWYLocationButtonMode_OFF];
+	
 	if(characterAnnotationArray_){//キャラクター達がいれば
 		
 		anno_destinationOfLoula_ = annotation;//目的地の変数を設定。
 		nowOnRamia_ = true;
-		//locationアップデート時のsetCenter処理とかぶらないように、locationモードをオフ。
-		wWYViewController_.locationButton_.style = UIBarButtonItemStyleBordered;
+
 		//ボタン操作できないように。
 		wWYViewController_.locationButton_.enabled = false, wWYViewController_.searchButton_.enabled = false, wWYViewController_.configButton_.enabled = false;		
 		//mapView_のスクロールとズームを禁止
@@ -449,15 +471,17 @@
 			//基準になるPoint
 			CGPoint tempRootPoint;
 			if(currentCLLocation_){
-				tempRootPoint = [mapView_ convertCoordinate:currentCLLocation_.coordinate toPointToView:mapView_];
+//				tempRootPoint = [mapView_ convertCoordinate:currentCLLocation_.coordinate toPointToView:mapView_];
+				tempRootPoint = [self convertToPointFromCoordinate:currentCLLocation_.coordinate];
 			}else{
 				tempRootPoint = mapView_.center;
 			}
+			//tempRootPoint.x += mapView_.frame.origin.x*2, tempRootPoint.y += mapView_.frame.origin.y*2;
 			
 			//ラーミアの位置
 			CGPoint ramiaPoint = tempRootPoint;
-			//ramiaPoint.y -= 40;
-			CLLocationCoordinate2D ramiaCoodinate = [mapView_ convertPoint:ramiaPoint toCoordinateFromView:mapView_];
+//			CLLocationCoordinate2D ramiaCoodinate = [mapView_ convertPoint:ramiaPoint toCoordinateFromView:mapView_];
+			CLLocationCoordinate2D ramiaCoodinate = [self convertToCoordinateFromPoint:ramiaPoint];
 			
 			//ラーミアのCharacterAnnotationを生成、mapView_に登録。
 			if(!ramiaAnnotation_){
@@ -475,6 +499,9 @@
 			}
 			ramiaDummyView_.center = ramiaPoint;
 			[ramiaDummyView_ turnUp];
+			
+			//本物のラーミアビューを非表示にし、ダミーのラーミアを表示。
+			ramiaAnnotation_.characterView_.hidden = true;
 			[self.view addSubview:ramiaDummyView_];
 			//[ramiaDummyView_ animationStop];//ラーミアのCharacterViewのアニメーションはstopしておく
 			
@@ -561,9 +588,10 @@
 -(void)goTo_anno_destinationOfLoula:(NSTimer*)timer{
 	[timer invalidate];
 	if(anno_destinationOfLoula_ && ramiaAnnotation_) {
-		CGPoint destinationRamiaPoint = [mapView_ convertCoordinate:anno_destinationOfLoula_.coordinate toPointToView:mapView_];
+		//CGPoint destinationRamiaPoint = [mapView_ convertCoordinate:anno_destinationOfLoula_.coordinate toPointToView:mapView_];
+		CGPoint destinationRamiaPoint = [self convertToPointFromCoordinate:anno_destinationOfLoula_.coordinate];
 		destinationRamiaPoint.y += 60;
-		CLLocationCoordinate2D destinationRamiaCoordinate = [mapView_ convertPoint:destinationRamiaPoint toCoordinateFromView:mapView_];
+		CLLocationCoordinate2D destinationRamiaCoordinate = [self convertToCoordinateFromPoint:destinationRamiaPoint];
 		[mapView_ setCenterCoordinate:anno_destinationOfLoula_.coordinate animated:YES];
 		
 		//ラーミアを移動
@@ -573,7 +601,9 @@
 		[ramiaAnnotation_ pushRootArray:tmpLocation];
 		[tmpLocation autorelease];
 		*/
+
 		//ラーミアもアニメーション的に移動したければこっち
+		
 		[self makeRootDataTo:destinationRamiaCoordinate on:ramiaAnnotation_ firstMoveDirection:2];
 
 	}
@@ -582,6 +612,9 @@
 	mapView_.zoomEnabled = true;
 	//ボタン操作できるように。
 	wWYViewController_.locationButton_.enabled = true, wWYViewController_.searchButton_.enabled = true, wWYViewController_.configButton_.enabled = true;
+	 
+	//リクルート広告を表示
+	[wWYViewController_ performSelector:@selector(showRecruitAd) withObject:nil afterDelay:2.0f];
 }
 
 //ルーラでラーミアから現在地に帰還したときに呼ばれる
@@ -601,14 +634,16 @@
 	//基準になるPoint
 	CGPoint tempRootPoint;
 	if(currentCLLocation_){
-		tempRootPoint = [mapView_ convertCoordinate:currentCLLocation_.coordinate toPointToView:mapView_];
+		//tempRootPoint = [mapView_ convertCoordinate:currentCLLocation_.coordinate toPointToView:mapView_];
+		tempRootPoint = [self convertToPointFromCoordinate:currentCLLocation_.coordinate];
 	}else{
 		tempRootPoint = mapView_.center;
 	}
 	//ラーミアの基準位置
 	CGPoint ramiaPoint = tempRootPoint;
 	ramiaPoint.y -= 40;//*0.9*4;
-	CLLocationCoordinate2D ramiaCoordinate = [mapView_ convertPoint:ramiaPoint toCoordinateFromView:mapView_];
+	//CLLocationCoordinate2D ramiaCoordinate = [mapView_ convertPoint:ramiaPoint toCoordinateFromView:mapView_];
+	CLLocationCoordinate2D ramiaCoordinate = [self convertToCoordinateFromPoint:ramiaPoint];
 	//ラーミアの初期位置
 	CGPoint ramiaStartPoint = ramiaPoint; ramiaStartPoint.x += 240;
 	//ラーミアの終了位置
@@ -663,37 +698,47 @@
 	[ramiaDummyView_ release];ramiaDummyView_ = nil;
 }
 //annotationを追加するために呼ばれる（WWYViewControllerから等。旧互換のためのメソッド。）
--(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle moveYes:(BOOL)moveYes{
-	WWYAnnotation* annotation = [self addAnnotationWithLat:latitude Lng:longitude title:title subtitle:subtitle annotationType:WWYAnnotationType_normal moveYes:moveYes];
+-(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle moved:(BOOL)moved{
+	WWYAnnotation* annotation = [self addAnnotationWithLat:latitude Lng:longitude title:title subtitle:subtitle annotationType:WWYAnnotationType_normal selected:NO moved:moved];
 	return annotation;
 }
 //annotationを追加するために呼ばれる（WWYViewControllerから等。userInfoつき。）
--(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType userInfo:(id)userInfo moveYes:(BOOL)moveYes{
-	WWYAnnotation* annotation = [self addAnnotationWithLat:latitude Lng:longitude title:title subtitle:subtitle annotationType:annotationType moveYes:moveYes];
+-(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType userInfo:(id)userInfo selected:(BOOL)selected moved:(BOOL)moved{
+	WWYAnnotation* annotation = [self addAnnotationWithLat:latitude Lng:longitude title:title subtitle:subtitle annotationType:annotationType selected:selected moved:moved];
 	annotation.userInfo = userInfo;
 	return annotation;
 }
 //annotationを追加するために呼ばれる（WWYViewControllerから等）
--(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType moveYes:(BOOL)moveYes{
+-(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType selected:(BOOL)selected moved:(BOOL)moved{
 	WWYAnnotation* annotation = [[WWYAnnotation alloc]initWithLatitude:latitude longitude:longitude title:title subtitle:subtitle];
 	annotation.annotationType = annotationType;
 	[annotation autorelease];
 			//NSLog(@"RCountWhenCreated: %d",[annotation retainCount]);//->1
 	[mapView_ addAnnotation:annotation];
 			//NSLog(@"RCountWhenAdded: %d",[annotation retainCount]);//->6 ここで一気にretainCountが5つも増えるが、MKMapViewが保持してるのか、正常値のよう。
-	[mapView_ selectAnnotation:annotation animated:YES];
-			//NSLog(@"RCountWhenSelected: %d",[annotation retainCount]);//->6
 	
 	//mapView_のセンターをannotationの場所に移動(annotaionの場所が、現在描画中の場所じゃなかった場合のみ)
-	if(moveYes){
-		CGPoint annoPoint = [mapView_ convertCoordinate:annotation.coordinate toPointToView:mapView_];
+	if(moved){
+		//CGPoint annoPoint = [mapView_ convertCoordinate:annotation.coordinate toPointToView:mapView_];
+		CGPoint annoPoint = [self convertToPointFromCoordinate:annotation.coordinate];
 		if(annoPoint.x < 0.0 || annoPoint.y < 0.0 || annoPoint.x > 320.0 || annoPoint.y > 420.0){//場所判定
-			//locationアップデート時のsetCenter処理とかぶらないように、locationモードをオフ。
-			wWYViewController_.locationButton_.style = UIBarButtonItemStyleBordered;
+			//locationアップデート時のsetCenter処理とかぶらないように、現在地を追随しないモードに変更。
+			[wWYViewController_ doLocationButtonActionAtMode:WWYLocationButtonMode_OFF];
 			[mapView_ setCenterCoordinate:annotation.coordinate animated:YES];
 		}
 	}
+	
+	//annotationを選択状態にする。ここで直接指定しても効かないので、0.5秒遅らせて、別メソッドで実行。
+	if(selected){
+		[self performSelector:@selector(selectAnnotation:) withObject:annotation afterDelay:0.5];
+	}
+	
 	return annotation;
+}
+
+//annotaionを選択状態にする。（annotation追加時に実行しても効かなかったので別関数にした）
+-(void)selectAnnotation:(id <MKAnnotation>)annotation{
+	[mapView_ selectAnnotation:annotation animated:YES];
 }
 
 //DBに現在のmapRegionを書き込む。アプリ終了時等に利用。->余裕あったらWWYHelper_DBで処理するよう修正？
@@ -822,7 +867,7 @@
 	//Annotation追加
 	nowAddingAnnotation_ = [self addAnnotationWithLat:coordinate.latitude Lng:coordinate.longitude 
 												title:NSLocalizedString(@"task_area",@"") subtitle:@"" 
-									   annotationType:WWYAnnotationType_taskBattleArea moveYes:YES];
+									   annotationType:WWYAnnotationType_taskBattleArea selected:YES moved:YES];
 }
 
 //CatchTapOnMapViewのDelegateメソッド*****************************************************
@@ -832,7 +877,8 @@
 	
 	//図上をタップして、Anotationを追加するモードなら、Anotationを追加する。
 	if(isAddAnotationWithTapMode_){
-		CLLocationCoordinate2D coordinate = [mapView_ convertPoint:point toCoordinateFromView:mapView_];
+		//CLLocationCoordinate2D coordinate = [mapView_ convertPoint:point toCoordinateFromView:mapView_];
+		CLLocationCoordinate2D coordinate = [self convertToCoordinateFromPoint:point];
 		[self addAnotationWithTapCoordinate:coordinate];
 	}
 }
@@ -866,9 +912,11 @@
 	//frameベースで一定の距離を増減するバージョン
 	CGPoint nextPoint;
 	if(currentCLLocation_){
-		nextPoint = [mapView_ convertCoordinate:currentCLLocation_.coordinate toPointToView:mapView_];
+		//nextPoint = [mapView_ convertCoordinate:currentCLLocation_.coordinate toPointToView:mapView_];
+		nextPoint = [self convertToPointFromCoordinate:currentCLLocation_.coordinate];
 	}else if(characterAnnotationArray_){
-		nextPoint = [mapView_ convertCoordinate:[[characterAnnotationArray_ objectAtIndex:0]coordinate] toPointToView:mapView_];
+		//nextPoint = [mapView_ convertCoordinate:[[characterAnnotationArray_ objectAtIndex:0]coordinate] toPointToView:mapView_];
+		nextPoint = [self convertToPointFromCoordinate:[[characterAnnotationArray_ objectAtIndex:0]coordinate]];
 	}else{
 		nextPoint = CGPointMake(100, 100);
 	}
@@ -889,7 +937,8 @@
 	 default:
 	 break;
 	 }
-	CLLocationCoordinate2D nextCoor = [mapView_ convertPoint:nextPoint toCoordinateFromView:mapView_];
+	//CLLocationCoordinate2D nextCoor = [mapView_ convertPoint:nextPoint toCoordinateFromView:mapView_];
+	CLLocationCoordinate2D nextCoor = [self convertToCoordinateFromPoint:nextPoint];
 	CLLocation* tmpLocation = [[CLLocation alloc]initWithLatitude:nextCoor.latitude longitude:nextCoor.longitude];
 	 
 	[self upDatesCLLocation:tmpLocation];
@@ -907,15 +956,19 @@
 
 }
 - (void)mapView:(MKMapView *)myMapView regionDidChangeAnimated:(BOOL)animated{
-	//NSLog(@"didChange");
 	
 	//ドラッグで移動した距離が一定以上なら、現在地追随モードをoffにする。
-	CLLocationCoordinate2D newCenterCoordinate = mapView_.centerCoordinate;
-	CGPoint oldPoint = [mapView_ convertCoordinate:currentCenterCoordinate_ toPointToView:mapView_];
-	CGPoint newPoint = [mapView_ convertCoordinate:newCenterCoordinate toPointToView:mapView_];
-	CGFloat distance = sqrt( pow((oldPoint.x-newPoint.x),2) + pow((oldPoint.y-newPoint.y),2));
-	if(distance > 50.0){
-		wWYViewController_.locationButton_.style = UIBarButtonItemStyleBordered;
+	if(!isJustFollowingLocation_ || wWYViewController_.locationButtonMode == WWYLocationButtonMode_HEADING){//現在地追随モードで追随している最中じゃないか、コンパス追随モードならば
+		CLLocationCoordinate2D newCenterCoordinate = mapView_.centerCoordinate;
+		CGPoint oldPoint = [mapView_ convertCoordinate:currentCenterCoordinate_ toPointToView:mapView_];
+		CGPoint newPoint = [mapView_ convertCoordinate:newCenterCoordinate toPointToView:mapView_];
+		CGFloat distance = sqrt( pow((oldPoint.x-newPoint.x),2) + pow((oldPoint.y-newPoint.y),2));
+		if(distance > 50.0){
+			//現在地追随モードをoffに。
+			[wWYViewController_ doLocationButtonActionAtMode:WWYLocationButtonMode_OFF];
+		}
+	}else {
+		isJustFollowingLocation_ = NO;
 	}
 	
 	//ルーラでramiaに乗ってて、現在地に戻ってきたら
@@ -923,6 +976,11 @@
 		nowReturningFromRamia_ = false;
 		[self returnedFromRamia];
 	}
+	
+	/*if(ramiaAnnotation_){
+		NSLog(@"[ramia annotation]lat:%f long:%f",ramiaAnnotation_.coordinate.latitude,ramiaAnnotation_.coordinate.longitude);
+		[self addAnnotationWithLat:ramiaAnnotation_.coordinate.latitude Lng:ramiaAnnotation_.coordinate.longitude title:@"test" subtitle:@"" moved:NO];
+	}*/
 }
 
 	//このメソッド使うとannotationの画像はカスタマイズできるが、userLocationの画像まで変わってしまう・・・がなんとか回避。MKMapView内部ではuserlocationもannotationとして扱うため。
@@ -937,10 +995,10 @@
 	}else if([annotation.title isEqualToString:@"WWYRamia"]){
 		if([annotation isKindOfClass:[CharacterAnnotation class]]){
 			annotationView = [annotation characterView_];
-			//最初はramiaのCharacterView_は非表示に。アニメーションもSTOPしておく
-			annotationView.hidden = true;//[annotationView animationStop];
+			//最初はramiaのCharacterView_は非表示に。アニメーションもSTOPしておく（ここでやるとだめ。MapViewが任意のタイミングでannotationViewを参照するたびに非表示になってしまう為）
+			//annotationView.hidden = true;//[annotationView animationStop];
 			[annotationView turnUp];
-			annotationView.canShowCallout = NO;
+			annotationView.canShowCallout = YES;
 			return annotationView;
 		}
 	}else if([annotation isKindOfClass:[WWYAnnotation class]]){
@@ -971,6 +1029,12 @@
 	annotationView.canShowCallout = NO;	
 	return annotationView;
 }
+
+/*- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views{
+	for(MKAnnotationView* annotationView in views){
+		[mapView_ selectAnnotation:annotationView.annotation animated:YES];
+	}
+}*/
 
 //annotaionのポップアップの横のボタンをタップしたときのメソッド
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{

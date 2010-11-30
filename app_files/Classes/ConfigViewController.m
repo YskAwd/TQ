@@ -11,7 +11,7 @@
 #import "WWYCommandView.h"
 #import "WWYCommandColumnView.h"
 #import "WWYHelper_DB.h"
-#import "MyNSURLConnectionGetter.h"
+#import "URLConnectionGetter.h"
 #import "LiveView.h"
 
 @implementation ConfigViewController
@@ -24,7 +24,6 @@
 		wWYViewController_ = pViewController;
 		self.view.frame = frame;
 		self.view.backgroundColor = [UIColor blackColor];
-//		self.view.alpha = 0.94;
 		
 		//partyOrderArray_をalloc、init。
 		partyOrderArray_ = [[NSMutableArray alloc]initWithCapacity:0];
@@ -89,7 +88,7 @@
 												repeats:NO];
 }
 -(void)goCurrentLocationAndHideConfigView{
-	[wWYViewController_ setCenterAtCurrentLocation];
+	[wWYViewController_.mapViewController_ setCenterAtCurrentLocation];
 	//操作後ひと呼吸置いてViewを隠すためにTimer設定。
 	[NSTimer scheduledTimerWithTimeInterval:0.3f
 									 target:self//これで自動的にretainCountが1増えている。
@@ -206,18 +205,21 @@
 									NSLocalizedString(@"pilgrim",@""),
 									NSLocalizedString(@"wizard",@""),
 									NSLocalizedString(@"fighter",@""),
+									NSLocalizedString(@"merchant",@""),
+									NSLocalizedString(@"goof_off",@""),
+									NSLocalizedString(@"sage",@""),
 									NSLocalizedString(@"cancel",@""),
 									nil];
 			
 			CGFloat marginX = 5, marginY = 50; 
 			CGRect cmdFrame = CGRectMake(self.view.frame.origin.x+marginX,self.view.frame.origin.y+marginY,
 										 self.view.frame.size.width/2-marginX, self.view.frame.size.height);
-			party_selectCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame withCommandTextArray:cmdTxtArray withMaxColumn:8 withDelegate:self withCommandViewId:4];
+			party_selectCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame withCommandTextArray:cmdTxtArray withMaxColumn:9 withDelegate:self withCommandViewId:4];
 			[cmdTxtArray release];
 			
 			//columnIdをセット。charaTypeは1から始まるので注意。
 			NSMutableArray* clmIDArray = [[NSMutableArray alloc]initWithCapacity:1];
-			for(int i = 0; i<6; i++){
+			for(int i = 0; i<9; i++){
 				[clmIDArray addObject:[NSNumber numberWithInt:i+1]];
 			}
 			[party_selectCommandView_ setIDForColumnsFromNSNumberArray:clmIDArray];
@@ -600,16 +602,16 @@
 	}else{//日本語以外なら
 		urlString = @"http://www.locolocode.com/with_the_hero_app/locolo_ad/locolo_ad_en.xml";
 	}
-	//非同期ネットワーク接続処理。（MyNSURLConnectionGetterを使用）
+	//非同期ネットワーク接続処理。（URLConnectionGetterを使用）
 	if(urlConnectionGetter_) {//もしまだネットからジオコード情報取得できてなかったらキャンセルして初期化
 		[urlConnectionGetter_ cancel]; [urlConnectionGetter_ release]; urlConnectionGetter_ = nil;
 	}
-	urlConnectionGetter_ = [[MyNSURLConnectionGetter alloc]initWithDelegate:self];
+	urlConnectionGetter_ = [[URLConnectionGetter alloc]initWithDelegate:self];
 	//このメソッドで実際にURLアクセスし、レスポンスを得る処理が始まる。
 	[urlConnectionGetter_ requestURL:urlString];	
 }
-//MyNSURLConnectionGetterから呼ばれるメソッド（レスポンスを取得する）**********************************************
-- (void)recieveDataFromNetwork:(NSData*)data{
+//URLConnectionGetterから呼ばれるメソッド（レスポンスを取得する）**********************************************
+- (void)receivedDataFromNetwork:(NSData*)data URLConnectionGetter:(id)uRLConnectionGetter{
 	//NSLog([[NSString alloc]initWithData:data encoding:4]);//これで実際に取得できた中身をコンソールに出力。
 	xmlParser_ = [[NSXMLParser alloc]initWithData:data];
 	[xmlParser_ setDelegate:self];
