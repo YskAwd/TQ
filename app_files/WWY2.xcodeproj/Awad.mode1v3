@@ -397,7 +397,7 @@
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 1282}, {261, 381}}</string>
+									<string>{{0, 1282}, {261, 368}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -409,7 +409,7 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 5}, {278, 399}}</string>
+								<string>{{0, 5}, {278, 386}}</string>
 								<key>GroupTreeTableConfiguration</key>
 								<array>
 									<string>MainColumn</string>
@@ -421,7 +421,7 @@
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
 							<key>Proportion</key>
-							<string>399pt</string>
+							<string>386pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -489,13 +489,13 @@
 									<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 									<array>
 										<array>
-											<integer>8</integer>
+											<integer>28</integer>
 											<integer>1</integer>
 											<integer>0</integer>
 										</array>
 									</array>
 									<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-									<string>{{0, 10}, {261, 635}}</string>
+									<string>{{0, 10}, {261, 648}}</string>
 								</dict>
 								<key>PBXTopSmartGroupGIDs</key>
 								<array/>
@@ -507,7 +507,7 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 409}, {278, 653}}</string>
+								<string>{{0, 396}, {278, 666}}</string>
 								<key>GroupTreeTableConfiguration</key>
 								<array>
 									<string>MainColumn</string>
@@ -519,7 +519,7 @@
 							<key>Module</key>
 							<string>PBXSmartGroupTreeModule</string>
 							<key>Proportion</key>
-							<string>653pt</string>
+							<string>666pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -546,7 +546,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>430CC53312A50A6700060AD2</string>
+										<string>43308A7412AA15F500B62DB0</string>
 										<key>history</key>
 										<array>
 											<string>43A41872101C133100C89DDA</string>
@@ -663,7 +663,7 @@
 											<string>430B538A129C08B3000A25A4</string>
 											<string>431A5C0412A0AB0B004DBDF4</string>
 											<string>430CC07512A4AD1500060AD2</string>
-											<string>430CC2A512A4C0B300060AD2</string>
+											<string>430CC53312A50A6700060AD2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -675,14 +675,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1313, 276}}</string>
+								<string>{{0, 0}, {1313, 261}}</string>
 								<key>RubberWindowFrame</key>
 								<string>4 75 1596 1103 0 0 1600 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>276pt</string>
+							<string>261pt</string>
 						</dict>
 						<dict>
 							<key>BecomeActive</key>
@@ -692,7 +692,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>WWYViewController.m</string>
+								<string>WWYAdViewController2.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -700,11 +700,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>WWYViewController.m</string>
+										<string>WWYAdViewController2.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>430CC53412A50A6700060AD2</string>
+										<string>43308A7712AA15F500B62DB0</string>
 										<key>history</key>
 										<array>
 											<string>43A41872101C133100C89DDA</string>
@@ -829,9 +829,9 @@
 											<string>430CC47512A4FB1800060AD2</string>
 											<string>430CC49A12A4FD5300060AD2</string>
 											<string>430CC4D812A505BE00060AD2</string>
-											<string>430CC52012A5096600060AD2</string>
 											<string>430CC52112A5096600060AD2</string>
-											<string>430CC52212A5096600060AD2</string>
+											<string>43308A7512AA15F500B62DB0</string>
+											<string>43308A7612AA15F500B62DB0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -843,14 +843,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 281}, {1313, 776}}</string>
+								<string>{{0, 266}, {1313, 791}}</string>
 								<key>RubberWindowFrame</key>
 								<string>4 75 1596 1103 0 0 1600 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>776pt</string>
+							<string>791pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -893,12 +893,12 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>430CC31112A4D54600060AD2</string>
-				<string>430CC31212A4D54600060AD2</string>
+				<string>43308A7812AA15F500B62DB0</string>
+				<string>43308A7912AA15F500B62DB0</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>430CC31312A4D54600060AD2</string>
+				<string>43308A7A12AA15F500B62DB0</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
@@ -1072,12 +1072,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>430CC31512A4D54600060AD2</string>
-		<string>430CC31612A4D54600060AD2</string>
 		<string>437AD4930FE6749700ADBCF2</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>/Users/Awad/Documents/dev/WWY/WWY2.xcodeproj</string>
+		<string>/Users/Awad/Documents/dev/TQ/app_files/WWY2.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>4 75 1596 1103 0 0 1600 1178 </string>
@@ -1157,7 +1153,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>437AD4930FE6749700ADBCF2</string>
-				<string>430CC2B912A4C5F400060AD2</string>
+				<string>43308A7B12AA15F500B62DB0</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

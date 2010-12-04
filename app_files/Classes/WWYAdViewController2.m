@@ -152,7 +152,6 @@
 	_xmlParser = [[NSXMLParser alloc]initWithData:data];
 	[_xmlParser setDelegate:self];
 	[_xmlParser parse];
-	//[_xmlParser autorelease];//これやっちゃだめ。parse終わると自動解放されるのか？
 }
 //広告を閉じる
 -(void)closeRecruiteAdView:(NSTimer*)timer{
@@ -209,6 +208,7 @@
 		[urlConnectionGetter_ cancel]; [urlConnectionGetter_ autorelease]; urlConnectionGetter_ = nil;
 	}
  */
+	[_xmlParser autorelease];
 }
 
 //parserエラー検知メソッド
