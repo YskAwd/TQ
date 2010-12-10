@@ -24,6 +24,10 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     // Override point for customization after app launch
+	//windowを自分で作成
+	CGRect frameForWindow = [[UIScreen mainScreen]bounds];
+	window = [[UIWindow alloc]initWithFrame:frameForWindow];
+	
 	viewController_ = [[WWYViewController alloc]init];
 	[window addSubview:viewController_.view];
     [window makeKeyAndVisible];
@@ -32,7 +36,14 @@
 -(void)applicationWillTerminate:(UIApplication *)application{
 	[viewController_.mapViewController_ updateLastTimeMapRegion];
 }
-	
+
+- (void)applicationWillResignActive:(UIApplication*)application{
+	[viewController_.mapViewController_ updateLastTimeMapRegion];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application{
+}
+
 - (void)dealloc {
     [viewController_ release];
     [window release];

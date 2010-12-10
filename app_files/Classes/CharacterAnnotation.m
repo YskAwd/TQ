@@ -133,9 +133,10 @@
 		
 		//前のキャラとの距離を条件に移動
 		CGPoint prevCharaPoint = [deleg.mapView_ convertCoordinate:prevCharacter.coordinate toPointToView:deleg.mapView_];
+		//CGPoint prevCharaPoint = [deleg convertToPointFromCoordinate:prevCharacter.coordinate];
 		CGFloat now_distance = sqrt(pow(prevCharaPoint.x-oldPoint.x, 2) + pow(prevCharaPoint.y-oldPoint.y, 2));
 		CGFloat new_distance = sqrt(pow(prevCharaPoint.x-newPoint.x, 2) + pow(prevCharaPoint.y-newPoint.y, 2));
-		
+
 		if(new_distance > mySize*0.9 || overlapWithPrevCharacter || mustMove){
 			[self setCoordinate:[[rootArray objectAtIndex:0]coordinate]];
 			//移動し終わった位置情報はrootArray_bufferにpushして、rootArrayから削除。

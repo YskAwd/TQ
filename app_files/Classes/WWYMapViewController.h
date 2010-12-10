@@ -24,7 +24,7 @@
 #import "FMResultSet.h"
 
 @interface WWYMapViewController : UIViewController <MKMapViewDelegate> {
-	IBOutlet WWYViewController* wWYViewController_;
+	WWYViewController* wWYViewController_;
 	MKMapView* mapView_;//MKMapViewはsubclassに拡張して使わない方がいいらしい。ドキュメントに書いてる。
 	CGRect mapFrame_;
 	UIImageView *nowLocatingImageView_;
@@ -76,6 +76,7 @@
 -(void)upDatesCLHeading:(CLHeading*)newHeading;//MyLocaitonGetterから新しいCLHeadingが来たときに呼ばれる。
 -(CGPoint)convertToPointFromLocation:(CLLocation*)location;//characterViewから、自分の位置を計算するために呼ばれる
 -(CLLocationCoordinate2D)convertToCoordinateFromPoint:(CGPoint)point;//他クラスから位置を計算するために呼ばれる
+-(CGPoint)convertToPointFromCoordinate:(CLLocationCoordinate2D)coordinate;//他クラスから位置を計算するために呼ばれるmapVewとself.viewのサイズの違いを考慮して変換。
 -(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle moved:(BOOL)moved;//annotationをプラスするために呼ばれる。（WWYViewControllerから等。旧互換のためのメソッド。）
 -(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType userInfo:(id)userInfo selected:(BOOL)selected moved:(BOOL)moved;//annotationを追加するために呼ばれる（WWYViewControllerから等。userInfoつき。）
 -(WWYAnnotation*)addAnnotationWithLat:(CGFloat)latitude Lng:(CGFloat)longitude title:(NSString*)title subtitle:(NSString*)subtitle annotationType:(int)annotationType selected:(BOOL)selected moved:(BOOL)moved;//annotationをプラスするために呼ばれる。（WWYViewControllerから等）

@@ -233,8 +233,10 @@
 	CGFloat desLng = _newCoordinate.longitude - _characterAnnotation.coordinate.longitude;
 	
 	//現在のロケーションと新ロケーションの、ポイントベースの距離
-	CGPoint currPoint = [mapView_ convertCoordinate:_characterAnnotation.coordinate toPointToView:mapView_];
-	CGPoint nextPoint = [mapView_ convertCoordinate:_newCoordinate toPointToView:mapView_];
+	/*CGPoint currPoint = [mapView_ convertCoordinate:_characterAnnotation.coordinate toPointToView:mapView_];
+	CGPoint nextPoint = [mapView_ convertCoordinate:_newCoordinate toPointToView:mapView_];*/
+	CGPoint currPoint = [self convertToPointFromCoordinate:_characterAnnotation.coordinate];
+	CGPoint nextPoint = [self convertToPointFromCoordinate:_newCoordinate];
 	CGFloat dis_point = sqrt(pow(nextPoint.x-currPoint.x, 2) + pow(nextPoint.y-currPoint.y, 2));
 	
 	//if(desLat != 0 || desLng != 0){//前回取得時と位置情報が同じじゃなければ
@@ -963,7 +965,7 @@
 		CGPoint oldPoint = [mapView_ convertCoordinate:currentCenterCoordinate_ toPointToView:mapView_];
 		CGPoint newPoint = [mapView_ convertCoordinate:newCenterCoordinate toPointToView:mapView_];
 		CGFloat distance = sqrt( pow((oldPoint.x-newPoint.x),2) + pow((oldPoint.y-newPoint.y),2));
-		if(distance > 50.0){
+		if(distance > 60.0){
 			//現在地追随モードをoffに。
 			[wWYViewController_ doLocationButtonActionAtMode:WWYLocationButtonMode_OFF];
 		}
@@ -1052,17 +1054,21 @@
 	}
 }
 //ViewControlerメソッド************************************************************************
+- (void)loadView {//初期化メソッドをloadViewに変更
+	[super loadView];
+}
 /*
  // Implement loadView to create a view hierarchy programmatically, without using a nib.
  - (void)loadView {
  }
  */
-
+/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
 }
+*/
+ 
 //前回終了時のmapのregionを取得
 - (void)getMapRegionAtLastTime {
 	
@@ -1090,7 +1096,7 @@
 	if(!latitudeDelta_atStart_ || latitudeDelta_atStart_==999) latitudeDelta_atStart_ = 23.536058;//0.014;
 	if(!longitudeDelta_atStart_ || longitudeDelta_atStart_==999) longitudeDelta_atStart_ = 22.236328;//0.013;
 	if(!mapType_atStart_ || mapType_atStart_==999) mapType_atStart_ = 0;
-
+	if(last_time_mapRegion_not_exsist_) NSLog(@"last_time_mapRegion_not_exsist_");
 }
 
 /*

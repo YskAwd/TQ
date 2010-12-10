@@ -39,6 +39,8 @@
 	if(taskBattleManager_) [taskBattleManager_ release];
 	if(taskViewController_) [taskViewController_.view removeFromSuperview];[taskViewController_ release];
 	if(taskBattleViewController_) [taskBattleViewController_.view removeFromSuperview];[taskBattleViewController_ release];
+	if(locationButtonImg_location_) [locationButtonImg_location_ release];
+	if(locationButtonImg_heading_) [locationButtonImg_heading_ release];
 	if(networkConnectionManager_) [networkConnectionManager_ release];
     [super dealloc];
 }
@@ -66,16 +68,18 @@
  */
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+ - (void)loadView {//初期化メソッドをloadViewに変更
+	 [super loadView];
 	// Custom initialization
 	
 	//ツールバーとボタンを生成
 	toolBar_ =  [[UIToolbar alloc]initWithFrame:CGRectMake(0, 416, 320, 44)];
 	toolBar_.barStyle = UIBarStyleBlackOpaque;
 	locationButtonMode_ = 0;
-	locationButtonImg_location_ = [UIImage imageNamed:@"btn_location.png"];
-	locationButtonImg_heading_ = [UIImage imageNamed:@"btn_heading.png"];
+	locationButtonImg_location_ = [[UIImage imageNamed:@"btn_location.png"]retain];
+	locationButtonImg_heading_ = [[UIImage imageNamed:@"btn_heading.png"]retain];
 	locationButton_ = [[UIBarButtonItem alloc]initWithImage:locationButtonImg_location_ 
 													  style:UIBarButtonItemStyleBordered target:self 
 													 action:@selector(doLocationButtonAction)];
@@ -271,18 +275,18 @@
 -(void)setLocationButtonMode:(int)locationButtonMode{
 	switch (locationButtonMode) {
 		case WWYLocationButtonMode_OFF:
-			locationButton_.style = UIBarButtonItemStyleBordered;
 			locationButton_.image = locationButtonImg_location_;
+			locationButton_.style = UIBarButtonItemStyleBordered;
 			locationButtonMode_ = WWYLocationButtonMode_OFF;
 			break;
 		case WWYLocationButtonMode_LOCATION:
-			locationButton_.style = UIBarButtonItemStyleDone;
 			locationButton_.image = locationButtonImg_location_;
+			locationButton_.style = UIBarButtonItemStyleDone;
 			locationButtonMode_ = WWYLocationButtonMode_LOCATION;
 			break;
 		case WWYLocationButtonMode_HEADING:
-			locationButton_.style = UIBarButtonItemStyleDone;
 			locationButton_.image = locationButtonImg_heading_;
+			locationButton_.style = UIBarButtonItemStyleDone;
 			locationButtonMode_ = WWYLocationButtonMode_HEADING;
 			break;
 		default:
@@ -647,21 +651,24 @@
 
 //リクルート広告を表示
 -(void)showRecruitAd{
-	if(!adViewController_){
-		adViewController_ = [[WWYAdViewController2 alloc]initWithViewFrame:CGRectMake(0, 380, 320, 36) wWYViewController:self];
-		//adViewController_ = [[WWYAdViewController2 alloc]initWithViewFrame:CGRectMake(180, 420, 140, 40) wWYViewController:self];
-		
-		adViewController_.view.frame = CGRectMake(-adViewController_.view.frame.size.width, adViewController_.view.frame.origin.y, adViewController_.view.frame.size.width, adViewController_.view.frame.size.height);
-		[self.view insertSubview:adViewController_.view atIndex:1];
-		
-		[UIView beginAnimations:nil context:NULL];  
-		[UIView setAnimationDuration:0.2];
-		adViewController_.view.frame = CGRectMake(0, adViewController_.view.frame.origin.y, adViewController_.view.frame.size.width, adViewController_.view.frame.size.height);
-		[UIView commitAnimations];
-	}else {
-		[adViewController_ refreshAd];
+	NSArray *languages = [NSLocale preferredLanguages];
+	NSString *currentLanguage = [languages objectAtIndex:0];
+	if([currentLanguage isEqualToString:@"ja"]){//ユーザの言語環境が日本語なら
+		if(!adViewController_){
+			adViewController_ = [[WWYAdViewController2 alloc]initWithViewFrame:CGRectMake(0, 380, 320, 36) wWYViewController:self];
+			//adViewController_ = [[WWYAdViewController2 alloc]initWithViewFrame:CGRectMake(180, 420, 140, 40) wWYViewController:self];
+			
+			adViewController_.view.frame = CGRectMake(-adViewController_.view.frame.size.width, adViewController_.view.frame.origin.y, adViewController_.view.frame.size.width, adViewController_.view.frame.size.height);
+			[self.view insertSubview:adViewController_.view atIndex:1];
+			
+			[UIView beginAnimations:nil context:NULL];  
+			[UIView setAnimationDuration:0.2];
+			adViewController_.view.frame = CGRectMake(0, adViewController_.view.frame.origin.y, adViewController_.view.frame.size.width, adViewController_.view.frame.size.height);
+			[UIView commitAnimations];
+		}else {
+			[adViewController_ refreshAd];
+		}
 	}
-
 }
 //リクルート広告を非表示
 -(void)closeRecruiteAdView{
@@ -677,9 +684,11 @@
 }
 //リクルート広告を解放//上のメソッドのアニメーション後に呼び出される
 -(void)removeRecruiteAdView{
-	[adViewController_ preCloseAction];
-	[adViewController_.view removeFromSuperview];
-	[adViewController_ release]; adViewController_ = nil;
+	if(adViewController_){
+		[adViewController_ preCloseAction];
+		[adViewController_.view removeFromSuperview];
+		[adViewController_ release]; adViewController_ = nil;
+	}
 }
 
 @end

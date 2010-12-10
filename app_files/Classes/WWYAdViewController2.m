@@ -1,6 +1,6 @@
     //
 //  WWYAdViewController2.m
-//  WWY2
+//  WWY
 //
 //  Created by AWorkStation on 10/11/15.
 //  Copyright 2010 Japan. All rights reserved.
@@ -27,7 +27,10 @@
 		[wWYViewController retain];
 		_wWYViewController = wWYViewController;
 		
+		//test
 		_dokoikuBasicURL = @"http://nw.ads.doko.jp/haishin/a?i=SI03YSAK&ip=&u=&m=p&d=n&k=%E3%83%9B%E3%83%86%E3%83%AB&gk=1&g=j&c=1&r=2&is=b&rc=5&pg=test&hs=n&fq=d&nolog=1";
+		//本番
+		//_dokoikuBasicURL = @"http://nw.ads.doko.jp/haishin/a?i=SI03YSAK&ip=&u=&m=p&d=n&k=%E3%83%9B%E3%83%86%E3%83%AB&gk=1&g=j&c=1&r=2&is=b&rc=5&pg=WithTheHero&hs=n&fq=d";
 		
 		self.view.frame = frame;
 		self.view.opaque = false;
@@ -39,7 +42,7 @@
 			_adTextLabel.frame = CGRectMake(30, 2, frame.size.width-32, frame.size.height-4);
 			_adTextLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
 			_adTextLabel.textColor = [UIColor whiteColor];
-			_adTextLabel.font = [UIFont systemFontOfSize:8];
+			_adTextLabel.font = [UIFont systemFontOfSize:9];
 			_adTextLabel.numberOfLines = 3;
 			_adTextLabel.textAlignment = UITextAlignmentLeft;
 			_adTextLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
@@ -71,14 +74,6 @@
 		[self.view addSubview:_adTextLabel];
 		[self.view addSubview:_adLinkButton];
 		
-		
-		/*//一定間隔で広告をリフレッシュさせるためのタイマー
-		_refreshAdTimer = [NSTimer scheduledTimerWithTimeInterval:30.0f
-														   target:self 
-														 selector:@selector(refreshAdLoop:) 
-														 userInfo:nil 
-														  repeats:YES];*/
-		
 		//一定時間後に広告を閉じるためのタイマー
 		[self makeAndReset_CloseAdTimer];
 		
@@ -96,7 +91,7 @@
 		}
 		_closeAdTimer = nil;
 	}
-	_closeAdTimer = [NSTimer scheduledTimerWithTimeInterval:10.0f
+	_closeAdTimer = [NSTimer scheduledTimerWithTimeInterval:12.0f
 													 target:self 
 												   selector:@selector(closeRecruiteAdView:) 
 												   userInfo:nil 
