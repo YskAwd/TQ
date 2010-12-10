@@ -12,14 +12,15 @@
 @implementation WWYAdController
 @synthesize adMobView_;
 
--(id)initWithDelegate:(NSObject*)delegate{
+-(id)initWithDelegate:(NSObject*)delegate viewController:(UIViewController*)viewController{
 	if([super init]){
 		//delegate_（AdMobDelegateであるこのクラスのdelegate）設定
 		delegate_ = delegate;
-
+		viewController_ = viewController;
+		
 		//adMobView_を作成。
 		adMobView_ = [AdMobView requestAdWithDelegate:self]; // start a new ad request
-		adMobView_.frame = CGRectMake(0, 388, 320, 48); // set the frame, in this case at the bottom of the screen
+		adMobView_.frame = CGRectMake(0, 368, 320, 48); // set the frame, in this case at the bottom of the screen
 		//[self.window addSubview:adMobView_]; // attach the ad to the view hierarchy; self.window is responsible for retaining the ad		
 		
 		//一定間隔で広告をリフレッシュさせるためのタイマー
@@ -32,43 +33,97 @@
 	return self;
 }
 
-- (NSString *)publisherId{
-	return @"a14b24920dbaa8f";
+#pragma mark -
+#pragma mark AdMobDelegate methods
+
+- (NSString *)publisherIdForAd:(AdMobView *)adView {
+	return @"a14b24920dbaa8f"; // this should be prefilled; if not, get it from www.admob.com
 }
 
-- (BOOL)useTestAd {
-	//return YES;//テスト時
-	return NO;//リリース時
+- (UIViewController *)currentViewControllerForAd:(AdMobView *)adView {
+	//ここで返すViewControllerに、フルスクリーンのWebView等がモーダルウインドウとして加わる。adViewが表示されているViewControllerでなくてもよい。
+	return viewController_;
 }
 
-/*
-- (NSString *)testAdAction{
-	// If implemented, lets you specify the action type of the test ad. Defaults to @"url" (web page).
-	// Does nothing if useTestAd is not implemented or returns NO.
-	// Acceptable values are @"url", @"app", @"movie", @"itunes", @"call", @"canvas".  For interstitials
-	// use "video_int".
-	// Normally, the adservers restricts ads appropriately (e.g. no click to call ads for iPod touches).
-	// However, for your testing convenience, they will return any type requested for test ads.
-	return @"url";
+#pragma mark optional notification methods
+
+- (void)didReceiveAd:(AdMobView *)adView{
+	NSLog(@"[didReceiveAd!!]");	
+}
+- (void)didFailToReceiveAd:(AdMobView *)adView{
+	NSLog(@"[didFailToReceiveAd!!]");
+}/*
+- (void)willPresentFullScreenModalFromAd:(AdMobView *)adView{
+	NSLog(@"[willPresentFullScreenModalFromAd!!]");
+}
+- (void)didPresentFullScreenModalFromAd:(AdMobView *)adView{
+	NSLog(@"[didPresentFullScreenModalFromAd!!]");
+}
+- (void)willDismissFullScreenModalFromAd:(AdMobView *)adView{
+	NSLog(@"[willDismissFullScreenModalFromAd!!]");
+}
+- (void)didDismissFullScreenModalFromAd:(AdMobView *)adView{
+	NSLog(@"[didDismissFullScreenModalFromAd!!]");
+}
+- (void)applicationWillTerminateFromAd:(AdMobView *)adView{
+	NSLog(@"[applicationWillTerminateFromAd!!]");
 }
 */
 
-- (BOOL)mayAskForLocation{
-	return YES;
+#pragma mark optional test ad methods
+
+- (NSArray *)testDevices{
+	return [NSArray arrayWithObjects:
+			ADMOB_SIMULATOR_ID,                             // Simulator
+			@"9859ef17ce274324c3856612d57bb5281aa22873",  // Test iPhone 4 4.2
+			nil];
 }
 
-- (CLLocation *)location{
-	//NSLog(@"AdMobNeedsLocation!!!!!!!!!!!!!!!");
+- (NSString *)testAdActionForAd:(AdMobView *)adView{
+	//Acceptable values are @"url", @"app", @"movie", @"call", @"canvas".  For interstitials
+	// use "video_int".
+	return @"url";
+}
+
+
+#pragma mark optional targeting info methods
+
+- (double)locationLatitude{
+	CLLocation *nowLocation = [self getNowLocationForAd];
+	return nowLocation.coordinate.latitude;
+}
+- (double)locationLongitude{
+	CLLocation *nowLocation = [self getNowLocationForAd];
+	return nowLocation.coordinate.longitude;
+}
+- (NSDate *)locationTimestamp{
+	CLLocation *nowLocation = [self getNowLocationForAd];
+	return nowLocation.timestamp;
+}
+
+#pragma mark optional appearance control methods
+
+- (UIColor *)adBackgroundColorForAd:(AdMobView *)adView{
+	return [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+}
+/*
+// Specifies the primary text color for ads.
+// Defaults to [UIColor whiteColor].
+- (UIColor *)primaryTextColorForAd:(AdMobView *)adView;
+
+// Specifies the secondary text color for ads.
+// Defaults to [UIColor whiteColor].
+- (UIColor *)secondaryTextColorForAd:(AdMobView *)adView;
+*/
+
+#pragma mark awad orinal methods
+
+- (CLLocation *)getNowLocationForAd{
 	CLLocation *nowlocation;
 	if([delegate_ respondsToSelector:@selector(getNowLocationForAd)]){
-		nowlocation = [delegate_ getNowLocationForAdMob];
+		nowlocation = [delegate_ getNowLocationForAd];
 	}
 	return nowlocation;	
-}
-
-
-- (UIColor *)adBackgroundColor{
-	return [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
 }
 
 -(void)refreshAdLoop:(NSTimer*)timer{

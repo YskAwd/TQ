@@ -619,8 +619,9 @@
 }
 
 -(void)makeAdController{//AdControllerを作る。
-	adController_ = [[WWYAdController alloc]initWithDelegate:self];
+	adController_ = [[WWYAdController alloc]initWithDelegate:self viewController:self];
 	[configViewController_.view addSubview:adController_.adMobView_];
+	//[self.view addSubview:adController_.adMobView_];
 }
 
 //UIWebViewを立ち上げる

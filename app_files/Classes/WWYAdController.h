@@ -5,7 +5,6 @@
 //  Created by awaBook on 09/12/14.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "AdMobDelegateProtocol.h"
@@ -13,12 +12,14 @@
 
 @interface WWYAdController : NSObject <AdMobDelegate> {
 	AdMobView *adMobView_;
+	UIViewController *viewController_;
 	NSObject *delegate_;//このdelegateはAdMobDelegateではなく、AdMobDelegateであるこのクラスのdelegate（管理元）であることに注意。
 	NSTimer *refreshAdTimer_;//一定時間ごとに広告をリフレッシュさせるためのタイマー
 }
 
 //AdMobDelegateメソッド
-- (NSString *)publisherId;
+- (UIViewController *)currentViewControllerForAd:(AdMobView *)adView;
+- (NSString *)publisherIdForAd:(AdMobView *)adView;
 - (BOOL)useTestAd;
 
 //以下はオプションのAdMobDelegateメソッド

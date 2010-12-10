@@ -1,6 +1,6 @@
     //
 //  WebViewController.m
-//  WWY2
+//  WWY
 //
 //  Created by AWorkStation on 10/11/27.
 //  Copyright 2010 Japan. All rights reserved.
@@ -21,6 +21,7 @@
 	[backButton_ release]; 
 	[forwardButton_ release];
 	[barButtonItemSpacer_ release];
+	[barButtonItemFixedSpacer_ release];
 	[navigationItem_ release];
 	[toolBar_ release];
 	[navigationBar_ release];
@@ -35,9 +36,10 @@
 	}
 	return self;
 }
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
+- (void)loadView {//初期化メソッドをloadViewに変更
+	[super loadView];
+//- (void)viewDidLoad {
+//	[super viewDidLoad];
 	self.view.frame = CGRectMake(0, 20, self.view.frame.size.width, 440);
 	
 	// UIWebViewの設定
@@ -89,10 +91,13 @@
 	barButtonItemSpacer_ = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
 																			 target:nil action:nil];
 	
+	barButtonItemFixedSpacer_ = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
+																			target:nil action:nil];
+	barButtonItemFixedSpacer_.width = 30;
 	
 	[navigationItem_ setLeftBarButtonItem:goodbyeButton_ animated:NO];
 	
-	[toolBar_ setItems:[NSArray arrayWithObjects:backButton_, forwardButton_,barButtonItemSpacer_, stopButton_, nil]];
+	[toolBar_ setItems:[NSArray arrayWithObjects:backButton_, barButtonItemFixedSpacer_, forwardButton_,barButtonItemSpacer_, stopButton_, nil]];
 	[navigationBar_ setItems:[NSArray arrayWithObject:navigationItem_]];
 	
 	[self.view addSubview:navigationBar_];
@@ -136,9 +141,9 @@
 	backButton_.enabled = webView_.canGoBack;
 	forwardButton_.enabled = webView_.canGoForward;
 	if ( webView_.loading ) {
-		[toolBar_ setItems:[NSArray arrayWithObjects:backButton_, forwardButton_, barButtonItemSpacer_, stopButton_, nil]];
+		[toolBar_ setItems:[NSArray arrayWithObjects:backButton_, barButtonItemFixedSpacer_, forwardButton_, barButtonItemSpacer_, stopButton_, nil]];
 	} else {
-		[toolBar_ setItems:[NSArray arrayWithObjects:backButton_, forwardButton_, barButtonItemSpacer_, reloadButton_, nil]];
+		[toolBar_ setItems:[NSArray arrayWithObjects:backButton_, barButtonItemFixedSpacer_, forwardButton_, barButtonItemSpacer_, reloadButton_, nil]];
 	}
 }
 
