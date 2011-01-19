@@ -211,9 +211,8 @@
 }*/
 
 -(void)setIDForColumnsFromNSNumberArray:(NSArray*)myIDArray{
-	NSArray* IDArray = [NSArray arrayWithArray:myIDArray copyItems:true];
-	for(int i=0; i<[commandColumnArray count] && i<[IDArray count]; i++){
-		[[commandColumnArray objectAtIndex:i]setId:[[IDArray objectAtIndex:i]intValue]];
+	for(int i=0; i<[commandColumnArray count] && i<[myIDArray count]; i++){
+		[[commandColumnArray objectAtIndex:i]setId:[[myIDArray objectAtIndex:i]intValue]];
 	}
 }
 -(void)setTitle:(NSString*)title withWidth:(CGFloat)width withHeight:(CGFloat)heightOrZero{

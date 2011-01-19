@@ -496,10 +496,13 @@
 			[locoloAdLiveView_ removeFromSuperview];
 			[locoloAdLiveView_ autorelease]; locoloAdLiveView_ = nil;
 			//configCommandView_をリセット
-			//[configCommandView_ resetToDefault];//今のところページ送りないので省略
+			//[configCommandView_ resetToDefault];//今のところページ送りないので省略			
+			configCommandView_.touchEnable = true;
 			//コマンド実行（iTunesStoreへ）
 			//NSLog(@"locoloAd_url_: %@",locoloAd_url_);
 			[[UIApplication sharedApplication] openURL:[NSURL URLWithString:locoloAd_url_]];  
+			//このViewを非表示に
+			[wWYViewController_ configModeOnOff];
 		}else if([commandString isEqualToString:NSLocalizedString(@"no",@"")]){//"いいえ"ならば（ロコロの宣伝は見に行かずconfigCommandView_まで戻る）
 			//locoloAdYesNoCommandView_を非表示、解放
 			[locoloAdYesNoCommandView_ removeFromSuperview];
