@@ -8,11 +8,11 @@
  */
 
 //実際にtweetするかどうか。(開発中むやみにtweetしないように）
-//#define TWEET_ENABLE true
-#define TWEET_ENABLE false
+#define TWEET_ENABLE true
+//#define TWEET_ENABLE false
 
 //twitterへのポストの最後につける文字列（ハッシュタグを設定）
-#define TWITTER_HASH_TAG @"#taskquest"
+#define TWITTER_HASH_TAG @"#taskquest_dev"
 
 //タスクの実行日時の何秒前に知らせるか。
 #define TASK_PRE_NOTIFICATION_SECONDS 300.0//5分

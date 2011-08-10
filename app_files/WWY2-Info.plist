@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string>dock_icon.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>YW8F3Z2CWJ.com.locolocode</string>
+	<string>com.locolocode.tasquest</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -24,8 +24,6 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSMainNibFile</key>
-	<string>MainWindow</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
 </dict>

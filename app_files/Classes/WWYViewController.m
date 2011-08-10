@@ -46,7 +46,8 @@
 }
 
 - (id)init {
-    if (self = [super init]) {
+    self = [super init];
+    if (self) {
 		myLocationGetter_ = [[MyLocationGetter alloc]init];
 		myLocationGetter_.delegate_ = self;
 		//ロケーションの検知を始める
@@ -72,6 +73,7 @@
 //    [super viewDidLoad];
  - (void)loadView {//初期化メソッドをloadViewに変更
 	 [super loadView];
+// - (void)initView {
 	// Custom initialization
 	
 	//ツールバーとボタンを生成

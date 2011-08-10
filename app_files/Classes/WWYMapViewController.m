@@ -83,7 +83,8 @@
 	return newPoint;
 }
 - (CLLocationCoordinate2D)convertToCoordinateFromPoint:(CGPoint)point{
-	point.x -= mapView_.frame.origin.x*2, point.y -= mapView_.frame.origin.y*2;
+	//point.x -= mapView_.frame.origin.x*2, point.y -= mapView_.frame.origin.y*2;
+    point.x -= mapView_.frame.origin.x, point.y -= mapView_.frame.origin.y;
 	CLLocationCoordinate2D newCoodinate = [mapView_ convertPoint:point toCoordinateFromView:mapView_];
 	return newCoodinate;
 }
@@ -875,7 +876,7 @@
 //CatchTapOnMapViewのDelegateメソッド*****************************************************
 //Tap位置取得メソッド
 -(void)receiveTapPosition:(CGPoint)point{
-	NSLog(@"hitTest() x=%f y=%f", point.x, point.y);
+	//NSLog(@"hitTest() x=%f y=%f", point.x, point.y);
 	
 	//図上をタップして、Anotationを追加するモードなら、Anotationを追加する。
 	if(isAddAnotationWithTapMode_){
