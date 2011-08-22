@@ -141,28 +141,34 @@
 }
 //勝ったか負けたかをツイートする。
 -(void)tweetOfWinOrLose:(BOOL)win{
-	TwitterManager *twitterManager = [[TwitterManager alloc]initWithDelegate:self];
-	
-	NSMutableString *post_txt;
-	if(win){//勝ったとき
-		post_txt = 
-		[NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle",@""),
-		 hero_name_,enemy_name_,task_title_];
-		
-	}else{//負けたとき
-		post_txt = 
-		[NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle",@""),
-		 hero_name_ ];
-	}
-	
-	BOOL success = [twitterManager postTweet:post_txt];
-	if(success){
-		[self tweetCompleted];
-	}else {
-		[self tweetFailed];
-	}
-	
-	[twitterManager release];
+    //twitterアカウントが設定されていればTweetする。
+    if([[NSUserDefaults standardUserDefaults]objectForKey:@"twitter_username"]){
+        TwitterManager *twitterManager = [[TwitterManager alloc]initWithDelegate:self];
+        
+        NSMutableString *post_txt;
+        if(win){//勝ったとき
+            post_txt = 
+            [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle",@""),
+             hero_name_,enemy_name_,task_title_];
+            
+        }else{//負けたとき
+            post_txt = 
+            [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle",@""),
+             hero_name_ ];
+        }
+        
+        BOOL success = [twitterManager postTweet:post_txt];
+        if(success){
+            [self tweetCompleted];
+        }else {
+            [self tweetFailed];
+        }
+        [twitterManager release];
+    }
+    //twitterアカウントが設定されていなければ、Tweetせずに終了
+    else{
+        [wWYViewController_ taskBattleComplete];
+    }
 }
 
 -(void)tweetCompleted{

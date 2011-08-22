@@ -461,7 +461,7 @@
     if (params) {
         fullPath = [self _queryStringWithBase:fullPath parameters:params prefixed:YES];
     }
-	
+
 #if YAJL_AVAILABLE
 	NSString *domain = nil;
 	NSString *connectionType = nil;
@@ -1013,19 +1013,8 @@
     return [self sendUpdate:status inReplyTo:0];
 }
 
-//awazu geotagつけてTweetできるよう改造
-- (NSString *)sendUpdate:(NSString *)status withLat:(NSString *)lat lng:(NSString *)lng
-{
-    return [self sendUpdate:status withLat:lat lng:lng inReplyTo:0];
-}
 
 - (NSString *)sendUpdate:(NSString *)status inReplyTo:(unsigned long)updateID
-{
-	return [self sendUpdate:status withLat:NULL lng:NULL inReplyTo:updateID];
-}
-
-//awazu geotagつけてTweetできるよう改造
-- (NSString *)sendUpdate:(NSString *)status withLat:(NSString *)lat lng:(NSString *)lng inReplyTo:(unsigned long)updateID
 {
     if (!status) {
         return nil;
@@ -1040,20 +1029,11 @@
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:0];
     [params setObject:trimmedText forKey:@"status"];
-	
-	if(lat && lng){
-	//awazu
-	[params setObject:lat forKey:@"lat"];
-	[params setObject:lng forKey:@"long"];
-	[params setObject:@"true" forKey:@"display_coordinates"];
-	//^awazu
-	}
-
     if (updateID > 0) {
         [params setObject:[NSString stringWithFormat:@"%u", updateID] forKey:@"in_reply_to_status_id"];
     }
     NSString *body = [self _queryStringWithBase:nil parameters:params prefixed:NO];
-
+    
     return [self _sendRequestWithMethod:HTTP_POST_METHOD path:path 
                         queryParameters:params body:body 
                             requestType:MGTwitterUpdateSendRequest

@@ -95,9 +95,7 @@
 
 - (NSString *)getUpdate:(unsigned long)updateID; // statuses/show
 - (NSString *)sendUpdate:(NSString *)status; // statuses/update
-- (NSString *)sendUpdate:(NSString *)status withLat:(NSString *)lat lng:(NSString *)lng;//awazu 上のに加えてgeotagつけてTweetできるよう改造
 - (NSString *)sendUpdate:(NSString *)status inReplyTo:(unsigned long)updateID; // statuses/update
-- (NSString *)sendUpdate:(NSString *)status withLat:(NSString *)lat lng:(NSString *)lng inReplyTo:(unsigned long)updateID;//awazu 上のに加えてgeotagつけてTweetできるよう改造
 
 - (NSString *)getRepliesStartingAtPage:(int)pageNum; // statuses/mentions
 - (NSString *)getRepliesSinceID:(unsigned long)sinceID startingAtPage:(int)pageNum count:(int)count; // statuses/mentions

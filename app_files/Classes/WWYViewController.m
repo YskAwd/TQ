@@ -179,6 +179,17 @@
 	[mapViewController_ stopCLHeading];
 }
 
+//30秒待ってロケーションが取得できない場合に、MyLocationGetterから呼ばれる
+-(void)locationUnavailable{
+	//locationの更新オフは、MyLocationGetterですでにされている
+	UIAlertView *locationAlert = [[UIAlertView alloc]
+                                  initWithTitle:nil
+                                  message:NSLocalizedString(@"User Location Unavailable",@"") delegate:nil
+                                  cancelButtonTitle:@"OK" 
+                                  otherButtonTitles:nil];
+	[locationAlert show];
+	[locationAlert release];
+}
 //mapViewController_.mapViewでの座標を変換するメソッド。（mapViewController_.mapView直接だと取得できないので）*******************************************************************
 -(CGPoint)convertToPointFromLocation:(CLLocation*)location{
 	//CGPoint newPoint = [mapView_ convertCoordinate:location.coordinate toPointToView:mapView_];

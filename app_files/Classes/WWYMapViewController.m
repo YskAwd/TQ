@@ -831,17 +831,6 @@
 	return annotationArray;
 }
 
-//30秒待ってロケーションが取得できない場合に、MyLocationGetterから呼ばれる
--(void)locationUnavailable{
-	//locationの更新オフは、MyLocationGetterですでにされている
-	UIAlertView *locationAlert = [[UIAlertView alloc]
-							  initWithTitle:nil
-							  message:NSLocalizedString(@"User Location Unavailable",@"") delegate:nil
-							  cancelButtonTitle:@"OK" 
-							  otherButtonTitles:nil];
-	[locationAlert show];
-	[locationAlert release];
-}
 
 //地図上をタップして、Anotationを追加する関係のメソッド*************************************************
 //「地図上をタップして、Anotationを追加するモード」をスタートする

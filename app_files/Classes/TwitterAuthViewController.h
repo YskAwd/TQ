@@ -14,7 +14,7 @@
 @class WWYViewController;
 
 
-@interface TwitterAuthViewController : UIViewController {
+@interface TwitterAuthViewController : UIViewController <LiveViewDelegate>{
 	
 	OAuthTwitterViewController *oAuthTwitterViewController_;
 	WWYViewController *delegate_;

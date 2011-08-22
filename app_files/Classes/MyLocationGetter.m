@@ -66,7 +66,7 @@ fromLocation:(CLLocation*)oldLocation
 	[delegate_ upDatesCLHeading:newHeading];
 }  
 
-//30秒待ってロケーションが取得できない場合は、delegate_に通知して、更新をストップする
+//120秒待ってロケーションが取得できない場合は、delegate_に通知して、更新をストップする
 -(void)checkLocationAvailable:(NSTimer*)timer{
 	if(!locationAvailable_){
 		[self stopUpdatingLocation];

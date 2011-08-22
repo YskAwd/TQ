@@ -56,8 +56,12 @@
 }
 //すでに認証がされていたら呼ばれる
 -(void)twitterOAuthAlreadyAuthenticated{
-	if(!liveView_) liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(15, 250, 280, 190) withDelegate:self];
-	[self.view addSubview:liveView_];
+    if(!liveView_){
+        liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(15, 250, 280, 190) withDelegate:self withMaxColumn:4];
+        liveView_.overflowMode = WWYLiveViewOverflowMode_noAction;
+        [liveView_.moreTextButt setAlpha:0.0];//下の三角ボタンを最初は表示しないように設定。
+    }
+    [self.view addSubview:liveView_];
 	liveView_.actionDelay = 0.0;
 	[liveView_ setTextAndGo:NSLocalizedString(@"twitter_account_sudeni_ninshou",@"") actionAtTextFinished:@selector(askAnotheAccountAuth) 
 				   userInfo:nil target:self];
@@ -74,8 +78,12 @@
 }
 //twitter認証が成功したら呼ばれる
 -(void)twitterOAuthSuccess{
-	if(!liveView_) liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(15, 250, 280, 190) withDelegate:self];
-	[self.view addSubview:liveView_];
+    if(!liveView_){
+        liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(15, 250, 280, 190) withDelegate:self withMaxColumn:4];
+        liveView_.overflowMode = WWYLiveViewOverflowMode_noAction;
+        [liveView_.moreTextButt setAlpha:0.0];//下の三角ボタンを最初は表示しないように設定。
+    }
+    [self.view addSubview:liveView_];
 	liveView_.actionDelay = 1.5;
 	[liveView_ setTextAndGo:NSLocalizedString(@"twitter_account_ninshou_sekou",@"") actionAtTextFinished:@selector(twitterAuthenticationEnded) 
 				   userInfo:nil target:delegate_];
