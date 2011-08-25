@@ -58,7 +58,10 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
 	WWYAdController *adController_;
 	
 	URLConnectionGetter* urlConnectionGetter_;
-	
+    
+    //タスクがあるか定期的にチェックするタイマー。
+    NSTimer* taskCheckTImer_;
+    
 	//以下デバッグ用。debugViewControllerを生成して、viewを表示するコードは書いてない（以前はxibで配置していたので）
 	//DebugViewController* debugViewController_;
 	//IBOutlet UIBarButtonItem* debugButton_;

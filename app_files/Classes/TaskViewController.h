@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class WWYViewController;
+#import "Define.h"
 #import "WWYMapViewController.h"
 #import "WWYCommandView.h"
 #import "LiveView.h"
@@ -55,6 +56,8 @@
 	CGRect taskDetailLabelFrame_;
 	CGRect taskDetailWakuFrame_;
 	CGRect taskDetailTextFrame_;
+    
+    UIColor* textColorWhenNoFix_;
 }
 -(id)initWhenAddTaskWithViewFrame:(CGRect)frame wWYViewController:(WWYViewController*)wWYViewController;//タスク追加時のinitメソッド。
 -(id)initWhenEditTask:(WWYTask*)task viewFrame:(CGRect)frame wWYViewController:(WWYViewController*)wWYViewController;//タスク編集時のinitメソッド。

@@ -38,8 +38,23 @@
 		
 		// コンパスが利用できるかどうか 
 		headingAvailable_ = locationManager_.headingAvailable;
+        
+        //現在地取得できない環境でデバッグするために、2秒後に現在地をdelegateにプッシュ。（その後タイマーはautorelease）
+        if(IS_TEST && PUSH_DAMMY_LOCATION_AT_TEST){
+            [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                             target:self
+                                           selector:@selector(debugWhenNoLocation:)
+                                           userInfo:nil
+                                            repeats:NO];
+        }
 	}
 } 
+//現在地取得できない環境でデバッグするために、delegateに現在地をプッシュ
+-(void)debugWhenNoLocation:(NSTimer*)timer{
+    if(IS_TEST && PUSH_DAMMY_LOCATION_AT_TEST){
+        [delegate_ upDatesCLLocation:[[CLLocation alloc]initWithLatitude:35.6 longitude:140.1]];
+    }
+}
 
 // CLLocationManagerDelegateプロトコルのデリゲートメソッド(位置)
 - (void)locationManager:(CLLocationManager*)manager 

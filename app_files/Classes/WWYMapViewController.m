@@ -120,7 +120,7 @@
 -(void)upDatesCLLocation:(CLLocation*)newLocation{
 	if(fabs(newLocation.coordinate.latitude) < 90.0 && fabs(newLocation.coordinate.longitude) < 180.0){//lat,lngのとりうる範囲内のみに、一応限定。
 		userlocationUpdate_ += 1;
-		
+
 		CLLocation* _newLocation = [[CLLocation alloc]initWithLatitude:newLocation.coordinate.latitude longitude:newLocation.coordinate.longitude];
 		if(userlocationUpdate_ == 1){
 			
@@ -995,7 +995,8 @@
 		}
 	}else if([annotation isKindOfClass:[WWYAnnotation class]]){
 		if([annotation respondsToSelector:@selector(annotationType)]){
-			switch ([annotation annotationType]) {
+            int annotationType = [annotation annotationType];
+			switch (annotationType) {
 				case WWYAnnotationType_castle://検索した結果追加されたランドマークのannotationなら
 					annotationView = [[[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"awazu"]autorelease];
 					annotationView.canShowCallout = YES;
@@ -1031,7 +1032,8 @@
 //annotaionのポップアップの横のボタンをタップしたときのメソッド
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
 	if([view.annotation isKindOfClass:[WWYAnnotation class]] && [view.annotation respondsToSelector:@selector(annotationType)]){
-		switch ([view.annotation annotationType]) {
+        int annotationType = [view.annotation annotationType];
+		switch (annotationType) {
 			case WWYAnnotationType_castle://検索した結果追加されたランドマークのannotationなら
 				break;
 			case WWYAnnotationType_taskBattleArea://タスクのバトルエリアなら

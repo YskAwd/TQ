@@ -111,22 +111,6 @@
 	}
 }
 
-//twitterのusernameをDBに保存
--(BOOL)twitterStoreUsernameOnDB:(NSString*)username{
-	BOOL success = NO;
-	WWYHelper_DB *helper_DB = [[WWYHelper_DB alloc]init];
-	success = [helper_DB updateTwitterUsername:(NSString*)username];
-	[helper_DB release];
-	return success;
-}
-//twitterのusernameをDBから取得。(返り値はretain済み)
--(NSString*)twitterUsernameFromDB{
-	NSString* username = nil;
-	WWYHelper_DB *helper_DB = [[WWYHelper_DB alloc]init];
-	username = [helper_DB getTwitterUsername];
-	[helper_DB release];
-	return username;
-}
 
 
 @end

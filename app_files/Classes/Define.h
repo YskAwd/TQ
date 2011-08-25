@@ -18,6 +18,8 @@
 #define TWEET_ENABLE_AT_TEST true
 //#define TWEET_ENABLE_AT_TEST true false
 
+//locationが取得できない環境での開発用に、ウソのlocationをプッシュするか
+#define PUSH_DAMMY_LOCATION_AT_TEST true
 /*------------------------------------------------------------*/
 #pragma mark -
 #pragma mark タスク関連
@@ -29,14 +31,21 @@
 #define TASK_SNOOZE_SPAN_SECONDS 360.0//1時間
 
 //タスクがどれくらい近くになれば検知するかのしきい値。(m)
-#define TASK_HIT_AREA_METER 80.0
+//locationの精度にあわせた方がいいかも
+#define TASK_HIT_AREA_METER 100.0
 
+//定期的に近くにタスクがないかをチェックする間隔の秒数。なお、新しいlocationが取得されるごとにチェックはされる。
+#define TASK_CHECK_INTERVAL 5.0//5秒
+
+//タスク入力欄の文字数制限
+#define TASK_NAME_TEXT_LIMIT_NUM 20 //20文字まで（半角全角の判別はしていない）
+#define TASK_DESCRIPTION_TEXT_LIMIT_NUM 200 //200文字まで（半角全角の判別はしていない）
 /*------------------------------------------------------------*/
 #pragma mark -
 #pragma mark twitter and bitly
 
 //twitterへのポストの最後につける文字列（ハッシュタグを設定）
-#define TWITTER_HASH_TAG @"#taskquest_dev"
+#define TWITTER_HASH_TAG @"taskquest.in #taskquest_dev"
 
 //twitterのOAuthに使うアプリケーションkey
 #define kOAuthConsumerKey				@"7bdtTEnyVoBbKfHfp1VAA"
@@ -69,7 +78,6 @@
 #define NETWORK_CONNECTION_TIME_LIMIT 30.0f//30秒
 
 /*------------------------------------------------------------*/
-
 
 
 /* 2010/08/17 メモ

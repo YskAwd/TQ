@@ -80,10 +80,10 @@
 	//Twitterにつぶやく
 	//[_engine sendUpdate: [NSString stringWithFormat: @"Twitter API test from TaskQuest. %@", [NSDate date]]];
 	
-	/*NSString *postStr = [NSString stringWithFormat:@"%@%@%@",
+	NSString *postStr = [NSString stringWithFormat:@"%@%@%@",
 						 NSLocalizedString(@"hero",@""),username,NSLocalizedString(@"twitt_post_when_Authenticated",@"")];
 	
-	[self postTweet:postStr];*/
+	[self postTweet:postStr];
 	//[_engine sendUpdate:postStr];
 	
 	[_delegate twitterOAuthSuccess];

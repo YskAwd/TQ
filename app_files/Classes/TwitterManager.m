@@ -36,8 +36,13 @@
 	}
 	return self;
 }
-
-//つぶやきをポストする
+//つぶやきをポストする。ジオタグ指定して。
+-(BOOL)postTweet:(NSString*)tweetStr withCoordinate:(CLLocationCoordinate2D)coordinate{	
+	BOOL success = NO;
+	success = [oAuthTwitterViewController_ postTweet:tweetStr withLat:[NSString stringWithFormat:@"%f",coordinate.latitude] lng:[NSString stringWithFormat:@"%f",coordinate.longitude]];
+	return success;
+}
+//つぶやきをポストする。ジオタグなしで。
 -(BOOL)postTweet:(NSString*)tweetStr{	
 	BOOL success = NO;
 	success = [oAuthTwitterViewController_ postTweet:tweetStr];

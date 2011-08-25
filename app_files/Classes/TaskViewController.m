@@ -13,6 +13,8 @@
 @implementation TaskViewController
 @synthesize taskViewMode = taskViewMode_;
 
+#pragma -
+#pragma mark mark 初期化・破棄
 - (void)dealloc {
 	//autorelease済み。
 	//（さらにself.viewのremoveFromSuperview時に子のViewにrelease送られるので、下記もなしで良い。のか？）
@@ -29,6 +31,7 @@
 	if(yesOrNoCommandView_)[yesOrNoCommandView_ removeFromSuperview];[yesOrNoCommandView_ autorelease];
 	if(liveView_) [liveView_ removeFromSuperview];[liveView_ close];[liveView_ autorelease];
 	if(task_) [task_ autorelease];
+    [textColorWhenNoFix_ autorelease];
 	[wWYViewController_ autorelease];
 	NSLog(@"TaskViewController---------------------Dealloc!!");
     [super dealloc];
@@ -43,6 +46,7 @@
 		self.view.frame = frame;
 		self.view.opaque = false;
 		self.view.backgroundColor = [UIColor blackColor];
+        textColorWhenNoFix_ = [[UIColor colorWithWhite:0.5 alpha:1.0]retain];
 		
 		//liveView_を作成（生成のみ）
 		if(!liveView_) {
@@ -186,7 +190,7 @@
 											taskDetailFrame.size.width-taskDetailFramePadding*2, taskDetailFrame.size.height-taskDetailLabelHeight);
 	if(!taskDetailTextView_) taskDetailTextView_ = [[[UITextView alloc]initWithFrame:taskDetailTextFrame_]autorelease];
 	taskDetailTextView_.backgroundColor = nil;
-	//taskDetailTextView_.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+	//taskDetailTextView_.textColor = textColorWhenNoFix_;
 	//taskDetailTextView_.text = NSLocalizedString(@"task_detail_example", @"");
 	taskDetailTextView_.textColor = [UIColor whiteColor];
 	taskDetailTextView_.font = [UIFont systemFontOfSize:16];
@@ -248,19 +252,19 @@
 -(void)startTaskNameInput{
 	[self initInterface];
 	//タスク名欄
-	taskNameTextView_.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+	taskNameTextView_.textColor = textColorWhenNoFix_;
 	taskNameTextView_.text = NSLocalizedString(@"task_name_example", @"");
 	
 	//たすくのあいて欄
-	enemyNameTextView_.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+	enemyNameTextView_.textColor = textColorWhenNoFix_;
 	enemyNameTextView_.text = NSLocalizedString(@"enemy_name_example", @"");
 	
 	//メモ欄
-	taskDetailTextView_.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+	taskDetailTextView_.textColor = textColorWhenNoFix_;
 	taskDetailTextView_.text = NSLocalizedString(@"task_detail_example", @"");
 	
 	//タスク日時欄
-	[dateTimeTextButton_ setTitleColor:[UIColor colorWithWhite:0.7 alpha:1.0] forState:UIControlStateNormal];
+	[dateTimeTextButton_ setTitleColor:textColorWhenNoFix_ forState:UIControlStateNormal];
 	[dateTimeTextButton_ setTitle:NSLocalizedString(@"task_dateTime_example", @"") forState:UIControlStateNormal];
 	
 	//fixCommandView_を一旦破棄
@@ -278,16 +282,17 @@
 	[taskNameTextView_ becomeFirstResponder];
 }
 
-//日時指定関係=====================================================================
+#pragma mark -
+#pragma mark 日時指定関係=====================================================================
 //日時欄がタップされたら
 -(void)dateTimeTextTapped{	
 	//日時入力用にDatePickerViewControllerを生成（autorelease済）、モーダルビューで表示
 	datePickerViewController_ =
 	[[[DatePickerViewController alloc]initWithViewFrame:(CGRect)self.view.frame 
-													 target:(id)self 
-												   selector:(SEL)@selector(fixDateTimeEdit)
-												   userInfo:(id)nil
-										 selectorWhenCancel:(SEL)@selector(cancelDateTimeEdit)]
+													 target:self 
+												   selector:@selector(fixDateTimeEdit)
+												   userInfo:nil
+										 selectorWhenCancel:@selector(cancelDateTimeEdit)]
 	 autorelease];
 	[self presentModalViewController:datePickerViewController_ animated:YES];																
 }
@@ -317,7 +322,8 @@
 	return [dateFormatter dateFromString:string];
 }
 
-//====================================================================
+#pragma mark -
+#pragma mark textView関係====================================================================
 - (void)textViewDidBeginEditing:(UITextView *)textView {
 	//メモ欄なら
 	if(textView == taskDetailTextView_){
@@ -342,26 +348,27 @@
 		[UIView commitAnimations];
 	}
 	
-	//タスク新規追加時なら
-	if(taskViewMode_ == WWYTaskViewMode_ADD){
-		//編集前が例文だったらいったん空にして文字色を変えてから編集に入る。
-		if(textView == taskNameTextView_){
-			if([taskNameTextView_.text isEqualToString:NSLocalizedString(@"task_name_example", @"")]){
-				taskNameTextView_.text = @"";
-				taskNameTextView_.textColor = [UIColor whiteColor];
-			}
-		}else if(textView == enemyNameTextView_){
-			if([enemyNameTextView_.text isEqualToString:NSLocalizedString(@"enemy_name_example", @"")]){
-				enemyNameTextView_.text = @"";
-				enemyNameTextView_.textColor = [UIColor whiteColor];
-			}
-		}else if(textView == taskDetailTextView_){
-			if([taskDetailTextView_.text isEqualToString:NSLocalizedString(@"task_detail_example", @"")]){
-				taskDetailTextView_.text = @"";
-				taskDetailTextView_.textColor = [UIColor whiteColor];
-			}
-		}
-	}
+    //編集前が例文だったらいったん空にして文字色を変えてから編集に入る。
+    //タスク新規追加時のみ
+    //if(taskViewMode_ == WWYTaskViewMode_ADD){
+        if(textView == taskNameTextView_){
+            if([taskNameTextView_.text isEqualToString:NSLocalizedString(@"task_name_example", @"")]){
+                taskNameTextView_.text = @"";
+                taskNameTextView_.textColor = [UIColor whiteColor];
+            }
+        }else if(textView == enemyNameTextView_){
+            
+            if([enemyNameTextView_.text isEqualToString:NSLocalizedString(@"enemy_name_example", @"")]){
+                enemyNameTextView_.text = @"";
+                enemyNameTextView_.textColor = [UIColor whiteColor];
+            }
+        }else if(textView == taskDetailTextView_){
+            if([taskDetailTextView_.text isEqualToString:NSLocalizedString(@"task_detail_example", @"")]){
+                taskDetailTextView_.text = @"";
+                taskDetailTextView_.textColor = [UIColor whiteColor];
+            }
+        }
+    //}
 }
 - (void)textViewDidEndEditing:(UITextView *)textView {
 	//メモ欄なら
@@ -376,28 +383,28 @@
 		
 		[UIView commitAnimations];
 	}
-	//タスク新規追加時なら
-	if(taskViewMode_ == WWYTaskViewMode_ADD){
-		//編集終了時に空だったら文字色を変えて例文に戻す。
-		if(textView == taskNameTextView_){
-			if(!taskNameTextView_.hasText){
-				taskNameTextView_.text = NSLocalizedString(@"task_name_example", @"");
-				taskNameTextView_.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
-			}else{
-				[taskNameTextView_ scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-			}
-		}else if(textView == enemyNameTextView_){
+    
+    //編集終了時に空だったら文字色を変えて例文に戻す。
+    //タスク新規追加時のみ
+    if(taskViewMode_ == WWYTaskViewMode_ADD){
+        if(textView == taskNameTextView_){
+            if(!taskNameTextView_.hasText){
+                taskNameTextView_.text = NSLocalizedString(@"task_name_example", @"");
+                taskNameTextView_.textColor = textColorWhenNoFix_;
+            }else{
+                [taskNameTextView_ scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+            }
+        }else if(textView == enemyNameTextView_){
 			if(!enemyNameTextView_.hasText){
 				enemyNameTextView_.text = NSLocalizedString(@"enemy_name_example", @"");
-				enemyNameTextView_.textColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+				enemyNameTextView_.textColor = textColorWhenNoFix_;
 			}else{
 				[enemyNameTextView_ scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 			}
 		}
 	}
 }
-#define TASK_NAME_TEXT_LIMIT_NUM 20 //20文字まで（半角全角の判別はしていない）
-#define TASK_DESCRIPTION_TEXT_LIMIT_NUM 200 //200文字まで（半角全角の判別はしていない）
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@"\n"]) {
 		[textView resignFirstResponder];
@@ -412,7 +419,8 @@
 		}
 	  }*/return YES;
 }
-
+#pragma mark -
+#pragma mark 決定するためのCommandView生成
 //fixCommandView_を生成する（バトルエリア選択用）
 -(void)createFixCommandViewForBattleArea{
 	if(!fixCommandView_){
@@ -460,6 +468,8 @@
 	}
 }
 
+#pragma mark -
+#pragma mark タスク追加/編集/削除。commandViewのタップで呼ばれる
 //タスクで戦うエリアが決まったら
 -(void)fixBattleArea{
 	if(fixCommandView_){
@@ -481,10 +491,17 @@
 }
 //タスク追加時、タスクが決まったら
 -(void)fixAddingTask{
-	//メモ欄が例文のままだったら、空にする。
+	//例文のままだったら、空にする。
 	if([taskDetailTextView_.text isEqualToString:NSLocalizedString(@"task_detail_example", @"")]){
 		taskDetailTextView_.text = @"";
 	}
+    if([taskNameTextView_.text isEqualToString:NSLocalizedString(@"task_name_example", @"")]){
+        taskNameTextView_.text = @"";
+    }
+    if([enemyNameTextView_.text isEqualToString:NSLocalizedString(@"enemy_name_example", @"")]){
+        enemyNameTextView_.text = @"";
+    }
+    
 	/*
 	 //テキスト色を白に。（例文そのままの場合でも、それがで登録することを認識させるため。）
 	 //と思ったけど、このViewすぐ消えちゃうので、タイマー実装してから。
@@ -552,7 +569,8 @@
 	if(fixCommandView_)[fixCommandView_ resetToDefault];fixCommandView_.touchEnable = YES;
 }
 
-//LiveViewDelegateメソッド****************************************************************
+#pragma mark -
+#pragma mark LiveViewDelegateメソッド****************************************************************
 //LiveViewのテキスト描画が終わったときに、delegateに通知するメソッド。描画テキストのIDをつけて通知。
 //textIDがない場合は、textID=0で送信される。
 - (void) liveViewDrawEndedWithID:(int)textID{

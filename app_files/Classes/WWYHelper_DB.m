@@ -118,8 +118,13 @@
 	NSArray* tasksArray = [self getTasksFromDB];
 	//mapViewに入れる
 	for (WWYTask *task in tasksArray){
+        //anotationタイトルは、タスクのタイトルがない場合は敵の名前、それもない場合はデフォルト値。
+        NSString* annotationTitle = task.title;
+        if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = task.enemy;
+        if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = NSLocalizedString(@"task_name_example_at_battle",@"");
+        //anotationをMapに配置
 		[mapViewController_ addAnnotationWithLat:task.coordinate.latitude Lng:task.coordinate.longitude
-										   title:task.title subtitle:task.description 
+										   title:annotationTitle subtitle:task.description 
 								  annotationType:WWYAnnotationType_taskBattleArea 
 										 userInfo:[NSNumber numberWithInt:task.ID]
 										 selected:NO

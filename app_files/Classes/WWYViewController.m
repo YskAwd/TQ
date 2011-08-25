@@ -27,6 +27,8 @@
 @synthesize networkConnectionManager = networkConnectionManager_;
 @synthesize locationButtonMode = locationButtonMode_;
 
+#pragma mark -
+#pragma mark 生成・破棄
 - (void)dealloc {	
 	if(adController_) [adController_ stopTimer];[adController_ autorelease];
 	if(mapViewController_) [mapViewController_.view removeFromSuperview];[mapViewController_ release];
@@ -45,6 +47,9 @@
     [super dealloc];
 }
 
+- (void)close {
+    [taskCheckTImer_ invalidate];   
+}
 - (id)init {
     self = [super init];
     if (self) {
@@ -56,11 +61,19 @@
 		networkConnectionManager_ = [[NetworkConnectionManager alloc]init];
 		
 		taskBattleManager_ = [[TaskBattleManager alloc]init];
+        
+        //タスクがあるか定期的にチェックするタイマー。MyLocationGetterからlocationが来た時だけでなく、タスクをチェックするため。
+        taskCheckTImer_ = [NSTimer scheduledTimerWithTimeInterval:TASK_CHECK_INTERVAL
+                                         target:self
+                                       selector:@selector(checkTaskAroundNowLocation:)
+                                       userInfo:nil
+                                        repeats:YES];
 	}
     return self;
 }
 
-//ViewControlerメソッド************************************************************************
+# pragma mark -
+# pragma mark ViewControlerメソッド************************************************************************
 
 /*
  // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -165,13 +178,14 @@
 	// e.g. self.myOutlet = nil;
 }
 
-//Location関係*******************************************************************
-//MyLocaitonGetterから新しいCLLocationが来たときに呼ばれる。
+# pragma mark -
+# pragma mark Location関係*******************************************************************
+# pragma mark MyLocaitonGetterから新しいCLLocationが来たときに呼ばれる。
 -(void)upDatesCLLocation:(CLLocation*)newLocation{
 	[mapViewController_ upDatesCLLocation:newLocation];
 	[self checkTaskAroundLocation:newLocation];
 }
-//MyLocaitonGetterから新しいCLHeadingが来たときに呼ばれる。
+# pragma mark MyLocaitonGetterから新しいCLHeadingが来たときに呼ばれる。
 -(void)upDatesCLHeading:(CLHeading*)newHeading{
 	[mapViewController_ upDatesCLHeading:newHeading];
 }
@@ -179,7 +193,7 @@
 	[mapViewController_ stopCLHeading];
 }
 
-//30秒待ってロケーションが取得できない場合に、MyLocationGetterから呼ばれる
+# pragma mark 設定した秒数待ってロケーションが取得できない場合に、MyLocationGetterから呼ばれる
 -(void)locationUnavailable{
 	//locationの更新オフは、MyLocationGetterですでにされている
 	UIAlertView *locationAlert = [[UIAlertView alloc]
@@ -190,7 +204,8 @@
 	[locationAlert show];
 	[locationAlert release];
 }
-//mapViewController_.mapViewでの座標を変換するメソッド。（mapViewController_.mapView直接だと取得できないので）*******************************************************************
+# pragma mark -
+# pragma mark mapViewController_.mapViewでの座標を変換するメソッド。（mapViewController_.mapView直接だと取得できないので）
 -(CGPoint)convertToPointFromLocation:(CLLocation*)location{
 	//CGPoint newPoint = [mapView_ convertCoordinate:location.coordinate toPointToView:mapView_];
 	//NSLog(@"%f",newPoint.x);
@@ -203,7 +218,8 @@
 	return newCoodinate;
 }
 
-//ボタンに対応するAction*******************************************************************
+# pragma mark -
+# pragma mark ボタンに対応するAction*******************************************************************
 //configボタンを押したとき
 -(void)configModeOnOff{
 	//もしコンパス追随モードなら、それをオフにする。
@@ -260,7 +276,7 @@
 -(void)doLocationButtonAction{
 	[self doLocationButtonActionAtMode:locationButtonMode_+1];
 }
-//外部からlocationボタンを押したときのアクションを実行させるために呼ばれる
+# pragma mark 外部からlocationボタンを押したときのアクションを実行させるために呼ばれる
 -(void)doLocationButtonActionAtMode:(int)actionMode{
 	switch (actionMode) {
 		case WWYLocationButtonMode_LOCATION:
@@ -284,7 +300,7 @@
 			break;
 	}
 }
-//外部からlocationButtonModeを設定するために呼ばれる。
+# pragma mark 外部からlocationButtonModeを設定するために呼ばれる。
 -(void)setLocationButtonMode:(int)locationButtonMode{
 	switch (locationButtonMode) {
 		case WWYLocationButtonMode_OFF:
@@ -307,7 +323,8 @@
 	}
 }
 
-//タスク追加等。ConfigViewControllerから呼ばれる*********************************
+# pragma mark -
+# pragma mark タスク追加等。ConfigViewControllerから呼ばれる*********************************
 -(void)addTask{
 	//taskViewController_を起動。
 	configButton_.enabled = false;
@@ -324,12 +341,17 @@
 -(BOOL)registerTask:(WWYTask*)task{
 	BOOL success = NO;
 	WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
+    //anotationタイトルは、タスクのタイトルがない場合は敵の名前、それもない場合はデフォルト値。
+    NSString* annotationTitle = task.title;
+    if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = task.enemy;
+    if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = NSLocalizedString(@"task_name_example_at_battle",@"");
+    
 	if(taskViewController_.taskViewMode == WWYTaskViewMode_ADD){//タスク新規追加の場合
 		if(mapViewController_.nowAddingAnnotation_){
 			mapViewController_.isAddAnotationWithTapMode_ = false;//まずタップで選ぶ機能をOFFに
 			success = [helperDB insertTask:task];
 			if(success){
-				mapViewController_.nowAddingAnnotation_.title = task.title;
+				mapViewController_.nowAddingAnnotation_.title = annotationTitle;
 				mapViewController_.nowAddingAnnotation_.subtitle = task.description;
 				//吹き出しの長さを調節するためにもう一度セレクトする
 				[mapViewController_.mapView_ selectAnnotation:mapViewController_.nowAddingAnnotation_ animated:NO];
@@ -338,7 +360,7 @@
 	}else if(taskViewController_.taskViewMode == WWYTaskViewMode_EDIT){//既存タスク編集の場合
 		success = [helperDB updateTask:task];
 		if(success){
-			mapViewController_.nowEditingAnnotation_.title = task.title;
+			mapViewController_.nowEditingAnnotation_.title = annotationTitle;
 			mapViewController_.nowEditingAnnotation_.subtitle = task.description;
 			//吹き出しの長さを調節するためにもう一度セレクトする
 			[mapViewController_.mapView_ selectAnnotation:mapViewController_.nowEditingAnnotation_ animated:NO];
@@ -377,7 +399,6 @@
 }
 //タスク修正開始
 -(void)editTaskWithID:(int)taskID{
-	NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!!!editTaskWithID:(int)taskID:%d",taskID);
 	if(!taskViewController_){
 		WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
 		WWYTask* task = [helperDB getTaskFromDB:taskID];
@@ -387,7 +408,14 @@
 	}
 }
 
-//タスクが近くにあるかどうかをチェックする。
+//タスクが現在地にあるかどうかをチェックする。タイマーによって呼ばれる。
+-(void)checkTaskAroundNowLocation:(NSTimer*)timer{
+    if(mapViewController_.currentCLLocation_){
+        [self checkTaskAroundLocation:mapViewController_.currentCLLocation_];
+    }
+}
+
+//タスクが近くにあるかどうかをチェックする。タイマーとMyLocationGetterからのトリガーで呼ばれる
 -(void)checkTaskAroundLocation:(CLLocation*)location{
 	if(!taskBattleManager_.isNowAttackingTask && !mapViewController_.isAddAnotationWithTapMode_
 	   && configButton_.style == UIBarButtonItemStyleBordered && searchButton_.style == UIBarButtonItemStyleBordered){
@@ -436,7 +464,8 @@
 }
 
 /*
-//debugModeメソッド*******************************************************************
+ # pragma mark -
+ # pragma mark debugModeメソッド*******************************************************************
 -(void)debugModeOnOff{
 	if(debugButton_.style == UIBarButtonItemStyleBordered) {
 		debugButton_.style = UIBarButtonItemStyleDone;
@@ -453,7 +482,8 @@
 }
 */
 
-//目的地検索のメソッッド。XMLパースなど*******************************************************************
+# pragma mark -
+# pragma mark 目的地検索のメソッッド。XMLパースなど*******************************************************************
 //webに接続しXMLをとりにいくメソッド
 -(void)getLatLngXML:(NSString*)searchString{
 	word_flg_ = FALSE, lat_flg_ = FALSE, lng_flg_ = FALSE,address_flg_ = FALSE, choice_flg_ = FALSE;
@@ -496,7 +526,8 @@
 	[xmlParser_ parse];
 	//[xmlParser_ autorelease];//autoreleaseするとフリーズ。理由分からず。
 }
-//NSXMLParserのdelegateメソッド************************************************************************
+# pragma mark -
+# pragma mark NSXMLParserのdelegateメソッド************************************************************************
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict{
 	NSLog(elementName);
@@ -587,7 +618,8 @@
 	}
 }
 
-//UISearchBarのdelegateメソッド************************************************************************
+# pragma mark -
+# pragma mark UISearchBarのdelegateメソッド************************************************************************
 - (void)searchBarSearchButtonClicked:(UISearchBar *)mySearchBar{
 	[mySearchBar resignFirstResponder];//これでキーボードが消える！
 	//mySearchBar.showsCancelButton = FALSE;
@@ -620,7 +652,8 @@
 }
 
 
-//その他のメソッド************************************************************************
+# pragma mark -
+# pragma mark その他のメソッド************************************************************************
 
 //ネットに繋がってるかどうかを確かめるメソッド
 -(BOOL) isConnectedNetwork {

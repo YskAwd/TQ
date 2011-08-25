@@ -101,6 +101,7 @@
 		43539CFB120DB42700EE97AF /* CatchTapOnMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43539CFA120DB42700EE97AF /* CatchTapOnMapView.m */; };
 		4356C0D11095CA030026601F /* btn_location.png in Resources */ = {isa = PBXBuildFile; fileRef = 4356C0D01095CA030026601F /* btn_location.png */; };
 		4356C0E21095E2F90026601F /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4356C0E01095E2F90026601F /* ConfigViewController.m */; };
+		435FD7E914069AF7000E403B /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = 435FD7E814069AF7000E403B /* monster.png */; };
 		4361F28610EF202000F8886D /* ramia_right_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4361F28510EF202000F8886D /* ramia_right_01.png */; };
 		43678FA812153879000F2D11 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43678FA712153879000F2D11 /* libxml2.dylib */; };
 		4368D601128C2DE60005F078 /* f_back_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4368D5F9128C2DE60005F078 /* f_back_01.png */; };
@@ -349,6 +350,7 @@
 		4356C0D01095CA030026601F /* btn_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_location.png; sourceTree = "<group>"; };
 		4356C0DF1095E2F90026601F /* ConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigViewController.h; sourceTree = "<group>"; };
 		4356C0E01095E2F90026601F /* ConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigViewController.m; sourceTree = "<group>"; };
+		435FD7E814069AF7000E403B /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
 		4361F28510EF202000F8886D /* ramia_right_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ramia_right_01.png; path = ramia/ramia_right_01.png; sourceTree = "<group>"; };
 		43678FA712153879000F2D11 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		4368D5F9128C2DE60005F078 /* f_back_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f_back_01.png; sourceTree = "<group>"; };
@@ -874,6 +876,14 @@
 			path = SAOAuthTwitterEngine;
 			sourceTree = "<group>";
 		};
+		435FD7E714069AF7000E403B /* monster */ = {
+			isa = PBXGroup;
+			children = (
+				435FD7E814069AF7000E403B /* monster.png */,
+			);
+			path = monster;
+			sourceTree = "<group>";
+		};
 		4361F28110EF200800F8886D /* ramia */ = {
 			isa = PBXGroup;
 			children = (
@@ -1033,6 +1043,7 @@
 				43B5B53212A220AA005E4A04 /* btn_forward@2x.png */,
 				43B5B53C12A22131005E4A04 /* btn_back.png */,
 				43B5B53D12A22131005E4A04 /* btn_back@2x.png */,
+				435FD7E714069AF7000E403B /* monster */,
 				43FA82B9121836850000EB8C /* field */,
 				43E11B1D0FFD26F700D52165 /* character */,
 			);
@@ -1241,6 +1252,7 @@
 				43A7725112A2A67F00139342 /* h_left_02.png in Resources */,
 				43A7728F12A2AB1D00139342 /* h_right_01.png in Resources */,
 				43A7729012A2AB1D00139342 /* h_right_02.png in Resources */,
+				435FD7E914069AF7000E403B /* monster.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@
 	if(wWYViewController_) [wWYViewController_ autorelease];
 	if(yesOrNoCommandView_) [yesOrNoCommandView_ removeFromSuperview];[yesOrNoCommandView_ autorelease];
 	if(liveView_) [liveView_ removeFromSuperview];[liveView_ autorelease];
+    if(monsterView_) [monsterView_ removeFromSuperview];[monsterView_ autorelease];
 	if(task_) [task_ release];
 	if(hero_name_) [hero_name_ release];
 	NSLog(@"TaskBattleViewController---------------------Dealloc!!");
@@ -35,7 +36,13 @@
 			liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 330, 300, 1) withDelegate:self withMaxColumn:3];
 			liveView_.overflowMode = WWYLiveViewOverflowMode_noAction;
 			[liveView_.moreTextButt setAlpha:0.0];//下の三角ボタンを最初は表示しないように設定。
-		}		
+		}
+        
+        //monsterViewを生成
+        if(!monsterView_) {
+            monsterView_ = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"monster.png"]];
+            monsterView_.center = CGPointMake(self.view.center.x, self.view.frame.size.height*0.3);
+        }
     }
     return self;
 }
@@ -44,24 +51,36 @@
 	[task retain];
 	task_ = task;
 
-	//ヒーロー名(twitter username)//ヒーロー名のみdealoc時にリリース。
-	WWYHelper_DB *helper_db =[[WWYHelper_DB alloc]init];
-	hero_name_ = [helper_db getTwitterUsername];
-	hero_name_ = @"";
-	if([hero_name_ isEqualToString:@""]) hero_name_ = @"";
-	[helper_db release];
+	//ヒーロー名(twitter username)//ヒーロー名のみdealoc時にリリース。    
+    hero_name_ = [[[NSUserDefaults standardUserDefaults]objectForKey:@"twitter_username"]retain];
+    if(!hero_name_) hero_name_ = @"";
 	
 	//モンスター名
 	enemy_name_ = task_.enemy;
-	if([task_.enemy isEqualToString:@""]) enemy_name_ = NSLocalizedString(@"enemy_name_example", @"");
+    //if([task_.enemy isEqualToString:@""]) enemy_name_ = NSLocalizedString(@"enemy_name_example_at_battle", @"");
+    if(!enemy_name_) enemy_name_ = @"";
+    enemy_name_at_battle_ = enemy_name_at_tweet_ = enemy_name_;
+    if([enemy_name_ isEqualToString:@""]) {
+        enemy_name_at_battle_ = NSLocalizedString(@"enemy_name_example_at_battle", @"");
+        enemy_name_at_tweet_ = NSLocalizedString(@"enemy_name_example_at_tweet", @"");
+    }
 	
 	//タスク名
 	task_title_ = task_.title;
-	if([task_.title isEqualToString:@""]) task_title_ = NSLocalizedString(@"task_name_example", @"");
-	
+	//if([task_.title isEqualToString:@""]) task_title_ = NSLocalizedString(@"task_name_example", @"");
+    if(!task_title_) task_title_ = @"";
+    task_title_at_battle_ = task_title_at_tweet_ = task_title_;
+    if([task_title_at_battle_ isEqualToString:@""]) {
+        task_title_at_battle_ = NSLocalizedString(@"task_name_example_at_battle", @"");
+        task_title_at_tweet_ = NSLocalizedString(@"task_name_example_at_tweet", @"");
+    }
+    
+    //タスクの位置
+    task_coodinate_ = CLLocationCoordinate2DMake(task_.coordinate.latitude, task_.coordinate.longitude);
+    
 	if(liveView_){
 		[wWYViewController_.view addSubview:liveView_];
-		[liveView_ setTextAndGo:[NSString stringWithFormat:NSLocalizedString(@"encounter_task", @""),enemy_name_,enemy_name_] 
+		[liveView_ setTextAndGo:[NSString stringWithFormat:NSLocalizedString(@"encounter_task", @""),enemy_name_at_battle_,enemy_name_at_battle_] 
 		   actionAtTextFinished:@selector(askBattleYesOrNo) userInfo:nil target:(id)self];
 	}
 }
@@ -79,12 +98,13 @@
 	[yesOrNoCommandView_ removeFromSuperview];
 	[liveView_ removeFromSuperview];
 	if(task_){
+        [self.view addSubview:monsterView_];
 		[self.view addSubview:liveView_];
 		[wWYViewController_.view addSubview:self.view];
 		
 		NSMutableString *arawareta_txt = 
 		[NSMutableString stringWithFormat:@"%@\n%@",
-		 [NSString stringWithFormat:NSLocalizedString(@"ga_arawreta!",@""),enemy_name_],
+		 [NSString stringWithFormat:NSLocalizedString(@"ga_arawreta!",@""),enemy_name_at_battle_],
 		 [NSString stringWithFormat:NSLocalizedString(@"no_kougeki!",@""),NSLocalizedString(@"hero", @"")]
 		 ];
 		
@@ -94,7 +114,7 @@
 -(void)avoidBattle{
 	
 	liveView_.actionDelay = 1.0;
-	[liveView_ setTextAndGo:[NSString stringWithFormat:NSLocalizedString(@"avoided_battle", @""),enemy_name_] 
+	[liveView_ setTextAndGo:[NSString stringWithFormat:NSLocalizedString(@"avoided_battle", @""),enemy_name_at_battle_] 
 	   actionAtTextFinished:@selector(avoidedTaskBattle:) userInfo:task_ target:wWYViewController_];
 }
 
@@ -116,7 +136,7 @@
 	[wWYViewController_ removeTask:task_.ID];
 		
 	NSMutableString *taoshita_txt = 
-	[NSMutableString stringWithFormat:NSLocalizedString(@"wo_taoshita!",@""),enemy_name_];
+	[NSMutableString stringWithFormat:NSLocalizedString(@"wo_taoshita!",@""),enemy_name_at_battle_];
 	liveView_.actionDelay = 1.5;
 	[liveView_ setTextAndGo:taoshita_txt actionAtTextFinished:@selector(tweetOfWinOrLose:) userInfo:(id)kCFBooleanTrue target:self];
 }
@@ -146,18 +166,31 @@
         TwitterManager *twitterManager = [[TwitterManager alloc]initWithDelegate:self];
         
         NSMutableString *post_txt;
-        if(win){//勝ったとき
-            post_txt = 
-            [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle",@""),
-             hero_name_,enemy_name_,task_title_];
-            
+        if(win){//勝ったとき            
+            if(enemy_name_ && ![enemy_name_ isEqualToString:@""] && task_title_ && ![task_title_ isEqualToString:@""]){
+                post_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle_01",@""),
+                 hero_name_,enemy_name_,task_title_];
+            }else if (enemy_name_ && ![enemy_name_ isEqualToString:@""] && (!task_title_ || [task_title_ isEqualToString:@""])){
+                post_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle_02",@""),
+                 hero_name_,enemy_name_];
+            }else if ((!enemy_name_ || [enemy_name_ isEqualToString:@""]) && task_title_ && ![task_title_ isEqualToString:@""]){
+                post_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle_03",@""),
+                 hero_name_,task_title_];
+            }else{
+                post_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle_01",@""),
+                 hero_name_,enemy_name_at_tweet_,task_title_at_tweet_];
+            }
         }else{//負けたとき
             post_txt = 
             [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle",@""),
              hero_name_ ];
         }
         
-        BOOL success = [twitterManager postTweet:post_txt];
+        BOOL success = [twitterManager postTweet:post_txt withCoordinate:task_coodinate_];
         if(success){
             [self tweetCompleted];
         }else {
