@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
+#import "Define.h"
+
 @class FMResultSet;
 @class FMDatabase;
 

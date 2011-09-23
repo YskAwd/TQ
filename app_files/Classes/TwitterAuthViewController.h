@@ -11,6 +11,7 @@
 #import "LiveView.h"
 #import "WWYCommandView.h"
 #import "WWYHelper_DB.h"
+#import "Define.h"
 @class WWYViewController;
 
 

@@ -21,6 +21,7 @@
 	//taskViewModeの型宣言。
 	enum WWYTaskViewMode {
 		WWYTaskViewMode_ADD,//タスク追加時
+        WWYTaskViewMode_ADD_AND_BATTLE_NOW,//たたかうなう!ぼたんによるタスク追加時
 		WWYTaskViewMode_EDIT//タスク編集時
 	};
 	int taskViewMode_;

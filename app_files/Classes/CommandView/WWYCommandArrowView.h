@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Define.h"
 
 @interface WWYCommandArrowView : UIView {
 	CGFloat arrowSize;

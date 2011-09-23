@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "LiveViewDelegate.h"//プロトコル定義ファイル
+#import "Define.h"
+
 @class CursorButtonView;
 
 //テキストが枠いっぱいになったとき次のテキストに進む方法の定数宣言。

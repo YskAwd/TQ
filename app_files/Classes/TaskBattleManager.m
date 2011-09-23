@@ -10,11 +10,11 @@
 
 
 @implementation TaskBattleManager
-@synthesize isNowAttackingTask = isNowAttackingTask_;
+//@synthesize isNowAttackingTask = isNowAttackingTask_;
 
 -(id)init{
 	if(self = [super init]){
-		isNowAttackingTask_ = NO;
+//		isNowAttackingTask_ = NO;
 		tasks_array_ =[[NSMutableArray alloc]init];
 		[self updateTasks];
 	}
@@ -25,15 +25,14 @@
 -(void)updateTasks{
 	[tasks_array_ removeAllObjects];
 	WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
-	NSArray *tasks_array_fromDB = [helperDB getTasksFromDB];
+	NSArray *tasks_array_fromDB = [helperDB getTasksFromDB_undoneOnly:YES];
 	[tasks_array_ addObjectsFromArray:tasks_array_fromDB];
-	//[tasks_array_fromDB release];
 	[helperDB release];
 }
 //locationの周辺distance(m)以内にあるTaskをretain済みで返す。
 -(WWYTask*)taskAroundLocation:(CLLocation*)location withInMeter:(double)distance{
 	WWYTask* nearestTask = nil;//明示的にnilを代入しないと、nilと判断されなくなったみたい。宣言だけだとだめ。
-	if(!isNowAttackingTask_){
+//	if(!isNowAttackingTask_){
 		if([tasks_array_ count]){
 			double distance_threshold = distance;//しきい値。
 			for(WWYTask *task in tasks_array_){
@@ -42,7 +41,7 @@
 				NSTimeInterval timeInterval_toMission;
 				NSDate *nowDate = [NSDate date];
 				if(task.mission_datetime) timeInterval_toMission = [task.mission_datetime timeIntervalSinceDate:nowDate];
-				NSLog(@"task ID:%d title:%@ timeInterval_toMission:%f",task.ID,task.title,timeInterval_toMission);
+				//NSLog(@"task ID:%d title:%@ timeInterval_toMission:%f",task.ID,task.title,timeInterval_toMission);
 				//タスクの実行時間が設定されてないか、実行時間5分前以内ならば
 				if(!task.mission_datetime || timeInterval_toMission < TASK_PRE_NOTIFICATION_SECONDS){
 				
@@ -75,18 +74,25 @@
 							[nearestTask retain];
 							distance_threshold = myDistance;
 						}
-						if(nearestTask) NSLog(@"near task ID:%d title:%@ distance:%lf",nearestTask.ID, nearestTask.title, myDistance);
+						if(nearestTask && NSLOG_REPORT_ENABLE) NSLog(@"near task ID:%d title:%@ distance:%lf",nearestTask.ID, nearestTask.title, myDistance);
 						[myLocation release];
 					}
 				}
 			}
 		}
-		if(nearestTask) isNowAttackingTask_ = YES;
-	}
+//		if(nearestTask) isNowAttackingTask_ = YES;
+//	}
 	return nearestTask;//nilなら該当タスクなし。
 }
 //一定時間タスクが呼ばれないようにする。先送りする。
--(void)snoozeTask:(WWYTask*)task{
+-(BOOL)snoozeTask:(int)taskID{
+//-(BOOL)snoozeTask:(WWYTask*)task{
+    WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
+    
+    //IDからtaskを取得
+    WWYTask* task = [helperDB getTaskFromDB:taskID];
+    //NSLog(@"task retainCount:%d",[task retainCount]);
+    
 	//現在時
 	NSDate *nowDate = [NSDate date];
 	
@@ -94,16 +100,32 @@
 	task.snoozed_datetime = nowDate;
 	
 	//taskをupdate
-	WWYHelper_DB *helperDB = [[[WWYHelper_DB alloc]init]autorelease];
-	[helperDB updateTask:task];	
+	BOOL success = [helperDB updateTask:task];	
+    
+    [self updateTasks];
+    [helperDB release];
+    return success;
+}
+//タスクに現在の終了日時を入れる
+-(BOOL)setDoneDatetimeOnTask:(int)taskID{
+    WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
+    
+    //IDからtaskを取得
+    WWYTask* task = [helperDB getTaskFromDB:taskID];
+    
+	//現在時
+	NSDate *nowDate = [NSDate date];
+	
+	//taskに反映
+	task.done_datetime = nowDate;
+	
+	//taskをupdate
+	BOOL success = [helperDB updateTask:task];	
+    
+    [self updateTasks];
+    [helperDB release];
+    return success;
 }
 
-//タスクをDBからとりのぞく（タスクに勝ったときになどに呼ばれる）
--(BOOL)removeTask:(int)taskID{
-	BOOL success = NO;
-	//taskをdelete
-	WWYHelper_DB *helperDB = [[[WWYHelper_DB alloc]init]autorelease];
-	success = [helperDB deleteTask:taskID];	
-	return success;
-}
+
 @end

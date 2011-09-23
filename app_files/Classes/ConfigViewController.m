@@ -28,7 +28,7 @@
 		//partyOrderArray_をalloc、init。
 		partyOrderArray_ = [[NSMutableArray alloc]initWithCapacity:0];
 		//locolo codeの宣伝のフラグ
-		locoloAd_nameFlg_ = false, locoloAd_descriptionFlg_ = false, locoloAd_urlFlg_ = false, locoloAd_parseEnded_ = false;		
+		locoloAd_nameFlg_ = false, locoloAd_descriptionFlg_ = false, locoloAd_urlFlg_ = false, locoloAd_parseEnded_ = false;
 	}
     return self;
 }
@@ -41,9 +41,10 @@
 	CGFloat marginX = 20, marginY = 30; 
 	CGRect cmdFrame = CGRectMake(self.view.frame.origin.x+marginX,self.view.frame.origin.y+marginY,
 								 self.view.frame.size.width-marginX*2, self.view.frame.size.height);
-	configCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame target:self maxColumnAtOnce:6];
+	configCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame target:self maxColumnAtOnce:7];
 	[configCommandView_ setTitle:NSLocalizedString(@"command",@"") withWidth:cmdFrame.size.width/2.8 withHeight:0];
 	[configCommandView_ addCommand:NSLocalizedString(@"add_quest",@"") action:@selector(configCmd_Tapped:) userInfo:@"add_quest"];
+    [configCommandView_ addCommand:NSLocalizedString(@"status",@"") action:@selector(configCmd_Tapped:) userInfo:@"status"];
 	[configCommandView_ addCommand:NSLocalizedString(@"mapType",@"") action:@selector(configCmd_Tapped:) userInfo:@"mapType"];
 	[configCommandView_ addCommand:NSLocalizedString(@"magic",@"") action:@selector(configCmd_Tapped:) userInfo:@"magic"];
 	[configCommandView_ addCommand:NSLocalizedString(@"party",@"") action:@selector(configCmd_Tapped:) userInfo:@"party"];
@@ -154,11 +155,33 @@
 }
 
 -(void)configCmd_Tapped:(NSString*)cmdStr{
-	if([cmdStr isEqualToString:@"add_quest"]){//**********"くえすと　ついか"がタップされたら
+	if([cmdStr isEqualToString:@"add_quest"]){//**********"たすく　ついか　ついか"がタップされたら
 		//WWYViewControllerからこのビューを非表示にし、AddQuestViewをオープン
 		[wWYViewController_ configModeOnOff];
 		[wWYViewController_ addTask];
 		//[configCommandView_ resetToDefault];//今のところページ送りないので省略
+    }else if([cmdStr isEqualToString:@"status"]){//**********"つよさ"がタップされたら
+        //statusView_を作る。
+        if(!statusView_){
+            CGFloat marginX = 10, marginY = 10; 
+            CGRect statusFrame = CGRectMake(self.view.frame.origin.x+marginX,self.view.frame.origin.y+marginY,
+                                            self.view.frame.size.width-marginX*2, self.view.frame.size.height*0.8);
+            statusView_ = [[WWYStatusView alloc]initWithFrame:statusFrame];
+        }
+        if(!statusCommandView_){
+			//statusCommandView_を作る。
+			CGFloat marginX = 0, marginY = 152; 
+			CGRect cmdFrame = CGRectMake(self.view.frame.size.width*3/5-marginX,self.view.frame.size.height-marginY,
+										 self.view.frame.size.width*2/5, self.view.frame.size.height);
+			statusCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame target:self maxColumnAtOnce:1];
+			[statusCommandView_ addCommand:NSLocalizedString(@"go_back",@"") action:@selector(statusCmd_Tapped:) userInfo:@"go_back"];
+            [statusCommandView_ columnViewArrowStartBlinking:0];
+		}else{//すでにあったらデフォルトの状態にリセットする
+			//[statusCommandView_ resetToDefault];//今のところページ送りないので省略
+		}
+        [self.view addSubview:statusView_];
+		[self.view addSubview:statusCommandView_];
+        
 	}else if([cmdStr isEqualToString:@"mapType"]){//**********"まっぷたいぷ"がタップされたら
 		if(!mapTypeCommandView_){
 			//mapTypeCommandView_を作る。
@@ -288,6 +311,18 @@
 	}
 }
 	
+-(void)statusCmd_Tapped:(NSString*)cmdStr{
+    //statusCommandView_を非表示、解放
+    [statusCommandView_ removeFromSuperview];
+    [statusCommandView_ autorelease]; statusCommandView_ = nil;
+    //statusView_を非表示、解放
+    [statusView_ removeFromSuperview];
+    [statusView_ autorelease]; statusView_ = nil;
+    
+    //configCommandView_を操作できるように
+    //[configCommandView_ resetToDefault];//今のところページ送りないので省略
+    configCommandView_.touchEnable = true;
+}
 
 //WWYCommandViewDelegateメソッド
 //コマンドがタッチされたときに呼ばれる。
@@ -573,6 +608,14 @@
 		[twitterSettingCommandView_ removeFromSuperview];
 		[twitterSettingCommandView_ autorelease]; twitterSettingCommandView_ = nil;
 	}
+    if(statusCommandView_){
+		[statusCommandView_ removeFromSuperview];
+		[statusCommandView_ autorelease]; statusCommandView_ = nil;
+	}
+	if(statusView_){
+		[statusView_ removeFromSuperview];
+		[statusView_ autorelease]; statusView_ = nil;
+	}
 	
 	[configCommandView_ resetToDefault];
 	configCommandView_.touchEnable = true; 
@@ -746,6 +789,7 @@
 	if(locoloAd_name_) [locoloAd_name_ release];
 	if(locoloAd_description_) [locoloAd_description_ release];
 	if(locoloAd_url_) [locoloAd_url_ release];
+    if(!statusView_) [statusView_ release];
     [super dealloc];
 }
 

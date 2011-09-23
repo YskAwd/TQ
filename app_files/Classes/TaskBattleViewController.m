@@ -19,7 +19,9 @@
     if(monsterView_) [monsterView_ removeFromSuperview];[monsterView_ autorelease];
 	if(task_) [task_ release];
 	if(hero_name_) [hero_name_ release];
-	NSLog(@"TaskBattleViewController---------------------Dealloc!!");
+    if(_networkConnectionManager) [_networkConnectionManager release];
+	if(_networkConnectionKeyForGoogle) [_networkConnectionKeyForGoogle release];
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
     [super dealloc];
 }
 
@@ -29,8 +31,8 @@
 		wWYViewController_ = wWYViewController;
 		self.view.frame = frame;
 		self.view.opaque = false;
-		self.view.backgroundColor = [UIColor blackColor];
-		
+		self.view.backgroundColor = [UIColor blackColor];		
+        _networkConnectionManager = [[NetworkConnectionManager alloc]init];
 		//liveView_を作成
 		if(!liveView_) {
 			liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 330, 300, 1) withDelegate:self withMaxColumn:3];
@@ -41,17 +43,18 @@
         //monsterViewを生成
         if(!monsterView_) {
             monsterView_ = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"monster.png"]];
-            monsterView_.center = CGPointMake(self.view.center.x, self.view.frame.size.height*0.3);
+            //monsterView_.center = CGPointMake(self.view.center.x, self.view.frame.size.height*0.3);
+            monsterView_.frame = CGRectMake((self.view.frame.size.width-192)/2, 50, 192, 192);
         }
     }
     return self;
 }
-//バトルを始めるかどうかユーザーに聞くstep1。このクラスの起点のメソッド。
--(void)startBattleOrNotAtTask:(WWYTask*)task{
-	[task retain];
+//タスクをセットアップ。
+-(void)setupTask:(WWYTask*)task{
+    [task retain];
 	task_ = task;
-
-	//ヒーロー名(twitter username)//ヒーロー名のみdealoc時にリリース。    
+    
+	//ヒーロー名(twitter username)//ヒーロー名のみdealoc時にリリース。ヒーロー名がなかった場合もななしではない。  
     hero_name_ = [[[NSUserDefaults standardUserDefaults]objectForKey:@"twitter_username"]retain];
     if(!hero_name_) hero_name_ = @"";
 	
@@ -78,6 +81,15 @@
     //タスクの位置
     task_coodinate_ = CLLocationCoordinate2DMake(task_.coordinate.latitude, task_.coordinate.longitude);
     
+    //この時点で逆ジオコーディング取得を始めておく
+    //過去に取得した住所URLがあったら破棄
+	if(task_address_) [task_address_ autorelease];
+    [self didGotLocationWithCoordinate:task_coodinate_];
+}
+
+//バトルを始めるかどうかユーザーに聞くstep1。
+-(void)startBattleOrNotAtTask:(WWYTask*)task{
+    [self setupTask:task];
 	if(liveView_){
 		[wWYViewController_.view addSubview:liveView_];
 		[liveView_ setTextAndGo:[NSString stringWithFormat:NSLocalizedString(@"encounter_task", @""),enemy_name_at_battle_,enemy_name_at_battle_] 
@@ -94,6 +106,12 @@
 		[wWYViewController_.view addSubview:yesOrNoCommandView_];
 	}
 }
+//ユーザーに訪ねるステップはなしで、すぐにバトルを始める。
+-(void)startBattleNow:(WWYTask*)task{
+    [self setupTask:task];
+    [self startBattle];
+}
+
 -(void)startBattle{
 	[yesOrNoCommandView_ removeFromSuperview];
 	[liveView_ removeFromSuperview];
@@ -133,7 +151,7 @@
 -(void)win{
 	[taskSuccessOrNotCommandView_ removeFromSuperview];
 	
-	[wWYViewController_ removeTask:task_.ID];
+	[wWYViewController_ doneTheTaskWhenWin:task_.ID];
 		
 	NSMutableString *taoshita_txt = 
 	[NSMutableString stringWithFormat:NSLocalizedString(@"wo_taoshita!",@""),enemy_name_at_battle_];
@@ -142,7 +160,8 @@
 }
 -(void)lose{
 	[taskSuccessOrNotCommandView_ removeFromSuperview];
-		
+    [wWYViewController_ snoozeTaskWhenLose:task_.ID];
+    
 	NSMutableString *maketa_txt = 
 	[NSMutableString stringWithFormat:NSLocalizedString(@"ha_chikaratsukita",@""),
 	 NSLocalizedString(@"hero", @"")];
@@ -161,11 +180,12 @@
 }
 //勝ったか負けたかをツイートする。
 -(void)tweetOfWinOrLose:(BOOL)win{
-    //twitterアカウントが設定されていればTweetする。
-    if([[NSUserDefaults standardUserDefaults]objectForKey:@"twitter_username"]){
+    //twitterアカウントが設定されていればけいけんち足したり、Tweetする。
+    if([[NSUserDefaults standardUserDefaults]objectForKey:@"twitter_username"]){        
         TwitterManager *twitterManager = [[TwitterManager alloc]initWithDelegate:self];
         
         NSMutableString *post_txt;
+        NSMutableString* post_txt_whenLevelUP = nil;
         if(win){//勝ったとき            
             if(enemy_name_ && ![enemy_name_ isEqualToString:@""] && task_title_ && ![task_title_ isEqualToString:@""]){
                 post_txt = 
@@ -184,18 +204,44 @@
                 [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle_01",@""),
                  hero_name_,enemy_name_at_tweet_,task_title_at_tweet_];
             }
+            
+            //経験値を足す
+            StatusManager *statusManager =[StatusManager statusManager];
+            int level = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
+            int exGain = [[AWBuiltInValuesManager builtInValuesManager] getGainExAtLevel:level];
+            if (exGain > 0) {//けいけんちが獲得できたら
+                [post_txt appendFormat:NSLocalizedString(@"space", @"")];
+                [post_txt appendFormat:NSLocalizedString(@"twitt_post_when_ex_gained", @""),exGain];
+                //レベルが上がったら
+                if ([[StatusManager statusManager]levelUpWithGainEX:exGain]) {
+                    int newLevel = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
+                    NSString* title = [statusManager getTitle];
+                    //レベルアップのTweet文言
+                    post_txt_whenLevelUP = [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_level_up", @""),hero_name_,newLevel,title];
+                }
+            }
         }else{//負けたとき
             post_txt = 
             [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle",@""),
              hero_name_ ];
         }
         
+        //この時点で逆ジオコーディングが完了していれば、住所もTweetする。
+        if(task_address_ && ![task_address_ isEqualToString:@""]) [post_txt appendFormat:@" %@",task_address_];
+        
+        // Tweetする。
         BOOL success = [twitterManager postTweet:post_txt withCoordinate:task_coodinate_];
+        //レベルアップしていればさらにTweet
+        if (post_txt_whenLevelUP) {
+            success = [twitterManager postTweet:post_txt_whenLevelUP withCoordinate:task_coodinate_];
+        }
+        
         if(success){
             [self tweetCompleted];
         }else {
             [self tweetFailed];
         }
+
         [twitterManager release];
     }
     //twitterアカウントが設定されていなければ、Tweetせずに終了
@@ -216,5 +262,78 @@
 	   actionAtTextFinished:@selector(taskBattleComplete) 
 				   userInfo:nil target:wWYViewController_];
 }
+/*
+#pragma mark 勝つか負けるかを選択した
+-(void)didSelectWinOrLose:(BOOL)win{
+    if(win) buttleWin_ = YES;
+    else buttleWin_ = NO;
+    
+}*/
 
+#pragma mark -
+#pragma mark 逆ジオコーディング取得
+-(void)didGotLocationWithCoordinate:(CLLocationCoordinate2D)coordinate{
+    
+	NSString* lat = [[NSNumber numberWithFloat:coordinate.latitude]stringValue];
+	NSString* lng = [[NSNumber numberWithFloat:coordinate.longitude]stringValue];
+	
+	//キーがあったら前のリクエストを止めて、キーを破棄
+	if(_networkConnectionKeyForGoogle) {
+		[_networkConnectionManager cancelConnectionForKey:_networkConnectionKeyForGoogle];
+		[_networkConnectionKeyForGoogle release];_networkConnectionKeyForGoogle = nil;
+	}
+	//ネットワークに接続する。接続uniqueKeyも取得。
+	NSString* url = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=true&language=ja&latlng=%@,%@", lat, lng] ;
+	_networkConnectionKeyForGoogle = [_networkConnectionManager requestConnectionWithURL:url fromObj:self callbackMethod:@selector(didReceivedGeo:) mode:@"json"];
+	[_networkConnectionKeyForGoogle retain];
+}
+
+#pragma mark 逆ジオコーディング取得完了
+//geocodingが帰ってきたとき呼ばれる
+-(void)didReceivedGeo:(id)data{
+	//キーを破棄
+	if(_networkConnectionKeyForGoogle) [_networkConnectionKeyForGoogle release];_networkConnectionKeyForGoogle = nil;
+	
+	NSDictionary *dataDict = (NSDictionary*)data;
+    //NSLog(@"resultsDict:%@",resultsDict);
+	
+	if([[dataDict objectForKey:@"status"]isEqualToString:@"OK"]){//返ってきたステータスがOKなら
+        NSMutableString* resultAddress = [[NSMutableString alloc]initWithString:@""];
+        
+        for (NSDictionary* resultDict in [dataDict objectForKey:@"results"]) {
+            
+        
+//            //formatted_address（通常使われる住所）を取得
+//            NSString* resultAddress = [resultDict objectForKey:@"formatted_address"];
+//            [resultAddress retain];
+//            //先頭の「日本, 」の文字列を検索して取り除く
+//            NSString* searchString = @"日本, ";
+//            NSRange searchResult = [resultAddress rangeOfString:searchString options:NSCaseInsensitiveSearch range:NSMakeRange(0, [searchString length])];
+//            if (searchResult.location != NSNotFound ) {
+//                [resultAddress deleteCharactersInRange:NSMakeRange(searchResult.location, searchResult.length)];
+//            }
+            
+            //"locality"（一般的に識別できる地域名）を取得
+            NSArray *address_components = [resultDict objectForKey:@"address_components"];
+            for(NSDictionary *address_part in address_components){
+                if([[address_part objectForKey:@"types"]containsObject:@"locality"]){
+                    [resultAddress insertString:[address_part objectForKey:@"long_name"] atIndex:0];
+                }
+            }
+            //欲しいフォーマットの住所が取得できてれば終了、できてなければ次の候補へ
+            if (![resultAddress isEqualToString:@""]) break;
+        }
+		task_address_ = resultAddress;
+		
+	}else {
+		task_address_ = @"";
+	}
+    NSLog(task_address_);
+}
+#pragma mark # 一定時間ネットワークから結果が反ってこなかったときにに呼ばれる
+-(void)networkConnectionDidFaild:(NSString*)keyString{
+    if([keyString isEqualToString:_networkConnectionKeyForGoogle]){
+      //  [self tweetOfWinOrLose:buttleWin_];
+    }
+}
 @end

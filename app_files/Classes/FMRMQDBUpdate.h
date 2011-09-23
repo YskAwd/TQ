@@ -7,6 +7,7 @@
 //	DBへの値反映に使うクラス
 
 #import <Foundation/Foundation.h>
+#import "Define.h"
 
 //SQLite用
 #import "FMDatabase.h"

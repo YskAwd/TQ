@@ -23,6 +23,7 @@
 @synthesize mapViewController_;
 @synthesize locationButton_;
 @synthesize configButton_;
+@synthesize battleNowButton_;
 @synthesize searchButton_;
 @synthesize networkConnectionManager = networkConnectionManager_;
 @synthesize locationButtonMode = locationButtonMode_;
@@ -34,7 +35,7 @@
 	if(mapViewController_) [mapViewController_.view removeFromSuperview];[mapViewController_ release];
 	if(configViewController_) [configViewController_.view removeFromSuperview];[configViewController_ release];
 	if(toolBar_) [toolBar_ removeFromSuperview];[toolBar_ release];
-	if(locationButton_) [locationButton_ release];[configButton_ release];[searchButton_ release];
+	if(locationButton_) [locationButton_ release];[configButton_ release];[searchButton_ release];[battleNowButton_ release];
 	if(activityIndicatorView_) [activityIndicatorView_ removeFromSuperview];[activityIndicatorView_ release];
 	if(searchBar_) [searchBar_ removeFromSuperview];[searchBar_ release];
 	if(myLocationGetter_) [myLocationGetter_ stopUpdatingLocation];[myLocationGetter_ release];
@@ -62,6 +63,9 @@
 		
 		taskBattleManager_ = [[TaskBattleManager alloc]init];
         
+        isNowEditingTask_ = NO;
+        isNowAttackingTask_ = NO;
+        
         //タスクがあるか定期的にチェックするタイマー。MyLocationGetterからlocationが来た時だけでなく、タスクをチェックするため。
         taskCheckTImer_ = [NSTimer scheduledTimerWithTimeInterval:TASK_CHECK_INTERVAL
                                          target:self
@@ -72,6 +76,28 @@
     return self;
 }
 
+//taskBattleViewController_を生成し、起動する準備。
+-(void)makeTaskBattleViewController{
+    if(!taskBattleViewController_) [taskBattleViewController_ release];
+        taskBattleViewController_ = [[TaskBattleViewController alloc]initWithFrame:CGRectMake(0, 0, 320, 460) withWWYViewController:self];
+    configButton_.enabled = false; searchButton_.enabled = false; battleNowButton_.enabled = false;
+}
+//taskViewController_を生成。
+-(void)makeTaskViewController:(int)mode{
+    if(!taskViewController_){
+        CGRect taskViewFrame = CGRectMake(0, 0, 320, 460);
+        switch (mode) {
+            case 0://タスク新規追加の場合
+                taskViewController_ = [[TaskViewController alloc]initWhenAddTaskWithViewFrame:taskViewFrame wWYViewController:self];
+                break;
+            case 1://たたかうなう！ボタンでのタスク新規追加の場合
+                taskViewController_ = [[TaskViewController alloc]initWhenAddTaskAndBattleNowWithViewFrame:taskViewFrame wWYViewController:self];
+                break;
+            default:
+                break;
+        }
+    }
+}
 # pragma mark -
 # pragma mark ViewControlerメソッド************************************************************************
 
@@ -104,6 +130,9 @@
 	configButton_ = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"command",@"") 
 													style:UIBarButtonItemStyleBordered target:self 
 												   action:@selector(configModeOnOff)];
+    battleNowButton_ = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"battle_now",@"") 
+                                                     style:UIBarButtonItemStyleBordered target:self 
+                                                    action:@selector(battleNow)];
 	
 	/*configButton_ = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_config.png"] 
 	 style:UIBarButtonItemStyleBordered target:self 
@@ -111,6 +140,7 @@
 	 configButton_.width = 45;*/
 	
 	configButton_.enabled = false;
+     battleNowButton_.enabled = false;
 	
 	searchButton_ = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
 																 target:self 
@@ -122,7 +152,7 @@
 	UIBarButtonItem *spacer = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
 																			target:nil action:nil]autorelease];
 	
-	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer,configButton_,spacer,searchButton_,nil]];
+	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer,configButton_,spacer,battleNowButton_,spacer, searchButton_,nil]];
 	
 	/*UIBarButtonItem *spacer = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
 	 target:nil action:nil]autorelease];
@@ -232,6 +262,7 @@
 		configViewController_.view.frame=CGRectMake(configViewController_.view.frame.origin.x, 0, configViewController_.view.frame.size.width, configViewController_.view.frame.size.height);
 		[UIView commitAnimations];
 		locationButton_.enabled = false;
+        battleNowButton_.enabled = false;
 		searchButton_.enabled = false;
 	}else if(configButton_.style == UIBarButtonItemStyleDone){
 		configButton_.style = UIBarButtonItemStyleBordered;
@@ -243,6 +274,7 @@
 		[configViewController_ resetToDefault];
 		
 		locationButton_.enabled = true;
+        battleNowButton_.enabled = true;
 		searchButton_.enabled = true;
 	}
 }
@@ -271,7 +303,10 @@
 	searchBar_.frame = CGRectMake(0, -44, searchBar_.frame.size.width, searchBar_.frame.size.height);
 	[UIView commitAnimations];
 }
-
+//たたかうなうボタンを押したとき
+-(void)battleNow{
+    [self addTaskAndBattleNow];
+}
 //locationボタンを押したとき
 -(void)doLocationButtonAction{
 	[self doLocationButtonActionAtMode:locationButtonMode_+1];
@@ -322,14 +357,20 @@
 			break;
 	}
 }
-
 # pragma mark -
 # pragma mark タスク追加等。ConfigViewControllerから呼ばれる*********************************
 -(void)addTask{
-	//taskViewController_を起動。
-	configButton_.enabled = false;
-	if(!taskViewController_) taskViewController_ = [[TaskViewController alloc]initWhenAddTaskWithViewFrame:CGRectMake(0, 0, 320, 460) wWYViewController:self];
+	configButton_.enabled = false; battleNowButton_.enabled = false;
+    isNowEditingTask_ = YES;
+	[self makeTaskViewController:0];
 	[mapViewController_ startAddAnotationWithTap];
+}
+-(void)addTaskAndBattleNow{
+    isNowEditingTask_ = YES;
+	configButton_.enabled = false; battleNowButton_.enabled = false;
+	[self makeTaskViewController:1];
+    [taskViewController_ startTaskNameInput];
+	[self.view addSubview:taskViewController_.view];
 }
 -(void)taskBattleAreaDidEndFixing{
 	//[mapViewController_ stopAddAnotationWithTap];
@@ -337,29 +378,30 @@
 	[taskViewController_ startTaskNameInput];
 	[self.view addSubview:taskViewController_.view];
 }
-//タスク登録処理
--(BOOL)registerTask:(WWYTask*)task{
-	BOOL success = NO;
+//タスク登録処理。成功すればtaskID、失敗すれば0を返す。
+-(int)registerTask:(WWYTask*)task{
+    int outputTaskID;
 	WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
     //anotationタイトルは、タスクのタイトルがない場合は敵の名前、それもない場合はデフォルト値。
     NSString* annotationTitle = task.title;
     if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = task.enemy;
     if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = NSLocalizedString(@"task_name_example_at_battle",@"");
     
-	if(taskViewController_.taskViewMode == WWYTaskViewMode_ADD){//タスク新規追加の場合
-		if(mapViewController_.nowAddingAnnotation_){
+	if(taskViewController_.taskViewMode == WWYTaskViewMode_ADD || taskViewController_.taskViewMode == WWYTaskViewMode_ADD_AND_BATTLE_NOW){//タスク新規追加の場合
+//		if(mapViewController_.nowAddingAnnotation_){//これコメントアウトして大丈夫かな？
 			mapViewController_.isAddAnotationWithTapMode_ = false;//まずタップで選ぶ機能をOFFに
-			success = [helperDB insertTask:task];
-			if(success){
+			outputTaskID = [helperDB insertTask:task];
+			if(outputTaskID != 0){
 				mapViewController_.nowAddingAnnotation_.title = annotationTitle;
 				mapViewController_.nowAddingAnnotation_.subtitle = task.description;
 				//吹き出しの長さを調節するためにもう一度セレクトする
 				[mapViewController_.mapView_ selectAnnotation:mapViewController_.nowAddingAnnotation_ animated:NO];
 			}
-		}
+//		}
 	}else if(taskViewController_.taskViewMode == WWYTaskViewMode_EDIT){//既存タスク編集の場合
-		success = [helperDB updateTask:task];
+		BOOL success = [helperDB updateTask:task];
 		if(success){
+            outputTaskID = task.ID;
 			mapViewController_.nowEditingAnnotation_.title = annotationTitle;
 			mapViewController_.nowEditingAnnotation_.subtitle = task.description;
 			//吹き出しの長さを調節するためにもう一度セレクトする
@@ -368,25 +410,28 @@
 	}
 	[helperDB release];
 	
-	return success;
+	return outputTaskID;
 }
 //タスク削除
 -(BOOL)deleteTask:(int)taskID{
 	BOOL success = NO;
 	WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
 	success = [helperDB deleteTask:taskID];
-	if(success)[mapViewController_.mapView_ removeAnnotation:mapViewController_.nowEditingAnnotation_];
+//	if(success)[mapViewController_.mapView_ removeAnnotation:mapViewController_.nowEditingAnnotation_];
+    if(success)[helperDB updateTaskAnnotationsFromDB:mapViewController_];
 	[helperDB release];
-	
+	[taskBattleManager_ updateTasks];
 	return success;	
 }
+
 //タスク追加フローを途中でキャンセル
 -(void)addTaskCanceled{
 	[mapViewController_ cancelAddAnotationWithTap];
 	[taskViewController_ release]; taskViewController_ = nil;
-	configButton_.enabled = true;
+	configButton_.enabled = true; battleNowButton_.enabled = true;
+    isNowEditingTask_ = NO;
 }
-//タスク追加フロー全て完了
+//タスク追加フロー全て完了。
 -(void)addTaskCompleted{
 	[mapViewController_ completeAddAnotationWithTap];
 	mapViewController_.nowEditingAnnotation_ = nil;
@@ -395,11 +440,23 @@
 	[helperDB updateTaskAnnotationsFromDB:mapViewController_];
 	[helperDB release];
 	[taskBattleManager_ updateTasks];
-	configButton_.enabled = true;
+	configButton_.enabled = true; battleNowButton_.enabled = true;
+    isNowEditingTask_ = NO;
 }
+//タスク追加フロー全て完了してから、すぐにたたかう。
+-(void)addTaskCompletedAndBattleNow:(WWYTask*)battleJustNowTask{
+    [self addTaskCompleted];
+    //たたかいへ
+    isNowAttackingTask_ = YES;
+    [self makeTaskBattleViewController];
+    [taskBattleViewController_ startBattleNow:battleJustNowTask];
+    isNowEditingTask_ = NO;
+}
+
 //タスク修正開始
 -(void)editTaskWithID:(int)taskID{
 	if(!taskViewController_){
+        isNowEditingTask_ = YES;
 		WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
 		WWYTask* task = [helperDB getTaskFromDB:taskID];
 		taskViewController_ = [[TaskViewController alloc]initWhenEditTask:task viewFrame:CGRectMake(0, 0, 320, 460) wWYViewController:self];
@@ -417,12 +474,13 @@
 
 //タスクが近くにあるかどうかをチェックする。タイマーとMyLocationGetterからのトリガーで呼ばれる
 -(void)checkTaskAroundLocation:(CLLocation*)location{
-	if(!taskBattleManager_.isNowAttackingTask && !mapViewController_.isAddAnotationWithTapMode_
+	if(!isNowAttackingTask_ && !isNowEditingTask_ && !mapViewController_.isAddAnotationWithTapMode_
 	   && configButton_.style == UIBarButtonItemStyleBordered && searchButton_.style == UIBarButtonItemStyleBordered){
+        [taskBattleManager_ updateTasks];
 		WWYTask *task = [taskBattleManager_ taskAroundLocation:location withInMeter:TASK_HIT_AREA_METER];
 		if(task){
-			if(!taskBattleViewController_) taskBattleViewController_ = [[TaskBattleViewController alloc]initWithFrame:CGRectMake(0, 0, 320, 460) withWWYViewController:self];
-			configButton_.enabled = false; searchButton_.enabled = false;
+            isNowAttackingTask_ = YES;
+			[self makeTaskBattleViewController];
 			[taskBattleViewController_ startBattleOrNotAtTask:task];
 			[task release];
 		}
@@ -430,27 +488,33 @@
 }
 //タスクを回避したとき呼ばれる
 -(void)avoidedTaskBattle:(WWYTask*)task{
-	[taskBattleManager_ snoozeTask:task];
-	if(taskBattleViewController_) {
-		[taskBattleViewController_.view removeFromSuperview];[taskBattleViewController_ release];taskBattleViewController_ = nil;
-	}
-	taskBattleManager_.isNowAttackingTask = NO;
-	configButton_.enabled = true; searchButton_.enabled = true;
+	[taskBattleManager_ snoozeTask:task.ID];
+    [self taskBattleComplete];
 }
-//タスクをDBからとりのぞく（勝ったときに呼ばれる）
--(void)removeTask:(int)taskID{
-	if(taskBattleManager_) [taskBattleManager_ removeTask:taskID];
+//タスクに勝って、タスクに完了日時を入れる
+-(void)doneTheTaskWhenWin:(int)taskID{
+    [taskBattleManager_ setDoneDatetimeOnTask:taskID];
+}
+//タスクにまけて、タスクをsnoozeする
+-(void)snoozeTaskWhenLose:(int)taskID{
+    [taskBattleManager_ snoozeTask:taskID];
 }
 
 //タスクバトル終了
 -(void)taskBattleComplete{
+    //mapViewのannotationをアップデート
+    WWYHelper_DB* helper_DB = [[WWYHelper_DB alloc]init];
+    [helper_DB updateTaskAnnotationsFromDB:mapViewController_];
+    
 	[taskBattleViewController_.view removeFromSuperview];[taskBattleViewController_ release];taskBattleViewController_ = nil;
-	configButton_.enabled = true; searchButton_.enabled = true;
+	configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = YES;
+    isNowAttackingTask_ = NO;
+    [helper_DB autorelease];
 }
 
 //twitterの認証を始める
 -(void)startTwitterAuthentication{
-	configButton_.enabled = false; searchButton_.enabled = false;
+	configButton_.enabled = false; searchButton_.enabled = false; battleNowButton_.enabled = false;
 	if(!twitterViewController_) twitterViewController_ = [[TwitterAuthViewController alloc]initWithViewFrame:self.view.frame delegate:self];
 	[self.view addSubview:twitterViewController_.view];
 	[twitterViewController_ startTwitterOAuth];
@@ -460,7 +524,7 @@
 	[twitterViewController_.view removeFromSuperview];
 	[twitterViewController_ release];
 	twitterViewController_ = nil;
-	configButton_.enabled = true; searchButton_.enabled = true;
+	configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = true;
 }
 
 /*

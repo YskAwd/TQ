@@ -12,7 +12,7 @@
 @implementation WebViewController
 
 - (void)dealloc {
-	NSLog(@"WebViewController-dealloc!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if ( webView_.loading ) [webView_ stopLoading];
 	webView_.delegate = nil;
 	[webView_ release]; 

@@ -49,6 +49,7 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
 	UIToolbar *toolBar_;
 	UIBarButtonItem* locationButton_;
 	UIBarButtonItem* configButton_;
+    UIBarButtonItem* battleNowButton_;
 	UIBarButtonItem* searchButton_;
 	UIImage* locationButtonImg_location_;
 	UIImage* locationButtonImg_heading_; 
@@ -61,6 +62,9 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
     
     //タスクがあるか定期的にチェックするタイマー。
     NSTimer* taskCheckTImer_;
+    
+    BOOL isNowEditingTask_;//現在タスクを追加や修正しているところかどうか。
+    BOOL isNowAttackingTask_;//現在タスクと戦っているかどうか。
     
 	//以下デバッグ用。debugViewControllerを生成して、viewを表示するコードは書いてない（以前はxibで配置していたので）
 	//DebugViewController* debugViewController_;
@@ -95,11 +99,11 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
 	
 
 -(void)addTask;
--(void)openAddQuestView;
 -(void)taskBattleAreaDidEndFixing;//タスクのバトルエリア決定
--(BOOL)registerTask:(WWYTask*)task;//タスク登録処理
+-(int)registerTask:(WWYTask*)task;//タスク登録処理。成功すればtaskID、失敗すれば0を返す。
 -(void)addTaskCanceled;//タスク追加フローを途中でキャンセル
--(void)addTaskCompleted;//タスク追加フロー全て完了
+-(void)addTaskCompleted;//タスク追加フロー全て完了。
+-(void)addTaskCompletedAndBattleNow:(WWYTask*)battleJustNowTask;//タスク追加フロー全て完了してから、すぐにたたかう。
 -(void)checkTaskAroundLocation:(CLLocation*)location;//タスクが近くにあるかどうかをチェックする
 -(void)avoidedTaskBattle:(WWYTask*)task;//タスクを回避したとき呼ばれる
 -(void)tweetOfWin:(BOOL)winOrNot;//勝ったか負けたかをツイートする。
@@ -110,6 +114,7 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
 @property (readonly,assign) UIBarButtonItem* locationButton_;
 @property (readonly,assign) UIBarButtonItem* searchButton_;
 @property (readonly,assign) UIBarButtonItem* configButton_;
+@property (readonly,assign) UIBarButtonItem* battleNowButton_;
 @property (readonly,assign) NetworkConnectionManager* networkConnectionManager;
 @property (readonly) int locationButtonMode;
 

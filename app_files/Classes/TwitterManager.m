@@ -13,7 +13,7 @@
 @synthesize twitter_name = twitter_name_;
 
 - (void)dealloc {
-	NSLog(@"TwitterManager---------------------Dealloc!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if(!oAuthTwitterViewController_) [oAuthTwitterViewController_ release];
 	if(twitter_name_) [twitter_name_ release];
 	[delegate_ release];

@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "WWYCommandViewDelegate.h"//プロトコル定義ファイル読み込み。
+#import "Define.h"
 @class WWYCommandColumnView;
 @class WWYCommandArrowView;
 @class WWYCommandFrameView;

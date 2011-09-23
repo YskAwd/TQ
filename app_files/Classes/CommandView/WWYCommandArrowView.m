@@ -75,7 +75,7 @@
 	[self stopBlinking];
 }
 - (void)dealloc {
-	NSLog(@"WWYCommandArrowView---------------------Dealloc!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
     [super dealloc];
 }
 

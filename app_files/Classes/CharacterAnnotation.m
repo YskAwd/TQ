@@ -201,7 +201,7 @@
 }
 
 - (void)dealloc {
-	NSLog(@"CharacterAnnotation----------dealloc!!!");    
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if(_title)[_title release];
 	if(_subtitle)[_subtitle release];
 	[self clearRootData];

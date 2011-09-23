@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "Define.h"
 
 //カスタムSQLite操作用
 #import "FMRMQDBSelect.h"

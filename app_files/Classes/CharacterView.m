@@ -169,7 +169,7 @@
 }
 
 - (void)dealloc {
-	NSLog(@"CharacterView----------dealloc!!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	//if(baseTimer) [baseTimer invalidate]; baseTimer=nil;//ここでTimer止めるとダメ。invalidateすることによってselfのrCountが1減るからクラッシュする。そのため"close"メソッドを用意。
     //このクラスのインスタンスを破棄する際には、"close"メソッドを明示的に呼ぶこと。
 	//内部タイマーによるretainCountなどをうまいことやってくれる。

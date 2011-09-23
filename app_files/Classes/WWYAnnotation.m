@@ -54,7 +54,7 @@
 }
 */
 - (void)dealloc {
-	NSLog(@"WWYAnnotation----------dealloc!!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if(_title) [_title release];
 	if(_subtitle) [_subtitle release];
 	userInfo_ = nil;

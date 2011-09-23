@@ -17,6 +17,7 @@
 @class LiveView;
 #import "WWYCommandViewDelegate.h"
 #import "LiveViewDelegate.h"
+#import "WWYStatusView.h"
 
 @interface ConfigViewController : UIViewController <WWYCommandViewDelegate, LiveViewDelegate>{
 	IBOutlet WWYViewController* wWYViewController_;
@@ -31,7 +32,8 @@
 	WWYCommandView* twitterSettingCommandView_;//twitterSettingの種類を選ぶためのcommandView。commandViewIdは8
 	
 	LiveView *locoloAdLiveView_;//locolo code広告の説明を表示するためのLiveView。
-	
+    WWYStatusView *statusView_;
+	WWYCommandView* statusCommandView_;//StatusViewから操作をするためのcommandView。commandViewIdは9
 	NSMutableArray* partyOrderArray_;//キャラの並び順を格納する。先頭から順にキャラidから作ったNSNumberをいれる。
 	
 	//URLConnection用変数

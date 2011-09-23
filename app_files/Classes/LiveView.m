@@ -331,7 +331,7 @@
 }
 
 - (void)dealloc {
-	NSLog(@"LiveView-------------------------------dealloc!!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if(textFieldArray){
 		for(int i=0;i<[textFieldArray count];i++){
 			[[textFieldArray objectAtIndex:i]removeFromSuperview];

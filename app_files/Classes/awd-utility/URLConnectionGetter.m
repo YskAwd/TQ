@@ -7,12 +7,16 @@
 //
 
 #import "URLConnectionGetter.h"
-#import "WWYViewController.h"
 
 @implementation URLConnectionGetter
 
+- (void)dealloc {
+	if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
+	[self cancel];
+    [super dealloc];
+}
 
-- (id)initWithDelegate:(WWYViewController*)deleg {
+- (id)initWithDelegate:(id)deleg {
 	if([super init]) {
 		delegate_ = deleg;
 	}
@@ -69,9 +73,5 @@
 	//urlConnection_も解放
 	[urlConnection_ release]; urlConnection_ = nil;//このnil大事。
 }
-- (void)dealloc {
-	NSLog(@"URLConnectionGetter----dealloc!!!");
-	[self cancel];
-    [super dealloc];
-}
+
 @end

@@ -12,7 +12,7 @@
 @synthesize datePicker = datePicker_;
 
 - (void)dealloc {
-	NSLog(@"DatePickerViewController-------------------------------dealloc!!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if(datePicker_) [datePicker_ removeFromSuperview];//autorelease済
 	if(submitCommandView_) [submitCommandView_ removeFromSuperview];//autorelease済
 	if(target_) [target_ release];

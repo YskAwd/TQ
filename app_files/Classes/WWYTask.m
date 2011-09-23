@@ -17,9 +17,10 @@
 @synthesize coordinate = coordinate_;
 @synthesize mission_datetime = mission_datetime_;
 @synthesize snoozed_datetime = snoozed_datetime_;
+@synthesize done_datetime = done_datetime_;
 
 - (void)dealloc {
-	NSLog(@"WWYTask----------dealloc!!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if(title_) [title_ release];
 	if(description_) [description_ release];
 	if(enemy_) [enemy_ release];

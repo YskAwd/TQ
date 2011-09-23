@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Define.h"
+#import "JSON.h"
 @class URLConnectionGetter;
-@class XML2Array;
 
 @interface NetworkConnectionManager : NSObject {
 	URLConnectionGetter* _urlConnectionGetter;

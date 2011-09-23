@@ -52,7 +52,12 @@
 //現在地取得できない環境でデバッグするために、delegateに現在地をプッシュ
 -(void)debugWhenNoLocation:(NSTimer*)timer{
     if(IS_TEST && PUSH_DAMMY_LOCATION_AT_TEST){
-        [delegate_ upDatesCLLocation:[[CLLocation alloc]initWithLatitude:35.6 longitude:140.1]];
+        //千葉駅
+        [delegate_ upDatesCLLocation:[[CLLocation alloc]initWithLatitude:35.612858 longitude:140.11434]];
+        //千葉みなとのあたり
+        //[delegate_ upDatesCLLocation:[[CLLocation alloc]initWithLatitude:35.6 longitude:140.1]];
+        //東京タワー
+        //[delegate_ upDatesCLLocation:[[CLLocation alloc]initWithLatitude:35.658609 longitude:139.745447]];
     }
 }
 
@@ -109,7 +114,7 @@ fromLocation:(CLLocation*)oldLocation
 }
 
 - (void)dealloc {
-	NSLog(@"MyLocationGetter----------dealloc!!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if(locationManager_) [locationManager_ stopUpdatingLocation];[locationManager_ autorelease];
 	[super dealloc];
 }

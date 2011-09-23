@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "Define.h"
 
 @interface WWYAnnotation : CLLocation <MKAnnotation> {
 	NSMutableString* _title;

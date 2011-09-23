@@ -99,10 +99,11 @@ FMResultSet* rs = [DBSelect selectFromDBWithQueryString:queryString];
 }
 
 - (void)dealloc {
+    if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
+    
     [rs close];
 	[db close];
 	
-	NSLog(@"FMRMQDBSelsect---------dealloc!");
     [super dealloc];
 }
 

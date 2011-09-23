@@ -134,7 +134,7 @@
 }
 
 - (void)dealloc {
-	NSLog(@"WWYAdController----------dealloc!!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	if(adMobView_) [adMobView_ removeFromSuperview];[adMobView_ autorelease];
 	[super dealloc];
 }

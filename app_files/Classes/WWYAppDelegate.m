@@ -37,6 +37,8 @@
     
     [self.window makeKeyAndVisible];
     
+    //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"playerStatus"];
+    
     return YES;
 }
 

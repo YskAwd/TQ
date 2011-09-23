@@ -9,15 +9,15 @@
 //今のところ同時に1接続しかできないように設計してある。複数接続したい場合は、このクラスのインスタンス自体を複数作ることになる。
 
 #import <Foundation/Foundation.h>
-@class WWYViewController;
+#import "Define.h"
 
 @interface URLConnectionGetter : NSObject {
-	WWYViewController* delegate_;
+	id delegate_;
 	NSURLConnection* urlConnection_;
 	NSMutableData* data_;
 }
 
-- (id)initWithDelegate:(WWYViewController*)deleg;
+- (id)initWithDelegate:(id)deleg;
 -(void)cancel;
 -(void)requestURL:(NSString*)urlString;
 

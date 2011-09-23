@@ -11,12 +11,16 @@
 #import "CharacterView.h"
 #import "WWYTask.h"
 
+//このクラス、なぜかinit時にautoreleaseするとフリーズする可能性が高い。
+//できるだけ遅いタイミングでautoreleaseするように。
+//また、releaseだと画面描画との関係か、フリーズしたこともあるので、autoreleaseの方がよいかも。
+
 @implementation WWYHelper_DB
 -(id)init{
 	if([super init]){
 		//inititalization
 		DBSelect_= [[FMRMQDBSelect alloc]init];
-		updateDB_ = [FMRMQDBUpdate alloc];
+		updateDB_ = [[FMRMQDBUpdate alloc]init];
 	}
 	return self;
 }
@@ -111,11 +115,12 @@
 		}
 	}
 }
-//タスク関係======================================================================
+#pragma mark -
+#pragma mark タスク関係
 //DBから全てのタスクを取得して、mapViewにAnnotationとしていれる(WWYMapViewControllerのメソッドを使用)
--(void)getTasksFromDB:(WWYMapViewController*)mapViewController_{
+-(void)getTasksFromDBOnMapViewController:(WWYMapViewController*)mapViewController_ undoneTaskOnly:(BOOL)undoneOnly{
 	//DBから取得
-	NSArray* tasksArray = [self getTasksFromDB];
+	NSArray* tasksArray = [self getTasksFromDB_undoneOnly:undoneOnly];
 	//mapViewに入れる
 	for (WWYTask *task in tasksArray){
         //anotationタイトルは、タスクのタイトルがない場合は敵の名前、それもない場合はデフォルト値。
@@ -131,24 +136,53 @@
 										   moved:NO];
 	}
 }
-//mapView内のタスクのAnnotationを、DBから最新のものに入れ替える。(WWYMapViewControllerのメソッドを使用)
+//mapView内のタスクのAnnotationを、DBから最新のものに入れ替える。未達成のタスクのみ。(WWYMapViewControllerのメソッドを使用)
 -(void)updateTaskAnnotationsFromDB:(WWYMapViewController*)mapViewController_{
+    //まずはタスクのAnnotationを削除
 	NSMutableArray* currentAnnotationArray = [NSMutableArray arrayWithArray:mapViewController_.mapView_.annotations];
 	for (id<MKAnnotation> annotation in currentAnnotationArray){
 		if([annotation isKindOfClass:[WWYAnnotation class]] && [annotation respondsToSelector:@selector(annotationType)]){
-			//タスクのバトルエリアなら
+			//タスクのAnnotationなら
 			if([annotation annotationType] == WWYAnnotationType_taskBattleArea) {
 				[mapViewController_.mapView_ removeAnnotation:annotation];
 			}
 		}		
 	}
-	[self getTasksFromDB:mapViewController_];
+	[self getTasksFromDBOnMapViewController:mapViewController_ undoneTaskOnly:YES];
 }
 
 //taskをDBに登録する。
--(BOOL)insertTask:(WWYTask*)task{
+//-(BOOL)insertTask:(WWYTask*)task{
+//	BOOL success = NO;
+//	
+//	//mission_datetimeをStringに
+//	NSString *mission_datetime = nil;
+//	if (task.mission_datetime) {//snoozed_datetimeがあるなら
+//		mission_datetime = [self stringFromDate:task.mission_datetime];
+//	}
+//	//snoozed_datetimeをStringに
+//	NSString *snoozed_datetime = nil;
+//	if (task.snoozed_datetime) {//snoozed_datetimeがあるなら
+//		snoozed_datetime = [self stringFromDate:task.snoozed_datetime];
+//	}
+//	
+//	//sql文を生成
+//	NSMutableString* queryStr = [NSString stringWithFormat:@"INSERT INTO tasks ('title','description','enemy','latitude','longitude','mission_datetime','snoozed_datetime') VALUES ('%@', '%@', '%@', '%f', '%f', '%@', '%@'); "
+//								 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime];
+//	
+//	//DBへ反映
+//	success = [updateDB_ upDateDBWithQueryString:queryStr];
+//	NSLog(@"queryStr: %@",queryStr);
+//	queryStr = nil;
+//	
+//	return success;
+//}
+
+//taskをDBに登録する。登録成功すればtaskID、登録に失敗したら0を返す。
+-(int)insertTask:(WWYTask*)task{
 	BOOL success = NO;
-	
+	int lastInsertTaskId = 0;
+    
 	//mission_datetimeをStringに
 	NSString *mission_datetime = nil;
 	if (task.mission_datetime) {//snoozed_datetimeがあるなら
@@ -159,22 +193,37 @@
 	if (task.snoozed_datetime) {//snoozed_datetimeがあるなら
 		snoozed_datetime = [self stringFromDate:task.snoozed_datetime];
 	}
+    //done_datetimeをStringに
+	NSString *done_datetime = nil;
+	if (task.done_datetime) {//done_datetimeがあるなら
+		done_datetime = [self stringFromDate:task.done_datetime];
+	}
 	
 	//sql文を生成
-	NSMutableString* queryStr = [NSString stringWithFormat:@"INSERT INTO tasks ('title','description','enemy','latitude','longitude','mission_datetime','snoozed_datetime') VALUES ('%@', '%@', '%@', '%f', '%f', '%@', '%@'); "
-								 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime];
-	
-	//DBへ反映
-	success = [updateDB_ upDateDBWithQueryString:queryStr];
+	NSMutableString* queryStr = [NSString stringWithFormat:@"INSERT INTO tasks ('title','description','enemy','latitude','longitude','mission_datetime','snoozed_datetime','done_datetime') VALUES ('%@', '%@', '%@', '%f', '%f', '%@', '%@', '%@'); "
+                                 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,done_datetime];
 	NSLog(@"queryStr: %@",queryStr);
-	queryStr = nil;
 	
-	return success;
+    //DBへ反映
+	lastInsertTaskId = [updateDB_ insertDBWithQueryString:queryStr];
+	queryStr = nil;
+    
+	return lastInsertTaskId;
 }
-//全てのtaskを取得してその配列を返す(配列はretainされていない)。
--(NSArray*)getTasksFromDB{
-	//DBから取得
-	NSMutableString*  queryString = @"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime FROM tasks ORDER BY id;";
+//全てのtaskを取得してその配列を返す(autorelease済み)。
+-(NSArray*)getTasksFromDB_undoneOnly:(BOOL)undoneOnly{
+    //現在時
+	//NSString *nowDate = [self stringFromDate:[NSDate date]];
+    
+	//クエリ生成
+    NSMutableString*  queryString;
+    if (undoneOnly) {
+        queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime FROM tasks WHERE done_datetime IS NULL OR done_datetime LIKE '' OR done_datetime LIKE '(NULL)' ORDER BY id;"];
+    }else{
+        queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime FROM tasks ORDER BY id;"];
+    }
+    
+    //DBから取得
 	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
 	
 	NSMutableArray* tasks = [[[NSMutableArray alloc]init]autorelease];
@@ -185,10 +234,8 @@
 		WWYTask *task = [[WWYTask alloc]initWithID:[rs intForColumn:@"id"] title:[rs stringForColumn:@"title"] description:[rs stringForColumn:@"description"] enemy:[rs stringForColumn:@"enemy"] coordinate:coordinate];
 		task.mission_datetime = [self dateFromString:[rs stringForColumn:@"mission_datetime"]];
 		task.snoozed_datetime = [self dateFromString:[rs stringForColumn:@"snoozed_datetime"]];
+        task.done_datetime = [self dateFromString:[rs stringForColumn:@"done_datetime"]];
 		[tasks addObject:task];
-		NSLog(@"task from DB ID:%d title:%@ description:%@ lat:%f lng:%f mission_datetime:%@ snoozed_datetime:%@",
-			  task.ID, task.title, task.description, task.coordinate.latitude, task.coordinate.longitude, 
-			  [self stringFromDate:task.mission_datetime], [self stringFromDate:task.snoozed_datetime]);
 		[task release];
 	}
 	return tasks;
@@ -196,7 +243,7 @@
 //ひとつのtaskをdbから取得する。(autorelease済み)
 -(WWYTask*)getTaskFromDB:(int)taskID{
 	//DBから取得
-	NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime FROM tasks WHERE id = '%d';",
+	NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime FROM tasks WHERE id = '%d';",
 									 taskID];
 	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
 	
@@ -208,13 +255,9 @@
 		task = [[WWYTask alloc]initWithID:[rs intForColumn:@"id"] title:[rs stringForColumn:@"title"] description:[rs stringForColumn:@"description"] enemy:[rs stringForColumn:@"enemy"] coordinate:coordinate];
 		task.mission_datetime = [self dateFromString:[rs stringForColumn:@"mission_datetime"]];
 		task.snoozed_datetime = [self dateFromString:[rs stringForColumn:@"snoozed_datetime"]];
-		
-		NSLog(@"task from DB ID:%d title:%@ description:%@ lat:%f lng:%f mission_datetime:%@ snoozed_datetime:%@",
-			  task.ID, task.title, task.description, task.coordinate.latitude, task.coordinate.longitude, 
-			  [self stringFromDate:task.mission_datetime], [self stringFromDate:task.snoozed_datetime]);
-		
-		[task autorelease];
+        task.done_datetime = [self dateFromString:[rs stringForColumn:@"done_datetime"]];
 	}
+    [task autorelease];
 	return task;
 }
 //ひとつのtaskをdbにアップデートする。
@@ -222,6 +265,7 @@
 	[task retain];	
 	BOOL success = NO;
 
+    //下記の日時関連、NULLの場合、DBには'(NULL)'という文字列が入ってしまっているよう。問題あるなら修正。
 	//mission_datetimeをStringに
 	NSString *mission_datetime = nil;
 	if (task.mission_datetime) {//snoozed_datetimeがあるなら
@@ -232,10 +276,15 @@
 	if (task.snoozed_datetime) {//snoozed_datetimeがあるなら
 		snoozed_datetime = [self stringFromDate:task.snoozed_datetime];
 	}
-	
+    //done_datetimeをStringに
+	NSString *done_datetime = nil;
+	if (task.done_datetime) {//done_datetimeがあるなら
+		done_datetime = [self stringFromDate:task.done_datetime];
+	}
+    
 	//sql文を生成
-	NSMutableString* queryStr = [NSString stringWithFormat:@"UPDATE tasks SET 'title'='%@', 'description'='%@', 'enemy'='%@', 'latitude'='%f', 'longitude'='%f', 'mission_datetime'='%@', 'snoozed_datetime'='%@' WHERE id = %d ;"
-								 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,task.ID];
+	NSMutableString* queryStr = [NSString stringWithFormat:@"UPDATE tasks SET 'title'='%@', 'description'='%@', 'enemy'='%@', 'latitude'='%f', 'longitude'='%f', 'mission_datetime'='%@', 'snoozed_datetime'='%@', 'done_datetime'='%@' WHERE id = %d ;"
+								 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,done_datetime,task.ID];
 	
 	//DBへ反映
 	success = [updateDB_ upDateDBWithQueryString:queryStr];
@@ -255,7 +304,7 @@
 	
 	//DBへ反映
 	success = [updateDB_ upDateDBWithQueryString:queryStr];
-	NSLog(@"queryStr: %@",queryStr);
+	//NSLog(@"queryStr: %@",queryStr);
 	queryStr = nil;
 
 	return success;
@@ -296,13 +345,13 @@
 	
 	//DBへ反映
 	success = [updateDB_ upDateDBWithQueryString:queryStr];
-	NSLog(@"queryStr: %@",queryStr);
+	//NSLog(@"queryStr: %@",queryStr);
 	
 	[username release];
 	return success;
 }
 -(void)dealloc{
-	NSLog(@"WWYHelper_DB dealoc!!!!!!!!!!!!!");
+	if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	
 	//インスタンスをリリース
 	//NSLog(@"DBSelect_ rCount2: %d",[DBSelect_ retainCount]);//->1

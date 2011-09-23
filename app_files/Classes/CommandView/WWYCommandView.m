@@ -332,7 +332,7 @@
 }
 
 - (void)dealloc {
-	NSLog(@"WWYCommandView--------------dealloc!!!!!!!!!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	//NSLog(@"(WWYCommandView)commandColumnArrayRcount%d\n",[commandColumnArray retainCount]);
 	//NSLog(@"(WWYCommandView)arrowButtonRcount%d\n",[arrowButton retainCount]);
 	//NSLog(@"(WWYCommandView)delegateRcount%d\n",[delegate retainCount]);

@@ -9,6 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AdMobDelegateProtocol.h"
 #import "AdMobView.h"
+#import "Define.h"
 
 @interface WWYAdController : NSObject <AdMobDelegate> {
 	AdMobView *adMobView_;

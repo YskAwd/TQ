@@ -69,7 +69,6 @@
     return self;
 }
 
-
 //mapViewでの座標を変換するメソッド。mapVewとself.viewのサイズの違いは考慮せず変換。外部からも呼ばれる。（外部からmapViewに直接アクセスしても取得できないので）************
 -(CGPoint)convertToPointFromLocation:(CLLocation*)location{
 	CGPoint newPoint = [mapView_ convertCoordinate:location.coordinate toPointToView:mapView_];
@@ -89,8 +88,6 @@
 	return newCoodinate;
 }
 
-
-
 //いろいろメソッド******************************************************************************
 //mapView_を生成、表示
 -(void)makeMapViewWithFrame:(CGRect)frame region:(MKCoordinateRegion)region{
@@ -108,11 +105,12 @@
 	//annotationとタスクを、DBから読み込む。
 	WWYHelper_DB *helper_db = [[WWYHelper_DB alloc]init];
 	[helper_db getAnnotationsFromDB:self];
-	[helper_db getTasksFromDB:self];
+	[helper_db getTasksFromDBOnMapViewController:self undoneTaskOnly:YES];
 	[helper_db autorelease];//autoreleaseはいつもできるだけ最後に！（この一個前の行だとうまくいかなかった。）
 	
 	//アプリスタート時はmapViewに関わる各ボタンが押せないようになってるが、mapView表示したらそれらを有効に。
 	wWYViewController_.configButton_.enabled = YES;//configButtonを有効に。
+    wWYViewController_.battleNowButton_.enabled = YES;//battleNowButton_を有効に。
 	wWYViewController_.searchButton_.enabled = YES;//searchButtonを有効に。	
 
 }
@@ -453,7 +451,7 @@
 		nowOnRamia_ = true;
 
 		//ボタン操作できないように。
-		wWYViewController_.locationButton_.enabled = false, wWYViewController_.searchButton_.enabled = false, wWYViewController_.configButton_.enabled = false;		
+		wWYViewController_.locationButton_.enabled = false, wWYViewController_.searchButton_.enabled = false, wWYViewController_.configButton_.enabled = false; wWYViewController_.battleNowButton_.enabled = false;		
 		//mapView_のスクロールとズームを禁止
 		mapView_.scrollEnabled = false;
 		mapView_.zoomEnabled = false;
@@ -614,7 +612,7 @@
 	mapView_.scrollEnabled = true;
 	mapView_.zoomEnabled = true;
 	//ボタン操作できるように。
-	wWYViewController_.locationButton_.enabled = true, wWYViewController_.searchButton_.enabled = true, wWYViewController_.configButton_.enabled = true;
+	wWYViewController_.locationButton_.enabled = true, wWYViewController_.searchButton_.enabled = true, wWYViewController_.configButton_.enabled = true,  wWYViewController_.battleNowButton_.enabled = false;
 	 
 	//リクルート広告を表示
 	[wWYViewController_ performSelector:@selector(showRecruitAd) withObject:nil afterDelay:2.0f];

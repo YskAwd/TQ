@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OAuthTwitterViewController.h"
 #import "WWYHelper_DB.h"
+#import "Define.h"
 
 @interface TwitterManager : NSObject {
 	OAuthTwitterViewController *oAuthTwitterViewController_;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Define.h"
 
 @interface CursorButtonView : UIView {
 	NSTimer *baseTimer;

@@ -40,7 +40,7 @@
 
 
 - (void)dealloc {
-	NSLog(@"WWYCommandFrameView---------------------Dealloc!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
     [super dealloc];
 }
 

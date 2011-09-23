@@ -12,6 +12,7 @@
 @class CharacterView;
 @class WWYTask;
 #import "WWYTask.h"
+#import "Define.h"
 
 //カスタムSQLite操作用
 #import "FMRMQDBSelect.h"
@@ -34,10 +35,10 @@
 -(NSArray*)selectPartyOrder;
 //パーティーの並び順をDBから取得してキャラに適用する。
 -(void)reassignCharacterFromDB:(WWYMapViewController*)mapViewController_;
-//taskをDBに登録する。
--(BOOL)insertTask:(WWYTask*)task;
+//taskをDBに登録する。登録成功すればtaskID、登録に失敗したら0を返す。
+-(int)insertTask:(WWYTask*)task;
 //ひとつのtaskをdbにアップデートする。
 -(BOOL)updateTask:(WWYTask*)task;
 //全てのtaskを取得してその配列を返す(配列はretainされていない)。
--(NSArray*)getTasksFromDB;
+-(NSArray*)getTasksFromDB_undoneOnly:(BOOL)undoneOnly;
 @end

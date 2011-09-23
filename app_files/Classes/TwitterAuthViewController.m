@@ -15,7 +15,7 @@
 
 
 - (void)dealloc {
-	NSLog(@"TwitterAuthViewController---------------------Dealloc!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
 	[self sendReleaseToAuthTwitterView];
 	[delegate_ release];
 	if(yesOrNoCommandView_) [yesOrNoCommandView_ removeFromSuperview];[yesOrNoCommandView_ autorelease];

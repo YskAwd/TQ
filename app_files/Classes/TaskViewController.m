@@ -33,7 +33,7 @@
 	if(task_) [task_ autorelease];
     [textColorWhenNoFix_ autorelease];
 	[wWYViewController_ autorelease];
-	NSLog(@"TaskViewController---------------------Dealloc!!");
+if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
     [super dealloc];
 }
 //ベースのinitメソッド。今のところは外部からは呼ばれない。
@@ -63,6 +63,13 @@
 		taskViewMode_ = WWYTaskViewMode_ADD;
 		[wWYViewController_.view addSubview:liveView_];
 		[liveView_ setTextAndGo:NSLocalizedString(@"select_task_area", @"") withTextID:1];
+	}
+	return self;
+}
+//戦うなうボタンでタスク新規追加時のinitメソッド。
+-(id)initWhenAddTaskAndBattleNowWithViewFrame:(CGRect)frame wWYViewController:(WWYViewController*)wWYViewController{
+	if (self = [self initWithViewFrame:frame wWYViewController:wWYViewController]) {
+		taskViewMode_ = WWYTaskViewMode_ADD_AND_BATTLE_NOW;
 	}
 	return self;
 }
@@ -350,7 +357,7 @@
 	
     //編集前が例文だったらいったん空にして文字色を変えてから編集に入る。
     //タスク新規追加時のみ
-    //if(taskViewMode_ == WWYTaskViewMode_ADD){
+    //if(taskViewMode_ == WWYTaskViewMode_ADD || taskViewMode_ == WWYTaskViewMode_ADD_AND_BATTLE_NOW){
         if(textView == taskNameTextView_){
             if([taskNameTextView_.text isEqualToString:NSLocalizedString(@"task_name_example", @"")]){
                 taskNameTextView_.text = @"";
@@ -386,7 +393,7 @@
     
     //編集終了時に空だったら文字色を変えて例文に戻す。
     //タスク新規追加時のみ
-    if(taskViewMode_ == WWYTaskViewMode_ADD){
+    if(taskViewMode_ == WWYTaskViewMode_ADD || taskViewMode_ == WWYTaskViewMode_ADD_AND_BATTLE_NOW){
         if(textView == taskNameTextView_){
             if(!taskNameTextView_.hasText){
                 taskNameTextView_.text = NSLocalizedString(@"task_name_example", @"");
@@ -437,8 +444,14 @@
 -(void)createFixCommandViewForTaskAdd{
 	if(!fixCommandView_){
 		//fixCommandView_を作る。
-		fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(180,320,120,1) target:self maxColumnAtOnce:2];
-		[fixCommandView_ addCommand:NSLocalizedString(@"fix",@"") action:@selector(fixAddingTask) userInfo:nil];
+        int maxColumn = 3;
+        if (taskViewMode_ == WWYTaskViewMode_ADD_AND_BATTLE_NOW) maxColumn = 2;
+		//fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(180,320,120,1) target:self maxColumnAtOnce:2];
+		fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(170,280,150,1) target:self maxColumnAtOnce:maxColumn];
+        if(taskViewMode_ != WWYTaskViewMode_ADD_AND_BATTLE_NOW){
+            [fixCommandView_ addCommand:NSLocalizedString(@"fix",@"") action:@selector(fixAddingTask:) userInfo:nil];
+        }
+        [fixCommandView_ addCommand:NSLocalizedString(@"battle_now2",@"") action:@selector(fixAddingTask:) userInfo:(id)kCFBooleanTrue];
 		[fixCommandView_ addCommand:NSLocalizedString(@"cancel",@"") action:@selector(cancelAddingTask) userInfo:nil];
 		[fixCommandView_ columnViewArrowStartBlinking:0];//arrowボタン点滅
 	}else{//すでにあったらデフォルトの状態にリセットする
@@ -449,11 +462,13 @@
 -(void)createFixCommandViewForTaskEdit{
 	if(!fixCommandView_){
 		//fixCommandView_を作る。
-		fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(180,300,120,1) target:self maxColumnAtOnce:3];
-		[fixCommandView_ addCommand:NSLocalizedString(@"fix",@"") action:@selector(fixEditingTask) userInfo:nil];
-		[fixCommandView_ addCommand:NSLocalizedString(@"go_back",@"") action:@selector(cancelAddingTask) userInfo:nil];
+		//fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(180,300,120,1) target:self maxColumnAtOnce:4];
+		fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(170,260,150,1) target:self maxColumnAtOnce:4];
+        [fixCommandView_ addCommand:NSLocalizedString(@"fix",@"") action:@selector(fixEditingTask:) userInfo:nil];
+        [fixCommandView_ addCommand:NSLocalizedString(@"battle_now2",@"") action:@selector(fixEditingTask:) userInfo:(id)kCFBooleanTrue];
+        [fixCommandView_ addCommand:NSLocalizedString(@"go_back",@"") action:@selector(cancelAddingTask) userInfo:nil];
 		[fixCommandView_ addCommand:NSLocalizedString(@"delete",@"") action:@selector(confirmDeleteTask) userInfo:nil];
-		[fixCommandView_ columnViewArrowStartBlinking:1];//arrowボタン点滅
+		[fixCommandView_ columnViewArrowStartBlinking:2];//arrowボタン点滅
 	}else{//すでにあったらデフォルトの状態にリセットする
 		[fixCommandView_ resetToDefault]; fixCommandView_.touchEnable = YES;
 	}
@@ -490,7 +505,7 @@
 	[wWYViewController_ addTaskCanceled];
 }
 //タスク追加時、タスクが決まったら
--(void)fixAddingTask{
+-(void)fixAddingTask:(BOOL)battleNow{
 	//例文のままだったら、空にする。
 	if([taskDetailTextView_.text isEqualToString:NSLocalizedString(@"task_detail_example", @"")]){
 		taskDetailTextView_.text = @"";
@@ -511,36 +526,63 @@
 	 */
 
 	//taskを生成
+    CLLocationCoordinate2D coordinate;
+    if (wWYViewController_.mapViewController_.nowAddingAnnotation_) {
+        coordinate = wWYViewController_.mapViewController_.nowAddingAnnotation_.coordinate;
+    }else{
+        coordinate = wWYViewController_.mapViewController_.currentCLLocation_.coordinate;
+    }
+    
 	WWYTask *task = [[WWYTask alloc]initWithTitle:taskNameTextView_.text 
 									  description:taskDetailTextView_.text 
 											enemy:enemyNameTextView_.text 
-									   coordinate:wWYViewController_.mapViewController_.nowAddingAnnotation_.coordinate];
+									   coordinate:coordinate];
 	task.mission_datetime = mission_dateTime_;
 	
 	//taskをdbに登録
-	if([wWYViewController_ registerTask:task]){
+    int registeredTaskID = [wWYViewController_ registerTask:task];
+	if(registeredTaskID != 0){
 	   [self.view removeFromSuperview];
-		[liveView_ setTextAndGo:NSLocalizedString(@"task_registered",@"") withTextID:3];
+        if(battleNow){
+            //今追加したタスクのIDを設定。
+            task.ID = registeredTaskID;
+            
+            //タスク登録フロー完了し、すぐに戦いに。
+            [wWYViewController_ addTaskCompletedAndBattleNow:task];
+        }else{
+            //登録完了のliveViewを表示（その後登録フロー終了）
+            [liveView_ setTextAndGo:NSLocalizedString(@"task_registered",@"") withTextID:3];
+        }
 	}else{
 		[self.view removeFromSuperview];
+        //登録できなかった旨のliveViewを表示（その後登録フロー終了）
+        [wWYViewController_.view addSubview:liveView_];
 		[liveView_ setTextAndGo:NSLocalizedString(@"task_not_registered",@"") withTextID:4];
 	}
 	[task release];
 }
 //タスク編集時、タスクが決まったら
--(void)fixEditingTask{	
+-(void)fixEditingTask:(BOOL)battleNow{	
 	//taskをdbに登録
 	task_.title = taskNameTextView_.text ;
 	task_.description = taskDetailTextView_.text;
 	task_.enemy = enemyNameTextView_.text;
 	task_.mission_datetime = mission_dateTime_;
 	
-	if([wWYViewController_ registerTask:task_]){
-		[self.view removeFromSuperview];
-		[wWYViewController_.view addSubview:liveView_];
-		[liveView_ setTextAndGo:NSLocalizedString(@"task_registered",@"") withTextID:3];
+    int registeredTaskID = [wWYViewController_ registerTask:task_];
+	if(registeredTaskID != 0){
+        [self.view removeFromSuperview];
+        if(battleNow){
+            //タスク登録フロー完了し、すぐに戦いに。
+            [wWYViewController_ addTaskCompletedAndBattleNow:task_];
+        }else{
+            //登録完了のliveViewを表示（その後登録フロー終了）
+            [wWYViewController_.view addSubview:liveView_];
+            [liveView_ setTextAndGo:NSLocalizedString(@"task_registered",@"") withTextID:3];
+        }
 	}else{
 		[self.view removeFromSuperview];
+        //登録できなかった旨のliveViewを表示（その後登録フロー終了）
 		[wWYViewController_.view addSubview:liveView_];
 		[liveView_ setTextAndGo:NSLocalizedString(@"task_not_registered",@"") withTextID:4];
 	}
