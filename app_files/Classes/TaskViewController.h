@@ -34,6 +34,8 @@
 	WWYCommandView* fixCommandView_;//決定意思確認のためのコマンドビュー。commandViewIdは1
 	WWYCommandView*  yesOrNoCommandView_;//タスクを削除するかどうかを選ばせるコマンドビュー。
 	DatePickerViewController *datePickerViewController_;//日時を入力するためのView。
+    
+    BOOL doneTaskEdit_;//過去のタスクを見る画面でこのビューを呼び出しているか
 	
 	UITextView *taskNameTextView_;
 	UIImageView *taskName_waku_;

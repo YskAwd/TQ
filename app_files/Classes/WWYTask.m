@@ -18,6 +18,7 @@
 @synthesize mission_datetime = mission_datetime_;
 @synthesize snoozed_datetime = snoozed_datetime_;
 @synthesize done_datetime = done_datetime_;
+@synthesize win = win_;
 
 - (void)dealloc {
 if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class]) );
@@ -38,6 +39,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 		description_ = description;
 		enemy_ = enemy;
 		coordinate_ = coordinate;
+        win_ = NO;
 	}
 	return self;
 }

@@ -19,6 +19,7 @@
 	NSDate *mission_datetime_;//実行日時
 	NSDate *snoozed_datetime_;//実行をスキップした日時
     NSDate *done_datetime_;//タスクが完了した日時
+    BOOL win_;//タスクに勝ったかどうか。初期値NO。
 	
 
 }
@@ -35,5 +36,6 @@
 @property (retain) NSDate *mission_datetime;
 @property (retain) NSDate *snoozed_datetime;
 @property (retain) NSDate *done_datetime;
+@property BOOL win;
 
 @end

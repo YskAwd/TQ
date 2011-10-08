@@ -45,6 +45,7 @@
 	if(locationButtonImg_location_) [locationButtonImg_location_ release];
 	if(locationButtonImg_heading_) [locationButtonImg_heading_ release];
 	if(networkConnectionManager_) [networkConnectionManager_ release];
+    if(backCommandView_)[backCommandView_ release];
     [super dealloc];
 }
 
@@ -382,10 +383,26 @@
 -(int)registerTask:(WWYTask*)task{
     int outputTaskID;
 	WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
+    
+    //登録した結果を表示するための一時的なAnnotationの、タイトルとサブタイトル
     //anotationタイトルは、タスクのタイトルがない場合は敵の名前、それもない場合はデフォルト値。
     NSString* annotationTitle = task.title;
     if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = task.enemy;
     if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = NSLocalizedString(@"task_name_example_at_battle",@"");
+    //anotationのサブタイトルは、mission_datetimeとdescriptionを合わせたもの。
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale systemLocale]];
+    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    NSString *missionDateStr = [dateFormatter stringFromDate:task.mission_datetime];
+    if(!missionDateStr) missionDateStr = @"";
+    NSString* annotationSubTitle = [NSString stringWithFormat:@"%@ %@",missionDateStr,task.description];
+    if(annotationSubTitle.length > 20) {
+        annotationSubTitle = [annotationSubTitle substringToIndex:17];
+        annotationSubTitle = [NSString stringWithFormat:@"%@%@",annotationSubTitle,@"..."];
+    }else if([annotationSubTitle isEqualToString:@" "]){
+        annotationSubTitle = nil;
+    }
     
 	if(taskViewController_.taskViewMode == WWYTaskViewMode_ADD || taskViewController_.taskViewMode == WWYTaskViewMode_ADD_AND_BATTLE_NOW){//タスク新規追加の場合
 //		if(mapViewController_.nowAddingAnnotation_){//これコメントアウトして大丈夫かな？
@@ -393,7 +410,7 @@
 			outputTaskID = [helperDB insertTask:task];
 			if(outputTaskID != 0){
 				mapViewController_.nowAddingAnnotation_.title = annotationTitle;
-				mapViewController_.nowAddingAnnotation_.subtitle = task.description;
+				mapViewController_.nowAddingAnnotation_.subtitle = annotationSubTitle;
 				//吹き出しの長さを調節するためにもう一度セレクトする
 				[mapViewController_.mapView_ selectAnnotation:mapViewController_.nowAddingAnnotation_ animated:NO];
 			}
@@ -403,7 +420,7 @@
 		if(success){
             outputTaskID = task.ID;
 			mapViewController_.nowEditingAnnotation_.title = annotationTitle;
-			mapViewController_.nowEditingAnnotation_.subtitle = task.description;
+			mapViewController_.nowEditingAnnotation_.subtitle = annotationSubTitle;
 			//吹き出しの長さを調節するためにもう一度セレクトする
 			[mapViewController_.mapView_ selectAnnotation:mapViewController_.nowEditingAnnotation_ animated:NO];
 		}
@@ -425,10 +442,12 @@
 }
 
 //タスク追加フローを途中でキャンセル
--(void)addTaskCanceled{
+-(void)addTaskCanceled:(BOOL)whenDoneTaskEdited{
 	[mapViewController_ cancelAddAnotationWithTap];
 	[taskViewController_ release]; taskViewController_ = nil;
-	configButton_.enabled = true; battleNowButton_.enabled = true;
+    if(!whenDoneTaskEdited){
+    configButton_.enabled = true; battleNowButton_.enabled = true;
+    }
     isNowEditingTask_ = NO;
 }
 //タスク追加フロー全て完了。
@@ -479,25 +498,37 @@
         [taskBattleManager_ updateTasks];
 		WWYTask *task = [taskBattleManager_ taskAroundLocation:location withInMeter:TASK_HIT_AREA_METER];
 		if(task){
-            isNowAttackingTask_ = YES;
-			[self makeTaskBattleViewController];
-			[taskBattleViewController_ startBattleOrNotAtTask:task];
+            //アプリがバックグラウンドのときの検知なら、LocalNortificationを出す。
+            if([[UIApplication sharedApplication]applicationState] == UIApplicationStateBackground){
+                [taskBattleManager_ snoozeTask:task.ID];//何度もNotificationが出ないようにあらかじめsnoozeしておく
+                [self scheduleNotificationWithItem:task];
+                //[self startTaskBattle:task];
+            }
+            //アプリがアクティブなら、バトルフロー開始
+            else{
+                [self startTaskBattle:task];
+            }
 			[task release];
 		}
 	}
+}
+-(void)startTaskBattle:(WWYTask*)task{
+    isNowAttackingTask_ = YES;
+    [self makeTaskBattleViewController];
+    [taskBattleViewController_ startBattleOrNotAtTask:task];
 }
 //タスクを回避したとき呼ばれる
 -(void)avoidedTaskBattle:(WWYTask*)task{
 	[taskBattleManager_ snoozeTask:task.ID];
     [self taskBattleComplete];
 }
-//タスクに勝って、タスクに完了日時を入れる
+//タスクに勝って、タスクに完了日時と勝ちを入れる
 -(void)doneTheTaskWhenWin:(int)taskID{
-    [taskBattleManager_ setDoneDatetimeOnTask:taskID];
+    [taskBattleManager_ setDoneDatetimeOnTask:taskID win:YES];
 }
-//タスクにまけて、タスクをsnoozeする
+//タスクにまけて、タスクに完了日時と負けを入れる
 -(void)snoozeTaskWhenLose:(int)taskID{
-    [taskBattleManager_ snoozeTask:taskID];
+    [taskBattleManager_ setDoneDatetimeOnTask:taskID win:NO];
 }
 
 //タスクバトル終了
@@ -507,7 +538,10 @@
     [helper_DB updateTaskAnnotationsFromDB:mapViewController_];
     
 	[taskBattleViewController_.view removeFromSuperview];[taskBattleViewController_ release];taskBattleViewController_ = nil;
-	configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = YES;
+    //過去のタスクを見ているモードじゃなければボタンを戻す
+    if(!mapViewController_.taskHistoryPolyline){//ポリラインがあるかどうかで上記を判定
+        configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = YES;
+    }
     isNowAttackingTask_ = NO;
     [helper_DB autorelease];
 }
@@ -526,7 +560,68 @@
 	twitterViewController_ = nil;
 	configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = true;
 }
-
+#pragma mark -
+#pragma mark historyMap 関連
+-(void)startHistoryMap{
+    configButton_.enabled = false; battleNowButton_.enabled = false; //searchButton_.enabled = false;
+    
+    //タスクをdoneのものに入れ替え
+    WWYHelper_DB* helper_DB = [[WWYHelper_DB alloc]init];
+    [helper_DB removeTaskAnnotationFromMapViewController:mapViewController_];
+    [helper_DB getDoneTasksFromDBOnMapViewController:mapViewController_];
+    
+    //かぶせてセピア調にするビュー
+    sepiaCoverView_ = [[UIView alloc]initWithFrame:mapViewController_.view.frame];
+    sepiaCoverView_.backgroundColor = [UIColor orangeColor];
+    sepiaCoverView_.alpha = 0.3;
+    sepiaCoverView_.userInteractionEnabled = NO;
+    [mapViewController_.view addSubview:sepiaCoverView_];
+    
+    //過去のタスクの地図画面のタイトル
+    historyMapTitleLabel_ = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, mapViewController_.view.frame.size.width, 40)];
+    historyMapTitleLabel_.backgroundColor = [UIColor blackColor];
+	historyMapTitleLabel_.textColor = [UIColor whiteColor];
+	historyMapTitleLabel_.font = [UIFont systemFontOfSize:18];
+	historyMapTitleLabel_.textAlignment = UITextAlignmentCenter;
+	historyMapTitleLabel_.text = NSLocalizedString(@"history_of_task", @"");
+    [mapViewController_.view addSubview:historyMapTitleLabel_];
+    
+    //キャラクタ達を非表示に
+    [mapViewController_ changeHiddenOfCharacter:YES];
+    
+    //現在に戻るためのコマンドビュー
+    CGFloat marginX = -25, marginY = 130; 
+    CGRect backCommandFrame = CGRectMake(self.view.frame.size.width*1/5-marginX,self.view.frame.size.height-marginY,
+                                 self.view.frame.size.width*3.5/5, 10);
+    backCommandView_ = [[WWYCommandView alloc]initWithFrame:backCommandFrame target:self maxColumnAtOnce:1];
+    [backCommandView_ insertCommand:NSLocalizedString(@"go_to_present",@"") action:@selector(closeHistoryMap) userInfo:nil AtIndex:0];
+    [backCommandView_ columnViewArrowStartBlinking:0];
+    [self.view addSubview:backCommandView_];
+    
+    [helper_DB autorelease];
+}
+-(void)closeHistoryMap{
+    //タスクをundoneのものに入れ替え
+    WWYHelper_DB* helper_DB = [[WWYHelper_DB alloc]init];
+    [helper_DB removeTaskAnnotationFromMapViewController:mapViewController_];
+    [helper_DB getTasksFromDBOnMapViewController:mapViewController_];
+    
+    //ビューを解放
+    [backCommandView_ removeFromSuperview];[backCommandView_ release]; backCommandView_ =nil;
+    [historyMapTitleLabel_ removeFromSuperview];[historyMapTitleLabel_ autorelease]; historyMapTitleLabel_ = nil;
+    [sepiaCoverView_ removeFromSuperview]; [sepiaCoverView_ autorelease]; sepiaCoverView_ = nil;
+    
+    //キャラクタ達を表示
+    [mapViewController_ changeHiddenOfCharacter:NO];
+    
+    //polylineを削除
+    [mapViewController_.mapView_ removeOverlay:mapViewController_.taskHistoryPolyline];
+    //mapViewControllerのプロパティとして保持していたpolylineを解放
+    mapViewController_.taskHistoryPolyline = nil;
+    
+    configButton_.enabled = true; battleNowButton_.enabled = true; searchButton_.enabled = true;
+    [helper_DB autorelease];
+}
 /*
  # pragma mark -
  # pragma mark debugModeメソッド*******************************************************************
@@ -545,7 +640,28 @@
 -(void)moveStopOnDebug{
 }
 */
+#pragma mark -
+#pragma mark Local Notification
+- (void)scheduleNotificationWithItem:(WWYTask *)task{
 
+    NSDate *date = [NSDate date];
+    NSString* monsterName = task.enemy;
+    if([task.enemy isEqualToString:@""] || !task.enemy) monsterName = NSLocalizedString(@"enemy_name_example_at_battle", nil);
+    
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    if (localNotif == nil)
+        return;
+    localNotif.fireDate = [date addTimeInterval:3];
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.alertBody = [NSString stringWithFormat:NSLocalizedString(@"ga_arawreta!", nil),monsterName];
+    localNotif.alertAction = NSLocalizedString(@"battle_now", nil);
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    //localNotif.applicationIconBadgeNumber = 1;
+    NSDictionary *infoDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:task.ID] forKey:@"taskID"];
+    localNotif.userInfo = infoDict;
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    [localNotif release];
+}
 # pragma mark -
 # pragma mark 目的地検索のメソッッド。XMLパースなど*******************************************************************
 //webに接続しXMLをとりにいくメソッド

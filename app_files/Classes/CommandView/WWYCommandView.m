@@ -29,6 +29,7 @@
 	maxColumnAtOnce = 1;
 	startColumn = 0;
 	brinkingColumnNumber=-1; //初期値は-1に。この変数が設定されているかどうかは値が-1かどうかで判定する。
+    selecting = -1;
 	
 	//backgroundcolorを透明に
 	self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.0];

@@ -87,7 +87,7 @@
     }
     return self;
 }
-
+//このinitメソッドは原則もう使わない
 - (id)initWithFrame:(CGRect)frame withDelegate:(id<LiveViewDelegate>)deleg{
 	[self initWithFrame:frame withDelegate:deleg withMaxColumn:4];
 }

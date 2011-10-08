@@ -9,6 +9,8 @@
 #import "WWYAppDelegate.h"
 #import "MainController.h"
 #import "WWYViewController.h"
+#import "WWYTask.h"
+#import "WWYHelper_DB.h"
 
 /* //スプラッシュ画像作成用
 #import "LiveView.h"
@@ -25,7 +27,6 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-//- (void)applicationDidFinishLaunching:(UIApplication *)application {    
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
@@ -37,10 +38,38 @@
     
     [self.window makeKeyAndVisible];
     
+    //userdefaultsから値を削除（テスト用）
     //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"playerStatus"];
+    
+    //乱数初期化
+    //これはアプリ起動時に一回だけ呼べば良い。秒単位。関数実行の度に呼んでると、同じ秒の中で実行した乱数が同じになってしまう。
+    srand((unsigned)time(NULL));
+    
+    
+    //バックグラウンドでLocalnotificationで呼ばれたら、タスクバトルを立ち上げる。
+    UILocalNotification *notification;
+    notification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (notification) {
+        int taskID = [[launchOptions objectForKey:@"taskID"]intValue];
+        if(taskID) [self startTaskBattleFromNotification:taskID];
+    }
     
     return YES;
 }
+//立ち上がってるときに（バックグラウンドでも）Notificationがあったら呼ばれる
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSDictionary* userInfo = notification.userInfo;
+    int taskID = [[userInfo objectForKey:@"taskID"]intValue];
+    if(taskID) [self startTaskBattleFromNotification:taskID];
+}
+//notificationからもらったtaskIDからタスクバトルを開始する
+-(void)startTaskBattleFromNotification:(int)taskID{
+    WWYHelper_DB* helper_DB = [[WWYHelper_DB alloc]init];
+    WWYTask* task = [helper_DB getTaskFromDB:taskID];
+    [viewController_  startTaskBattle:task];
+    [helper_DB release];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*

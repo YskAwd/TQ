@@ -25,6 +25,7 @@
 #import "TaskBattleManager.h"
 #import "TwitterManager.h"
 #import "TwitterAuthViewController.h"
+#import "WWYCommandView.h"
 
 //露現在地追随ボタンのモード定数宣言
 enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButtonMode_HEADING} locationButtonMode_;//0=location追従オフ、1=location追従オン、2=コンパスlotateオン
@@ -66,6 +67,11 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
     BOOL isNowEditingTask_;//現在タスクを追加や修正しているところかどうか。
     BOOL isNowAttackingTask_;//現在タスクと戦っているかどうか。
     
+    //「過去のタスクを見る」関係
+    UIView* sepiaCoverView_;
+    UILabel* historyMapTitleLabel_;
+    WWYCommandView* backCommandView_;
+    
 	//以下デバッグ用。debugViewControllerを生成して、viewを表示するコードは書いてない（以前はxibで配置していたので）
 	//DebugViewController* debugViewController_;
 	//IBOutlet UIBarButtonItem* debugButton_;
@@ -101,7 +107,7 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
 -(void)addTask;
 -(void)taskBattleAreaDidEndFixing;//タスクのバトルエリア決定
 -(int)registerTask:(WWYTask*)task;//タスク登録処理。成功すればtaskID、失敗すれば0を返す。
--(void)addTaskCanceled;//タスク追加フローを途中でキャンセル
+-(void)addTaskCanceled:(BOOL)whenDoneTaskEdited;//タスク追加フローを途中でキャンセル
 -(void)addTaskCompleted;//タスク追加フロー全て完了。
 -(void)addTaskCompletedAndBattleNow:(WWYTask*)battleJustNowTask;//タスク追加フロー全て完了してから、すぐにたたかう。
 -(void)checkTaskAroundLocation:(CLLocation*)location;//タスクが近くにあるかどうかをチェックする

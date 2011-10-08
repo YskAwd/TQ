@@ -117,66 +117,109 @@
 }
 #pragma mark -
 #pragma mark タスク関係
-//DBから全てのタスクを取得して、mapViewにAnnotationとしていれる(WWYMapViewControllerのメソッドを使用)
--(void)getTasksFromDBOnMapViewController:(WWYMapViewController*)mapViewController_ undoneTaskOnly:(BOOL)undoneOnly{
+//DBから未達成のタスクを取得して、mapViewにAnnotationとしていれる(WWYMapViewControllerのメソッドを使用)
+-(void)getTasksFromDBOnMapViewController:(WWYMapViewController*)mapViewController{
+	//DBから取得し、mapViewにAnnotationとして入れる
+	NSArray* taskArray = [self getUndoneTasksFromDB];
+    [self addAnotationTaskOnMapview:mapViewController taskArray:taskArray];
+}
+//DBから達成済みのタスクを取得して、mapViewにAnnotationとしていれる(WWYMapViewControllerのメソッドを使用)
+-(void)getDoneTasksFromDBOnMapViewController:(WWYMapViewController*)mapViewController{
 	//DBから取得
-	NSArray* tasksArray = [self getTasksFromDB_undoneOnly:undoneOnly];
-	//mapViewに入れる
-	for (WWYTask *task in tasksArray){
+	NSArray* taskArray = [self getDoneTasksFromDB];
+    
+    //mapViewにpolylineのoverlayをのせる
+    CLLocationCoordinate2D coors[[taskArray count]];
+    for(int i=0; i<[taskArray count]; i++){
+        WWYTask* task = [taskArray objectAtIndex:i];
+        coors[i] = task.coordinate;
+        //mapViewでのAnnotationタイトル、サブタイトル。mapView上でのみの表記。
+        
+        //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        //[dateFormatter setLocale:[NSLocale systemLocale]];
+        //[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+        //[dateFormatter setDateStyle:NSDateFormatterShortStyle];
+        
+        //NSString *doneDateStr = [dateFormatter stringFromDate:task.done_datetime];
+        //task.title = [NSString stringWithFormat:@"%@\n%@",task.title,doneDateStr];
+        //[dateFormatter release];
+        //タスク名は、なければモンスター名、それもなければデフォルト名。
+//        if(!task.title || [task.title isEqualToString:@""]) task.title = NSLocalizedString(@"task_name_example_at_battle",nil);
+        
+        //タスク完了日をsubtitleに表示するため、タスク実施予定日に入れる。
+        task.mission_datetime = task.done_datetime;
+    }
+    MKPolyline *line = [MKPolyline polylineWithCoordinates:coors
+                                                     count:[taskArray count]];
+    [mapViewController.mapView_ addOverlay:line];
+    //mapViewControllerのプロパティとしてpolylineを保持する。あとで消すときに使うので。
+    mapViewController.taskHistoryPolyline = line;
+    
+    //mapViewにAnnotationとして入れる
+    [self addAnotationTaskOnMapview:mapViewController taskArray:taskArray];
+}
+//MapviewControllerの中にtaskArrayのタスクをannotationとして入れる（このクラス内部で使う）
+-(void)addAnotationTaskOnMapview:(WWYMapViewController*)mapViewController_ taskArray:(NSArray*)taskArray{
+    //mapViewにAnnotationとして入れる
+	for (WWYTask *task in taskArray){
         //anotationタイトルは、タスクのタイトルがない場合は敵の名前、それもない場合はデフォルト値。
         NSString* annotationTitle = task.title;
         if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = task.enemy;
         if(!annotationTitle || [annotationTitle isEqualToString:@""]) annotationTitle = NSLocalizedString(@"task_name_example_at_battle",@"");
+        
+        //anotationのサブタイトルは、mission_datetimeとdescriptionを合わせたもの。
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:[NSLocale systemLocale]];
+        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+        [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+        NSString *missionDateStr = [dateFormatter stringFromDate:task.mission_datetime];
+        if(!missionDateStr) missionDateStr = @"";
+        NSString* annotationSubTitle = [NSString stringWithFormat:@"%@ %@",missionDateStr,task.description];
+        if(annotationSubTitle.length > 20) {
+            annotationSubTitle = [annotationSubTitle substringToIndex:17];
+            annotationSubTitle = [NSString stringWithFormat:@"%@%@",annotationSubTitle,@"..."];
+        }else if([annotationSubTitle isEqualToString:@" "]){
+            annotationSubTitle = nil;
+        }
+        
         //anotationをMapに配置
 		[mapViewController_ addAnnotationWithLat:task.coordinate.latitude Lng:task.coordinate.longitude
-										   title:annotationTitle subtitle:task.description 
+										   title:annotationTitle subtitle:annotationSubTitle 
 								  annotationType:WWYAnnotationType_taskBattleArea 
-										 userInfo:[NSNumber numberWithInt:task.ID]
-										 selected:NO
+                                        userInfo:[NSNumber numberWithInt:task.ID]
+                                        selected:NO
 										   moved:NO];
 	}
 }
-//mapView内のタスクのAnnotationを、DBから最新のものに入れ替える。未達成のタスクのみ。(WWYMapViewControllerのメソッドを使用)
--(void)updateTaskAnnotationsFromDB:(WWYMapViewController*)mapViewController_{
-    //まずはタスクのAnnotationを削除
-	NSMutableArray* currentAnnotationArray = [NSMutableArray arrayWithArray:mapViewController_.mapView_.annotations];
+//mapView内のタスクのAnnotationを、DBから最新の未達成のタスクに入れ替える。(WWYMapViewControllerのメソッドを使用)
+-(void)updateTaskAnnotationsFromDB:(WWYMapViewController*)mapViewController{
+    //タスクのAnnotationを削除
+    [self removeTaskAnnotationFromMapViewController:mapViewController];
+//	NSMutableArray* currentAnnotationArray = [NSMutableArray arrayWithArray:mapViewController.mapView_.annotations];
+//	for (id<MKAnnotation> annotation in currentAnnotationArray){
+//		if([annotation isKindOfClass:[WWYAnnotation class]] && [annotation respondsToSelector:@selector(annotationType)]){
+//			//タスクのAnnotationなら
+//			if([annotation annotationType] == WWYAnnotationType_taskBattleArea) {
+//				[mapViewController.mapView_ removeAnnotation:annotation];
+//			}
+//		}		
+//	}
+    //dbから取得したタスクをマップに入れる
+	[self getTasksFromDBOnMapViewController:mapViewController];
+}
+//mapViewControllerからタスクのAnnotationを削除
+-(void)removeTaskAnnotationFromMapViewController:(WWYMapViewController*)mapViewController{
+    //タスクのAnnotationを削除
+	NSMutableArray* currentAnnotationArray = [NSMutableArray arrayWithArray:mapViewController.mapView_.annotations];
 	for (id<MKAnnotation> annotation in currentAnnotationArray){
 		if([annotation isKindOfClass:[WWYAnnotation class]] && [annotation respondsToSelector:@selector(annotationType)]){
 			//タスクのAnnotationなら
 			if([annotation annotationType] == WWYAnnotationType_taskBattleArea) {
-				[mapViewController_.mapView_ removeAnnotation:annotation];
+				[mapViewController.mapView_ removeAnnotation:annotation];
 			}
 		}		
 	}
-	[self getTasksFromDBOnMapViewController:mapViewController_ undoneTaskOnly:YES];
 }
-
-//taskをDBに登録する。
-//-(BOOL)insertTask:(WWYTask*)task{
-//	BOOL success = NO;
-//	
-//	//mission_datetimeをStringに
-//	NSString *mission_datetime = nil;
-//	if (task.mission_datetime) {//snoozed_datetimeがあるなら
-//		mission_datetime = [self stringFromDate:task.mission_datetime];
-//	}
-//	//snoozed_datetimeをStringに
-//	NSString *snoozed_datetime = nil;
-//	if (task.snoozed_datetime) {//snoozed_datetimeがあるなら
-//		snoozed_datetime = [self stringFromDate:task.snoozed_datetime];
-//	}
-//	
-//	//sql文を生成
-//	NSMutableString* queryStr = [NSString stringWithFormat:@"INSERT INTO tasks ('title','description','enemy','latitude','longitude','mission_datetime','snoozed_datetime') VALUES ('%@', '%@', '%@', '%f', '%f', '%@', '%@'); "
-//								 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime];
-//	
-//	//DBへ反映
-//	success = [updateDB_ upDateDBWithQueryString:queryStr];
-//	NSLog(@"queryStr: %@",queryStr);
-//	queryStr = nil;
-//	
-//	return success;
-//}
 
 //taskをDBに登録する。登録成功すればtaskID、登録に失敗したら0を返す。
 -(int)insertTask:(WWYTask*)task{
@@ -211,22 +254,37 @@
 	return lastInsertTaskId;
 }
 //全てのtaskを取得してその配列を返す(autorelease済み)。
--(NSArray*)getTasksFromDB_undoneOnly:(BOOL)undoneOnly{
-    //現在時
-	//NSString *nowDate = [self stringFromDate:[NSDate date]];
-    
-	//クエリ生成
-    NSMutableString*  queryString;
-    if (undoneOnly) {
-        queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime FROM tasks WHERE done_datetime IS NULL OR done_datetime LIKE '' OR done_datetime LIKE '(NULL)' ORDER BY id;"];
-    }else{
-        queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime FROM tasks ORDER BY id;"];
-    }
+-(NSArray*)getTasksFromDB{
+    NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks ORDER BY id;"];
     
     //DBから取得
 	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
-	
-	NSMutableArray* tasks = [[[NSMutableArray alloc]init]autorelease];
+    
+	return [self getTasksArrayFromResultSet:rs];
+}
+//まだ終了していないタスクのみ取得してその配列を返す（autorelease済み）
+-(NSArray*)getUndoneTasksFromDB{
+    //done_datetimeで終了しているタスクか判断する
+    NSMutableString* queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE done_datetime IS NULL OR done_datetime LIKE '' OR done_datetime LIKE '(NULL)' ORDER BY id;"];
+    
+    //DBから取得
+	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
+    
+	return [self getTasksArrayFromResultSet:rs];
+}
+//終了したタスクのみ取得してその配列を返す。終了日時順で。（autorelease済み）
+-(NSArray*)getDoneTasksFromDB{
+    //done_datetimeで終了しているタスクか判断する
+    NSMutableString* queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE done_datetime IS NOT NULL AND done_datetime NOT LIKE '' AND done_datetime NOT LIKE '(NULL)' ORDER BY done_datetime;"];
+    
+    //DBから取得
+	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
+    
+	return [self getTasksArrayFromResultSet:rs];
+}
+//NSResultSetからTaskの配列にする。
+-(NSArray*)getTasksArrayFromResultSet:(FMResultSet*)rs{
+    NSMutableArray* tasks = [[[NSMutableArray alloc]init]autorelease];
 	while ([rs next]) {
 		CLLocationCoordinate2D coordinate;
 		coordinate.latitude = [rs doubleForColumn:@"latitude"];
@@ -235,6 +293,7 @@
 		task.mission_datetime = [self dateFromString:[rs stringForColumn:@"mission_datetime"]];
 		task.snoozed_datetime = [self dateFromString:[rs stringForColumn:@"snoozed_datetime"]];
         task.done_datetime = [self dateFromString:[rs stringForColumn:@"done_datetime"]];
+        task.win = [rs boolForColumn:@"win"];
 		[tasks addObject:task];
 		[task release];
 	}
@@ -243,7 +302,7 @@
 //ひとつのtaskをdbから取得する。(autorelease済み)
 -(WWYTask*)getTaskFromDB:(int)taskID{
 	//DBから取得
-	NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime FROM tasks WHERE id = '%d';",
+	NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE id = '%d';",
 									 taskID];
 	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
 	
@@ -256,6 +315,7 @@
 		task.mission_datetime = [self dateFromString:[rs stringForColumn:@"mission_datetime"]];
 		task.snoozed_datetime = [self dateFromString:[rs stringForColumn:@"snoozed_datetime"]];
         task.done_datetime = [self dateFromString:[rs stringForColumn:@"done_datetime"]];
+        task.win = [rs boolForColumn:@"win"];
 	}
     [task autorelease];
 	return task;
@@ -283,8 +343,8 @@
 	}
     
 	//sql文を生成
-	NSMutableString* queryStr = [NSString stringWithFormat:@"UPDATE tasks SET 'title'='%@', 'description'='%@', 'enemy'='%@', 'latitude'='%f', 'longitude'='%f', 'mission_datetime'='%@', 'snoozed_datetime'='%@', 'done_datetime'='%@' WHERE id = %d ;"
-								 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,done_datetime,task.ID];
+	NSMutableString* queryStr = [NSString stringWithFormat:@"UPDATE tasks SET 'title'='%@', 'description'='%@', 'enemy'='%@', 'latitude'='%f', 'longitude'='%f', 'mission_datetime'='%@', 'snoozed_datetime'='%@', 'done_datetime'='%@','win'='%d' WHERE id = %d ;"
+								 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,done_datetime,task.win,task.ID];
 	
 	//DBへ反映
 	success = [updateDB_ upDateDBWithQueryString:queryStr];

@@ -25,7 +25,7 @@
 -(void)updateTasks{
 	[tasks_array_ removeAllObjects];
 	WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
-	NSArray *tasks_array_fromDB = [helperDB getTasksFromDB_undoneOnly:YES];
+	NSArray *tasks_array_fromDB = [helperDB getUndoneTasksFromDB];
 	[tasks_array_ addObjectsFromArray:tasks_array_fromDB];
 	[helperDB release];
 }
@@ -106,8 +106,8 @@
     [helperDB release];
     return success;
 }
-//タスクに現在の終了日時を入れる
--(BOOL)setDoneDatetimeOnTask:(int)taskID{
+//タスクに現在の終了日時と勝ちか負けを入れる
+-(BOOL)setDoneDatetimeOnTask:(int)taskID win:(BOOL)win{
     WWYHelper_DB *helperDB = [[WWYHelper_DB alloc]init];
     
     //IDからtaskを取得
@@ -118,6 +118,7 @@
 	
 	//taskに反映
 	task.done_datetime = nowDate;
+    task.win = win;
 	
 	//taskをupdate
 	BOOL success = [helperDB updateTask:task];	

@@ -39,6 +39,8 @@
 -(int)insertTask:(WWYTask*)task;
 //ひとつのtaskをdbにアップデートする。
 -(BOOL)updateTask:(WWYTask*)task;
-//全てのtaskを取得してその配列を返す(配列はretainされていない)。
--(NSArray*)getTasksFromDB_undoneOnly:(BOOL)undoneOnly;
+//全てのtaskを取得してその配列を返す（autorelease済み）
+-(NSArray*)getTasksFromDB;
+//まだ終了していないタスクのみ取得してその配列を返す（autorelease済み）
+-(NSArray*)getUndoneTasksFromDB;
 @end

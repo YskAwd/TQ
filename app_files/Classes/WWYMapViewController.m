@@ -23,6 +23,7 @@
 @synthesize isAddAnotationWithTapMode_;
 @synthesize nowAddingAnnotation_;
 @synthesize nowEditingAnnotation_;
+@synthesize taskHistoryPolyline = taskHistoryPolyline_;
 
 - (id)initWithViewFrame:(CGRect)frame parentViewController:(WWYViewController*)pViewController {
     if (self = [super init]) {
@@ -105,7 +106,9 @@
 	//annotationとタスクを、DBから読み込む。
 	WWYHelper_DB *helper_db = [[WWYHelper_DB alloc]init];
 	[helper_db getAnnotationsFromDB:self];
-	[helper_db getTasksFromDBOnMapViewController:self undoneTaskOnly:YES];
+	
+    [helper_db getTasksFromDBOnMapViewController:self];
+    
 	[helper_db autorelease];//autoreleaseはいつもできるだけ最後に！（この一個前の行だとうまくいかなかった。）
 	
 	//アプリスタート時はmapViewに関わる各ボタンが押せないようになってるが、mapView表示したらそれらを有効に。
@@ -397,6 +400,16 @@
 	}
 	//キャラクタが現在地に追随するようフラグ設定
 	doesCharacterFollowCurrentLocation_ = true;
+}
+
+//キャラクタ達を全員非表示に。Or表示に。
+-(void)changeHiddenOfCharacter:(BOOL)hidden{
+    CharacterAnnotation* cAnnotation;
+    for(cAnnotation in characterAnnotationArray_){
+        CharacterView *cView;
+        cView = [mapView_ viewForAnnotation:cAnnotation];
+        cView.hidden = hidden;
+    }
 }
 
 //WWYViewControllerからlocationボタンを押したときに呼ばれる。configViewControllwe等からは明示的にこの関数を直接呼ばれる。
@@ -939,8 +952,8 @@
 -(void)moveStopOnDebug{
 }
 
-
-//MKMapViewDelegateメソッド************************************************************************
+#pragma mark -
+#pragma mark MKMapViewDelegateメソッド
 - (void)mapView:(MKMapView *)myMapView regionWillChangeAnimated:(BOOL)animated{
 	currentCenterCoordinate_ = mapView_.centerCoordinate;
 
@@ -1043,7 +1056,17 @@
 		}
 	}
 }
-//ViewControlerメソッド************************************************************************
+//overlayを返す
+- (MKOverlayView *)mapView:(MKMapView *)mapView
+            viewForOverlay:(id<MKOverlay>)overlay {
+    MKPolylineView *view = [[[MKPolylineView alloc] initWithOverlay:overlay]
+                            autorelease];
+    view.strokeColor = [UIColor colorWithRed:0.2f green:0.7f blue:1.0f alpha:0.9f];
+    view.lineWidth = 9.0;
+    return view;
+}
+#pragma mark -
+#pragma mark ViewControlerメソッド
 - (void)loadView {//初期化メソッドをloadViewに変更
 	[super loadView];
 }
@@ -1109,7 +1132,8 @@
 	// e.g. self.myOutlet = nil;
 }
 
-//その他のメソッド************************************************************************
+#pragma mark -
+#pragma mark その他のメソッド
 -(void)logCurrentRegion{
 	NSLog(@"lat:%f",mapView_.region.center.latitude);
 	NSLog(@"lng:%f",mapView_.region.center.longitude);
@@ -1135,7 +1159,8 @@
 		}
 		[tempCharaViewArrayForRamia_ release];
 	}
-	
+    self.taskHistoryPolyline = nil;
+    
 	[super dealloc];
 }
 

@@ -48,9 +48,14 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 		self.view.backgroundColor = [UIColor blackColor];
         textColorWhenNoFix_ = [[UIColor colorWithWhite:0.5 alpha:1.0]retain];
 		
+        //過去のタスクを見る画面でこのビューを呼び出しているかどうかを判定
+        //mapViewController_が保持している過去のタスクのpolylineのプロパティがあるときには、過去のタスクを表示中で、それを編集していると判断。
+        if(wWYViewController_.mapViewController_.taskHistoryPolyline) doneTaskEdit_ = YES;
+        else  doneTaskEdit_ = NO;
+        
 		//liveView_を作成（生成のみ）
 		if(!liveView_) {
-			liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 330, 300, 1) withDelegate:self withMaxColumn:3];
+			liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 312, 300, 1) withDelegate:self withMaxColumn:3];
 			liveView_.overflowMode = WWYLiveViewOverflowMode_noAction;
 			[liveView_.moreTextButt setAlpha:0.0];//下の三角ボタンを最初は表示しないように設定。
 		}
@@ -91,10 +96,18 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 		//メモ欄
 		taskDetailTextView_.text = task_.description;
 		
-		//タスク日時欄
-		NSString *mission_datetime_txt = [self stringFromDate:task_.mission_datetime];
-		if(!mission_datetime_txt) mission_datetime_txt = NSLocalizedString(@"task_dateTime_example", @"");
-		[dateTimeTextButton_ setTitle:mission_datetime_txt forState:UIControlStateNormal];
+		//タスク日時欄（通常ならばタスク設定日時、過去のタスクを見ている場合はタスク完了日時を表示）
+		NSString *datetime_txt;
+        if(!doneTaskEdit_){
+            datetime_txt = [self stringFromDate:task_.mission_datetime];
+        }else{
+            datetime_txt = [self stringFromDate:task_.done_datetime];
+        }
+		if(!datetime_txt) datetime_txt = NSLocalizedString(@"task_dateTime_example", @"");
+		[dateTimeTextButton_ setTitle:datetime_txt forState:UIControlStateNormal];
+        
+        //インスタンス変数mission_dateTime_にも、タスクに設定されているmission_dateTime_を入れておく。
+        mission_dateTime_ = task.mission_datetime;
 		
 		//fixCommandView_を生成、表示
 		[self createFixCommandViewForTaskEdit];
@@ -136,7 +149,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	taskNameTextView_.font = [UIFont systemFontOfSize:16];
 	taskNameTextView_.delegate = self;
 	taskNameTextView_.returnKeyType = UIReturnKeyDone;
-	
+	if(doneTaskEdit_)taskNameTextView_.editable = NO;
 	
 	//タスクのあいて欄生成
 	CGRect enemyNameFrame = CGRectMake(15, 110, 290, 85);
@@ -168,6 +181,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	enemyNameTextView_.font = [UIFont systemFontOfSize:16];
 	enemyNameTextView_.delegate = self;
 	enemyNameTextView_.returnKeyType = UIReturnKeyDone;
+    if(doneTaskEdit_)enemyNameTextView_.editable = NO;
 	
 	//メモ欄生成
 	CGRect taskDetailFrame = CGRectMake(15, 210, 290, 125);
@@ -203,6 +217,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	taskDetailTextView_.font = [UIFont systemFontOfSize:16];
 	taskDetailTextView_.delegate = self;
 	taskDetailTextView_.returnKeyType = UIReturnKeyDone;
+    if(doneTaskEdit_)taskDetailTextView_.editable = NO;
 	
 	//時間欄生成
 	CGRect dateTimeFrame = CGRectMake(15, 350, 140, 80);
@@ -237,8 +252,9 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	dateTimeTextButton_.center = dateTime_waku_.center;
 	[dateTimeTextButton_ setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	[dateTimeTextButton_ setTitleColor:[UIColor colorWithWhite:0.5 alpha:1.0] forState:UIControlStateHighlighted];
-	[dateTimeTextButton_ addTarget:self action:@selector(dateTimeTextTapped) forControlEvents:UIControlEventTouchUpInside];
-	
+    if(!doneTaskEdit_){
+        [dateTimeTextButton_ addTarget:self action:@selector(dateTimeTextTapped) forControlEvents:UIControlEventTouchUpInside];
+	}
 	
 	//viewを追加
 	[self.view addSubview:taskName_waku_];
@@ -432,7 +448,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 -(void)createFixCommandViewForBattleArea{
 	if(!fixCommandView_){
 		//fixCommandView_を作る。
-		fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(200,230,120,1) target:self maxColumnAtOnce:2];
+		fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(200,220,120,1) target:self maxColumnAtOnce:2];
 		[fixCommandView_ addCommand:NSLocalizedString(@"fix",@"") action:@selector(fixBattleArea) userInfo:nil];
 		[fixCommandView_ addCommand:NSLocalizedString(@"cancel",@"") action:@selector(cancelAddingTask) userInfo:nil];
 		//[fixCommandView_ columnViewArrowStartBlinking:0];//arrowボタン点滅
@@ -461,14 +477,25 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 //fixCommandView_を生成する（タスク修正時内容決定用）
 -(void)createFixCommandViewForTaskEdit{
 	if(!fixCommandView_){
-		//fixCommandView_を作る。
-		//fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(180,300,120,1) target:self maxColumnAtOnce:4];
-		fixCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(170,260,150,1) target:self maxColumnAtOnce:4];
-        [fixCommandView_ addCommand:NSLocalizedString(@"fix",@"") action:@selector(fixEditingTask:) userInfo:nil];
-        [fixCommandView_ addCommand:NSLocalizedString(@"battle_now2",@"") action:@selector(fixEditingTask:) userInfo:(id)kCFBooleanTrue];
+        CGRect commandViewFrame; int blinkingColumnNum;
+        if (!doneTaskEdit_) {
+            commandViewFrame = CGRectMake(170,260,150,1);
+            blinkingColumnNum = 2;
+        }else{
+            commandViewFrame = CGRectMake(180,350,120,1);
+            blinkingColumnNum = 0;
+        }
+        //fixCommandView_を作る。
+		fixCommandView_ = [[WWYCommandView alloc]initWithFrame:commandViewFrame target:self maxColumnAtOnce:4];
+        if(!doneTaskEdit_){
+            [fixCommandView_ addCommand:NSLocalizedString(@"fix",@"") action:@selector(fixEditingTask:) userInfo:nil];
+            [fixCommandView_ addCommand:NSLocalizedString(@"battle_now2",@"") action:@selector(fixEditingTask:) userInfo:(id)kCFBooleanTrue];
+        }
         [fixCommandView_ addCommand:NSLocalizedString(@"go_back",@"") action:@selector(cancelAddingTask) userInfo:nil];
-		[fixCommandView_ addCommand:NSLocalizedString(@"delete",@"") action:@selector(confirmDeleteTask) userInfo:nil];
-		[fixCommandView_ columnViewArrowStartBlinking:2];//arrowボタン点滅
+        if(!doneTaskEdit_){
+            [fixCommandView_ addCommand:NSLocalizedString(@"delete",@"") action:@selector(confirmDeleteTask) userInfo:nil];
+        }
+		[fixCommandView_ columnViewArrowStartBlinking:blinkingColumnNum];//arrowボタン点滅
 	}else{//すでにあったらデフォルトの状態にリセットする
 		[fixCommandView_ resetToDefault]; fixCommandView_.touchEnable = YES;
 	}
@@ -502,7 +529,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 //タスクを追加するの自体をキャンセルするなら
 -(void)cancelAddingTask{
 	[self.view removeFromSuperview];
-	[wWYViewController_ addTaskCanceled];
+	[wWYViewController_ addTaskCanceled:doneTaskEdit_];
 }
 //タスク追加時、タスクが決まったら
 -(void)fixAddingTask:(BOOL)battleNow{
@@ -568,6 +595,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	task_.description = taskDetailTextView_.text;
 	task_.enemy = enemyNameTextView_.text;
 	task_.mission_datetime = mission_dateTime_;
+    task_.snoozed_datetime = nil;//スヌーズしてた時間はリセット。
 	
     int registeredTaskID = [wWYViewController_ registerTask:task_];
 	if(registeredTaskID != 0){
@@ -635,8 +663,8 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 		NSTimer* timer;
 		timer = [NSTimer scheduledTimerWithTimeInterval:2.0
 												 target:wWYViewController_
-											   selector:@selector(addTaskCanceled)
-											   userInfo:nil
+											   selector:@selector(addTaskCanceled:)
+											   userInfo:(id)kCFBooleanFalse
 												repeats:NO];
 	}else if(textID == 5){//タスクを削除するかどうか確認
 		//確認を促すコマンドビューを生成

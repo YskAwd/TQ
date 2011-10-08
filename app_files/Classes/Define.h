@@ -11,8 +11,8 @@
 #pragma mark テストモード
 
 //テストモードかどうか（falseの場合は、以下全てのAT_TESTがついた設定値が無視される）
-#define IS_TEST true
-//#define IS_TEST false
+//#define IS_TEST true
+#define IS_TEST false
 
 //テストモード時にtweetするかどうか。(開発中むやみにtweetしないように）
 #define TWEET_ENABLE_AT_TEST true
@@ -29,7 +29,7 @@
 #pragma mark タスク関連
 
 //タスクの実行日時の何秒前に知らせるか。
-#define TASK_PRE_NOTIFICATION_SECONDS 300.0//5分
+#define TASK_PRE_NOTIFICATION_SECONDS 0//0分
 
 //タスクの先送り後、再度有効になる秒数
 #define TASK_SNOOZE_SPAN_SECONDS 600.0//10分
@@ -39,7 +39,7 @@
 #define TASK_HIT_AREA_METER 200.0
 
 //定期的に近くにタスクがないかをチェックする間隔の秒数。なお、新しいlocationが取得されるごとにチェックはされる。
-#define TASK_CHECK_INTERVAL 5.0//5秒
+#define TASK_CHECK_INTERVAL 10.0//10秒
 
 //タスク入力欄の文字数制限
 #define TASK_NAME_TEXT_LIMIT_NUM 20 //20文字まで（半角全角の判別はしていない）

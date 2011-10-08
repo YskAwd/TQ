@@ -62,6 +62,8 @@
 	WWYAnnotation *nowAddingAnnotation_;
 	//現在EditしているAnnotation
 	WWYAnnotation *nowEditingAnnotation_;
+    
+    MKPolyline* taskHistoryPolyline_;
 
 }
 - (id)initWithViewFrame:(CGRect)frame parentViewController:(WWYViewController*)pViewController;
@@ -98,5 +100,6 @@
 @property Boolean isAddAnotationWithTapMode_;
 @property (readonly,assign) WWYAnnotation* nowAddingAnnotation_;
 @property (assign) WWYAnnotation* nowEditingAnnotation_;
+@property (retain) MKPolyline* taskHistoryPolyline;
 @end
 

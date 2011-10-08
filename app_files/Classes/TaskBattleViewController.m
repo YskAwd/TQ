@@ -44,7 +44,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
         if(!monsterView_) {
             monsterView_ = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"monster.png"]];
             //monsterView_.center = CGPointMake(self.view.center.x, self.view.frame.size.height*0.3);
-            monsterView_.frame = CGRectMake((self.view.frame.size.width-192)/2, 50, 192, 192);
+            monsterView_.frame = CGRectMake((self.view.frame.size.width-192)/2, 30, 192, 192);
         }
     }
     return self;
@@ -209,6 +209,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
             StatusManager *statusManager =[StatusManager statusManager];
             int level = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
             int exGain = [[AWBuiltInValuesManager builtInValuesManager] getGainExAtLevel:level];
+            NSLog(@"level:%d exGain:%d",level,exGain);
             if (exGain > 0) {//けいけんちが獲得できたら
                 [post_txt appendFormat:NSLocalizedString(@"space", @"")];
                 [post_txt appendFormat:NSLocalizedString(@"twitt_post_when_ex_gained", @""),exGain];
@@ -221,9 +222,23 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
                 }
             }
         }else{//負けたとき
-            post_txt = 
-            [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle",@""),
-             hero_name_ ];
+            if(enemy_name_ && ![enemy_name_ isEqualToString:@""] && task_title_ && ![task_title_ isEqualToString:@""]){
+                post_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle01",@""),
+                 hero_name_,enemy_name_,task_title_];
+            }else if (enemy_name_ && ![enemy_name_ isEqualToString:@""] && (!task_title_ || [task_title_ isEqualToString:@""])){
+                post_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle02",@""),
+                 hero_name_,enemy_name_];
+            }else if ((!enemy_name_ || [enemy_name_ isEqualToString:@""]) && task_title_ && ![task_title_ isEqualToString:@""]){
+                post_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle03",@""),
+                 hero_name_,task_title_];
+            }else{
+                post_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle01",@""),
+                 hero_name_,enemy_name_at_tweet_,task_title_at_tweet_];
+            }
         }
         
         //この時点で逆ジオコーディングが完了していれば、住所もTweetする。

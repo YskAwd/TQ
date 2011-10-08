@@ -38,7 +38,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	//基本のコマンドビューを作成する。
-	CGFloat marginX = 20, marginY = 30; 
+	CGFloat marginX = 20, marginY = 30; //marginY = 30
 	CGRect cmdFrame = CGRectMake(self.view.frame.origin.x+marginX,self.view.frame.origin.y+marginY,
 								 self.view.frame.size.width-marginX*2, self.view.frame.size.height);
 	configCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame target:self maxColumnAtOnce:7];
@@ -203,6 +203,7 @@
 			//magicTypeCommandViewを作る。commandViewIdは2。
 			NSMutableArray* cmdTxtArray = [[NSMutableArray alloc]initWithObjects:
 										   NSLocalizedString(@"loula",@""),
+                                           NSLocalizedString(@"Looking_back_upon",@""),
 										   nil];
 			if(locoloAd_parseEnded_){
 				[cmdTxtArray addObject:NSLocalizedString(@"locolo_music",@"")];
@@ -360,11 +361,18 @@
 				[annotationCommandView_ resetToDefault];
 				[self.view addSubview:annotationCommandView_];
 			}
+        }else if([commandString isEqualToString:NSLocalizedString(@"Looking_back_upon",@"")]){//"かこをみる"ならば
+            //WWYViewControllerからこのビューを非表示にし、HistoryMapをオープン
+            [wWYViewController_ configModeOnOff];
+            [wWYViewController_ startHistoryMap];
+            //[configCommandView_ resetToDefault];//今のところページ送りないので省略
+        
 		}else if([commandString isEqualToString:NSLocalizedString(@"locolo_music",@"")]){//"ふしぎなおんがく"ならば
 			//locoloAdLiveView_を作成、表示、文章表示。
 			//NSLog(locoloAd_description_);
 			if(!locoloAdLiveView_) {
-				locoloAdLiveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 220, 300, 0) withDelegate:self];
+				//locoloAdLiveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 220, 300, 1) withDelegate:self];
+                locoloAdLiveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 250, 300, 1) withDelegate:self withMaxColumn:4];
 				locoloAdLiveView_.overflowMode = WWYLiveViewOverflowMode_delegateAction;
 				[locoloAdLiveView_.moreTextButt setAlpha:0.0];//下の三角ボタンを表示しないように設定。
 			}
