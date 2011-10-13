@@ -58,6 +58,7 @@
 		43190CBC12A207E800B0A017 /* btn_config.png in Resources */ = {isa = PBXBuildFile; fileRef = 43190CBA12A207E800B0A017 /* btn_config.png */; };
 		43190CBD12A207E800B0A017 /* btn_config@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43190CBB12A207E800B0A017 /* btn_config@2x.png */; };
 		431A5BF312A0A4BD004DBDF4 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431A5BF212A0A4BD004DBDF4 /* WebViewController.m */; };
+		431B985B14448AFA00FECF99 /* monster.gif in Resources */ = {isa = PBXBuildFile; fileRef = 431B985A14448AFA00FECF99 /* monster.gif */; };
 		43208DAA12884F83000F6C05 /* CommandView仕様.txt in Resources */ = {isa = PBXBuildFile; fileRef = 43208DA912884F83000F6C05 /* CommandView仕様.txt */; };
 		43208DC31288501A000F6C05 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43208DC21288501A000F6C05 /* DatePickerViewController.m */; };
 		4335BD9F10D53E2900670468 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4335BD9E10D53E2900670468 /* QuartzCore.framework */; };
@@ -267,6 +268,7 @@
 		43190CBB12A207E800B0A017 /* btn_config@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_config@2x.png"; sourceTree = "<group>"; };
 		431A5BF112A0A4BD004DBDF4 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		431A5BF212A0A4BD004DBDF4 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WebViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		431B985A14448AFA00FECF99 /* monster.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = monster.gif; sourceTree = "<group>"; };
 		43208DA912884F83000F6C05 /* CommandView仕様.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CommandView仕様.txt"; sourceTree = "<group>"; };
 		43208DC11288501A000F6C05 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		43208DC21288501A000F6C05 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DatePickerViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -922,6 +924,7 @@
 		435FD7E714069AF7000E403B /* monster */ = {
 			isa = PBXGroup;
 			children = (
+				431B985A14448AFA00FECF99 /* monster.gif */,
 				435FD7E814069AF7000E403B /* monster.png */,
 			);
 			path = monster;
@@ -1354,6 +1357,7 @@
 				435FD7E914069AF7000E403B /* monster.png in Resources */,
 				43B2C69D1410F11100E64FC5 /* memo.txt in Resources */,
 				43E534231417AF98009EC994 /* Built-In_Levels_1.1.csv in Resources */,
+				431B985B14448AFA00FECF99 /* monster.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

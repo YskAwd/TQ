@@ -34,6 +34,7 @@
 	window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
 
 	viewController_ = [[WWYViewController alloc]init];
+    viewController_.view.frame = window.frame;
 	[window addSubview:viewController_.view];
     
     [self.window makeKeyAndVisible];

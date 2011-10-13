@@ -35,16 +35,17 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
         _networkConnectionManager = [[NetworkConnectionManager alloc]init];
 		//liveView_を作成
 		if(!liveView_) {
-			liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 330, 300, 1) withDelegate:self withMaxColumn:3];
+			liveView_ = [[LiveView alloc]initWithFrame:CGRectMake(10, 350, 300, 1) withDelegate:self withMaxColumn:3];
 			liveView_.overflowMode = WWYLiveViewOverflowMode_noAction;
 			[liveView_.moreTextButt setAlpha:0.0];//下の三角ボタンを最初は表示しないように設定。
 		}
         
         //monsterViewを生成
         if(!monsterView_) {
-            monsterView_ = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"monster.png"]];
+            monsterView_ = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"monster.gif"]];
             //monsterView_.center = CGPointMake(self.view.center.x, self.view.frame.size.height*0.3);
-            monsterView_.frame = CGRectMake((self.view.frame.size.width-192)/2, 30, 192, 192);
+            //monsterView_.frame = CGRectMake((self.view.frame.size.width-256)/2, 30, 256, 256);
+            monsterView_.frame = CGRectMake((self.view.frame.size.width-192)/2, 40, 192, 192);
         }
     }
     return self;
@@ -140,7 +141,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 -(void)chooseSuccessOrNot{
 //taskSuccessOrNotCommandView_を生成、表示。
 	if(!taskSuccessOrNotCommandView_) {
-		taskSuccessOrNotCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(100,200,200,1) target:self maxColumnAtOnce:3];
+		taskSuccessOrNotCommandView_ = [[WWYCommandView alloc]initWithFrame:CGRectMake(100,220,200,1) target:self maxColumnAtOnce:3];
 		[taskSuccessOrNotCommandView_ addCommand:NSLocalizedString(@"task_complete", @"") action:@selector(win) userInfo:nil];
 		[taskSuccessOrNotCommandView_ addCommand:NSLocalizedString(@"task_fail", @"") action:@selector(lose) userInfo:nil];
 		[taskSuccessOrNotCommandView_ addCommand:NSLocalizedString(@"escape", @"") action:@selector(escape) userInfo:nil];

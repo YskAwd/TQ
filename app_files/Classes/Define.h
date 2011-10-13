@@ -11,8 +11,8 @@
 #pragma mark テストモード
 
 //テストモードかどうか（falseの場合は、以下全てのAT_TESTがついた設定値が無視される）
-//#define IS_TEST true
-#define IS_TEST false
+#define IS_TEST true
+//#define IS_TEST false
 
 //テストモード時にtweetするかどうか。(開発中むやみにtweetしないように）
 #define TWEET_ENABLE_AT_TEST true
