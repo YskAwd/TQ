@@ -21,7 +21,13 @@
 
 //レベルに関するUserDefaultsのデフォルト値をタブ区切りCSVファイルから取り出して返す。
 -(NSArray*)getBuiltInLevelsArray{
-    NSString* path = [[NSBundle mainBundle]pathForResource:@"Built-In_Levels_1.1" ofType:@"csv"];
+    NSString* path = [[NSBundle mainBundle]pathForResource:@"Built-In_Levels_1.0" ofType:@"csv"];
+    if (!path) return nil;
+    else return [self getBuiltInDataFromCSV:path];
+}
+//モンスター名に関するUserDefaultsのデフォルト値をタブ区切りCSVファイルから取り出して返す。
+-(NSArray*)getBuiltInMonsterNamesArray{
+    NSString* path = [[NSBundle mainBundle]pathForResource:@"Built-In_MonsterNames_1.0" ofType:@"csv"];
     if (!path) return nil;
     else return [self getBuiltInDataFromCSV:path];
 }

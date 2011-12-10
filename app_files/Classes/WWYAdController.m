@@ -19,8 +19,14 @@
 		viewController_ = viewController;
 		
 		//adMobView_を作成。
+        CGFloat frameY = viewController.view.frame.origin.y; //0
+        CGFloat frameW = viewController.view.frame.size.width; //320
+        CGFloat frameH = viewController.view.frame.size.height; //480
+        CGFloat toolBarH = 44;
+        CGFloat adMobViewH = 48;
 		adMobView_ = [AdMobView requestAdWithDelegate:self]; // start a new ad request
-		adMobView_.frame = CGRectMake(0, 368, 320, 48); // set the frame, in this case at the bottom of the screen
+		//adMobView_.frame = CGRectMake(0, 368, 320, 48); // set the frame, in this case at the bottom of the screen
+        adMobView_.frame = CGRectMake(0, frameH-toolBarH-adMobViewH+frameY, frameW, adMobViewH);
 		//[self.window addSubview:adMobView_]; // attach the ad to the view hierarchy; self.window is responsible for retaining the ad		
 		
 		//一定間隔で広告をリフレッシュさせるためのタイマー

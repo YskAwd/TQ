@@ -16,6 +16,9 @@
 //また、releaseだと画面描画との関係か、フリーズしたこともあるので、autoreleaseの方がよいかも。
 
 @implementation WWYHelper_DB
++(id)helperDB{
+	return [[[WWYHelper_DB alloc]init]autorelease];
+}
 -(id)init{
 	if([super init]){
 		//inititalization
@@ -243,8 +246,8 @@
 	}
 	
 	//sql文を生成
-	NSMutableString* queryStr = [NSString stringWithFormat:@"INSERT INTO tasks ('title','description','enemy','latitude','longitude','mission_datetime','snoozed_datetime','done_datetime') VALUES ('%@', '%@', '%@', '%f', '%f', '%@', '%@', '%@'); "
-                                 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,done_datetime];
+	NSMutableString* queryStr = [NSString stringWithFormat:@"INSERT INTO tasks ('title','description','enemy','enemy_image_id','latitude','longitude','mission_datetime','snoozed_datetime','done_datetime') VALUES ('%@', '%@', '%@', '%d', '%f', '%f', '%@', '%@', '%@'); "
+                                 ,task.title,task.description,task.enemy,task.enemyImageId,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,done_datetime];
 	NSLog(@"queryStr: %@",queryStr);
 	
     //DBへ反映
@@ -255,7 +258,7 @@
 }
 //全てのtaskを取得してその配列を返す(autorelease済み)。
 -(NSArray*)getTasksFromDB{
-    NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks ORDER BY id;"];
+    NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,enemy_image_id,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks ORDER BY id;"];
     
     //DBから取得
 	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
@@ -265,7 +268,7 @@
 //まだ終了していないタスクのみ取得してその配列を返す（autorelease済み）
 -(NSArray*)getUndoneTasksFromDB{
     //done_datetimeで終了しているタスクか判断する
-    NSMutableString* queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE done_datetime IS NULL OR done_datetime LIKE '' OR done_datetime LIKE '(NULL)' ORDER BY id;"];
+    NSMutableString* queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,enemy_image_id,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE done_datetime IS NULL OR done_datetime LIKE '' OR done_datetime LIKE '(NULL)' ORDER BY id;"];
     
     //DBから取得
 	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
@@ -275,7 +278,7 @@
 //終了したタスクのみ取得してその配列を返す。終了日時順で。（autorelease済み）
 -(NSArray*)getDoneTasksFromDB{
     //done_datetimeで終了しているタスクか判断する
-    NSMutableString* queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE done_datetime IS NOT NULL AND done_datetime NOT LIKE '' AND done_datetime NOT LIKE '(NULL)' ORDER BY done_datetime;"];
+    NSMutableString* queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,enemy_image_id,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE done_datetime IS NOT NULL AND done_datetime NOT LIKE '' AND done_datetime NOT LIKE '(NULL)' ORDER BY done_datetime;"];
     
     //DBから取得
 	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
@@ -289,7 +292,7 @@
 		CLLocationCoordinate2D coordinate;
 		coordinate.latitude = [rs doubleForColumn:@"latitude"];
 		coordinate.longitude= [rs doubleForColumn:@"longitude"];
-		WWYTask *task = [[WWYTask alloc]initWithID:[rs intForColumn:@"id"] title:[rs stringForColumn:@"title"] description:[rs stringForColumn:@"description"] enemy:[rs stringForColumn:@"enemy"] coordinate:coordinate];
+		WWYTask *task = [[WWYTask alloc]initWithID:[rs intForColumn:@"id"] title:[rs stringForColumn:@"title"] description:[rs stringForColumn:@"description"] enemy:[rs stringForColumn:@"enemy"] enemyImageId:[rs intForColumn:@"enemy_image_id"] coordinate:coordinate];
 		task.mission_datetime = [self dateFromString:[rs stringForColumn:@"mission_datetime"]];
 		task.snoozed_datetime = [self dateFromString:[rs stringForColumn:@"snoozed_datetime"]];
         task.done_datetime = [self dateFromString:[rs stringForColumn:@"done_datetime"]];
@@ -302,7 +305,7 @@
 //ひとつのtaskをdbから取得する。(autorelease済み)
 -(WWYTask*)getTaskFromDB:(int)taskID{
 	//DBから取得
-	NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE id = '%d';",
+	NSMutableString*  queryString = [NSString stringWithFormat:@"SELECT id,title,description,enemy,enemy_image_id,latitude,longitude,mission_datetime,snoozed_datetime,done_datetime,win FROM tasks WHERE id = '%d';",
 									 taskID];
 	FMResultSet* rs = [DBSelect_ selectFromDBWithQueryString:queryString];
 	
@@ -311,7 +314,7 @@
 		CLLocationCoordinate2D coordinate;
 		coordinate.latitude = [rs doubleForColumn:@"latitude"];
 		coordinate.longitude= [rs doubleForColumn:@"longitude"];
-		task = [[WWYTask alloc]initWithID:[rs intForColumn:@"id"] title:[rs stringForColumn:@"title"] description:[rs stringForColumn:@"description"] enemy:[rs stringForColumn:@"enemy"] coordinate:coordinate];
+		task = [[WWYTask alloc]initWithID:[rs intForColumn:@"id"] title:[rs stringForColumn:@"title"] description:[rs stringForColumn:@"description"] enemy:[rs stringForColumn:@"enemy"] enemyImageId:[rs intForColumn:@"enemy_image_id"] coordinate:coordinate];
 		task.mission_datetime = [self dateFromString:[rs stringForColumn:@"mission_datetime"]];
 		task.snoozed_datetime = [self dateFromString:[rs stringForColumn:@"snoozed_datetime"]];
         task.done_datetime = [self dateFromString:[rs stringForColumn:@"done_datetime"]];
@@ -343,8 +346,8 @@
 	}
     
 	//sql文を生成
-	NSMutableString* queryStr = [NSString stringWithFormat:@"UPDATE tasks SET 'title'='%@', 'description'='%@', 'enemy'='%@', 'latitude'='%f', 'longitude'='%f', 'mission_datetime'='%@', 'snoozed_datetime'='%@', 'done_datetime'='%@','win'='%d' WHERE id = %d ;"
-								 ,task.title,task.description,task.enemy,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,done_datetime,task.win,task.ID];
+	NSMutableString* queryStr = [NSString stringWithFormat:@"UPDATE tasks SET 'title'='%@', 'description'='%@', 'enemy'='%@', 'enemy_image_id'='%d', 'latitude'='%f', 'longitude'='%f', 'mission_datetime'='%@', 'snoozed_datetime'='%@', 'done_datetime'='%@','win'='%d' WHERE id = %d ;"
+								 ,task.title,task.description,task.enemy,task.enemyImageId,task.coordinate.latitude,task.coordinate.longitude,mission_datetime,snoozed_datetime,done_datetime,task.win,task.ID];
 	
 	//DBへ反映
 	success = [updateDB_ upDateDBWithQueryString:queryStr];
@@ -394,7 +397,13 @@
 	NSDate *outputDate = [dateFormatter dateFromString:string];
 	return outputDate;
 }
-
+//指定したモンスターIdのUIImageを返す
+-(UIImage*)getEnemyImageViewWithId:(int)enemyImageId{
+    return [UIImage imageNamed:[NSString stringWithFormat:@"mon%d.gif",enemyImageId]];
+    //return [UIImage imageNamed:@"monster.gif"];
+}
+#pragma mark -
+#pragma mark Twitter関係
 //twitterのusernameをDBに保存
 -(BOOL)updateTwitterUsername:(NSString*)username{
 	[username retain];

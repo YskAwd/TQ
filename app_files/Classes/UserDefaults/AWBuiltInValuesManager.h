@@ -2,7 +2,7 @@
 //  AWBuiltInValuesManager.h
 //  WWY2
 //
-//  Created by 裕介 粟津 on 11/09/08.
+//  Created by locolocode on 11/09/08.
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 

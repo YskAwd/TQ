@@ -17,6 +17,7 @@
 #import "LiveViewDelegate.h"
 */
 
+
 @implementation WWYAppDelegate
 
 @synthesize window;
@@ -27,20 +28,29 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {  
+    
+    //userdefaultsから値を削除（テスト用）
+//   if(IS_TEST) [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"playerStatus"];
+//   if(IS_TEST) [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"firstLaunchFootprint"];
     
     // Override point for customization after application launch.
 	//windowを自分で作成
-	window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
-
-	viewController_ = [[WWYViewController alloc]init];
-    viewController_.view.frame = window.frame;
-	[window addSubview:viewController_.view];
+	//window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];//こっちだとStatusBarの分を自動計算しない
+    window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].applicationFrame];
+    
+    //初回起動ならば
+    if(![[NSUserDefaults standardUserDefaults]objectForKey:@"firstLaunchFootprint"]){
+        helpViewController_ = [[HelpViewController alloc]initWithViewFrame:window.bounds];
+        helpViewController_.delegate = self;
+        [window addSubview:helpViewController_.view];
+        [helpViewController_ startHowtouse];
+        [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithBool:YES] forKey:@"firstLaunchFootprint"];
+    }else{//そうでなければ
+        [self initWWYViewController];
+    }
     
     [self.window makeKeyAndVisible];
-    
-    //userdefaultsから値を削除（テスト用）
-    //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"playerStatus"];
     
     //乱数初期化
     //これはアプリ起動時に一回だけ呼べば良い。秒単位。関数実行の度に呼んでると、同じ秒の中で実行した乱数が同じになってしまう。
@@ -125,6 +135,26 @@
     [viewController_ release];
     [window release];
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark custom method
+
+-(void)initWWYViewController{
+    //    CGRect theFrame = [window frame];
+    //    CGRect theBounds = [window bounds];
+    //    NSLog(@"AWDTEST0 Frame :%f %f %f %f",theFrame.origin.x,theFrame.origin.y,theFrame.size.width,theFrame.size.height);
+    //    NSLog(@"AWDTEST0 Bounds:%f %f %f %f",theBounds.origin.x,theBounds.origin.y,theBounds.size.width,theBounds.size.height);
+    
+	viewController_ = [[WWYViewController alloc]init];
+    //viewController_.view.frame = window.frame;
+	viewController_.view.frame = window.bounds;    
+    [window addSubview:viewController_.view];
+}
+-(void)closeHelperView{
+    [helpViewController_.view removeFromSuperview];
+    [helpViewController_ release];helpViewController_ = nil;
+    [self initWWYViewController];
 }
 
 @end

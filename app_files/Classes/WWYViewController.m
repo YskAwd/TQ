@@ -86,7 +86,7 @@
 //taskViewController_を生成。
 -(void)makeTaskViewController:(int)mode{
     if(!taskViewController_){
-        CGRect taskViewFrame = CGRectMake(0, 0, 320, 460);
+        CGRect taskViewFrame = self.view.frame;
         switch (mode) {
             case 0://タスク新規追加の場合
                 taskViewController_ = [[TaskViewController alloc]initWhenAddTaskWithViewFrame:taskViewFrame wWYViewController:self];
@@ -116,8 +116,14 @@
 // - (void)initView {
 	// Custom initialization
 	
-	//ツールバーとボタンを生成
-	toolBar_ =  [[UIToolbar alloc]initWithFrame:CGRectMake(0, 416, 320, 44)];
+	//ツールバーとボタンを生成    
+    CGFloat frameX = self.view.frame.origin.x; //0
+    CGFloat frameY = self.view.frame.origin.y; //20
+    CGFloat frameW = self.view.frame.size.width; //320
+    CGFloat frameH = self.view.frame.size.height; //460
+    CGFloat toolBarH = 44;
+    CGRect toolBarFrame = CGRectMake(frameX, frameH-toolBarH, frameW, toolBarH);
+	toolBar_ =  [[UIToolbar alloc]initWithFrame:toolBarFrame];
 	toolBar_.barStyle = UIBarStyleBlackOpaque;
 	locationButtonMode_ = 0;
 	locationButtonImg_location_ = [[UIImage imageNamed:@"btn_location.png"]retain];
@@ -162,19 +168,22 @@
 	
 	//activityIndicatorViewを生成
 	activityIndicatorView_ = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	activityIndicatorView_.frame = CGRectMake(16, 429, 20, 20);
+	//activityIndicatorView_.frame = CGRectMake(16, 429, 20, 20);
+    activityIndicatorView_.frame = CGRectMake(16, toolBarFrame.origin.y+15, 20, 20);
 	[activityIndicatorView_ startAnimating];
 	
 	//searcBarを生成
-	searchBar_ = [[UISearchBar alloc]initWithFrame:CGRectMake(0, -44, 320, 44)];
+    CGFloat searchBarH = 44;
+	searchBar_ = [[UISearchBar alloc]initWithFrame:CGRectMake(frameX, -searchBarH, frameW, searchBarH)];
 	searchBar_.showsCancelButton = YES;
 	searchBar_.delegate = self;
 	
 	//mapViewを生成
-	mapViewController_ = [[WWYMapViewController alloc]initWithViewFrame:CGRectMake(0, 0, 320, 420) parentViewController:self];
+	//mapViewController_ = [[WWYMapViewController alloc]initWithViewFrame:CGRectMake(frameX, frameY, frameW, 420) parentViewController:self];
+    mapViewController_ = [[WWYMapViewController alloc]initWithViewFrame:CGRectMake(frameX, frameY, frameW, frameH-toolBarH) parentViewController:self];
 	
 	//configViewを生成
-	configViewController_ = [[ConfigViewController alloc]initWithViewFrame:CGRectMake(0, 460, 320, 440) parentViewController:self];
+	configViewController_ = [[ConfigViewController alloc]initWithViewFrame:CGRectMake(frameX, frameH, frameW, 440) parentViewController:self];
 	//locolo codeの宣伝をサーバにとりにいく。
 	[configViewController_ getLocoloAd];
 	
@@ -571,20 +580,22 @@
     [helper_DB getDoneTasksFromDBOnMapViewController:mapViewController_];
     
     //かぶせてセピア調にするビュー
-    sepiaCoverView_ = [[UIView alloc]initWithFrame:mapViewController_.view.frame];
+    CGRect historyMapFrame = CGRectMake(0, 0, mapViewController_.view.frame.size.width, mapViewController_.view.frame.size.height);
+    sepiaCoverView_ = [[UIView alloc]initWithFrame:historyMapFrame];
     sepiaCoverView_.backgroundColor = [UIColor orangeColor];
     sepiaCoverView_.alpha = 0.3;
     sepiaCoverView_.userInteractionEnabled = NO;
-    [mapViewController_.view addSubview:sepiaCoverView_];
+    [self.view addSubview:sepiaCoverView_];
     
     //過去のタスクの地図画面のタイトル
-    historyMapTitleLabel_ = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, mapViewController_.view.frame.size.width, 40)];
+    CGRect historyMapTitleLabelFrame = CGRectMake(0, 0, mapViewController_.view.frame.size.width, 40);
+    historyMapTitleLabel_ = [[UILabel alloc]initWithFrame:historyMapTitleLabelFrame];
     historyMapTitleLabel_.backgroundColor = [UIColor blackColor];
 	historyMapTitleLabel_.textColor = [UIColor whiteColor];
 	historyMapTitleLabel_.font = [UIFont systemFontOfSize:18];
 	historyMapTitleLabel_.textAlignment = UITextAlignmentCenter;
 	historyMapTitleLabel_.text = NSLocalizedString(@"history_of_task", @"");
-    [mapViewController_.view addSubview:historyMapTitleLabel_];
+    [self.view addSubview:historyMapTitleLabel_];
     
     //キャラクタ達を非表示に
     [mapViewController_ changeHiddenOfCharacter:YES];

@@ -18,6 +18,7 @@
 #import "WWYCommandViewDelegate.h"
 #import "LiveViewDelegate.h"
 #import "WWYStatusView.h"
+#import "HelpViewController.h"
 
 @interface ConfigViewController : UIViewController <WWYCommandViewDelegate, LiveViewDelegate>{
 	IBOutlet WWYViewController* wWYViewController_;
@@ -35,6 +36,8 @@
     WWYStatusView *statusView_;
 	WWYCommandView* statusCommandView_;//StatusViewから操作をするためのcommandView。commandViewIdは9
 	NSMutableArray* partyOrderArray_;//キャラの並び順を格納する。先頭から順にキャラidから作ったNSNumberをいれる。
+    
+    HelpViewController* helpViewController_;
 	
 	//URLConnection用変数
 	URLConnectionGetter* urlConnectionGetter_;

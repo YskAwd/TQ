@@ -162,7 +162,8 @@
 -(void)setSeqTextAndGo:(NSArray*)txtArray{
 	if([txtArray count] > 0){//要素が0個ならば実行しないように
 		if(seqTextArray) [seqTextArray release]; seqTextArray=nil;//古いのがあれば解放
-		seqTextArray = [[NSMutableArray alloc]initWithArray:txtArray copyItems:YES];//コピーしている
+		//seqTextArray = [[NSMutableArray alloc]initWithArray:txtArray copyItems:YES];//コピーしている
+        seqTextArray = [txtArray retain];
 		seqTextMode = YES;
 		seqText_i = 0;
 		[self seqTextLoopAction];
@@ -203,7 +204,7 @@
 			[NSTimer scheduledTimerWithTimeInterval:actionDelay_ 
 											 target:self selector:@selector(doActionWhenTextEnded) 
 										   userInfo:nil repeats:NO];
-		}else if(seqTextMode){
+		}else{//seqTextModeなら
 			buttonEnable = TRUE;
 			seqTextMode_buttonEnable = TRUE;
 			moreTextButt.hidden=FALSE; [moreTextButt startBlinking];
@@ -277,7 +278,7 @@
 //三角ボタンを押したときのアクション。
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
-	if ([touch view] == moreTextButt) {
+	//if ([touch view] == moreTextButt) {
 		if(buttonEnable==TRUE){
 			//sound再生
 			AudioServicesPlaySystemSound(clickA);
@@ -286,30 +287,30 @@
 			[self goNextText];
 		}
 		//NSLog(@"Button Up");
-	}		
+	//}		
 }
 
 //overflowしていた次のテキストを描画する。
 -(void)goNextText{
+    moreTextButt.hidden=YES; [moreTextButt stopBlinking];
 	if(!seqTextMode_buttonEnable){
 		//if(buttonEnable==TRUE){
 			//sound再生
 			//AudioServicesPlaySystemSound(clickA);
 			//以下、次へテキストを送るボタンアクション。
 			//buttonEnable=FALSE;
-			moreTextButt.hidden=YES; [moreTextButt stopBlinking];
 			[self moveUpTexFields];
 			[self makeTimer];
 		//}
 	}else{//seqTextMode_buttonEnableのときに押されたら
 		//sound再生
-		AudioServicesPlaySystemSound(clickA);
+		//AudioServicesPlaySystemSound(clickA);
 		seqTextMode_buttonEnable = FALSE;
-		if(buttonEnable==TRUE){
-			buttonEnable=FALSE;
+		//if(buttonEnable==TRUE){
+		//	buttonEnable=FALSE;
 			seqText_i += 1;
 			[self seqTextLoopAction];
-		}
+		//}
 	}
 }
 //テキストを最後まで描画し終わったときのアクションを実行。
@@ -343,7 +344,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 		[moreTextButt removeFromSuperview];[moreTextButt close];[moreTextButt autorelease];moreTextButt=nil;
 	}
 	if(seqTextArray){
-		[seqTextArray removeAllObjects];
+		//[seqTextArray removeAllObjects];
 		[seqTextArray autorelease];
 	}
 	if(text) [text autorelease]; text=nil;

@@ -15,6 +15,7 @@
 #import "WWYTask.h"
 #import "DatePickerViewController.h"
 #import "WWYHelper_DB.h"
+#import "EnemyImagePickerViewController.h"
 
 
 @interface TaskViewController : UIViewController <UITextViewDelegate>{
@@ -33,6 +34,7 @@
 	LiveView *liveView_;//メッセージを表示するためのLiveView。
 	WWYCommandView* fixCommandView_;//決定意思確認のためのコマンドビュー。commandViewIdは1
 	WWYCommandView*  yesOrNoCommandView_;//タスクを削除するかどうかを選ばせるコマンドビュー。
+    EnemyImagePickerViewController *enemyPickerViewController_;//モンスター画像を選択するためのView。
 	DatePickerViewController *datePickerViewController_;//日時を入力するためのView。
     
     BOOL doneTaskEdit_;//過去のタスクを見る画面でこのビューを呼び出しているか
@@ -45,6 +47,9 @@
 	UIImageView *taskDetail_waku_;
 	UILabel *taskDetailLabel_;
 	
+    UIButton *enemyImgButton_;
+    int enemyImgId_;
+    
 	UITextView *enemyNameTextView_;
 	UIImageView *enemyName_waku_;
 	UILabel *enemyNameLabel_;

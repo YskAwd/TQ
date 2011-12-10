@@ -8,6 +8,7 @@
 
 #import "TaskViewController.h"
 #import "WWYViewController.h"
+#import "AWBuiltInValuesManager.h"
 
 
 @implementation TaskViewController
@@ -26,7 +27,6 @@
 	if(taskDetailTextView_) [taskDetailLabel_ removeFromSuperview];*/
 	
 	if(mission_dateTime_) [mission_dateTime_ release];
-	
 	if(fixCommandView_) [fixCommandView_ removeFromSuperview];[fixCommandView_ autorelease];
 	if(yesOrNoCommandView_)[yesOrNoCommandView_ removeFromSuperview];[yesOrNoCommandView_ autorelease];
 	if(liveView_) [liveView_ removeFromSuperview];[liveView_ close];[liveView_ autorelease];
@@ -52,6 +52,8 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
         //mapViewController_が保持している過去のタスクのpolylineのプロパティがあるときには、過去のタスクを表示中で、それを編集していると判断。
         if(wWYViewController_.mapViewController_.taskHistoryPolyline) doneTaskEdit_ = YES;
         else  doneTaskEdit_ = NO;
+        
+        enemyImgId_ = 1;
         
 		//liveView_を作成（生成のみ）
 		if(!liveView_) {
@@ -91,6 +93,8 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 		taskNameTextView_.text = task_.title;
 		
 		//たすくのあいて欄
+        enemyImgId_ = task.enemyImageId;
+        [enemyImgButton_ setImage:[[WWYHelper_DB helperDB]getEnemyImageViewWithId:enemyImgId_] forState:UIControlStateNormal];
 		enemyNameTextView_.text = task_.enemy;
 		
 		//メモ欄
@@ -150,14 +154,12 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	taskNameTextView_.delegate = self;
 	taskNameTextView_.returnKeyType = UIReturnKeyDone;
 	if(doneTaskEdit_)taskNameTextView_.editable = NO;
-	
+    
 	//タスクのあいて欄生成
 	CGRect enemyNameFrame = CGRectMake(15, 110, 290, 85);
-	
 	CGFloat enemyNameFramePadding = 5;
 	CGFloat enemyNameLabelWidth = 160;
 	CGFloat enemyNameLabelHeight = 20;
-	
 	CGRect enemyNameLabelFrame = CGRectMake(enemyNameFrame.origin.x + (enemyNameFrame.size.width-enemyNameLabelWidth)/2, 
 											enemyNameFrame.origin.y, enemyNameLabelWidth, enemyNameLabelHeight);
 	enemyNameLabel_ = [[[UILabel alloc]initWithFrame:enemyNameLabelFrame]autorelease];
@@ -172,9 +174,21 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	UIImage *stretchable_waku_enemyName = [waku_enemyName stretchableImageWithLeftCapWidth:5 topCapHeight:5];
 	if (!enemyName_waku_) enemyName_waku_ = [[[UIImageView alloc]initWithFrame:enemyNameWakuFrame]autorelease];
 	enemyName_waku_.image = stretchable_waku_enemyName;
+    
+    //敵の画像
+    enemyImgButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGRect enemyImgBtnFrame = CGRectMake(enemyNameFrame.origin.x+enemyNameFramePadding, enemyNameFrame.origin.y+enemyNameFramePadding, enemyNameFrame.size.height-enemyNameFramePadding, enemyNameFrame.size.height-enemyNameFramePadding);
+    enemyImgButton_.frame = enemyImgBtnFrame;
+    if(!doneTaskEdit_){
+        [enemyImgButton_ addTarget:self action:@selector(enemyImgButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+	}
 	
-	CGRect enemyNameTextFrame = CGRectMake(enemyNameFrame.origin.x+enemyNameFramePadding, enemyNameFrame.origin.y+enemyNameLabelHeight,
-										   enemyNameFrame.size.width-enemyNameFramePadding*2, enemyNameFrame.size.height-enemyNameLabelHeight);
+    //敵の名前
+    CGFloat enemyNameTextPaddingLeft = 10;
+	CGRect enemyNameTextFrame = CGRectMake(enemyNameFrame.origin.x+enemyImgBtnFrame.size.width+enemyNameTextPaddingLeft+enemyNameFramePadding,
+                                           enemyNameFrame.origin.y+enemyNameLabelHeight,
+										   enemyNameFrame.size.width-enemyNameFramePadding*2,
+                                           enemyNameFrame.size.height-enemyNameLabelHeight);
 	if(!enemyNameTextView_) enemyNameTextView_ = [[[UITextView alloc]initWithFrame:enemyNameTextFrame]autorelease];
 	enemyNameTextView_.backgroundColor = nil;
 	enemyNameTextView_.textColor = [UIColor whiteColor];
@@ -269,6 +283,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	[self.view addSubview:dateTime_waku_];
 	[self.view addSubview:dateTimeTextButton_];
 	[self.view addSubview:dateTimeLabel_];
+    [self.view addSubview:enemyImgButton_];
 }
 
 //タスク名等を入力する画面をスタート
@@ -279,8 +294,13 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	taskNameTextView_.text = NSLocalizedString(@"task_name_example", @"");
 	
 	//たすくのあいて欄
-	enemyNameTextView_.textColor = textColorWhenNoFix_;
-	enemyNameTextView_.text = NSLocalizedString(@"enemy_name_example", @"");
+    //画像
+    [enemyImgButton_ setImage:[[WWYHelper_DB helperDB]getEnemyImageViewWithId:enemyImgId_] forState:UIControlStateNormal];
+	//名前
+    enemyNameTextView_.textColor = textColorWhenNoFix_;
+	//enemyNameTextView_.text = NSLocalizedString(@"enemy_name_example", @"");
+    NSString* monsterName = [[AWBuiltInValuesManager builtInValuesManager]getBuiltInMonsterNameWithImageId:enemyImgId_];
+    if(monsterName) enemyNameTextView_.text = monsterName;
 	
 	//メモ欄
 	taskDetailTextView_.textColor = textColorWhenNoFix_;
@@ -304,7 +324,40 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	//タスク名を入力させる。
 	[taskNameTextView_ becomeFirstResponder];
 }
-
+#pragma mark -
+#pragma mark モンスター画像 関係=====================================================================
+//敵の画像欄がタップされたら
+-(void)enemyImgButtonTapped{	
+	//敵の画像選択用にDatePickerViewControllerを生成（autorelease済）、モーダルビューで表示
+    enemyPickerViewController_ =
+	[[[EnemyImagePickerViewController alloc]initWithViewFrame:(CGRect)self.view.frame 
+                                                 target:self 
+                                               selector:@selector(fixEnemyImgEdit)
+                                               userInfo:nil
+                                     selectorWhenCancel:@selector(cancelEnemyImgEdit)]
+	 autorelease];
+    UIPickerView* pickerView = (UIPickerView*)enemyPickerViewController_.pickerView;
+    [pickerView selectRow:enemyImgId_-1 inComponent:0 animated:NO];
+	[self presentModalViewController:enemyPickerViewController_ animated:YES];																
+}
+//敵の画像選択画面で”決定”が押されたら
+-(void)fixEnemyImgEdit{
+    UIPickerView* pickerView = (UIPickerView*)enemyPickerViewController_.pickerView;
+    enemyImgId_ = [pickerView selectedRowInComponent:0]+1;
+	[enemyImgButton_ setImage:[[WWYHelper_DB helperDB]getEnemyImageViewWithId:enemyImgId_] forState:UIControlStateNormal];
+    
+    AWBuiltInValuesManager* builtInValuesManager = [AWBuiltInValuesManager builtInValuesManager];
+    BOOL isExistsBuiltInMonsterNames = [builtInValuesManager isExistsBuiltInMonsterNames:enemyNameTextView_.text];
+    if (isExistsBuiltInMonsterNames || [enemyNameTextView_.text isEqualToString:NSLocalizedString(@"enemy_name_example", @"")]) {
+        NSString* monsterName = [builtInValuesManager getBuiltInMonsterNameWithImageId:enemyImgId_];
+        if(monsterName) enemyNameTextView_.text = monsterName;
+    }
+	[enemyPickerViewController_ dismissModalViewControllerAnimated:YES];
+}
+//敵の画像選択画面で”やめる”が押されたら
+-(void)cancelEnemyImgEdit{
+	[enemyPickerViewController_ dismissModalViewControllerAnimated:YES];
+}
 #pragma mark -
 #pragma mark 日時指定関係=====================================================================
 //日時欄がタップされたら
@@ -317,6 +370,12 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 												   userInfo:nil
 										 selectorWhenCancel:@selector(cancelDateTimeEdit)]
 	 autorelease];
+    NSDate* date = nil;
+    NSString* dateText = dateTimeTextButton_.titleLabel.text;
+    if(dateText && ![dateText isEqualToString:NSLocalizedString(@"task_dateTime_example", @"")] && ![dateText isEqualToString:@""]){
+        date = [self dateFromString:dateText];
+    }
+    if(date) [datePickerViewController_.datePicker setDate:date];
 	[self presentModalViewController:datePickerViewController_ animated:YES];																
 }
 //日時指定画面で”決定”が押されたら
@@ -381,7 +440,8 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
             }
         }else if(textView == enemyNameTextView_){
             
-            if([enemyNameTextView_.text isEqualToString:NSLocalizedString(@"enemy_name_example", @"")]){
+            if([enemyNameTextView_.text isEqualToString:NSLocalizedString(@"enemy_name_example", @"")]
+               || [[AWBuiltInValuesManager builtInValuesManager]isExistsBuiltInMonsterNames:enemyNameTextView_.text]){
                 enemyNameTextView_.text = @"";
                 enemyNameTextView_.textColor = [UIColor whiteColor];
             }
@@ -419,7 +479,9 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
             }
         }else if(textView == enemyNameTextView_){
 			if(!enemyNameTextView_.hasText){
-				enemyNameTextView_.text = NSLocalizedString(@"enemy_name_example", @"");
+				//enemyNameTextView_.text = NSLocalizedString(@"enemy_name_example", @"");
+                NSString* monsterName = [[AWBuiltInValuesManager builtInValuesManager]getBuiltInMonsterNameWithImageId:enemyImgId_];
+                if(monsterName) enemyNameTextView_.text = monsterName;
 				enemyNameTextView_.textColor = textColorWhenNoFix_;
 			}else{
 				[enemyNameTextView_ scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
@@ -563,6 +625,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	WWYTask *task = [[WWYTask alloc]initWithTitle:taskNameTextView_.text 
 									  description:taskDetailTextView_.text 
 											enemy:enemyNameTextView_.text 
+                                     enemyImageId:enemyImgId_
 									   coordinate:coordinate];
 	task.mission_datetime = mission_dateTime_;
 	

@@ -38,10 +38,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	//基本のコマンドビューを作成する。
-	CGFloat marginX = 20, marginY = 30; //marginY = 30
+	CGFloat marginX = 10, marginY = 10; //marginY = 30
 	CGRect cmdFrame = CGRectMake(self.view.frame.origin.x+marginX,self.view.frame.origin.y+marginY,
 								 self.view.frame.size.width-marginX*2, self.view.frame.size.height);
-	configCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame target:self maxColumnAtOnce:7];
+	configCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame target:self maxColumnAtOnce:8];
 	[configCommandView_ setTitle:NSLocalizedString(@"command",@"") withWidth:cmdFrame.size.width/2.8 withHeight:0];
 	[configCommandView_ addCommand:NSLocalizedString(@"add_quest",@"") action:@selector(configCmd_Tapped:) userInfo:@"add_quest"];
     [configCommandView_ addCommand:NSLocalizedString(@"status",@"") action:@selector(configCmd_Tapped:) userInfo:@"status"];
@@ -49,6 +49,7 @@
 	[configCommandView_ addCommand:NSLocalizedString(@"magic",@"") action:@selector(configCmd_Tapped:) userInfo:@"magic"];
 	[configCommandView_ addCommand:NSLocalizedString(@"party",@"") action:@selector(configCmd_Tapped:) userInfo:@"party"];
 	[configCommandView_ addCommand:NSLocalizedString(@"twitter_setting",@"") action:@selector(configCmd_Tapped:) userInfo:@"twitter_setting"];
+    [configCommandView_ addCommand:NSLocalizedString(@"how_to_use",@"") action:@selector(configCmd_Tapped:) userInfo:@"how_to_use"];
 	[configCommandView_ addCommand:NSLocalizedString(@"go_back",@"") action:@selector(configCmd_Tapped:) userInfo:@"go_back"];
 	[self.view addSubview:configCommandView_];
 	
@@ -269,7 +270,10 @@
 			//[twitterSettingCommandView_ resetToDefault];//今のところページ送りないので省略
 		}
 		[self.view addSubview:twitterSettingCommandView_];
-		
+    }else if([cmdStr isEqualToString:@"how_to_use"]){//********"あぷりのつかいかた"がタップされたら
+        helpViewController_ = [[HelpViewController alloc]initWithViewFrame:self.view.bounds];
+        helpViewController_.delegate = self;
+        [self.view addSubview:helpViewController_.view];
 	}else if([cmdStr isEqualToString:@"go_back"]){//********"もどる"がタップされたら
 		//WWYViewControllerからビューを非表示に
 		[wWYViewController_ configModeOnOff];
@@ -290,10 +294,8 @@
 		//[configCommandView_ resetToDefault];//今のところページ送りないので省略
 		configCommandView_.touchEnable = true;
 	}
-	
-	
-	
 }
+
 -(void)mapTypCmd_Tapped:(NSNumber*)cmdNumber{
 	int cmdIntNum = [cmdNumber intValue];
 	if(cmdIntNum !=3){//********"もどる"以外がタップされたら
@@ -323,6 +325,12 @@
     //configCommandView_を操作できるように
     //[configCommandView_ resetToDefault];//今のところページ送りないので省略
     configCommandView_.touchEnable = true;
+}
+
+//ヘルプ画面を閉じる
+-(void)closeHelperView{
+    [helpViewController_.view removeFromSuperview];
+    [helpViewController_ release];helpViewController_ = nil;
 }
 
 //WWYCommandViewDelegateメソッド
@@ -624,7 +632,8 @@
 		[statusView_ removeFromSuperview];
 		[statusView_ autorelease]; statusView_ = nil;
 	}
-	
+	[self closeHelperView];
+    
 	[configCommandView_ resetToDefault];
 	configCommandView_.touchEnable = true; 
 }
@@ -797,7 +806,8 @@
 	if(locoloAd_name_) [locoloAd_name_ release];
 	if(locoloAd_description_) [locoloAd_description_ release];
 	if(locoloAd_url_) [locoloAd_url_ release];
-    if(!statusView_) [statusView_ release];
+    if(statusView_) [statusView_ release];
+    if(helpViewController_) [helpViewController_ release];
     [super dealloc];
 }
 

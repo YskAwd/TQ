@@ -29,7 +29,8 @@
     if (self = [super init]) {
 		wWYViewController_ = pViewController;
 		self.view.frame = frame;
-		mapFrame_ = CGRectMake((320-564)/4, (420-564)/4, 564, 564);
+//		mapFrame_ = CGRectMake((320-564)/4, (420-564)/4, 564, 564);
+        mapFrame_ = CGRectMake((frame.size.width-564)/4, (frame.size.height-564)/4, 564, 564);
 		
 		nowOnRamia_ = false;
 		nowReturningFromRamia_ = false;
@@ -966,7 +967,7 @@
 		CGPoint oldPoint = [mapView_ convertCoordinate:currentCenterCoordinate_ toPointToView:mapView_];
 		CGPoint newPoint = [mapView_ convertCoordinate:newCenterCoordinate toPointToView:mapView_];
 		CGFloat distance = sqrt( pow((oldPoint.x-newPoint.x),2) + pow((oldPoint.y-newPoint.y),2));
-		if(distance > 60.0){
+		if(distance > 40.0){
 			//現在地追随モードをoffに。
 			[wWYViewController_ doLocationButtonActionAtMode:WWYLocationButtonMode_OFF];
 		}
@@ -1135,15 +1136,17 @@
 #pragma mark -
 #pragma mark その他のメソッド
 -(void)logCurrentRegion{
-	NSLog(@"lat:%f",mapView_.region.center.latitude);
-	NSLog(@"lng:%f",mapView_.region.center.longitude);
-	NSLog(@"span.lat:%f",mapView_.region.span.latitudeDelta);
-	NSLog(@"span.lng:%f",mapView_.region.span.longitudeDelta);
-	//NSLog([[NSLocale currentLocale] localeIdentifier] );
-	//if(ramiaAnnotation_) NSLog(@"ramiaAnnotation_ Rcount :%d",[ramiaAnnotation_ retainCount]);
+    if(NSLOG_REPORT_ENABLE) {
+        NSLog(@"lat:%f",mapView_.region.center.latitude);
+        NSLog(@"lng:%f",mapView_.region.center.longitude);
+        NSLog(@"span.lat:%f",mapView_.region.span.latitudeDelta);
+        NSLog(@"span.lng:%f",mapView_.region.span.longitudeDelta);
+        //NSLog([[NSLocale currentLocale] localeIdentifier] );
+        //if(ramiaAnnotation_) NSLog(@"ramiaAnnotation_ Rcount :%d",[ramiaAnnotation_ retainCount]);
+    }
 }
 -(void)logCurrentLocation{
-	NSLog(@"CurrentLocation-latitude:%f longitude:%f",currentCLLocation_.coordinate.latitude,currentCLLocation_.coordinate.longitude);
+	if(NSLOG_REPORT_ENABLE) NSLog(@"CurrentLocation-latitude:%f longitude:%f",currentCLLocation_.coordinate.latitude,currentCLLocation_.coordinate.longitude);
 }
 - (void)dealloc {	
 	if(nowLocatingImageView_) [nowLocatingImageView_ removeFromSuperview];[nowLocatingImageView_ release];nowLocatingImageView_ = nil;

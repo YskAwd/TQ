@@ -2,7 +2,7 @@
 //  AWBuiltInValuesManager.m
 //  WWY2
 //
-//  Created by 裕介 粟津 on 11/09/08.
+//  Created by locolocode on 11/09/08.
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
@@ -70,6 +70,31 @@
         title = [levelDict objectForKey:@"title"];
     }
     return title;
+}
+# pragma mark -
+# pragma mark モンスターの名前関係
+//enemyImageIdをもとに、Built-Inのモンスター名を返す
+-(NSString*)getBuiltInMonsterNameWithImageId:(int)enemyImageId{
+    NSString* outputStr = nil;
+    NSArray *builtInMonsterNames = [[AWBuiltInValuesFromCSV builtInValuesFromCSV]getBuiltInMonsterNamesArray];
+    NSString* nameKey = [AWUtility nameKeyFromUserLanguage];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"ID = %d",enemyImageId];
+    NSArray* filterdArray = [builtInMonsterNames filteredArrayUsingPredicate:predicate];
+    if ([filterdArray count] > 0) {
+        outputStr = [[filterdArray objectAtIndex:0]objectForKey:nameKey];
+    }
+    return outputStr;
+}
+//引数の名前がBuilt-In_MonsterNamesの中にあるかどうかを返す
+-(BOOL)isExistsBuiltInMonsterNames:(NSString*)monsterName{
+    NSArray *builtInMonsterNames = [[AWBuiltInValuesFromCSV builtInValuesFromCSV]getBuiltInMonsterNamesArray];
+    NSString* nameKey = [AWUtility nameKeyFromUserLanguage];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"'%@' LIKE '%@'",nameKey,monsterName];
+    NSArray* filterdArray = [builtInMonsterNames filteredArrayUsingPredicate:predicate];
+    if ([filterdArray count] > 0) {
+        return YES;
+    }
+    return NO;
 }
 
 @end

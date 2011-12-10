@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 @class MainController;
 @class WWYViewController;
+#import "HelpViewController.h"
 
 @interface WWYAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	MainController *mainController_;
     WWYViewController *viewController_;
+    HelpViewController* helpViewController_; 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

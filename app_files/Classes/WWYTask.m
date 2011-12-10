@@ -14,6 +14,7 @@
 @synthesize title = title_;
 @synthesize description = description_;
 @synthesize enemy = enemy_;
+@synthesize enemyImageId = enemyImageId_;
 @synthesize coordinate = coordinate_;
 @synthesize mission_datetime = mission_datetime_;
 @synthesize snoozed_datetime = snoozed_datetime_;
@@ -27,17 +28,18 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	if(enemy_) [enemy_ release];
 	[super dealloc];
 }
-- (id)initWithTitle:(NSString*)title description:(NSString*)description enemy:(NSString*)enemy coordinate:(CLLocationCoordinate2D)coordinate{
-	[self initWithID:0 title:title description:description enemy:enemy coordinate:coordinate];
+- (id)initWithTitle:(NSString*)title description:(NSString*)description enemy:(NSString*)enemy enemyImageId:(int)enemyImageId coordinate:(CLLocationCoordinate2D)coordinate{
+	[self initWithID:0 title:title description:description enemy:enemy enemyImageId:enemyImageId coordinate:coordinate];
 	return self;
 }
-- (id)initWithID:(int)ID title:(NSString*)title description:(NSString*)description enemy:(NSString*)enemy coordinate:(CLLocationCoordinate2D)coordinate{
+- (id)initWithID:(int)ID title:(NSString*)title description:(NSString*)description enemy:(NSString*)enemy enemyImageId:(int)enemyImageId coordinate:(CLLocationCoordinate2D)coordinate{
 	if(self = [super init]){
 		[title retain],[description retain];[enemy retain];
 		ID_ = ID;
 		title_ = title;
 		description_ = description;
 		enemy_ = enemy;
+        enemyImageId_ = enemyImageId;
 		coordinate_ = coordinate;
         win_ = NO;
 	}

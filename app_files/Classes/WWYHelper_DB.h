@@ -25,6 +25,8 @@
 	//UPDATEするときブリッジになってくれるオブジェクト
 	FMRMQDBUpdate* updateDB_;
 }
++(id)helperDB;
+
 //DBからannotationの情報を取得して、mapViewにいれる(WWYMapViewControllerのメソッドを使用)
 -(void)getAnnotationsFromDB:(WWYMapViewController*)mapViewController_;
 //mapViewのannotationをDBのannotationsテーブルに反映
@@ -43,4 +45,6 @@
 -(NSArray*)getTasksFromDB;
 //まだ終了していないタスクのみ取得してその配列を返す（autorelease済み）
 -(NSArray*)getUndoneTasksFromDB;
+//指定したモンスターIdのUIImageを返す
+-(UIImage*)getEnemyImageViewWithId:(int)enemyImageId;
 @end

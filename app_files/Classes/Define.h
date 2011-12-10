@@ -11,19 +11,34 @@
 #pragma mark テストモード
 
 //テストモードかどうか（falseの場合は、以下全てのAT_TESTがついた設定値が無視される）
-#define IS_TEST true
-//#define IS_TEST false
+//#define IS_TEST true
+#define IS_TEST false
 
 //テストモード時にtweetするかどうか。(開発中むやみにtweetしないように）
 #define TWEET_ENABLE_AT_TEST true
 //#define TWEET_ENABLE_AT_TEST true false
 
 //locationが取得できない環境での開発用に、ウソのlocationをプッシュするか
-#define PUSH_DAMMY_LOCATION_AT_TEST true
+#define PUSH_DAMMY_LOCATION_AT_TEST false
 
 //テスト用に、UserDefaultに保存されてる値をAWDefaultValueの値で上書きするかどうか。
 #define OVERRIDE_AW_DEFAULT_VALUE_AT_TEST true
 //#define OVERRIDE_AW_DEFAULT_VALUE_AT_TEST false
+/*------------------------------------------------------------*/
+#pragma mark -
+#pragma mark basic
+
+//dealloc時にNSLog出力
+//#define DEALLOC_REPORT_ENABLE true
+#define DEALLOC_REPORT_ENABLE false
+
+//レポート系のNSLog出力
+//#define NSLOG_REPORT_ENABLE true
+#define NSLOG_REPORT_ENABLE false
+
+//NetworkConnectionManagerで、結果が帰ってこない場合に接続をキャンセルする秒数
+#define NETWORK_CONNECTION_TIME_LIMIT 30.0f//30秒
+
 /*------------------------------------------------------------*/
 #pragma mark -
 #pragma mark タスク関連
@@ -70,21 +85,6 @@
 //あまりに距離が離れたlocationをはじくためのしきい値
 #define GPS_UNADOPTABLE_ACCURACY 2000.0 //単位:m
 */
-/*------------------------------------------------------------*/
-#pragma mark -
-#pragma mark basic
-
-//dealloc時にNSLog出力
-#define DEALLOC_REPORT_ENABLE true
-//#define DEALLOC_REPORT_ENABLE false
-
-//レポート系のNSLog出力
-//#define NSLOG_REPORT_ENABLE true
-#define NSLOG_REPORT_ENABLE false
-
-//NetworkConnectionManagerで、結果が帰ってこない場合に接続をキャンセルする秒数
-#define NETWORK_CONNECTION_TIME_LIMIT 30.0f//30秒
-
 /*------------------------------------------------------------*/
 
 

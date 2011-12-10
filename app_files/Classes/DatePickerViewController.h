@@ -7,18 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WWYCommandView.h"
+#import "WWY2PickerViewController.h"
 
-
-@interface DatePickerViewController : UIViewController {
+@interface DatePickerViewController : WWY2PickerViewController {
 	UIDatePicker *datePicker_;
-	WWYCommandView *submitCommandView_;
-	
-	id target_;
-	SEL selector_;
-	id userInfo_;
-	SEL selectorWhenCancel_;
 }
--(id)initWithViewFrame:(CGRect)frame target:(id)target selector:(SEL)selector userInfo:(id)userInfo selectorWhenCancel:(SEL)selectorWhenCancel;
+
 @property (assign) UIDatePicker *datePicker;
 @end
