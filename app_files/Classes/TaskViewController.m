@@ -338,6 +338,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	 autorelease];
     UIPickerView* pickerView = (UIPickerView*)enemyPickerViewController_.pickerView;
     [pickerView selectRow:enemyImgId_-1 inComponent:0 animated:NO];
+    enemyPickerViewController_.nameLabel.text = [[AWBuiltInValuesManager builtInValuesManager]getBuiltInMonsterNameWithImageId:[pickerView selectedRowInComponent:0]+1];
 	[self presentModalViewController:enemyPickerViewController_ animated:YES];																
 }
 //敵の画像選択画面で”決定”が押されたら

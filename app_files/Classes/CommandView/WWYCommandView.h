@@ -56,7 +56,7 @@
 -(void)columnViewArrowStartBlinking:(int)columnViewNumber;//columnViewNumber(0から始まる)個めのcommandColumnViewのarrowボタンを点滅させる。
 -(void)columnViewArrowStopBlinking:(int)columnViewNumber;//columnViewNumberr(0から始まる)個めのcommandColumnViewのarrowボタンの点滅をストップさせる。
 -(void)adjustHeight;//高さの自動設定。
--(void)changeFrame:(CGRect)newFrame;//位置や大きさを変更する。
+-(void)changeFrame:(CGRect)newFrame;//位置や大きさを変更する。[非推奨メソッドに]。
 -(int)getDisplayColumnNum;//現在表示すべきカラム数を得る。
 
 @property Boolean touchEnable;

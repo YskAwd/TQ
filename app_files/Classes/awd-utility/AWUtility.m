@@ -35,6 +35,18 @@
 	}
 	return nameKey;	
 }
+//ユーザーが使っている言語によって@"ja"と@"en"どちらかの文字列を返す。
++(NSString*)langKeyFromUserLanguage{	
+	NSString* nameKey;
+	//ユーザの言語を判定
+	NSString *currentLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];
+	if([currentLanguage isEqualToString:@"ja"]){//ユーザの言語環境が日本語なら
+		nameKey = @"ja";
+	}else{//日本語以外なら
+		nameKey = @"en";
+	}
+	return nameKey;	
+}
 
 #pragma mark -
 #pragma mark 文字列関係

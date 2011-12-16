@@ -45,7 +45,7 @@
         
         liveView_ = [[LiveView alloc]initWithFrame:lViewFrame withDelegate:self withMaxColumn:5];
         liveView_.overflowMode = WWYLiveViewOverflowMode_cursorButton;
-        liveView_.actionDelay = 1.0f;
+        liveView_.actionDelay = 2.0f;
         
         self.view.backgroundColor = [UIColor blackColor];
         [self.view addSubview:commandView_];
@@ -67,13 +67,6 @@
     }
 }
 
-#pragma mark アプリスタート時、このアプリについて簡単に紹介
--(void)startHowtouse{
-    [commandView_ removeFromSuperview];
-    liveView_.actionDelay = 2.0f;
-    [self showHelp:[NSDictionary dictionaryWithObject:@"howtoUse" forKey:@"key"]];
-}
-
 #pragma mark LiveViewへの表示
 -(void)showHelp:(id)userInfo{
     [commandView_ removeFromSuperview];
@@ -88,6 +81,13 @@
     }else{
         [self re_preset_views];
     }
+}
+
+#pragma mark アプリスタート時、このアプリについて簡単に紹介
+-(void)startHowtouse{
+    [commandView_ removeFromSuperview];
+    liveView_.actionDelay = 2.0f;
+    [self showHelp:[NSDictionary dictionaryWithObject:@"howtoUse" forKey:@"key"]];
 }
 
 #pragma mark 説明テキストデータを生成
@@ -116,7 +116,7 @@
             @"howtoAddTask",
             
             [NSArray arrayWithObjects:
-             @"たすく　に　とうろくした　じかん　に　たすく　に　とうろくした　ばしょに　いくと、ばとるが　はじまります。",
+             @"たすく　に　とうろくした　じかん　に　たすく　に　とうろくした　ばしょに　いくと、たたかい　が　はじまります。",
              @"もし　たすくを　さきのばし　したいばあいは　にげる ことも　できます。",
              nil],
             @"howtoBattle",

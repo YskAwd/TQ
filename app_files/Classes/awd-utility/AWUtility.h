@@ -14,6 +14,8 @@
 }
 //日本語名か英語名どちらを使うか判定するため、ユーザーが使っている言語によって@"name_ja"と@"name_en"どちらかの文字列を返す。
 +(NSString*)nameKeyFromUserLanguage;	
+//ユーザーが使っている言語によって@"ja"と@"en"どちらかの文字列を返す。
++(NSString*)langKeyFromUserLanguage;
 
 //アルファベットを1→A 2→B という具合に 整数で指定して返す。
 +(NSString*)alphabetFromInt:(int)alphabetNum isBigLetter:(BOOL)isBigLetter;

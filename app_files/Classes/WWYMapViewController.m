@@ -59,8 +59,10 @@
 			NSString *imagePath = [[NSBundle mainBundle]pathForResource:@"nowLocating" ofType:@"png"];
 			UIImage *nowLocatingImage = [UIImage imageWithContentsOfFile:imagePath];
 			nowLocatingImageView_ = [[UIImageView alloc]initWithImage:nowLocatingImage];
-			nowLocatingImageView_.frame = CGRectMake(0, -20, nowLocatingImage.size.width, nowLocatingImage.size.height);
-			[self.view addSubview:nowLocatingImageView_];
+			//nowLocatingImageView_.frame = CGRectMake(0, -40, nowLocatingImage.size.width, nowLocatingImage.size.height);
+            //[self.view addSubview:nowLocatingImageView_];
+            nowLocatingImageView_.frame = CGRectMake(self.view.bounds.origin.x-wWYViewController_.view.frame.origin.x, self.view.bounds.origin.y-wWYViewController_.view.frame.origin.y, nowLocatingImage.size.width, nowLocatingImage.size.height);
+			[wWYViewController_.view addSubview:nowLocatingImageView_];
 		}
 			
 		

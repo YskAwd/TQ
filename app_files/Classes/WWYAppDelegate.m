@@ -32,7 +32,7 @@
     
     //userdefaultsから値を削除（テスト用）
 //   if(IS_TEST) [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"playerStatus"];
-//   if(IS_TEST) [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"firstLaunchFootprint"];
+//   if(IS_TEST) [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"firstLaunchFootprint_1.0"];
     
     // Override point for customization after application launch.
 	//windowを自分で作成
@@ -40,12 +40,12 @@
     window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].applicationFrame];
     
     //初回起動ならば
-    if(![[NSUserDefaults standardUserDefaults]objectForKey:@"firstLaunchFootprint"]){
+    if(![[NSUserDefaults standardUserDefaults]objectForKey:@"firstLaunchFootprint_1.0"]){
         helpViewController_ = [[HelpViewController alloc]initWithViewFrame:window.bounds];
         helpViewController_.delegate = self;
         [window addSubview:helpViewController_.view];
         [helpViewController_ startHowtouse];
-        [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithBool:YES] forKey:@"firstLaunchFootprint"];
+        [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithBool:YES] forKey:@"firstLaunchFootprint_1.0"];
     }else{//そうでなければ
         [self initWWYViewController];
     }

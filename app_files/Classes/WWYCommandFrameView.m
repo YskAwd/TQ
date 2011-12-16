@@ -24,6 +24,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    [super drawRect:rect];
  
  //下地になる四角を書く
  CGContextRef context = UIGraphicsGetCurrentContext();
@@ -35,7 +36,6 @@
  CGContextSetLineWidth(context, 3);
  CGContextSetLineJoin(context, kCGLineJoinRound);
   CGContextStrokeRect(context, CGRectMake(3, 3,  self.frame.size.width-6, self.frame.size.height-6));//arrowButtonの上に出っ張ってる分を考慮してy値を指定。
- 
 }
 
 

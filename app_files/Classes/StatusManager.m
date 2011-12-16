@@ -27,10 +27,10 @@
                                       @"001",@"charaType",//キャラの外見。("0xx":プレイヤー、 "1xx":NPC)
                                       @"001",@"job",//パーティの職業。数字によってキャラのタイプも定義する。("0xx":プレイヤー、 "1xx":NPC)
                                       //@"ななし",@"name",
-//                                      [NSNumber numberWithInt:1],@"lv",
-//                                      [NSNumber numberWithInt:0],@"ex",
-                                      [NSNumber numberWithInt:9],@"lv",
-                                      [NSNumber numberWithInt:3610],@"ex",
+                                      [NSNumber numberWithInt:1],@"lv",
+                                      [NSNumber numberWithInt:0],@"ex",
+//                                      [NSNumber numberWithInt:9],@"lv",
+//                                      [NSNumber numberWithInt:5000],@"ex",
                                       nil];
 	return outputDictionary;
 }

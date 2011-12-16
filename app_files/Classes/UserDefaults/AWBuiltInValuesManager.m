@@ -65,9 +65,10 @@
 //指定したレベルの称号（title）を返す。取得できなければnilを返す。
 -(NSString*)getTitleAtLevel:(int)level{
     NSString* title = nil;
+    NSString* titleKey = [NSString stringWithFormat:@"title_%@",[AWUtility langKeyFromUserLanguage]];
     NSDictionary *levelDict = [self getBuiltInValuesAtLevel:level];
-    if (levelDict && [[levelDict objectForKey:@"title"]isKindOfClass:[NSString class]]) {
-        title = [levelDict objectForKey:@"title"];
+    if (levelDict && [[levelDict objectForKey:titleKey]isKindOfClass:[NSString class]]) {
+        title = [levelDict objectForKey:titleKey];
     }
     return title;
 }
@@ -82,6 +83,18 @@
     NSArray* filterdArray = [builtInMonsterNames filteredArrayUsingPredicate:predicate];
     if ([filterdArray count] > 0) {
         outputStr = [[filterdArray objectAtIndex:0]objectForKey:nameKey];
+    }
+    return outputStr;
+}
+//enemyImageIdをもとに、Built-Inのtwitterアカウント名を返す
+-(NSString*)getBuiltInMonsterTwitterWithImageId:(int)enemyImageId{
+    NSString* outputStr = nil;
+    NSArray *builtInMonsterNames = [[AWBuiltInValuesFromCSV builtInValuesFromCSV]getBuiltInMonsterNamesArray];
+    NSString* key = @"twitter";
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"ID = %d",enemyImageId];
+    NSArray* filterdArray = [builtInMonsterNames filteredArrayUsingPredicate:predicate];
+    if ([filterdArray count] > 0) {
+        outputStr = [[filterdArray objectAtIndex:0]objectForKey:key];
     }
     return outputStr;
 }

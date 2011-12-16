@@ -1,8 +1,8 @@
-ID	name_ja	name_en
-INT	STRING	STRING
-1	ちぇくぼくす	ちぇくぼくす
-2	ナマケゴコロ	ナマケゴコロ
-3	ザ・タスク	ザ・タスク
-4	こあくま	こあくま
-5	しゃちょー	しゃちょー
-6	ダイオウ	ダイオウ
+ID	name_ja	name_en	twitter
+INT	STRING	STRING	STRING
+1	チェクボクス	チェクボクス	tq_chekubox
+2	ナマケゴコロ	ナマケゴコロ	tq_namake
+3	ザ・タスク	ザ・タスク	tq_thetask
+4	コアク・マー	コアク・マー	tq_koakuma
+5	シャチオス	シャチオス	tq_shachios
+6	ラスボス	ラスボス	tq_lastboss

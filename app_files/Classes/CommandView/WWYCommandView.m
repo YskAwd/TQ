@@ -144,39 +144,38 @@
     return self;
 }
 
-
+/*
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 	
 	//枠を描くのは別クラスにした。位置や大きさを外部から変えたときに対応するため。
-	/*
-	//下地になる四角を書く
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSetGrayStrokeColor(context, 0, 1);
-	CGContextFillRect(context, CGRectMake(3, 3,  self.frame.size.width-6, self.frame.size.height-6));//arrowButtonの上に出っ張ってる分を考慮してy値を指定。	
-	
-	//枠を書く
-	//CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSetGrayStrokeColor(context, 1, 1);
-	CGContextSetLineWidth(context, 3);
-	CGContextSetLineJoin(context, kCGLineJoinRound);
-	//CGContextStrokeRect(context, CGRectMake(3, 3+arrowButtonMargin,  self.frame.size.width-6, self.frame.size.height-6-arrowButtonMargin));//arrowButtonの上に出っ張ってる分を考慮してy値を指定。
-	CGContextStrokeRect(context, CGRectMake(3, 3,  self.frame.size.width-6, self.frame.size.height-6));//arrowButtonの上に出っ張ってる分を考慮してy値を指定。
-*/
 }
-//高さの自動設定。格納するコマンドテキストの数によって決まる。
--(void)adjustHeight{
-	displayColumnNum = [self getDisplayColumnNum];
-	CGRect myFrame = self.frame;
+ */
+//高さが自動的に調節されたFrameを返す。格納するコマンドテキストの数によって決まる。
+-(CGRect)getAdjustedFrame:(CGRect)frame{
+    displayColumnNum = [self getDisplayColumnNum];
+	CGRect myFrame = frame;
 	myFrame.size.height = (displayColumnNum+1) * spacing + arrowButtonMargin;
-	[self setFrame:myFrame];
-	//枠のframeも設定
-	[frameView_ setFrame:CGRectMake(0, 0, myFrame.size.width, myFrame.size.height)];
+    return myFrame;
 }
-//位置や大きさを変更する。
+//高さの自動設定。
+-(void)adjustHeight{
+    [self setFrame:self.frame];
+}
+//位置や大きさを変更する。[非推奨]
 -(void)changeFrame:(CGRect)newFrame{
 	[self setFrame:newFrame];
-	[self adjustHeight];
+}
+
+//fmameプロパティのセッターで、自動的に大きさが変更されるように。
+-(void)setFrame:(CGRect)frame{
+//    displayColumnNum = [self getDisplayColumnNum];
+//	CGRect myFrame = frame;
+//	myFrame.size.height = (displayColumnNum+1) * spacing + arrowButtonMargin;
+    CGRect myFrame = [self getAdjustedFrame:frame];
+	[super setFrame:myFrame];
+	//枠のframeも設定
+	[frameView_ setFrame:CGRectMake(0, 0, myFrame.size.width, myFrame.size.height)];
 }
 //コマンド行の（再）表示
 -(void)addSubviewColumns {

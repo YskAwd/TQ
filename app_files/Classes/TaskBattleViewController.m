@@ -62,8 +62,9 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
         enemy_name_at_tweet_ = NSLocalizedString(@"enemy_name_example_at_tweet", @"");
     }
     //monsterViewを生成
+    enemy_image_id_ = task.enemyImageId;
     if(!monsterView_) {
-        monsterView_ = [[UIImageView alloc]initWithImage:[[WWYHelper_DB helperDB]getEnemyImageViewWithId:task.enemyImageId]];
+        monsterView_ = [[UIImageView alloc]initWithImage:[[WWYHelper_DB helperDB]getEnemyImageViewWithId:enemy_image_id_]];
         //monsterView_.center = CGPointMake(self.view.center.x, self.view.frame.size.height*0.3);
         //monsterView_.frame = CGRectMake((self.view.frame.size.width-256)/2, 30, 256, 256);
         monsterView_.frame = CGRectMake((self.view.frame.size.width-192)/2, 40, 192, 192);
@@ -183,63 +184,68 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 }
 //経験値を足す
 -(void)getEx{
-    NSMutableDictionary* userInfo;
-    //経験値を足す
-    StatusManager *statusManager =[StatusManager statusManager];
-    int level = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
-    int exGain = [[AWBuiltInValuesManager builtInValuesManager] getGainExAtLevel:level];
-    //NSLog(@"level:%d exGain:%d",level,exGain);
-    if (exGain > 0) {//けいけんちが獲得できたら
-        NSMutableString *live_txt = 
-        [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_ex_gained", @""),exGain];
-        liveView_.actionDelay = 1.5;
-        userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                         [NSNumber numberWithInt:level],@"level",[NSNumber numberWithInt:exGain],@"exGain",nil];
-        [liveView_ setTextAndGo:live_txt actionAtTextFinished:@selector(judgeLevelUp:) userInfo:userInfo target:self];
-    }else{
-        [self judgeLevelUp:userInfo];
+    //twitterアカウントが設定されていれば経験値を計算し、足す。
+    NSMutableDictionary* userInfo = [NSMutableDictionary dictionaryWithCapacity:0];
+    if([[NSUserDefaults standardUserDefaults]objectForKey:@"twitter_username"]){ 
+        //経験値を足す
+        StatusManager *statusManager =[StatusManager statusManager];
+        int level = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
+        int exGain = [[AWBuiltInValuesManager builtInValuesManager] getGainExAtLevel:level];
+        //NSLog(@"level:%d exGain:%d",level,exGain);
+        if (exGain > 0) {//けいけんちが獲得できたら
+            NSMutableString *live_txt = 
+            [NSMutableString stringWithFormat:NSLocalizedString(@"battle_when_ex_gained", @""),exGain];
+            liveView_.actionDelay = 1.5;
+            [userInfo setObject:[NSNumber numberWithInt:level] forKey:@"level"];
+            [userInfo setObject:[NSNumber numberWithInt:exGain] forKey:@"exGain"];
+            [liveView_ setTextAndGo:live_txt actionAtTextFinished:@selector(judgeLevelUp:) userInfo:userInfo target:self];
+            return;
+        }
     }
+    //上記の条件に合ってなければ、次の処理へ
+    [self judgeLevelUp:userInfo];
 }
 //レベルアップを判定
 -(void)judgeLevelUp:(NSMutableDictionary*)levelAndExGain{
-    if(levelAndExGain){
-        StatusManager *statusManager = [StatusManager statusManager];
-        int exGain = [[levelAndExGain objectForKey:@"exGain"]intValue];
-        //レベルが上がったら
-        if ([statusManager levelUpWithGainEX:exGain]) {
-            int newLevel = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
-            NSString* title = [statusManager getTitle];
-            NSMutableString *live_txt = 
-            [NSMutableString stringWithFormat:NSLocalizedString(@"battle_when_level_up", @""),hero_name_,newLevel,title];
-            liveView_.actionDelay = 2.5;
-            [levelAndExGain setObject:[NSNumber numberWithInt:newLevel] forKey:@"newLevel"];
-            [levelAndExGain setObject:title forKey:@"title"];
-            [liveView_ setTextAndGo:live_txt actionAtTextFinished:@selector(tweetOfWinOrLose:) userInfo:levelAndExGain target:self];
-        }else{
-            [self tweetOfWinOrLose:levelAndExGain];
+        if(levelAndExGain){
+            StatusManager *statusManager = [StatusManager statusManager];
+            int exGain = [[levelAndExGain objectForKey:@"exGain"]intValue];
+            //レベルが上がったら
+            if ([statusManager levelUpWithGainEX:exGain]) {
+                int newLevel = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
+                NSString* title = [statusManager getTitle];
+                NSMutableString *live_txt = 
+                [NSMutableString stringWithFormat:NSLocalizedString(@"battle_when_level_up", @""),hero_name_,newLevel,title];
+                liveView_.actionDelay = 2.5;
+                [levelAndExGain setObject:[NSNumber numberWithInt:newLevel] forKey:@"newLevel"];
+                [levelAndExGain setObject:title forKey:@"title"];
+                [liveView_ setTextAndGo:live_txt actionAtTextFinished:@selector(tweetOfWinOrLose:) userInfo:levelAndExGain target:self];
+                return;
+            }
         }
-    }else{
-        [self tweetOfWinOrLose:levelAndExGain];
-    }
-
+    //上記の条件に合ってなければ、次の処理へ
+    [self tweetOfWinOrLose:levelAndExGain];
 }
-//勝ったか負けたかをツイートする。
+//勝ったか負けたかをツイートする。userInfoがnilならば負け、そうでなければ勝ちと判断。
 -(void)tweetOfWinOrLose:(NSDictionary*)winUserInfo{
-    //twitterアカウントが設定されていればけいけんち足したり、Tweetする。
+    //twitterアカウントが設定されていればTweetする。
     if([[NSUserDefaults standardUserDefaults]objectForKey:@"twitter_username"]){        
         TwitterManager *twitterManager = [[TwitterManager alloc]initWithDelegate:self];
-        
+        NSString* enemy_twitter_name = [[AWBuiltInValuesManager builtInValuesManager]getBuiltInMonsterTwitterWithImageId:enemy_image_id_];
+        if(enemy_twitter_name && ![enemy_twitter_name isEqualToString:@""]) {
+            enemy_name_at_tweet_ = [NSString stringWithFormat:@"%@ @%@",enemy_name_at_tweet_,enemy_twitter_name];
+        }
         NSMutableString *post_txt;
         NSMutableString* post_txt_whenLevelUP = nil;
         if(winUserInfo){//勝ったとき            
             if(enemy_name_ && ![enemy_name_ isEqualToString:@""] && task_title_ && ![task_title_ isEqualToString:@""]){
                 post_txt = 
                 [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle_01",@""),
-                 hero_name_,enemy_name_,task_title_];
+                 hero_name_,enemy_name_at_tweet_,task_title_];
             }else if (enemy_name_ && ![enemy_name_ isEqualToString:@""] && (!task_title_ || [task_title_ isEqualToString:@""])){
                 post_txt = 
                 [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle_02",@""),
-                 hero_name_,enemy_name_];
+                 hero_name_,enemy_name_at_tweet_];
             }else if ((!enemy_name_ || [enemy_name_ isEqualToString:@""]) && task_title_ && ![task_title_ isEqualToString:@""]){
                 post_txt = 
                 [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_win_battle_03",@""),
@@ -250,24 +256,9 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
                  hero_name_,enemy_name_at_tweet_,task_title_at_tweet_];
             }
             
-//            //経験値を足す
-//            StatusManager *statusManager =[StatusManager statusManager];
-//            int level = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
-//            int exGain = [[AWBuiltInValuesManager builtInValuesManager] getGainExAtLevel:level];
-//            NSLog(@"level:%d exGain:%d",level,exGain);
-//            if (exGain > 0) {//けいけんちが獲得できたら
-//                [post_txt appendFormat:NSLocalizedString(@"space", @"")];
-//                [post_txt appendFormat:NSLocalizedString(@"twitt_post_when_ex_gained", @""),exGain];
-//                //レベルが上がったら
-//                if ([[StatusManager statusManager]levelUpWithGainEX:exGain]) {
-//                    int newLevel = [statusManager getIntegerParameterOfPlayerStatus:@"lv"];
-//                    NSString* title = [statusManager getTitle];
-//                    //レベルアップのTweet文言
-//                    post_txt_whenLevelUP = [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_level_up", @""),hero_name_,newLevel,title];
-//                }
-//            }
+            //経験値
             int exGain = [[winUserInfo objectForKey:@"exGain"]intValue];
-            if (exGain > 0) {//けいけんちが獲得できたら
+            if (exGain > 0) {//けいけんちが獲得できていたら
                 [post_txt appendFormat:NSLocalizedString(@"space", @"")];
                 [post_txt appendFormat:NSLocalizedString(@"twitt_post_when_ex_gained", @""),exGain];
                 
@@ -284,11 +275,11 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
             if(enemy_name_ && ![enemy_name_ isEqualToString:@""] && task_title_ && ![task_title_ isEqualToString:@""]){
                 post_txt = 
                 [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle01",@""),
-                 hero_name_,enemy_name_,task_title_];
+                 hero_name_,enemy_name_at_tweet_,task_title_];
             }else if (enemy_name_ && ![enemy_name_ isEqualToString:@""] && (!task_title_ || [task_title_ isEqualToString:@""])){
                 post_txt = 
                 [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle02",@""),
-                 hero_name_,enemy_name_];
+                 hero_name_,enemy_name_at_tweet_];
             }else if ((!enemy_name_ || [enemy_name_ isEqualToString:@""]) && task_title_ && ![task_title_ isEqualToString:@""]){
                 post_txt = 
                 [NSMutableString stringWithFormat:NSLocalizedString(@"twitt_post_when_lose_battle03",@""),
@@ -303,12 +294,20 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
         //この時点で逆ジオコーディングが完了していれば、住所もTweetする。
         if(task_address_ && ![task_address_ isEqualToString:@""]) [post_txt appendFormat:@" %@",task_address_];
         
-        // Tweetする。
-        BOOL success = [twitterManager postTweet:post_txt withCoordinate:task_coodinate_];
-        //レベルアップしていればさらにTweet
+        BOOL success = NO;
+        
+        //先にTweet処理した方があとにTweetされるようなので、倒したTweetとレベルアップTweetの順番を逆に。
+        //レベルアップしていればTweet
         if (post_txt_whenLevelUP) {
-            success = [twitterManager postTweet:post_txt_whenLevelUP withCoordinate:task_coodinate_];
+            //success = [twitterManager postTweet:post_txt_whenLevelUP withCoordinate:task_coodinate_];
+            //連続Tweetが失敗する場合があるので、twitterManagerをもう一つ生成してみる。
+            TwitterManager *twitterManager2 = [[[TwitterManager alloc]initWithDelegate:self]autorelease];
+            success = [twitterManager2 postTweet:post_txt_whenLevelUP withCoordinate:task_coodinate_];
+            [NSThread sleepForTimeInterval:0.1];//0.1秒間を空ける
         }
+        
+        // Tweetする。
+        success = [twitterManager postTweet:post_txt withCoordinate:task_coodinate_];
         
         if(success){
             [self tweetCompleted];

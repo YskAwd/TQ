@@ -31,7 +31,8 @@
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-	
+	[super drawRect:rect];
+    
 	UIColor* color_wh = [UIColor whiteColor];
 	[color_wh set];
 	

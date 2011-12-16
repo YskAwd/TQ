@@ -16,8 +16,16 @@
     [super dealloc];
 }
 
+-(id)initWithViewFrame:(CGRect)frame target:(id)target selector:(SEL)selector userInfo:(id)userInfo selectorWhenCancel:(SEL)selectorWhenCancel {
+	if(self = [super initWithViewFrame:frame target:target selector:selector userInfo:userInfo selectorWhenCancel:selectorWhenCancel]){
+        self.showNameLabel = YES;
+    }
+    return self;
+}
+
 -(UIView*)initPickerView{
     enemyImgPickerHelper_ = [[EnemyImagePickerHelper alloc]init];
+    enemyImgPickerHelper_.pickerViewController = self;
     UIPickerView* enemyImgPickerView = [[[UIPickerView alloc]initWithFrame:self.view.frame]autorelease];
     enemyImgPickerView.delegate = enemyImgPickerHelper_;
     enemyImgPickerView.dataSource = enemyImgPickerHelper_;

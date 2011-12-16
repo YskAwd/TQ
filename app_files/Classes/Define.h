@@ -19,7 +19,7 @@
 //#define TWEET_ENABLE_AT_TEST true false
 
 //locationが取得できない環境での開発用に、ウソのlocationをプッシュするか
-#define PUSH_DAMMY_LOCATION_AT_TEST false
+#define PUSH_DAMMY_LOCATION_AT_TEST true
 
 //テスト用に、UserDefaultに保存されてる値をAWDefaultValueの値で上書きするかどうか。
 #define OVERRIDE_AW_DEFAULT_VALUE_AT_TEST true
@@ -64,7 +64,7 @@
 #pragma mark twitter and bitly
 
 //twitterへのポストの最後につける文字列（ハッシュタグを設定）
-#define TWITTER_HASH_TAG @"taskquest.in #taskquest_dev"
+#define TWITTER_HASH_TAG @"http://taskquest.in #taskquest_dev"
 
 //twitterのOAuthに使うアプリケーションkey
 #define kOAuthConsumerKey				@"7bdtTEnyVoBbKfHfp1VAA"

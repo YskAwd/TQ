@@ -35,6 +35,7 @@
     NSString *enemy_name_at_battle_, *enemy_name_at_tweet_, *task_title_at_battle_, *task_title_at_tweet_;
     CLLocationCoordinate2D task_coodinate_;
     NSString* task_address_;
+    int enemy_image_id_;
 }
 -(id)initWithFrame:(CGRect)frame withWWYViewController:(WWYViewController*)wWYViewController;
 -(void)startBattleOrNotAtTask:(WWYTask*)task;//バトルを始めるかどうかユーザーに聞くstep1

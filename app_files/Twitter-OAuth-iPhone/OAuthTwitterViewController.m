@@ -160,7 +160,7 @@
 	NSString *postString = [NSString stringWithFormat:@"%@ %@ %@",postStr,nowDate_str,TWITTER_HASH_TAG];
 	//NSString *postString = [NSString stringWithFormat:@"%@ %@",postStr,nowDate_str];
 	
-	NSString *tweetedOrNot;//NSLogで実際にTweetしたかどうかを見るためのもの。NSLogでのみ末尾に付く。
+	NSString *tweetedOrNot;
 	
 	if(!IS_TEST || TWEET_ENABLE_AT_TEST){
 		//[_engine sendUpdate:postString];

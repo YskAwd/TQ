@@ -331,6 +331,9 @@
 -(void)closeHelperView{
     [helpViewController_.view removeFromSuperview];
     [helpViewController_ release];helpViewController_ = nil;
+    //configCommandView_を操作できるように
+    //[configCommandView_ resetToDefault];//今のところページ送りないので省略
+    configCommandView_.touchEnable = true;
 }
 
 //WWYCommandViewDelegateメソッド
