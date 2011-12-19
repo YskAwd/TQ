@@ -789,10 +789,10 @@
 		NSLog(queryStr);
 		
 		//DBへ反映
-		FMRMQDBUpdate* updateDB = [FMRMQDBUpdate alloc];
+		FMRMQDBUpdate* updateDB = [[FMRMQDBUpdate alloc]init];
 		[updateDB upDateDBWithQueryString:queryStr];
 		//インスタンスをリリース
-		[updateDB release];
+		[updateDB autorelease];
 	}
 }
 
@@ -1012,15 +1012,29 @@
             int annotationType = [annotation annotationType];
 			switch (annotationType) {
 				case WWYAnnotationType_castle://検索した結果追加されたランドマークのannotationなら
-					annotationView = [[[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"awazu"]autorelease];
+					annotationView = [[[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"castle"]autorelease];
 					annotationView.canShowCallout = YES;
 					annotationView.image = [UIImage imageNamed:@"castle_a.png"];
 					return annotationView;
 					break;
-				case WWYAnnotationType_taskBattleArea://タスクのバトルエリアなら
-					annotationView = [[[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"awazu"]autorelease];
+				case WWYAnnotationType_taskBattleArea://タスクのバトルエリアで、まだ戦っていないなら
+					annotationView = [[[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"taskBattleArea"]autorelease];
 					annotationView.canShowCallout = YES;
 					annotationView.image = [UIImage imageNamed:@"castle_b.png"];
+					annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+					return annotationView;
+					break;
+                case WWYAnnotationType_taskBattleArea_won://タスクのバトルエリアで、すでに戦って勝っていたら
+					annotationView = [[[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"taskBattleArea_won"]autorelease];
+					annotationView.canShowCallout = YES;
+					annotationView.image = [UIImage imageNamed:@"castle_b.png"];
+					annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+					return annotationView;
+					break;
+                case WWYAnnotationType_taskBattleArea_lost://タスクのバトルエリアで、すでに戦って負けていたら
+					annotationView = [[[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"taskBattleArea_lost"]autorelease];
+					annotationView.canShowCallout = YES;
+					annotationView.image = [UIImage imageNamed:@"castle_d02.png"];
 					annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 					return annotationView;
 					break;
@@ -1046,17 +1060,16 @@
 //annotaionのポップアップの横のボタンをタップしたときのメソッド
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
 	if([view.annotation isKindOfClass:[WWYAnnotation class]] && [view.annotation respondsToSelector:@selector(annotationType)]){
-        int annotationType = [view.annotation annotationType];
-		switch (annotationType) {
-			case WWYAnnotationType_castle://検索した結果追加されたランドマークのannotationなら
-				break;
-			case WWYAnnotationType_taskBattleArea://タスクのバトルエリアなら
-				nowEditingAnnotation_ = view.annotation;
-				[wWYViewController_ editTaskWithID:[[view.annotation userInfo]intValue]];
-				break;
-			default:
-				break;
-		}
+        WWYAnnotationType annotationType = [view.annotation annotationType];
+        //検索した結果追加されたランドマークのannotationなら
+        if(annotationType == WWYAnnotationType_castle){
+            //なにもしない
+        }
+        //タスクのバトルエリアなら
+        else if(annotationType == WWYAnnotationType_taskBattleArea || annotationType == WWYAnnotationType_taskBattleArea_won || annotationType == WWYAnnotationType_taskBattleArea_lost){
+            nowEditingAnnotation_ = view.annotation;
+            [wWYViewController_ editTaskWithID:[[view.annotation userInfo]intValue]];
+        }
 	}
 }
 //overlayを返す

@@ -19,7 +19,8 @@
 //#define TWEET_ENABLE_AT_TEST true false
 
 //locationが取得できない環境での開発用に、ウソのlocationをプッシュするか
-#define PUSH_DAMMY_LOCATION_AT_TEST true
+//#define PUSH_DAMMY_LOCATION_AT_TEST true
+#define PUSH_DAMMY_LOCATION_AT_TEST false
 
 //テスト用に、UserDefaultに保存されてる値をAWDefaultValueの値で上書きするかどうか。
 #define OVERRIDE_AW_DEFAULT_VALUE_AT_TEST true
@@ -76,6 +77,11 @@
  #define BITLY_API_KEY @"R_aad0024ae7ea786e10364b15bb992cb6"*/
 /*------------------------------------------------------------*/
 #pragma mark -
+#pragma mark 公式Web関連
+//"ほかのゆうしゃをみる"ボタンで遷移するURL
+#define WEBSITE_OTHER_HEROES_URL @"http://taskquest.in/index.html?view=app"
+/*------------------------------------------------------------*/
+#pragma mark -
 #pragma mark location
 /*
 //locationを取得する時間（長いほど正確）
@@ -86,10 +92,3 @@
 #define GPS_UNADOPTABLE_ACCURACY 2000.0 //単位:m
 */
 /*------------------------------------------------------------*/
-
-
-/* 2010/08/17 メモ
- あとやることは以下
- ・あまりにクラス間の機能分けがぐちゃぐちゃなので、ポリシー決める？ パワポかなんかでクラスの機能図をつくる。
- ・sqliteの代わりにuserDeffaultsで？
- */

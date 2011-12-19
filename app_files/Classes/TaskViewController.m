@@ -322,7 +322,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	[self.view addSubview:fixCommandView_];
 	
 	//タスク名を入力させる。
-	[taskNameTextView_ becomeFirstResponder];
+	//[taskNameTextView_ becomeFirstResponder];
 }
 #pragma mark -
 #pragma mark モンスター画像 関係=====================================================================

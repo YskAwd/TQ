@@ -8,7 +8,7 @@
 ////普通のqueryStringでUpdateする場合のみ使える。NSStringを何個も引数にとるUpdate文の指定の仕方には対応してない。
 /*参考：DBへのquerystringの生成の例
  
- FMRMQDBUpdate* updateDB = [FMRMQDBUpdate alloc];
+ FMRMQDBUpdate* updateDB = [[FMRMQDBUpdate alloc]init];
  
  NSString* queryStr = SQL文
  

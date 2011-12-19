@@ -205,6 +205,7 @@
 			NSMutableArray* cmdTxtArray = [[NSMutableArray alloc]initWithObjects:
 										   NSLocalizedString(@"loula",@""),
                                            NSLocalizedString(@"Looking_back_upon",@""),
+                                           NSLocalizedString(@"check_other_heroes",@""),
 										   nil];
 			if(locoloAd_parseEnded_){
 				[cmdTxtArray addObject:NSLocalizedString(@"locolo_music",@"")];
@@ -214,7 +215,7 @@
 			CGFloat marginX = 40, marginY = 125; 
 			CGRect cmdFrame = CGRectMake(self.view.frame.origin.x+marginX,self.view.frame.origin.y+marginY,
 										 self.view.frame.size.width-marginX*2, self.view.frame.size.height);
-			magicCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame withCommandTextArray:cmdTxtArray withMaxColumn:4 withDelegate:self withCommandViewId:2];
+			magicCommandView_ = [[WWYCommandView alloc]initWithFrame:cmdFrame withCommandTextArray:cmdTxtArray withMaxColumn:5 withDelegate:self withCommandViewId:2];
 			[cmdTxtArray release];	
 		}else{//あったらデフォルトの状態にリセットする
 			//[magicCommandView_ resetToDefault];//今のところページ送りないので省略
@@ -372,12 +373,17 @@
 				[annotationCommandView_ resetToDefault];
 				[self.view addSubview:annotationCommandView_];
 			}
-        }else if([commandString isEqualToString:NSLocalizedString(@"Looking_back_upon",@"")]){//"かこをみる"ならば
+        }else if([commandString isEqualToString:NSLocalizedString(@"Looking_back_upon",@"")]){//"かこをみる"ならば 
             //WWYViewControllerからこのビューを非表示にし、HistoryMapをオープン
             [wWYViewController_ configModeOnOff];
             [wWYViewController_ startHistoryMap];
             //[configCommandView_ resetToDefault];//今のところページ送りないので省略
-        
+        }else if([commandString isEqualToString:NSLocalizedString(@"check_other_heroes",@"")]){//"ほかのゆうしゃをみる"ならば 
+                //WWYViewControllerからこのビューを非表示にし、WebViewをオープン
+                [wWYViewController_ configModeOnOff];
+                [wWYViewController_ startUpWebView:WEBSITE_OTHER_HEROES_URL];
+                //[configCommandView_ resetToDefault];//今のところページ送りないので省略
+                
 		}else if([commandString isEqualToString:NSLocalizedString(@"locolo_music",@"")]){//"ふしぎなおんがく"ならば
 			//locoloAdLiveView_を作成、表示、文章表示。
 			//NSLog(locoloAd_description_);

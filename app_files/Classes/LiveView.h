@@ -14,9 +14,15 @@
 @class CursorButtonView;
 
 //テキストが枠いっぱいになったとき次のテキストに進む方法の定数宣言。
-enum {WWYLiveViewOverflowMode_cursorButton,	//カーソルボタンで次のテキストに送る方法
+typedef enum {WWYLiveViewOverflowMode_cursorButton,	//カーソルボタンで次のテキストに送る方法
 	WWYLiveViewOverflowMode_delegateAction,	//delegateからのアクションで次のテキストに送る方法
 	WWYLiveViewOverflowMode_noAction} WWYLiveViewOverflowMode;	//ユーザからのアクションなしで自動的に次のテキストに送る方法
+
+//表示する言語の設定。1行の表示文字数に影響。デフォルトではユーザーの言語環境から自動設定。
+typedef enum {
+    WWYLiveViewLanguageMode_ja,	
+	WWYLiveViewLanguageMode_en
+    } WWYLiveViewLanguageMode;
 
 @interface LiveView : UIView {
 	
@@ -58,9 +64,10 @@ enum {WWYLiveViewOverflowMode_cursorButton,	//カーソルボタンで次のテ�
 	int current_textField;
 	
 	//テキストが枠いっぱいになったとき、どの方法で次のテキストに進むか。プロパティにして外部から設定する。デフォルトは三角ボタンでの方法。
-	int overflowMode;
+	WWYLiveViewOverflowMode overflowMode;
 	
-
+    //表示する言語。1行の表示文字数に影響。デフォルトではユーザーの言語環境から自動設定。
+    WWYLiveViewLanguageMode language_;
 	
 	//スクロール促すしるし。▼。ボタンにもなる。
 	CursorButtonView* moreTextButt;
@@ -105,7 +112,8 @@ enum {WWYLiveViewOverflowMode_cursorButton,	//カーソルボタンで次のテ�
 @property (retain) NSMutableString* text;
 @property (readonly)CursorButtonView* moreTextButt;
 @property (readonly) BOOL buttonEnable;
-@property int overflowMode;
+@property WWYLiveViewOverflowMode overflowMode;
+@property WWYLiveViewLanguageMode language;
 @property float actionDelay;
 
 @end

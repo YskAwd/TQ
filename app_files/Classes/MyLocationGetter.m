@@ -29,8 +29,8 @@
 		locationManager_.distanceFilter=kCLDistanceFilterNone; //しきい値なし（高精度）
 		[locationManager_ startUpdatingLocation]; 
 		
-		//120秒待ってロケーションが取得できない場合は、delegate_に通知して、更新をストップするためのタイマー
-		[NSTimer scheduledTimerWithTimeInterval:120.0f
+		//15秒待ってロケーションが取得できない場合は、delegate_に通知するためのタイマー
+		[NSTimer scheduledTimerWithTimeInterval:15.0f
 										 target:self
 									   selector:@selector(checkLocationAvailable:)
 									   userInfo:nil
@@ -86,10 +86,10 @@ fromLocation:(CLLocation*)oldLocation
 	[delegate_ upDatesCLHeading:newHeading];
 }  
 
-//120秒待ってロケーションが取得できない場合は、delegate_に通知して、更新をストップする
+//120秒待ってロケーションが取得できない場合は、delegate_に通知する
 -(void)checkLocationAvailable:(NSTimer*)timer{
 	if(!locationAvailable_){
-		[self stopUpdatingLocation];
+		//[self stopUpdatingLocation];
 		[delegate_ locationUnavailable];
 	}
 }

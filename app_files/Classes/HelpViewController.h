@@ -13,6 +13,7 @@
 
 @interface HelpViewController : UIViewController <LiveViewDelegate>{
     LiveView *liveView_;
+    WWYLiveViewLanguageMode defaultLiveViewLanguageMode_;
     WWYCommandView *commandView_;
     NSDictionary* textArrayDict_;
     id delegate_;

@@ -585,7 +585,8 @@
     sepiaCoverView_.backgroundColor = [UIColor orangeColor];
     sepiaCoverView_.alpha = 0.3;
     sepiaCoverView_.userInteractionEnabled = NO;
-    [self.view addSubview:sepiaCoverView_];
+    //[self.view addSubview:sepiaCoverView_];
+    [self.view insertSubview:sepiaCoverView_ belowSubview:searchBar_];
     
     //過去のタスクの地図画面のタイトル
     CGRect historyMapTitleLabelFrame = CGRectMake(0, 0, mapViewController_.view.frame.size.width, 40);
@@ -595,7 +596,8 @@
 	historyMapTitleLabel_.font = [UIFont systemFontOfSize:18];
 	historyMapTitleLabel_.textAlignment = UITextAlignmentCenter;
 	historyMapTitleLabel_.text = NSLocalizedString(@"history_of_task", @"");
-    [self.view addSubview:historyMapTitleLabel_];
+    //[self.view addSubview:historyMapTitleLabel_];
+    [self.view insertSubview:historyMapTitleLabel_ belowSubview:searchBar_];
     
     //キャラクタ達を非表示に
     [mapViewController_ changeHiddenOfCharacter:YES];
@@ -836,7 +838,7 @@
 	//mySearchBar.showsScopeBar = YES;
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)mySearchBar{
-	[mySearchBar resignFirstResponder];//これでキーボードが消える！
+	[mySearchBar resignFirstResponder];//これでキーボードが消える
 	//mySearchBar.showsCancelButton = FALSE;
 	
 	[self hideSearchBar];

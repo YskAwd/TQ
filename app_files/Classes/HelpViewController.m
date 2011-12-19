@@ -29,10 +29,10 @@
         textArrayDict_ = [[self getTextsArrayDisctionary]retain];
         
         self.view.frame = frame;
-        CGRect cViewFrame = CGRectMake(frame.origin.x+frame.size.width*1/10, frame.origin.y+frame.size.height*2/10, frame.size.width*8/10, frame.size.height*4/10);
+        CGRect cViewFrame = CGRectMake(frame.origin.x+frame.size.width*1/10, frame.origin.y+frame.size.height*1.7/10, frame.size.width*8/10, frame.size.height*4/10);
         CGRect lViewFrame = CGRectMake(frame.origin.x+frame.size.width*1/10, frame.origin.y+frame.size.height*3/10, frame.size.width*8/10, frame.size.height*4/10);
         
-        commandView_ = [[WWYCommandView alloc]initWithFrame:cViewFrame target:self maxColumnAtOnce:5];
+        commandView_ = [[WWYCommandView alloc]initWithFrame:cViewFrame target:self maxColumnAtOnce:6];
         [commandView_ addCommand:@"たすくくえすとについて" action:@selector(showHelp:) 
                         userInfo:[NSDictionary dictionaryWithObject:@"howtoUse" forKey:@"key"]];
         [commandView_ addCommand:@"たすくのついか" action:@selector(showHelp:) 
@@ -41,11 +41,15 @@
                         userInfo:[NSDictionary dictionaryWithObject:@"howtoBattle" forKey:@"key"]];
         [commandView_ addCommand:@"ついったーれんけいについて" action:@selector(showHelp:) 
                         userInfo:[NSDictionary dictionaryWithObject:@"aboutTwitter" forKey:@"key"]];
+        [commandView_ addCommand:@"さくしゃ　に　ついて" action:@selector(showHelp:) 
+                        //userInfo:[NSDictionary dictionaryWithObject:@"aboutAuthor" forKey:@"key"]];
+                        userInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"aboutAuthor", @"key", [NSNumber numberWithInt:WWYLiveViewLanguageMode_en], @"language", nil]];
         [commandView_ addCommand:@"とじる" action:@selector(close) userInfo:nil];
         
         liveView_ = [[LiveView alloc]initWithFrame:lViewFrame withDelegate:self withMaxColumn:5];
         liveView_.overflowMode = WWYLiveViewOverflowMode_cursorButton;
         liveView_.actionDelay = 2.0f;
+        defaultLiveViewLanguageMode_ = liveView_.language;
         
         self.view.backgroundColor = [UIColor blackColor];
         [self.view addSubview:commandView_];
@@ -69,6 +73,12 @@
 
 #pragma mark LiveViewへの表示
 -(void)showHelp:(id)userInfo{
+    //明示的にLiveViewの言語が設定してあれば、それを設定
+    if ([userInfo objectForKey:@"language"]) {
+        liveView_.language = [[userInfo objectForKey:@"language"]intValue];
+    }else{
+        liveView_.language = defaultLiveViewLanguageMode_;
+    }
     [commandView_ removeFromSuperview];
     [self.view addSubview:liveView_];
     [liveView_ setSeqTextAndGo:[textArrayDict_ objectForKey:[userInfo objectForKey:@"key"]]];
@@ -127,6 +137,13 @@
              @"ついったーの　こうしきせってい　で　ついーとに　いちじょうほうを ふか　することを　きょか　する　せっていを　していれば、たすくをおこなった　いちじょうも　とうこうされますので　ちゅういが　ひつようです。",
              nil],
             @"aboutTwitter",
+            
+            [NSArray arrayWithObjects:
+             @"Concept & Direction : \n\n       Hironori Nakahara\n\n       (nD inc.)",                      
+             @"Development : \n\n       Yusuke Awazu\n\n       (locolo code)",
+             @"Graphic : \n\n       Takateru Chujo",
+             nil],
+            @"aboutAuthor",
             nil];
 }
 

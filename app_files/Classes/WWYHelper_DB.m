@@ -185,10 +185,19 @@
             annotationSubTitle = nil;
         }
         
+        //タスクがまだ実行されていない物なのか、勝ったのか負けたのかによって、annotationTypeを分ける。
+        WWYAnnotationType annotationType;
+        if(task.done_datetime){
+            if (task.win) annotationType = WWYAnnotationType_taskBattleArea_won;
+            else annotationType = WWYAnnotationType_taskBattleArea_lost;
+        }else{
+            annotationType = WWYAnnotationType_taskBattleArea;
+        }
+        
         //anotationをMapに配置
 		[mapViewController_ addAnnotationWithLat:task.coordinate.latitude Lng:task.coordinate.longitude
 										   title:annotationTitle subtitle:annotationSubTitle 
-								  annotationType:WWYAnnotationType_taskBattleArea 
+								  annotationType:annotationType 
                                         userInfo:[NSNumber numberWithInt:task.ID]
                                         selected:NO
 										   moved:NO];
@@ -198,15 +207,6 @@
 -(void)updateTaskAnnotationsFromDB:(WWYMapViewController*)mapViewController{
     //タスクのAnnotationを削除
     [self removeTaskAnnotationFromMapViewController:mapViewController];
-//	NSMutableArray* currentAnnotationArray = [NSMutableArray arrayWithArray:mapViewController.mapView_.annotations];
-//	for (id<MKAnnotation> annotation in currentAnnotationArray){
-//		if([annotation isKindOfClass:[WWYAnnotation class]] && [annotation respondsToSelector:@selector(annotationType)]){
-//			//タスクのAnnotationなら
-//			if([annotation annotationType] == WWYAnnotationType_taskBattleArea) {
-//				[mapViewController.mapView_ removeAnnotation:annotation];
-//			}
-//		}		
-//	}
     //dbから取得したタスクをマップに入れる
 	[self getTasksFromDBOnMapViewController:mapViewController];
 }
@@ -217,7 +217,9 @@
 	for (id<MKAnnotation> annotation in currentAnnotationArray){
 		if([annotation isKindOfClass:[WWYAnnotation class]] && [annotation respondsToSelector:@selector(annotationType)]){
 			//タスクのAnnotationなら
-			if([annotation annotationType] == WWYAnnotationType_taskBattleArea) {
+			if([annotation annotationType] == WWYAnnotationType_taskBattleArea
+               || [annotation annotationType] == WWYAnnotationType_taskBattleArea_won
+               || [annotation annotationType] == WWYAnnotationType_taskBattleArea_lost) {
 				[mapViewController.mapView_ removeAnnotation:annotation];
 			}
 		}		

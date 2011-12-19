@@ -15,6 +15,7 @@
 @synthesize moreTextButt;
 @synthesize buttonEnable;
 @synthesize overflowMode;
+//@synthesize language;
 @synthesize actionDelay = actionDelay_;
 
 - (id)initWithFrame:(CGRect)frame withDelegate:(id<LiveViewDelegate>)deleg withMaxColumn:(int)maxcolumn{
@@ -41,18 +42,28 @@
 		//テキストフィールドの幅
 		float textFieldWidth = _frame.size.width-20;
 		
-		//一列の最大文字数を計算
 		//ユーザの言語を判定
 		NSArray *languages = [NSLocale preferredLanguages];
 		NSString *currentLanguage = [languages objectAtIndex:0];
-		int k;//係数
+        
 		if([currentLanguage isEqualToString:@"ja"]){//ユーザの言語環境が日本語なら
-			k=17;
-		}else{//日本語以外なら（アルファベットは文字数多く表示できる）
-			k=9;
+			self.language = WWYLiveViewLanguageMode_ja;
+		}else{//日本語以外なら、とりあえず英語モードに
+			self.language = WWYLiveViewLanguageMode_en;
 		}
-		//一列の最大文字数（小数点以下切り上げ）
-		maxWords = (int)textFieldWidth/k-1;	//NSLog(@"maxWords: %d",maxWords);
+        
+//		//一列の最大文字数を計算
+//		//ユーザの言語を判定
+//		NSArray *languages = [NSLocale preferredLanguages];
+//		NSString *currentLanguage = [languages objectAtIndex:0];
+//		int k;//係数
+//		if([currentLanguage isEqualToString:@"ja"]){//ユーザの言語環境が日本語なら
+//			k=17;
+//		}else{//日本語以外なら（アルファベットは文字数多く表示できる）
+//			k=9;
+//		}
+//		//一列の最大文字数（小数点以下切り上げ）
+//		maxWords = (int)textFieldWidth/k-1;	//NSLog(@"maxWords: %d",maxWords);
 		
 		//テキストが枠いっぱいになったとき、次のテキストに進む方法。デフォルトは三角ボタンで。
 		overflowMode = WWYLiveViewOverflowMode_cursorButton;
@@ -90,6 +101,27 @@
 //このinitメソッドは原則もう使わない
 - (id)initWithFrame:(CGRect)frame withDelegate:(id<LiveViewDelegate>)deleg{
 	[self initWithFrame:frame withDelegate:deleg withMaxColumn:4];
+}
+//setter getter
+-(void)setLanguage:(WWYLiveViewLanguageMode)language{
+    language_ = language;
+    [self resetMaxword:language];
+}
+-(WWYLiveViewLanguageMode)language{
+    return language_;
+}
+//一列の最大文字数を計算
+-(void)resetMaxword:(WWYLiveViewLanguageMode)language{
+    int k;//係数
+    if(language == WWYLiveViewLanguageMode_ja){//ユーザの言語環境が日本語なら
+        k=17;
+    }else{//日本語以外なら（アルファベットは文字数多く表示できる）
+        k=9;
+    }
+    //テキストフィールドの幅
+    float textFieldWidth = self.frame.size.width-20;
+    //一列の最大文字数を設定（小数点以下切り上げ）
+    maxWords = (int)textFieldWidth/k-1;	//NSLog(@"maxWords: %d",maxWords);
 }
 
 - (void)drawRect:(CGRect)rect {

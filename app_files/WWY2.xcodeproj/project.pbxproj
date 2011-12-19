@@ -62,6 +62,12 @@
 		430F37A1148B81FA00994F34 /* mon5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 430F379B148B81FA00994F34 /* mon5.gif */; };
 		430F37A2148B81FA00994F34 /* mon6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 430F379C148B81FA00994F34 /* mon6.gif */; };
 		430F37A4148B8E4C00994F34 /* Built-In_MonsterNames_1.0.csv in Resources */ = {isa = PBXBuildFile; fileRef = 430F37A3148B8E4C00994F34 /* Built-In_MonsterNames_1.0.csv */; };
+		431027E7149F57BE0018D98A /* castle_a02.png in Resources */ = {isa = PBXBuildFile; fileRef = 431027E5149F57BE0018D98A /* castle_a02.png */; };
+		431027E8149F57BE0018D98A /* castle_a02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 431027E6149F57BE0018D98A /* castle_a02@2x.png */; };
+		431027EB149F5B360018D98A /* castle_c02.png in Resources */ = {isa = PBXBuildFile; fileRef = 431027E9149F5B360018D98A /* castle_c02.png */; };
+		431027EC149F5B360018D98A /* castle_c02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 431027EA149F5B360018D98A /* castle_c02@2x.png */; };
+		431027EF149F5BF40018D98A /* castle_d02.png in Resources */ = {isa = PBXBuildFile; fileRef = 431027ED149F5BF40018D98A /* castle_d02.png */; };
+		431027F0149F5BF40018D98A /* castle_d02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 431027EE149F5BF40018D98A /* castle_d02@2x.png */; };
 		43190CBC12A207E800B0A017 /* btn_config.png in Resources */ = {isa = PBXBuildFile; fileRef = 43190CBA12A207E800B0A017 /* btn_config.png */; };
 		43190CBD12A207E800B0A017 /* btn_config@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43190CBB12A207E800B0A017 /* btn_config@2x.png */; };
 		431A5BF312A0A4BD004DBDF4 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 431A5BF212A0A4BD004DBDF4 /* WebViewController.m */; };
@@ -282,6 +288,12 @@
 		430F379B148B81FA00994F34 /* mon5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mon5.gif; sourceTree = "<group>"; };
 		430F379C148B81FA00994F34 /* mon6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mon6.gif; sourceTree = "<group>"; };
 		430F37A3148B8E4C00994F34 /* Built-In_MonsterNames_1.0.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Built-In_MonsterNames_1.0.csv"; path = "Resources/Built-In_MonsterNames_1.0.csv"; sourceTree = SOURCE_ROOT; };
+		431027E5149F57BE0018D98A /* castle_a02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle_a02.png; sourceTree = "<group>"; };
+		431027E6149F57BE0018D98A /* castle_a02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "castle_a02@2x.png"; sourceTree = "<group>"; };
+		431027E9149F5B360018D98A /* castle_c02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle_c02.png; sourceTree = "<group>"; };
+		431027EA149F5B360018D98A /* castle_c02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "castle_c02@2x.png"; sourceTree = "<group>"; };
+		431027ED149F5BF40018D98A /* castle_d02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = castle_d02.png; sourceTree = "<group>"; };
+		431027EE149F5BF40018D98A /* castle_d02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "castle_d02@2x.png"; sourceTree = "<group>"; };
 		43190CBA12A207E800B0A017 /* btn_config.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_config.png; sourceTree = "<group>"; };
 		43190CBB12A207E800B0A017 /* btn_config@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_config@2x.png"; sourceTree = "<group>"; };
 		431A5BF112A0A4BD004DBDF4 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -579,8 +591,6 @@
 				43208DC912885131000F6C05 /* Define.h */,
 				1D3623240D0F684500981E51 /* WWYAppDelegate.h */,
 				1D3623250D0F684500981E51 /* WWYAppDelegate.m */,
-				43DC00FA148D06310094D99D /* HelpViewController.h */,
-				43DC00FB148D06310094D99D /* HelpViewController.m */,
 				439648A8119C10070045F311 /* MainController.h */,
 				439648A9119C10070045F311 /* MainController.m */,
 				28D7ACF60DDB3853001CB0EB /* WWYViewController.h */,
@@ -591,6 +601,8 @@
 				43539CFA120DB42700EE97AF /* CatchTapOnMapView.m */,
 				4356C0DF1095E2F90026601F /* ConfigViewController.h */,
 				4356C0E01095E2F90026601F /* ConfigViewController.m */,
+				43DC00FA148D06310094D99D /* HelpViewController.h */,
+				43DC00FB148D06310094D99D /* HelpViewController.m */,
 				437E05190FE68BF20055DA2C /* DebugViewController.h */,
 				437E051A0FE68BF20055DA2C /* DebugViewController.m */,
 				43E11B2A0FFD279C00D52165 /* CharacterView.h */,
@@ -1230,7 +1242,13 @@
 			isa = PBXGroup;
 			children = (
 				43FA82BA121836850000EB8C /* castle_a.png */,
+				431027E5149F57BE0018D98A /* castle_a02.png */,
+				431027E6149F57BE0018D98A /* castle_a02@2x.png */,
 				43FA82CD121838870000EB8C /* castle_b.png */,
+				431027E9149F5B360018D98A /* castle_c02.png */,
+				431027EA149F5B360018D98A /* castle_c02@2x.png */,
+				431027ED149F5BF40018D98A /* castle_d02.png */,
+				431027EE149F5BF40018D98A /* castle_d02@2x.png */,
 				43FA82BB121836850000EB8C /* tower.png */,
 			);
 			path = field;
@@ -1406,6 +1424,12 @@
 				430F37A1148B81FA00994F34 /* mon5.gif in Resources */,
 				430F37A2148B81FA00994F34 /* mon6.gif in Resources */,
 				430F37A4148B8E4C00994F34 /* Built-In_MonsterNames_1.0.csv in Resources */,
+				431027E7149F57BE0018D98A /* castle_a02.png in Resources */,
+				431027E8149F57BE0018D98A /* castle_a02@2x.png in Resources */,
+				431027EB149F5B360018D98A /* castle_c02.png in Resources */,
+				431027EC149F5B360018D98A /* castle_c02@2x.png in Resources */,
+				431027EF149F5BF40018D98A /* castle_d02.png in Resources */,
+				431027F0149F5BF40018D98A /* castle_d02@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

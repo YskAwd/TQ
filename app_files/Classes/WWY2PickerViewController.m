@@ -79,7 +79,7 @@
     showNameLabel_ = showNameLabel;
     [self resetUIs];
 }
--(BOOL)getShowNameLabel{
+-(BOOL)showNameLabel{
     return showNameLabel_;
 }
 #pragma mark -UI関連
