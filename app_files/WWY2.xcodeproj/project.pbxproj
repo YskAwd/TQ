@@ -186,6 +186,7 @@
 		43B5B53412A220AB005E4A04 /* btn_forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B5B53212A220AA005E4A04 /* btn_forward@2x.png */; };
 		43B5B53E12A22131005E4A04 /* btn_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B5B53C12A22131005E4A04 /* btn_back.png */; };
 		43B5B53F12A22131005E4A04 /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B5B53D12A22131005E4A04 /* btn_back@2x.png */; };
+		43C2F3AA14ADA9BC004EA61A /* LiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C2F3A914ADA9BC004EA61A /* LiveView.m */; };
 		43C4FB0D10EDC0E1009851F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43C4FB0910EDC0E1009851F6 /* InfoPlist.strings */; };
 		43C4FB0E10EDC0E1009851F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43C4FB0B10EDC0E1009851F6 /* Localizable.strings */; };
 		43C4FB1410EDC106009851F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43C4FB1010EDC106009851F6 /* InfoPlist.strings */; };
@@ -206,7 +207,6 @@
 		43D68DD21402772100DCA973 /* OAuthTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D68DD11402772100DCA973 /* OAuthTwitterViewController.m */; };
 		43D9D0BD108263A300F4C11E /* CharacterAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D9D0BB108263A300F4C11E /* CharacterAnnotation.m */; };
 		43DC00FC148D06310094D99D /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DC00FB148D06310094D99D /* HelpViewController.m */; };
-		43DD3B5D10E8C6D900FD298C /* LiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DD3B5B10E8C6D900FD298C /* LiveView.m */; };
 		43DD3B8610E8C8FD00FD298C /* CursorButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43DD3B8510E8C8FD00FD298C /* CursorButtonView.m */; };
 		43DD3DBA10E9315700FD298C /* clickC.aif in Resources */ = {isa = PBXBuildFile; fileRef = 43DD3DB910E9315700FD298C /* clickC.aif */; };
 		43E11B2C0FFD279C00D52165 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E11B2B0FFD279C00D52165 /* CharacterView.m */; };
@@ -495,6 +495,9 @@
 		43B5B53212A220AA005E4A04 /* btn_forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_forward@2x.png"; sourceTree = "<group>"; };
 		43B5B53C12A22131005E4A04 /* btn_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back.png; sourceTree = "<group>"; };
 		43B5B53D12A22131005E4A04 /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
+		43C2F3A814ADA9BC004EA61A /* LiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LiveView.h; path = LiveView/LiveView.h; sourceTree = "<group>"; };
+		43C2F3A914ADA9BC004EA61A /* LiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LiveView.m; path = LiveView/LiveView.m; sourceTree = "<group>"; };
+		43C2F3AB14ADAA1F004EA61A /* LiveViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LiveViewDelegate.h; path = LiveView/LiveViewDelegate.h; sourceTree = "<group>"; };
 		43C4FB0A10EDC0E1009851F6 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43C4FB0C10EDC0E1009851F6 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; lineEnding = 0; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		43C4FB1110EDC106009851F6 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -528,9 +531,6 @@
 		43D9D0BC108263A300F4C11E /* CharacterAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterAnnotation.h; sourceTree = "<group>"; };
 		43DC00FA148D06310094D99D /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		43DC00FB148D06310094D99D /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
-		43DD3B5B10E8C6D900FD298C /* LiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LiveView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		43DD3B5C10E8C6D900FD298C /* LiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveView.h; sourceTree = "<group>"; };
-		43DD3B5E10E8C70D00FD298C /* LiveViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewDelegate.h; sourceTree = "<group>"; };
 		43DD3B8410E8C8FD00FD298C /* CursorButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CursorButtonView.h; path = LiveView/CursorButtonView.h; sourceTree = "<group>"; };
 		43DD3B8510E8C8FD00FD298C /* CursorButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CursorButtonView.m; path = LiveView/CursorButtonView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		43DD3DB910E9315700FD298C /* clickC.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = clickC.aif; sourceTree = "<group>"; };
@@ -1166,9 +1166,9 @@
 		43DD3B5110E8C6B200FD298C /* LiveView */ = {
 			isa = PBXGroup;
 			children = (
-				43DD3B5C10E8C6D900FD298C /* LiveView.h */,
-				43DD3B5B10E8C6D900FD298C /* LiveView.m */,
-				43DD3B5E10E8C70D00FD298C /* LiveViewDelegate.h */,
+				43C2F3A814ADA9BC004EA61A /* LiveView.h */,
+				43C2F3A914ADA9BC004EA61A /* LiveView.m */,
+				43C2F3AB14ADAA1F004EA61A /* LiveViewDelegate.h */,
 				43DD3B8410E8C8FD00FD298C /* CursorButtonView.h */,
 				43DD3B8510E8C8FD00FD298C /* CursorButtonView.m */,
 			);
@@ -1460,7 +1460,6 @@
 				438AFC69109EE0150059CACF /* WWYCommandColumnView.m in Sources */,
 				4394813610C565C50061379B /* WWYHelper_DB.m in Sources */,
 				4335BDAA10D5402200670468 /* WWYAdController.m in Sources */,
-				43DD3B5D10E8C6D900FD298C /* LiveView.m in Sources */,
 				43DD3B8610E8C8FD00FD298C /* CursorButtonView.m in Sources */,
 				439648AA119C10070045F311 /* MainController.m in Sources */,
 				4346767A1201D5E100195F7F /* CDataScanner.m in Sources */,
@@ -1521,6 +1520,7 @@
 				43903A24148B60D6001D74FE /* EnemyImagePickerViewController.m in Sources */,
 				43903A27148B6418001D74FE /* WWY2PickerViewController.m in Sources */,
 				43DC00FC148D06310094D99D /* HelpViewController.m in Sources */,
+				43C2F3AA14ADA9BC004EA61A /* LiveView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
