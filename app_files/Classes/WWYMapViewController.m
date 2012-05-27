@@ -115,9 +115,10 @@
 	[helper_db autorelease];//autoreleaseはいつもできるだけ最後に！（この一個前の行だとうまくいかなかった。）
 	
 	//アプリスタート時はmapViewに関わる各ボタンが押せないようになってるが、mapView表示したらそれらを有効に。
-	wWYViewController_.configButton_.enabled = YES;//configButtonを有効に。
-    wWYViewController_.battleNowButton_.enabled = YES;//battleNowButton_を有効に。
-	wWYViewController_.searchButton_.enabled = YES;//searchButtonを有効に。	
+	wWYViewController_.configButton_.enabled = YES;
+    wWYViewController_.battleNowButton_.enabled = YES;
+	wWYViewController_.searchButton_.enabled = YES;	
+    wWYViewController_.otherHerosButton_.enabled = YES;
 
 }
 //MyLocaitonGetterから新しいCLLocationが来たときに呼ばれる。
@@ -467,7 +468,8 @@
 		nowOnRamia_ = true;
 
 		//ボタン操作できないように。
-		wWYViewController_.locationButton_.enabled = false, wWYViewController_.searchButton_.enabled = false, wWYViewController_.configButton_.enabled = false; wWYViewController_.battleNowButton_.enabled = false;		
+		wWYViewController_.locationButton_.enabled = false, wWYViewController_.searchButton_.enabled = false, wWYViewController_.configButton_.enabled = false; wWYViewController_.battleNowButton_.enabled = false,
+        wWYViewController_.otherHerosButton_.enabled = false;		
 		//mapView_のスクロールとズームを禁止
 		mapView_.scrollEnabled = false;
 		mapView_.zoomEnabled = false;
@@ -628,7 +630,8 @@
 	mapView_.scrollEnabled = true;
 	mapView_.zoomEnabled = true;
 	//ボタン操作できるように。
-	wWYViewController_.locationButton_.enabled = true, wWYViewController_.searchButton_.enabled = true, wWYViewController_.configButton_.enabled = true,  wWYViewController_.battleNowButton_.enabled = false;
+	wWYViewController_.locationButton_.enabled = true, wWYViewController_.searchButton_.enabled = true, wWYViewController_.configButton_.enabled = true,  wWYViewController_.battleNowButton_.enabled = false,
+    wWYViewController_.otherHerosButton_.enabled = true;
 	 
 	//リクルート広告を表示
 	[wWYViewController_ performSelector:@selector(showRecruitAd) withObject:nil afterDelay:2.0f];

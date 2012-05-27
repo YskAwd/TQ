@@ -102,10 +102,16 @@
 -(BOOL)isExistsBuiltInMonsterNames:(NSString*)monsterName{
     NSArray *builtInMonsterNames = [[AWBuiltInValuesFromCSV builtInValuesFromCSV]getBuiltInMonsterNamesArray];
     NSString* nameKey = [AWUtility nameKeyFromUserLanguage];
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"'%@' LIKE '%@'",nameKey,monsterName];
-    NSArray* filterdArray = [builtInMonsterNames filteredArrayUsingPredicate:predicate];
-    if ([filterdArray count] > 0) {
-        return YES;
+//    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"%@ LIKE %@",nameKey,monsterName];
+//    //NSPredicate* predicate = [NSPredicate predicateWithFormat:@"name_ja LIKE 'チェクボクス'"];
+//    NSArray* filterdArray = [builtInMonsterNames filteredArrayUsingPredicate:predicate];
+//    if ([filterdArray count] > 0) {
+//        return YES;
+//    }
+    for(NSDictionary* builtInMonsterName in builtInMonsterNames){
+        if([[builtInMonsterName objectForKey:nameKey]isEqualToString:monsterName]){
+            return YES;
+        }
     }
     return NO;
 }

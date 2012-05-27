@@ -125,6 +125,7 @@
 		4368D606128C2DE60005F078 /* f_left_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 4368D5FE128C2DE60005F078 /* f_left_02.png */; };
 		4368D607128C2DE60005F078 /* f_right_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4368D5FF128C2DE60005F078 /* f_right_01.png */; };
 		4368D608128C2DE60005F078 /* f_right_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 4368D600128C2DE60005F078 /* f_right_02.png */; };
+		43694E3914C04112007319D6 /* btn_otherheros.png in Resources */ = {isa = PBXBuildFile; fileRef = 43694E3814C04112007319D6 /* btn_otherheros.png */; };
 		437AD44A0FE664C400ADBCF2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 437AD4490FE664C400ADBCF2 /* MapKit.framework */; };
 		437B58BD1023F02000422A8F /* WWYAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 437B58BC1023F02000422A8F /* WWYAnnotation.m */; };
 		437E051B0FE68BF20055DA2C /* DebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 437E051A0FE68BF20055DA2C /* DebugViewController.m */; };
@@ -173,6 +174,7 @@
 		43A7725112A2A67F00139342 /* h_left_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A7724112A2A67F00139342 /* h_left_02.png */; };
 		43A7728F12A2AB1D00139342 /* h_right_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A7728D12A2AB1D00139342 /* h_right_01.png */; };
 		43A7729012A2AB1D00139342 /* h_right_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A7728E12A2AB1D00139342 /* h_right_02.png */; };
+		43A93E9414CDA3B4000DB771 /* btn_otherheros@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A93E9314CDA3B4000DB771 /* btn_otherheros@2x.png */; };
 		43ACC28D12131276000B5062 /* TaskBattleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43ACC28C12131276000B5062 /* TaskBattleManager.m */; };
 		43AD3F01120F150300ECE7BD /* WWYCommandFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AD3F00120F150300ECE7BD /* WWYCommandFrameView.m */; };
 		43AD3F26120F234200ECE7BD /* WWYTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AD3F25120F234200ECE7BD /* WWYTask.m */; };
@@ -406,6 +408,7 @@
 		4368D5FE128C2DE60005F078 /* f_left_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f_left_02.png; sourceTree = "<group>"; };
 		4368D5FF128C2DE60005F078 /* f_right_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f_right_01.png; sourceTree = "<group>"; };
 		4368D600128C2DE60005F078 /* f_right_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = f_right_02.png; sourceTree = "<group>"; };
+		43694E3814C04112007319D6 /* btn_otherheros.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_otherheros.png; sourceTree = "<group>"; };
 		437AD4490FE664C400ADBCF2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		437B58BB1023F02000422A8F /* WWYAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWYAnnotation.h; sourceTree = "<group>"; };
 		437B58BC1023F02000422A8F /* WWYAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WWYAnnotation.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -474,6 +477,7 @@
 		43A7724112A2A67F00139342 /* h_left_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = h_left_02.png; sourceTree = "<group>"; };
 		43A7728D12A2AB1D00139342 /* h_right_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = h_right_01.png; sourceTree = "<group>"; };
 		43A7728E12A2AB1D00139342 /* h_right_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = h_right_02.png; sourceTree = "<group>"; };
+		43A93E9314CDA3B4000DB771 /* btn_otherheros@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_otherheros@2x.png"; sourceTree = "<group>"; };
 		43ACC28B12131276000B5062 /* TaskBattleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskBattleManager.h; sourceTree = "<group>"; };
 		43ACC28C12131276000B5062 /* TaskBattleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskBattleManager.m; sourceTree = "<group>"; };
 		43AD3EFF120F150300ECE7BD /* WWYCommandFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWYCommandFrameView.h; sourceTree = "<group>"; };
@@ -1198,6 +1202,8 @@
 				43B5B53212A220AA005E4A04 /* btn_forward@2x.png */,
 				43B5B53C12A22131005E4A04 /* btn_back.png */,
 				43B5B53D12A22131005E4A04 /* btn_back@2x.png */,
+				43694E3814C04112007319D6 /* btn_otherheros.png */,
+				43A93E9314CDA3B4000DB771 /* btn_otherheros@2x.png */,
 				435FD7E714069AF7000E403B /* monster */,
 				43FA82B9121836850000EB8C /* field */,
 				43E11B1D0FFD26F700D52165 /* character */,
@@ -1430,6 +1436,8 @@
 				431027EC149F5B360018D98A /* castle_c02@2x.png in Resources */,
 				431027EF149F5BF40018D98A /* castle_d02.png in Resources */,
 				431027F0149F5BF40018D98A /* castle_d02@2x.png in Resources */,
+				43694E3914C04112007319D6 /* btn_otherheros.png in Resources */,
+				43A93E9414CDA3B4000DB771 /* btn_otherheros@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

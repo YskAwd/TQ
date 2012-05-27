@@ -349,7 +349,8 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
     
     AWBuiltInValuesManager* builtInValuesManager = [AWBuiltInValuesManager builtInValuesManager];
     BOOL isExistsBuiltInMonsterNames = [builtInValuesManager isExistsBuiltInMonsterNames:enemyNameTextView_.text];
-    if (isExistsBuiltInMonsterNames || [enemyNameTextView_.text isEqualToString:NSLocalizedString(@"enemy_name_example", @"")]) {
+    if (isExistsBuiltInMonsterNames || [enemyNameTextView_.text isEqualToString:NSLocalizedString(@"enemy_name_example", @"")]
+        || [enemyNameTextView_.text isEqualToString:@""]) {
         NSString* monsterName = [builtInValuesManager getBuiltInMonsterNameWithImageId:enemyImgId_];
         if(monsterName) enemyNameTextView_.text = monsterName;
     }
@@ -658,6 +659,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 	task_.title = taskNameTextView_.text ;
 	task_.description = taskDetailTextView_.text;
 	task_.enemy = enemyNameTextView_.text;
+    task_.enemyImageId = enemyImgId_;
 	task_.mission_datetime = mission_dateTime_;
     task_.snoozed_datetime = nil;//スヌーズしてた時間はリセット。
 	
@@ -728,7 +730,8 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
 		timer = [NSTimer scheduledTimerWithTimeInterval:2.0
 												 target:wWYViewController_
 											   selector:@selector(addTaskCanceled:)
-											   userInfo:(id)kCFBooleanFalse
+                                            //userInfo:(id)kCFBooleanFalse
+                                               userInfo:NO
 												repeats:NO];
 	}else if(textID == 5){//タスクを削除するかどうか確認
 		//確認を促すコマンドビューを生成

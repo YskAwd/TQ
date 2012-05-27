@@ -18,7 +18,7 @@
 #define TWEET_ENABLE_AT_TEST true
 //#define TWEET_ENABLE_AT_TEST true false
 
-//locationが取得できない環境での開発用に、ウソのlocationをプッシュするか
+//locationが取得できない環境での開発用に、ダミーのlocationをプッシュするか
 //#define PUSH_DAMMY_LOCATION_AT_TEST true
 #define PUSH_DAMMY_LOCATION_AT_TEST false
 
@@ -47,15 +47,15 @@
 //タスクの実行日時の何秒前に知らせるか。
 #define TASK_PRE_NOTIFICATION_SECONDS 0//0分
 
-//タスクの先送り後、再度有効になる秒数
-#define TASK_SNOOZE_SPAN_SECONDS 600.0//10分
+//タスクの先送り後、再度有効になる秒数 => 先送りした1日の間はタスクが現れず、次の日の0時以降現れるように修正した。
+//#define TASK_SNOOZE_SPAN_SECONDS 600.0//10分
 
 //タスクがどれくらい近くになれば検知するかのしきい値。(m)
 //locationの精度にあわせた方がいいかも
 #define TASK_HIT_AREA_METER 200.0
 
 //定期的に近くにタスクがないかをチェックする間隔の秒数。なお、新しいlocationが取得されるごとにチェックはされる。
-#define TASK_CHECK_INTERVAL 10.0//10秒
+#define TASK_CHECK_INTERVAL 30.0//30秒
 
 //タスク入力欄の文字数制限
 #define TASK_NAME_TEXT_LIMIT_NUM 20 //20文字まで（半角全角の判別はしていない）

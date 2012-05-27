@@ -45,21 +45,40 @@
 				//タスクの実行時間が設定されてないか、実行時間5分前以内ならば
 				if(!task.mission_datetime || timeInterval_toMission < TASK_PRE_NOTIFICATION_SECONDS){
 				
-					NSTimeInterval timeInterval_fromSnoozed;
-					//先送りした時間が設定されているタスクなら、現在時との差を求める。
+//					NSTimeInterval timeInterval_fromSnoozed;
+//					//先送りした時間が設定されているタスクなら、現在時との差を求める。
+//					if(task.snoozed_datetime){
+//						//NSDate *nowDate = [NSDate date];
+//						timeInterval_fromSnoozed = [nowDate timeIntervalSinceDate:task.snoozed_datetime];
+//						//一時間以上たってるなら、今後の負荷軽減のためにタスクからsnoozed_datetimeを削除してしまう。
+//						if(timeInterval_fromSnoozed > TASK_SNOOZE_SPAN_SECONDS){
+//							task.snoozed_datetime = nil;
+//							WWYHelper_DB *helperDB = [[[WWYHelper_DB alloc]init]autorelease];
+//							[helperDB updateTask:task];
+//						}
+//					}
+
+                    //先送りした日時が設定されているタスクなら
 					if(task.snoozed_datetime){
-						//NSDate *nowDate = [NSDate date];
-						timeInterval_fromSnoozed = [nowDate timeIntervalSinceDate:task.snoozed_datetime];
-						//一時間以上たってるなら、今後の負荷軽減のためにタスクからsnoozed_datetimeを削除してしまう。
-						if(timeInterval_fromSnoozed > TASK_SNOOZE_SPAN_SECONDS){
+                        //今日先送りされたかどうかチェック
+                        NSDate *localDate = [task.snoozed_datetime dateByAddingTimeInterval:[[NSTimeZone systemTimeZone] secondsFromGMT]];
+                        NSDate *localToday = [[NSDate date] dateByAddingTimeInterval:[[NSTimeZone systemTimeZone] secondsFromGMT]];
+                        //一日の秒数で割って1970年1月1日0時0分0秒からの日数をもとめる。
+                        NSInteger daycount = (NSInteger)([localDate timeIntervalSince1970])/86400;
+                        NSInteger todaycount = (NSInteger)([localToday timeIntervalSince1970])/86400;
+                        //今日先送りされたタスクじゃなければ、snoozed_datetimeを削除。
+                        if ( daycount != todaycount ) {
 							task.snoozed_datetime = nil;
 							WWYHelper_DB *helperDB = [[[WWYHelper_DB alloc]init]autorelease];
 							[helperDB updateTask:task];
 						}
 					}
-					//先送りした時間が設定されていないタスクか、上記で求めた時間差が一時間以上なら、
-					//現在地との差を求める。
-					if(!task.snoozed_datetime || timeInterval_fromSnoozed > TASK_SNOOZE_SPAN_SECONDS){
+//					//先送りした時間が設定されていないタスクか、上記で求めた時間差が一時間以上なら、
+//					//現在地との差を求める。
+//					if(!task.snoozed_datetime || timeInterval_fromSnoozed > TASK_SNOOZE_SPAN_SECONDS){
+                    
+                    //今日先送りされたタスクじゃなければ、現在地との差を求める。
+					if(!task.snoozed_datetime){
 						CLLocation *myLocation = [[CLLocation alloc]initWithLatitude:task.coordinate.latitude longitude:task.coordinate.longitude];
 						double myDistance;
 						if([myLocation respondsToSelector:@selector(distanceFromLocation:)]){

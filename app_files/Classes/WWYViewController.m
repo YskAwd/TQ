@@ -25,6 +25,7 @@
 @synthesize configButton_;
 @synthesize battleNowButton_;
 @synthesize searchButton_;
+@synthesize otherHerosButton_;
 @synthesize networkConnectionManager = networkConnectionManager_;
 @synthesize locationButtonMode = locationButtonMode_;
 
@@ -35,7 +36,7 @@
 	if(mapViewController_) [mapViewController_.view removeFromSuperview];[mapViewController_ release];
 	if(configViewController_) [configViewController_.view removeFromSuperview];[configViewController_ release];
 	if(toolBar_) [toolBar_ removeFromSuperview];[toolBar_ release];
-	if(locationButton_) [locationButton_ release];[configButton_ release];[searchButton_ release];[battleNowButton_ release];
+	if(locationButton_) [locationButton_ release];[configButton_ release];[searchButton_ release];[otherHerosButton_ release]; [battleNowButton_ release];
 	if(activityIndicatorView_) [activityIndicatorView_ removeFromSuperview];[activityIndicatorView_ release];
 	if(searchBar_) [searchBar_ removeFromSuperview];[searchBar_ release];
 	if(myLocationGetter_) [myLocationGetter_ stopUpdatingLocation];[myLocationGetter_ release];
@@ -81,7 +82,7 @@
 -(void)makeTaskBattleViewController{
     if(!taskBattleViewController_) [taskBattleViewController_ release];
         taskBattleViewController_ = [[TaskBattleViewController alloc]initWithFrame:CGRectMake(0, 0, 320, 460) withWWYViewController:self];
-    configButton_.enabled = false; searchButton_.enabled = false; battleNowButton_.enabled = false;
+    configButton_.enabled = false; searchButton_.enabled = false; battleNowButton_.enabled = false,otherHerosButton_.enabled = false;
 }
 //taskViewController_を生成。
 -(void)makeTaskViewController:(int)mode{
@@ -131,7 +132,7 @@
 	locationButton_ = [[UIBarButtonItem alloc]initWithImage:locationButtonImg_location_ 
 													  style:UIBarButtonItemStyleBordered target:self 
 													 action:@selector(doLocationButtonAction)];
-	locationButton_.width = 40;
+	//locationButton_.width = 40;
 	locationButton_.enabled = false;
 	
 	configButton_ = [[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"command",@"") 
@@ -147,7 +148,7 @@
 	 configButton_.width = 45;*/
 	
 	configButton_.enabled = false;
-     battleNowButton_.enabled = false;
+    battleNowButton_.enabled = false;
 	
 	searchButton_ = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch 
 																 target:self 
@@ -155,16 +156,15 @@
 	searchButton_.style = UIBarButtonItemStyleBordered;
 	searchButton_.width = 40;
 	searchButton_.enabled = false;
-	
+     
+     otherHerosButton_ = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_otherheros.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(openWebSiteOtherHeros)];
+     //otherHerosButton_.width = 40;
+     otherHerosButton_.enabled = false;
+     
 	UIBarButtonItem *spacer = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
 																			target:nil action:nil]autorelease];
 	
-	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer,configButton_,spacer,battleNowButton_,spacer, searchButton_,nil]];
-	
-	/*UIBarButtonItem *spacer = [[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
-	 target:nil action:nil]autorelease];
-	 spacer.width = 8;
-	 [toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer,configButton_,spacer,searchButton_,nil]];*/
+	[toolBar_ setItems:[NSArray arrayWithObjects:locationButton_,spacer,configButton_,spacer,battleNowButton_,spacer, /*searchButton_, */ otherHerosButton_, nil]]; //searchButton_を非表示にした
 	
 	//activityIndicatorViewを生成
 	activityIndicatorView_ = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
@@ -274,6 +274,7 @@
 		locationButton_.enabled = false;
         battleNowButton_.enabled = false;
 		searchButton_.enabled = false;
+        otherHerosButton_.enabled = false;
 	}else if(configButton_.style == UIBarButtonItemStyleDone){
 		configButton_.style = UIBarButtonItemStyleBordered;
 		[UIView beginAnimations:@"configViewHide" context:NULL];
@@ -286,6 +287,7 @@
 		locationButton_.enabled = true;
         battleNowButton_.enabled = true;
 		searchButton_.enabled = true;
+        otherHerosButton_.enabled = true;
 	}
 }
 
@@ -317,6 +319,11 @@
 -(void)battleNow{
     [self addTaskAndBattleNow];
 }
+//ohterHerosButtonを押したとき
+-(void)openWebSiteOtherHeros{
+    [self startUpWebView:WEBSITE_OTHER_HEROES_URL];
+}
+
 //locationボタンを押したとき
 -(void)doLocationButtonAction{
 	[self doLocationButtonActionAtMode:locationButtonMode_+1];
@@ -454,7 +461,7 @@
 -(void)addTaskCanceled:(BOOL)whenDoneTaskEdited{
 	[mapViewController_ cancelAddAnotationWithTap];
 	[taskViewController_ release]; taskViewController_ = nil;
-    if(!whenDoneTaskEdited){
+    if(whenDoneTaskEdited == NO){
     configButton_.enabled = true; battleNowButton_.enabled = true;
     }
     isNowEditingTask_ = NO;
@@ -503,7 +510,7 @@
 //タスクが近くにあるかどうかをチェックする。タイマーとMyLocationGetterからのトリガーで呼ばれる
 -(void)checkTaskAroundLocation:(CLLocation*)location{
 	if(!isNowAttackingTask_ && !isNowEditingTask_ && !mapViewController_.isAddAnotationWithTapMode_
-	   && configButton_.style == UIBarButtonItemStyleBordered && searchButton_.style == UIBarButtonItemStyleBordered){
+	   && configButton_.style == UIBarButtonItemStyleBordered && searchButton_.style == UIBarButtonItemStyleBordered && otherHerosButton_.style == UIBarButtonItemStyleBordered){
         [taskBattleManager_ updateTasks];
 		WWYTask *task = [taskBattleManager_ taskAroundLocation:location withInMeter:TASK_HIT_AREA_METER];
 		if(task){
@@ -549,7 +556,7 @@
 	[taskBattleViewController_.view removeFromSuperview];[taskBattleViewController_ release];taskBattleViewController_ = nil;
     //過去のタスクを見ているモードじゃなければボタンを戻す
     if(!mapViewController_.taskHistoryPolyline){//ポリラインがあるかどうかで上記を判定
-        configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = YES;
+        configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = YES; otherHerosButton_.enabled = true;
     }
     isNowAttackingTask_ = NO;
     [helper_DB autorelease];
@@ -557,7 +564,7 @@
 
 //twitterの認証を始める
 -(void)startTwitterAuthentication{
-	configButton_.enabled = false; searchButton_.enabled = false; battleNowButton_.enabled = false;
+	configButton_.enabled = false; searchButton_.enabled = false; battleNowButton_.enabled = false; otherHerosButton_.enabled = false;
 	if(!twitterViewController_) twitterViewController_ = [[TwitterAuthViewController alloc]initWithViewFrame:self.view.frame delegate:self];
 	[self.view addSubview:twitterViewController_.view];
 	[twitterViewController_ startTwitterOAuth];
@@ -567,12 +574,12 @@
 	[twitterViewController_.view removeFromSuperview];
 	[twitterViewController_ release];
 	twitterViewController_ = nil;
-	configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = true;
+	configButton_.enabled = true; searchButton_.enabled = true; battleNowButton_.enabled = true; otherHerosButton_.enabled = true;
 }
 #pragma mark -
 #pragma mark historyMap 関連
 -(void)startHistoryMap{
-    configButton_.enabled = false; battleNowButton_.enabled = false; //searchButton_.enabled = false;
+    configButton_.enabled = false; battleNowButton_.enabled = false; otherHerosButton_.enabled = false; //searchButton_.enabled = false;
     
     //タスクをdoneのものに入れ替え
     WWYHelper_DB* helper_DB = [[WWYHelper_DB alloc]init];
@@ -632,7 +639,7 @@
     //mapViewControllerのプロパティとして保持していたpolylineを解放
     mapViewController_.taskHistoryPolyline = nil;
     
-    configButton_.enabled = true; battleNowButton_.enabled = true; searchButton_.enabled = true;
+    configButton_.enabled = true; battleNowButton_.enabled = true; searchButton_.enabled = true; otherHerosButton_.enabled = true;
     [helper_DB autorelease];
 }
 /*

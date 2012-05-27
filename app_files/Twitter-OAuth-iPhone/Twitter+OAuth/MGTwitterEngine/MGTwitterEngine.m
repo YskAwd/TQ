@@ -11,7 +11,8 @@
 
 #import "NSData+Base64.h"
 
-#define USE_LIBXML 1
+#define USE_LIBXML 0
+//#define USE_LIBXML 1
 
 #if YAJL_AVAILABLE
 	#define API_FORMAT @"json"
@@ -95,7 +96,7 @@
 }
 
 
-- (MGTwitterEngine *)initWithDelegate:(NSObject *)newDelegate
+- (MGTwitterEngine *)initWithDelegate:(NSObject<MGTwitterEngineDelegate>*)newDelegate
 {
     if (self = [super init]) {
         _delegate = newDelegate; // deliberately weak reference

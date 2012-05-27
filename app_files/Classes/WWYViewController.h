@@ -52,6 +52,7 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
 	UIBarButtonItem* configButton_;
     UIBarButtonItem* battleNowButton_;
 	UIBarButtonItem* searchButton_;
+    UIBarButtonItem* otherHerosButton_;
 	UIImage* locationButtonImg_location_;
 	UIImage* locationButtonImg_heading_; 
 	UISearchBar* searchBar_;
@@ -119,6 +120,7 @@ enum {WWYLocationButtonMode_OFF, WWYLocationButtonMode_LOCATION, WWYLocationButt
 @property (readonly,assign) WWYMapViewController* mapViewController_;
 @property (readonly,assign) UIBarButtonItem* locationButton_;
 @property (readonly,assign) UIBarButtonItem* searchButton_;
+@property (readonly,assign) UIBarButtonItem* otherHerosButton_;
 @property (readonly,assign) UIBarButtonItem* configButton_;
 @property (readonly,assign) UIBarButtonItem* battleNowButton_;
 @property (readonly,assign) NetworkConnectionManager* networkConnectionManager;

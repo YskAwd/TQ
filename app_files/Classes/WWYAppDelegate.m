@@ -57,7 +57,7 @@
     srand((unsigned)time(NULL));
     
     
-    //バックグラウンドでLocalnotificationで呼ばれたら、タスクバトルを立ち上げる。
+    //アプリがバックグラウンドでプロセスが生きていないときに、Notificationからアクションボタンをタップしたら呼ばれる
     UILocalNotification *notification;
     notification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (notification) {
@@ -67,7 +67,7 @@
     
     return YES;
 }
-//立ち上がってるときに（バックグラウンドでも）Notificationがあったら呼ばれる
+//アプリがフォアグラウンドか、バックグラウンドでプロセスが生きているときにNotificationからアクションボタンをタップしたら呼ばれる
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     NSDictionary* userInfo = notification.userInfo;
     int taskID = [[userInfo objectForKey:@"taskID"]intValue];

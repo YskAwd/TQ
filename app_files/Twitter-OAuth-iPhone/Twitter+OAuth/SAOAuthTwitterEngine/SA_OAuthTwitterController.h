@@ -43,12 +43,6 @@
 
 + (SA_OAuthTwitterController *) controllerToEnterCredentialsWithTwitterEngine: (SA_OAuthTwitterEngine *) engine delegate: (id <SA_OAuthTwitterControllerDelegate>) delegate forOrientation:(UIInterfaceOrientation)theOrientation;
 + (SA_OAuthTwitterController *) controllerToEnterCredentialsWithTwitterEngine: (SA_OAuthTwitterEngine *) engine delegate: (id <SA_OAuthTwitterControllerDelegate>) delegate;
-
-//▼awazu 別アカウントでの承認メソッド。（上のをコピーして作成）
-+ (SA_OAuthTwitterController *) controllerToEnterCredentialsWithTwitterEngineAtAnotherAccount: (SA_OAuthTwitterEngine *) engine delegate: (id <SA_OAuthTwitterControllerDelegate>) delegate forOrientation: (UIInterfaceOrientation)theOrientation;
-+ (SA_OAuthTwitterController *) controllerToEnterCredentialsWithTwitterEngineAtAnotherAccount: (SA_OAuthTwitterEngine *) engine delegate: (id <SA_OAuthTwitterControllerDelegate>) delegate;
-//▲awazu
-
 + (BOOL) credentialEntryRequiredWithTwitterEngine: (SA_OAuthTwitterEngine *) engine;
 
 @end

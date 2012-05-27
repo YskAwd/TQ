@@ -45,9 +45,14 @@
 	[configCommandView_ setTitle:NSLocalizedString(@"command",@"") withWidth:cmdFrame.size.width/2.8 withHeight:0];
 	[configCommandView_ addCommand:NSLocalizedString(@"add_quest",@"") action:@selector(configCmd_Tapped:) userInfo:@"add_quest"];
     [configCommandView_ addCommand:NSLocalizedString(@"status",@"") action:@selector(configCmd_Tapped:) userInfo:@"status"];
-	[configCommandView_ addCommand:NSLocalizedString(@"mapType",@"") action:@selector(configCmd_Tapped:) userInfo:@"mapType"];
-	[configCommandView_ addCommand:NSLocalizedString(@"magic",@"") action:@selector(configCmd_Tapped:) userInfo:@"magic"];
-	[configCommandView_ addCommand:NSLocalizedString(@"party",@"") action:@selector(configCmd_Tapped:) userInfo:@"party"];
+    
+    //「じゅもん」にはいるものが1つしかないので、「じゅもん」はいったん外しておく。コマンド増えてきたらまた使う
+	//[configCommandView_ addCommand:NSLocalizedString(@"magic",@"") action:@selector(configCmd_Tapped:) userInfo:@"magic"];
+	//「じゅもん」に入っていた過去の勇者をみる
+    [configCommandView_ addCommand:NSLocalizedString(@"Looking_back_upon",@"") action:@selector(configCmd_Tapped:) userInfo:@"Looking_back_upon"];
+    
+    [configCommandView_ addCommand:NSLocalizedString(@"mapType",@"") action:@selector(configCmd_Tapped:) userInfo:@"mapType"];
+    [configCommandView_ addCommand:NSLocalizedString(@"party",@"") action:@selector(configCmd_Tapped:) userInfo:@"party"];
 	[configCommandView_ addCommand:NSLocalizedString(@"twitter_setting",@"") action:@selector(configCmd_Tapped:) userInfo:@"twitter_setting"];
     [configCommandView_ addCommand:NSLocalizedString(@"how_to_use",@"") action:@selector(configCmd_Tapped:) userInfo:@"how_to_use"];
 	[configCommandView_ addCommand:NSLocalizedString(@"go_back",@"") action:@selector(configCmd_Tapped:) userInfo:@"go_back"];
@@ -208,7 +213,8 @@
                                            NSLocalizedString(@"check_other_heroes",@""),
 										   nil];
 			if(locoloAd_parseEnded_){
-				[cmdTxtArray addObject:NSLocalizedString(@"locolo_music",@"")];
+                // ロコロ音源へのリンクは外しておく
+				//[cmdTxtArray addObject:NSLocalizedString(@"locolo_music",@"")];
 			}
 			[cmdTxtArray addObject:NSLocalizedString(@"go_back",@"")];
 			
@@ -221,7 +227,9 @@
 			//[magicCommandView_ resetToDefault];//今のところページ送りないので省略
 		}
 		[self.view addSubview:magicCommandView_];
-		
+    
+    }else if([cmdStr isEqualToString:@"Looking_back_upon"]){//*********"かこのゆうしゃをみる"がタップされたら
+        [self lookingBackUponTapped];
 	}else if([cmdStr isEqualToString:@"party"]){//*********"並び替え"がタップされたら
 		if(!party_selectCommandView_){
 			//party_selectCommandView_を作る。commandViewIdは4。
@@ -337,6 +345,14 @@
     configCommandView_.touchEnable = true;
 }
 
+//かこをふりかえる　がタップされたとき
+-(void)lookingBackUponTapped{
+    //WWYViewControllerからこのビューを非表示にし、HistoryMapをオープン
+    [wWYViewController_ configModeOnOff];
+    [wWYViewController_ startHistoryMap];
+    //[configCommandView_ resetToDefault];//今のところページ送りないので省略
+}
+
 //WWYCommandViewDelegateメソッド
 //コマンドがタッチされたときに呼ばれる。
 -(void)commandPushedWithCommandString:(NSString*)commandString withColumnNo:(int)columnNo withColumnID:(int)columnId withCommandViewId:(int)commandViewId{
@@ -374,10 +390,7 @@
 				[self.view addSubview:annotationCommandView_];
 			}
         }else if([commandString isEqualToString:NSLocalizedString(@"Looking_back_upon",@"")]){//"かこをみる"ならば 
-            //WWYViewControllerからこのビューを非表示にし、HistoryMapをオープン
-            [wWYViewController_ configModeOnOff];
-            [wWYViewController_ startHistoryMap];
-            //[configCommandView_ resetToDefault];//今のところページ送りないので省略
+            [self lookingBackUponTapped];
         }else if([commandString isEqualToString:NSLocalizedString(@"check_other_heroes",@"")]){//"ほかのゆうしゃをみる"ならば 
                 //WWYViewControllerからこのビューを非表示にし、WebViewをオープン
                 [wWYViewController_ configModeOnOff];

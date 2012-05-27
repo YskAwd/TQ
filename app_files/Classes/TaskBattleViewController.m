@@ -237,6 +237,7 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
         }
         NSMutableString *post_txt;
         NSMutableString* post_txt_whenLevelUP = nil;
+        
         if(winUserInfo){//勝ったとき            
             if(enemy_name_ && ![enemy_name_ isEqualToString:@""] && task_title_ && ![task_title_ isEqualToString:@""]){
                 post_txt = 
@@ -296,18 +297,17 @@ if(DEALLOC_REPORT_ENABLE) NSLog(@"[DEALLOC]:%@", NSStringFromClass([self class])
         
         BOOL success = NO;
         
-        //先にTweet処理した方があとにTweetされるようなので、倒したTweetとレベルアップTweetの順番を逆に。
-        //レベルアップしていればTweet
+        // Tweetする。
+        success = [twitterManager postTweet:post_txt withCoordinate:task_coodinate_];
+        
+        //レベルアップしていればさらにTweet
         if (post_txt_whenLevelUP) {
+            [NSThread sleepForTimeInterval:0.1];//0.1秒間を空ける
             //success = [twitterManager postTweet:post_txt_whenLevelUP withCoordinate:task_coodinate_];
             //連続Tweetが失敗する場合があるので、twitterManagerをもう一つ生成してみる。
             TwitterManager *twitterManager2 = [[[TwitterManager alloc]initWithDelegate:self]autorelease];
             success = [twitterManager2 postTweet:post_txt_whenLevelUP withCoordinate:task_coodinate_];
-            [NSThread sleepForTimeInterval:0.1];//0.1秒間を空ける
         }
-        
-        // Tweetする。
-        success = [twitterManager postTweet:post_txt withCoordinate:task_coodinate_];
         
         if(success){
             [self tweetCompleted];
